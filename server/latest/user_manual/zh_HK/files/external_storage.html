@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using external storage &mdash; Nextcloud 36 User Manual</title>
+  <title>使用外部儲存空間 &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -82,12 +82,12 @@
 <li class="toctree-l3"><a class="reference internal" href="access_webdav.html">透過 WebDAV 協定存取 Nextcloud 上的檔案</a></li>
 <li class="toctree-l3"><a class="reference internal" href="desktop_mobile_sync.html">桌面電腦和移動設備同步</a></li>
 <li class="toctree-l3"><a class="reference internal" href="large_file_upload.html">大型檔案上傳</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using external storage</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-external-storage">Accessing external storage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sharing-files-from-external-storage">Sharing files from external storage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-your-own-external-storage">Adding your own external storage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#supported-backends">Supported backends</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#file-change-detection">File change detection</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">使用外部儲存空間</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-external-storage">存取外部儲存空間</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-files-from-external-storage">分享外部儲存空間中的檔案</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-your-own-external-storage">新增自己的外部儲存空間</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#supported-backends">支援的後端</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-change-detection">偵測檔案變更</a></li>
 </ul>
 </li>
 </ul>
@@ -123,7 +123,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">檔案與同步</a></li>
           <li class="breadcrumb-item"><a href="accessing.html">存取您的檔案</a></li>
-      <li class="breadcrumb-item active">Using external storage</li>
+      <li class="breadcrumb-item active">使用外部儲存空間</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/external_storage.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -134,91 +134,69 @@
            <div itemprop="articleBody">
              
   <section id="using-external-storage">
-<span id="external-storage-user-label"></span><h1>Using external storage<a class="headerlink" href="#using-external-storage" title="Link to this heading"></a></h1>
-<p>The External Storage application lets your Nextcloud server connect to remote file
-systems — such as Amazon S3, SFTP servers, SMB/CIFS shares, or WebDAV servers — and
-present them as folders inside your Files view. Your administration team configures
-which backends are available and which mounts are shared with you.</p>
-<p>If your administrator has enabled user-managed external storage, you can also add
-your own connections under Personal Settings.</p>
+<span id="external-storage-user-label"></span><h1>使用外部儲存空間<a class="headerlink" href="#using-external-storage" title="Link to this heading"></a></h1>
+<p>「外部儲存空間」應用程式讓你的 Nextcloud 伺服器連接遠端檔案系統，例如 Amazon S3、SFTP 伺服器、SMB/CIFS 共用資料夾或 WebDAV 伺服器，並在「檔案」檢視中以資料夾形式顯示。管理團隊會設定可用的後端，以及與你共用的掛載點。</p>
+<p>如果管理員已啟用由使用者管理的外部儲存空間，你亦可在「個人設定」中新增自己的連線。</p>
 <section id="accessing-external-storage">
-<h2>Accessing external storage<a class="headerlink" href="#accessing-external-storage" title="Link to this heading"></a></h2>
-<p>External storage mounts appear as regular folders in your Files view. You can
-browse, upload, download, and delete files in them just as you would any other
-folder. Whether sharing is available depends on whether your administrator has
-enabled it for each individual mount.</p>
-<p>A colored indicator next to the folder name shows the connection status:</p>
+<h2>存取外部儲存空間<a class="headerlink" href="#accessing-external-storage" title="Link to this heading"></a></h2>
+<p>外部儲存空間掛載點會在「檔案」檢視中顯示為一般資料夾。你可以像操作其他資料夾一樣瀏覽、上載、下載及刪除其中的檔案。能否分享檔案，取決於管理員有否為個別掛載點啟用分享功能。</p>
+<p>資料夾名稱旁的彩色指示燈會顯示連線狀態：</p>
 <ul class="simple">
-<li><p>Green — the storage is connected and ready to use.</p></li>
-<li><p>Yellow — the storage could not be reached; Nextcloud will retry automatically.</p></li>
-<li><p>Red — the storage is unavailable. Contact your administrator if this persists.</p></li>
+<li><p>綠色 — 儲存空間已連線，可以使用。</p></li>
+<li><p>黃色 — 無法連接儲存空間；Nextcloud 會自動重試。</p></li>
+<li><p>紅色 — 儲存空間無法使用。如問題持續，請聯絡管理員。</p></li>
 </ul>
-<p>When a mount is unavailable, Nextcloud marks it as offline for ten minutes before
-retrying. You can trigger a manual recheck by clicking the status indicator.</p>
+<p>掛載點無法使用時，Nextcloud 會將其標記為離線，並在十分鐘後重試。你可以按一下狀態指示燈，手動重新檢查。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Some external storage mounts may be read-only. You will not be able to upload
-or delete files on a read-only mount.</p>
+<p>部分外部儲存空間掛載點可能設為唯讀。你無法在唯讀掛載點上載或刪除檔案。</p>
 </div>
 </section>
 <section id="sharing-files-from-external-storage">
-<h2>Sharing files from external storage<a class="headerlink" href="#sharing-files-from-external-storage" title="Link to this heading"></a></h2>
-<p>Sharing from an external storage mount works the same as sharing any other file or
-folder — use the share icon in the Files view. Sharing must be explicitly enabled on
-each mount by your administrator, so the share icon may not be available on all
-mounts.</p>
+<h2>分享外部儲存空間中的檔案<a class="headerlink" href="#sharing-files-from-external-storage" title="Link to this heading"></a></h2>
+<p>分享外部儲存空間中的檔案，方法與分享其他檔案或資料夾相同：在「檔案」檢視中使用分享圖示。管理員必須為每個掛載點明確啟用分享功能，因此部分掛載點可能不會顯示分享圖示。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Server-side encryption is not available for external mounts pointing to other
-Nextcloud instances.</p>
+<p>指向其他 Nextcloud 執行個體的外部掛載點不支援伺服器端加密。</p>
 </div>
 </section>
 <section id="adding-your-own-external-storage">
-<h2>Adding your own external storage<a class="headerlink" href="#adding-your-own-external-storage" title="Link to this heading"></a></h2>
-<p>If your administrator has enabled user-managed external storage, you can connect
-your own storage services under <strong>Personal Settings → External Storage</strong>.</p>
-<p>To add a new mount:</p>
+<h2>新增自己的外部儲存空間<a class="headerlink" href="#adding-your-own-external-storage" title="Link to this heading"></a></h2>
+<p>如果管理員已啟用由使用者管理的外部儲存空間，你可以在 <strong>個人設定 → 外部儲存空間</strong> 中連接自己的儲存服務。</p>
+<p>新增掛載點：</p>
 <ol class="arabic simple">
-<li><p>Click your profile icon and select <strong>Personal Settings</strong>.</p></li>
-<li><p>Select <strong>External Storage</strong> from the left sidebar.</p></li>
-<li><p>Choose a backend from the <strong>Add storage</strong> dropdown.</p></li>
-<li><p>Fill in the required fields for the backend (server address, path, credentials, etc.).</p></li>
-<li><p>Select an authentication method from the <strong>Authentication</strong> dropdown.</p></li>
+<li><p>按一下個人資料圖示，然後選擇 <strong>個人設定</strong>。</p></li>
+<li><p>在左側邊欄選擇 <strong>外部儲存空間</strong>。</p></li>
+<li><p>從 <strong>新增儲存空間</strong> 下拉式選單中選擇後端。</p></li>
+<li><p>填寫該後端所需的欄位（伺服器位址、路徑、登入憑證等）。</p></li>
+<li><p>從 <strong>驗證</strong> 下拉式選單中選擇驗證方式。</p></li>
 </ol>
-<p>Required fields are marked with a red border. Once all required fields are filled,
-the mount is saved automatically.</p>
-<p>A green dot next to the mount confirms a successful connection. A red or yellow icon
-means Nextcloud could not connect — check your credentials and network settings.</p>
-<p>To remove a mount, open the three-dot overflow menu next to it and select <strong>Delete</strong>.</p>
+<p>必填欄位會以紅色邊框標示。填妥所有必填欄位後，掛載點便會自動儲存。</p>
+<p>掛載點旁的綠點表示連線成功。紅色或黃色圖示表示 Nextcloud 無法連線，請檢查登入憑證及網絡設定。</p>
+<p>如要移除掛載點，請開啟旁邊的三點選單，然後選擇 <strong>刪除</strong>。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Mounts you add under Personal Settings are visible only to your account.</p>
+<p>你在「個人設定」中新增的掛載點只有你的帳戶可以看到。</p>
 </div>
 </section>
 <section id="supported-backends">
-<h2>Supported backends<a class="headerlink" href="#supported-backends" title="Link to this heading"></a></h2>
-<p>The following backends may be available, depending on what your administrator has
-enabled:</p>
+<h2>支援的後端<a class="headerlink" href="#supported-backends" title="Link to this heading"></a></h2>
+<p>視乎管理員啟用的設定，以下後端可能可供使用：</p>
 <ul class="simple">
-<li><p><strong>Amazon S3</strong> — Amazon Simple Storage Service buckets and S3-compatible storage.</p></li>
-<li><p><strong>FTP</strong> — FTP and FTPS servers.</p></li>
-<li><p><strong>Nextcloud / ownCloud</strong> — Another Nextcloud or ownCloud instance over WebDAV.</p></li>
-<li><p><strong>OpenStack Object Storage</strong> — OpenStack Swift buckets.</p></li>
-<li><p><strong>SFTP</strong> — SSH File Transfer Protocol servers.</p></li>
-<li><p><strong>SMB / CIFS</strong> — Windows file shares and Samba servers.</p></li>
-<li><p><strong>WebDAV</strong> — Any WebDAV-compatible server.</p></li>
+<li><p><strong>Amazon S3</strong> — Amazon Simple Storage Service 儲存貯體及與 S3 相容的儲存空間。</p></li>
+<li><p><strong>FTP</strong> — FTP 及 FTPS 伺服器。</p></li>
+<li><p><strong>Nextcloud / ownCloud</strong> — 透過 WebDAV 連接另一個 Nextcloud 或 ownCloud 執行個體。</p></li>
+<li><p><strong>OpenStack Object Storage</strong> — OpenStack Swift 儲存貯體。</p></li>
+<li><p><strong>SFTP</strong> — SSH 檔案傳輸協定伺服器。</p></li>
+<li><p><strong>SMB / CIFS</strong> — Windows 共用檔案及 Samba 伺服器。</p></li>
+<li><p><strong>WebDAV</strong> — 任何與 WebDAV 相容的伺服器。</p></li>
 </ul>
-<p>For backend-specific configuration details, see
-<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/external_storage_configuration_gui.html">Configuring External Storage (GUI)</a>
-in the Administrator's manual.</p>
+<p>有關個別後端的設定詳情，請參閱管理員手冊中的 <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/external_storage_configuration_gui.html">設定外部儲存空間（圖形介面）</a>。</p>
 </section>
 <section id="file-change-detection">
-<h2>File change detection<a class="headerlink" href="#file-change-detection" title="Link to this heading"></a></h2>
-<p>Files you add or change through Nextcloud are reflected immediately. Files added
-or changed directly on the external storage — without going through Nextcloud — may
-not appear until the next background scan.</p>
-<p>If externally added files are not appearing, ask your administrator to run
-<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">files:scan</span></code> or to configure a periodic background scan for the mount.</p>
+<h2>偵測檔案變更<a class="headerlink" href="#file-change-detection" title="Link to this heading"></a></h2>
+<p>透過 Nextcloud 新增或修改的檔案會即時反映。直接在外部儲存空間新增或修改的檔案（未經 Nextcloud 操作），則可能要等到下一次背景掃描才會顯示。</p>
+<p>如果外部新增的檔案未有顯示，請管理員執行 <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">files:scan</span></code>，或為該掛載點設定定期背景掃描。</p>
 </section>
 </section>
 

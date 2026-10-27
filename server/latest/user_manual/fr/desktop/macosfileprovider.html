@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using the macOS File Provider &mdash; Nextcloud 36 User Manual</title>
+  <title>Utilisation intégré aux gestionnaire de fichiers macOS &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -31,8 +31,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="Client features" href="client_features.html" />
-    <link rel="prev" title="Using the Client" href="usage.html" />
+    <link rel="next" title="Fonctionnalités du client" href="client_features.html" />
+    <link rel="prev" title="Utilisation du Client" href="usage.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -73,46 +73,46 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud 36 : Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">L’interface web de Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Utilisation de l’application Activité</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Fichiers &amp; synchronisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectifs</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Client</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the macOS File Provider</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#supported-features">Supported features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Utilisation du Client</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Utilisation intégré aux gestionnaire de fichiers macOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#supported-features">Fonctionnalités prises en charge</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#finder-integration">Finder integration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sync-status-indicators">Sync status indicators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#context-menu-actions">Context menu actions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#keep-downloaded">Keep Downloaded</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#locking">Locking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sharing">Sharing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#file-actions">File actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finder-integration">Intégration Finder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sync-status-indicators">Indicateurs de l’état de synchronisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#context-menu-actions">Actions du menu contextuel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#keep-downloaded">Garder en Téléchargés</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#locking">Verrouillage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing">Partage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-actions">Actions sur les fichiers</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known issues</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#macos-extensions-conflict">macOS Extensions conflict</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#alias-files">Alias files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#edit-locally">Edit locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Problèmes connus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#macos-extensions-conflict">Conflit entre extensions macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#alias-files">Fichiers d’alias</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-locally">Modifier localement</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#debug-level-logging">Debug-level Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Dépannage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#debug-level-logging">Journalisation de niveau débogage</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_features.html">Fonctionnalités du client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="advanced_configuration.html">Advanced configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">L’agent de mise à jour automatique</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Canaux de mise à jour</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commandline.html">Command-line client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Interface en ligne de commande</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Désinstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
@@ -120,7 +120,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Définir vos préférences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Accès universel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Utilisation de l’authentification à deux facteurs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils liés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils connectés</a></li>
 </ul>
 
         </div>
@@ -138,7 +138,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
-      <li class="breadcrumb-item active">Using the macOS File Provider</li>
+      <li class="breadcrumb-item active">Utilisation intégré aux gestionnaire de fichiers macOS</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/macosfileprovider.rst" class="fa fa-github"> Éditer sur GitHub</a>
       </li>
@@ -149,170 +149,107 @@
            <div itemprop="articleBody">
              
   <section id="using-the-macos-file-provider">
-<h1>Using the macOS File Provider<a class="headerlink" href="#using-the-macos-file-provider" title="Lien vers cette rubrique"></a></h1>
-<p>On macOS, our client can also seamlessly integrate Nextcloud files into macOS
-as a File Provider extension. Any newly configured Nextcloud account will have
-the integration enabled by default.</p>
+<h1>Utilisation intégré aux gestionnaire de fichiers macOS<a class="headerlink" href="#using-the-macos-file-provider" title="Lien vers cette rubrique"></a></h1>
+<p>Sur macOS, notre client peut également intégrer facilement des fichiers Nextcloud dans macOS via une extension de Fournisseur de fichiers. Tout compte Nextcloud nouvellement configuré disposera de cette extension activée par défaut.</p>
 <section id="supported-features">
-<h2>Supported features<a class="headerlink" href="#supported-features" title="Lien vers cette rubrique"></a></h2>
+<h2>Fonctionnalités prises en charge<a class="headerlink" href="#supported-features" title="Lien vers cette rubrique"></a></h2>
 <ul class="simple">
-<li><p>Keeping files or whole folders available offline</p></li>
-<li><p>Freeing up local disk space by evicting local copies without deleting items</p></li>
-<li><p>Intelligent and automatic local data eviction</p></li>
-<li><p>File previews within Finder for files which are not downloaded yet</p></li>
-<li><p>Support for Apple-specific formats, for example Pages, Numbers or Keynote bundles</p></li>
-<li><p>Support for server-side file locking (if supported by the connected server)</p></li>
-<li><p>“Edit locally” support</p></li>
-<li><p>Sharing with other users</p></li>
-<li><p>Server-side actions integrated directly in Finder’s context menu</p></li>
-<li><p>Automatic discovery of server-side changes</p></li>
+<li><p>Disponibilité de fichiers ou de dossiers entiers maintenue hors connexion</p></li>
+<li><p>Libération d’espace disque local par l’éviction de copies locales sans supprimer les éléments</p></li>
+<li><p>Éviction intelligente et automatique de données locales</p></li>
+<li><p>Prévisualisation des fichiers depuis le Finder pour les fichiers qui n’ont pas encore été téléchargés</p></li>
+<li><p>Prise en charge des formats spécifiques à Apple, par exemple les paquets Pages, Numbers ou Keynote</p></li>
+<li><p>Prise en charge du verrouillage de fichiers côté serveur (si cela est géré par le serveur connecté)</p></li>
+<li><p>Prise en charge de « Modifier localement »</p></li>
+<li><p>Partage avec d’autres utilisateurs</p></li>
+<li><p>Actions côté serveur intégrées directement dans le menu contextuel du Finder</p></li>
+<li><p>Découverte automatique des modifications côté serveur</p></li>
 </ul>
 </section>
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Lien vers cette rubrique"></a></h2>
-<p>Settings related to the File Provider extension can be adjusted on a
-per-account basis via the Nextcloud desktop client’s settings window.</p>
-<a class="reference internal image-reference" href="../../_images/macosfileprovider-settings.jpg"><img alt="Nextcloud desktop client settings showing the macOS File Provider extension toggle" class="align-center" src="../../_images/macosfileprovider-settings.jpg" style="width: 50%;" />
+<p>Les paramètres relatifs à l’extension Fournisseur de fichiers peuvent être ajustés, par compte, via la fenêtre des paramètres du client de bureau Nextcloud.</p>
+<a class="reference internal image-reference" href="../../_images/macosfileprovider-settings.jpg"><img alt="Paramètres du client de bureau Nextcloud montrant l'interrupteur pour activer ou désactiver l'extension Fournisseur de fichiers" class="align-center" src="../../_images/macosfileprovider-settings.jpg" style="width: 50%;" />
 </a>
-<p>Here the integration into Finder can be enabled or disabled.</p>
-<p>When disabling the File Provider extension while still having unsynchronized
-changes, macOS will save the unsynchronized items in a folder that is
-automatically revealed after the integration is disabled.</p>
+<p>L’intégration dans le Finder peut être activée ou désactivée ici.</p>
+<p>Quand l’extension Fournisseur de fichiers est désactivée alors qu’il y a encore des modifications non synchronisées, macOS enregistre les éléments non synchronisés dans un dossier qui est révélé automatiquement après la désactivation de l’intégration.</p>
 </section>
 <section id="finder-integration">
-<h2>Finder integration<a class="headerlink" href="#finder-integration" title="Lien vers cette rubrique"></a></h2>
-<p>On macOS, remote storage like a Nextcloud files account appears like a
-dedicated location in the Finder sidebar. The actual location of the
-content on disk is defined by macOS.</p>
-<a class="reference internal image-reference" href="../../_images/macosfileprovider-finder-sidebar.jpg"><img alt="Finder sidebar showing a Nextcloud File Provider domain" class="align-center" src="../../_images/macosfileprovider-finder-sidebar.jpg" style="width: 50%;" />
+<h2>Intégration Finder<a class="headerlink" href="#finder-integration" title="Lien vers cette rubrique"></a></h2>
+<p>Sur macOS, le stockage distant comme un compte de fichiers Nextcloud apparaît comme un emplacement dédié dans la barre latérale du Finder. L’emplacement réel du contenu sur le disque est défini par macOS.</p>
+<a class="reference internal image-reference" href="../../_images/macosfileprovider-finder-sidebar.jpg"><img alt="Barre latérale du Finder montrant un domaine du Fournisseur de fichiers Nextcloud" class="align-center" src="../../_images/macosfileprovider-finder-sidebar.jpg" style="width: 50%;" />
 </a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To accelerate server-side change detection, we recommend enabling the
-<code class="docutils literal notranslate"><span class="pre">notify_push</span></code> app on your Nextcloud server. This app will notify
-the desktop client of changes on the server as soon as they happen,
-reducing the time it takes for changes to appear in Finder.
-Otherwise the client needs to poll the server which will result in an
-increased delay between a change on the server and its local visibility.</p>
+<p>Pour accélérer la détection des modifications côté serveur, nous conseillons l’activation de l’application <code class="docutils literal notranslate"><span class="pre">notify_push</span></code> sur votre serveur Nextcloud. Cette application notifiera au client de bureau les modifications du serveur dès qu’elles se produisent, ce qui réduira le temps pris pour que les modifications apparaissent dans le Finder. Sinon, le client a besoin d’interroger régulièrement le serveur, ce qui occasionne un délai plus important entre la modification sur le serveur et sa visibilité en local.</p>
 </div>
 </section>
 <section id="sync-status-indicators">
-<h2>Sync status indicators<a class="headerlink" href="#sync-status-indicators" title="Lien vers cette rubrique"></a></h2>
-<p>Similar to classic synchronization folders, Finder displays status
-indicators next to items. Unlike the custom indicators in classic
-synchronization folders, these standardized indicators are provided by macOS to
-ensure a consistent appearance across all cloud storage apps which a user may
-use on their system.</p>
+<h2>Indicateurs de l’état de synchronisation<a class="headerlink" href="#sync-status-indicators" title="Lien vers cette rubrique"></a></h2>
+<p>À l’instar des dossiers de synchronisation classique, le Finder affiche des indicateurs d’état à côté des éléments. Mais contrairement aux indicateurs personnalisés des dossiers de synchronisation classique, ces indicateurs standardisés sont fournis par macOS pour garantir une apparence cohérente dans toutes les applications de stockage cloud que l’utilisateur est susceptible d’utiliser sur son système.</p>
 <ul class="simple">
-<li><p><em>Cloud with downward arrow</em>: The item and its descendants are not downloaded
-yet. They can be downloaded, assuming a network connection is available.</p></li>
-<li><p><em>Outlined cloud</em>: The item is not fully uploaded yet in its current local
-state.</p></li>
-<li><p><em>Strikethrough cloud</em>: The item is excluded from synchronization.</p></li>
-<li><p><em>Pie chart</em>: The item is currently being uploaded or downloaded, and the progress
-is visualized.</p></li>
-<li><p><em>Filled circle with a pin</em>: The item is available offline and will
-be kept locally.</p></li>
-<li><p><em>No icon</em>: The item is available offline and up to date.</p></li>
+<li><p><em>Nuage avec une flèche vers le bas</em> : l’élément et ses descendants ne sont pas encore téléchargés. Ils pourraient l’être, à condition qu’une connexion réseau soit disponible.</p></li>
+<li><p><em>Nuage surligné</em> : l’élément n’a pas encore été téléversé en totalité par rapport à son état actuel en local.</p></li>
+<li><p><em>Nuage barré</em> : l’élément est exclu de la synchronisation.</p></li>
+<li><p><em>Secteurs</em> : l’élément est en cours de téléversement ou de téléchargement, et la progression est visualisée.</p></li>
+<li><p><em>Cercle plein avec une épingle</em> : l’élément est disponible hors connexion et sera conservé en local.</p></li>
+<li><p><em>Pas d’icône</em> : l’élément est à jour et disponible hors connexion.</p></li>
 </ul>
 </section>
 <section id="context-menu-actions">
-<h2>Context menu actions<a class="headerlink" href="#context-menu-actions" title="Lien vers cette rubrique"></a></h2>
-<a class="reference internal image-reference" href="../../_images/macosfileprovider-context-menu.jpg"><img alt="macOS Finder context menu on a Nextcloud file showing Keep Downloaded, Lock, and Share options" class="align-center" src="../../_images/macosfileprovider-context-menu.jpg" style="width: 50%;" />
+<h2>Actions du menu contextuel<a class="headerlink" href="#context-menu-actions" title="Lien vers cette rubrique"></a></h2>
+<a class="reference internal image-reference" href="../../_images/macosfileprovider-context-menu.jpg"><img alt="Menu contextuel du Finder de macOS sur un fichier Nextcloud montrant les options Verrouiller, Options de partage et Garder téléchargé" class="align-center" src="../../_images/macosfileprovider-context-menu.jpg" style="width: 50%;" />
 </a>
-<p>The File Provider extension also provides special Nextcloud features through
-the context menu in Finder.</p>
+<p>L’extension Fournisseur de fichiers apporte également des fonctionnalités Nextcloud spéciales dans le Finder par l’intermédiaire du menu contextuel.</p>
 <section id="keep-downloaded">
-<h3>Keep Downloaded<a class="headerlink" href="#keep-downloaded" title="Lien vers cette rubrique"></a></h3>
-<p>Files and folders can be marked to be kept downloaded and available offline
-permanently. If this is chosen on folders, it will also apply to all their
-contents. This is especially useful for users with limited or no network
-access, as it ensures that they can always access their important files without
-needing to worry about connectivity. macOS will <strong>not</strong> free up local disk
-space by evicting items which are marked to be kept downloaded, even if they
-have not been accessed for a long time.</p>
-<p>This can be undone by selecting « Allow automatic freeing up space » on the same
-items.</p>
-<p>To always keep everything in an account available locally, you can select
-« Always keep downloaded » on the location root in the Finder sidebar.</p>
+<h3>Garder en Téléchargés<a class="headerlink" href="#keep-downloaded" title="Lien vers cette rubrique"></a></h3>
+<p>Les fichiers et les dossiers peuvent être marqués pour être conservés téléchargés et disponibles hors ligne en permanence. Si ce choix est fait sur des dossiers, cela s’applique aussi à la totalité de leur contenu. C’est particulièrement utile pour les utilisateurs qui disposent d’un accès réseau limité ou qui n’ont pas de réseau, car cela leur garantit la possibilité de toujours avoir accès à leurs fichiers importants sans se préoccuper de la connectivité réseau. macOS <strong>ne libérera pas</strong> l’espace disque local en évinçant les éléments qui sont marqués pour être conservés téléchargés, même s’ils n’ont pas été consultés depuis très longtemps.</p>
+<p>Cela peut être annulé en sélectionnant « Autoriser la libération automatique de l’espace » sur les mêmes éléments.</p>
+<p>Pour toujours tout conserver dans un compte disponible en local, vous pouvez sélectionner « Toujours conserver en local » sur la racine de l’emplacement dans la barre latérale du Finder.</p>
 </section>
 <section id="locking">
-<h3>Locking<a class="headerlink" href="#locking" title="Lien vers cette rubrique"></a></h3>
-<a class="reference internal image-reference" href="../../_images/macosfileprovider-file-locking.jpg"><img alt="macOS Finder showing a Nextcloud file with a lock indicator after locking" class="align-center" src="../../_images/macosfileprovider-file-locking.jpg" style="width: 50%;" />
+<h3>Verrouillage<a class="headerlink" href="#locking" title="Lien vers cette rubrique"></a></h3>
+<a class="reference internal image-reference" href="../../_images/macosfileprovider-file-locking.jpg"><img alt="Finder de macOS montrant un fichier Nextcloud avec un indicateur de verrou après verrouillage" class="align-center" src="../../_images/macosfileprovider-file-locking.jpg" style="width: 50%;" />
 </a>
-<p>If the server supports file locking, the client will offer manual locking and
-unlocking of files in Finder.</p>
+<p>Si le serveur prend en charge le verrouillage de fichiers, le client offrira le verrouillage et le déverrouillage manuels des fichiers dans le Finder.</p>
 </section>
 <section id="sharing">
-<h3>Sharing<a class="headerlink" href="#sharing" title="Lien vers cette rubrique"></a></h3>
-<a class="reference internal image-reference" href="../../_images/macosfileprovider-file-sharing.jpg"><img alt="macOS Finder share management panel for a Nextcloud file showing existing shares" class="align-center" src="../../_images/macosfileprovider-file-sharing.jpg" style="width: 50%;" />
+<h3>Partage<a class="headerlink" href="#sharing" title="Lien vers cette rubrique"></a></h3>
+<a class="reference internal image-reference" href="../../_images/macosfileprovider-file-sharing.jpg"><img alt="Dans le Finder de macOS, panneau de gestion du partage d'un fichier Nextcloud montrant les partages existants" class="align-center" src="../../_images/macosfileprovider-file-sharing.jpg" style="width: 50%;" />
 </a>
-<p>When the server supports sharing and the item is allowed to be shared,
-then you can create new shares or manage existing shares for an item directly
-from the context menu in Finder, as in the Nextcloud web interface.</p>
+<p>Quand le serveur prend en charge le partage et que l’élément est autorisé à être partagé, vous pouvez alors créer de nouveaux partages ou gérer ceux existants pour un élément directement depuis le menu contextuel du Finder, tout comme dans l’interface web de Nextcloud.</p>
 </section>
 <section id="file-actions">
-<h3>File actions<a class="headerlink" href="#file-actions" title="Lien vers cette rubrique"></a></h3>
-<p>If the server has apps installed which provide file actions for the selected
-file types, these actions will also be available in the context menu in Finder.
-This allows you to use server-side features of your Nextcloud instance directly
-from the Finder.</p>
+<h3>Actions sur les fichiers<a class="headerlink" href="#file-actions" title="Lien vers cette rubrique"></a></h3>
+<p>Si le serveur dispose d’applications installées qui fournissent des actions de fichiers pour les types de fichiers sélectionnés, ces actions seront également disponibles dans le menu contextuel du Finder. Cela vous permet d’utiliser des fonctionnalités de votre instance Nextcloud côté serveur directement depuis le Finder.</p>
 </section>
 </section>
 <section id="known-issues">
-<h2>Known issues<a class="headerlink" href="#known-issues" title="Lien vers cette rubrique"></a></h2>
+<h2>Problèmes connus<a class="headerlink" href="#known-issues" title="Lien vers cette rubrique"></a></h2>
 <section id="macos-extensions-conflict">
-<h3>macOS Extensions conflict<a class="headerlink" href="#macos-extensions-conflict" title="Lien vers cette rubrique"></a></h3>
-<p>Due to technical limitations in macOS which are imposed by Apple,
-it is not possible to have the Finder integration for classic sync folders
-running in parallel to an enabled File Provider extension.
-This means that item decorations and context menu options will be
-unavailable for classic sync folders while the File Provider extension is
-enabled.</p>
+<h3>Conflit entre extensions macOS<a class="headerlink" href="#macos-extensions-conflict" title="Lien vers cette rubrique"></a></h3>
+<p>En raison de limitations techniques dans macOS, lesquelles sont imposées par Apple, il n’est pas possible de faire fonctionner l’intégration Finder pour les dossiers de synchronisation classique en parallèle avec une extension File Provider activée. Cela signifie que les décorations des éléments et les options du menu contextuel resteront indisponibles pour les dossiers de synchronisation classique tant que l’extension File Provider est activée.</p>
 </section>
 <section id="alias-files">
-<h3>Alias files<a class="headerlink" href="#alias-files" title="Lien vers cette rubrique"></a></h3>
-<p>When opening a macOS alias file stored on Nextcloud for the first time on a
-device where it has not yet been downloaded, the file may open as a binary
-document in a text editor instead of jumping to its target. This happens
-because macOS decides how to open a file before downloading it, and alias files
-carry no recognisable file extension or type information on the server — the
-only way to identify them is by reading their content. Once the file has been
-opened or downloaded once, Nextcloud Desktop learns that it is an alias and
-stores that information locally, so all subsequent opens will work correctly.
-To avoid the issue entirely, right-click the alias file in Finder and choose
-<strong>Keep Downloaded</strong> before opening it for the first time.</p>
+<h3>Fichiers d’alias<a class="headerlink" href="#alias-files" title="Lien vers cette rubrique"></a></h3>
+<p>Lorsqu’un fichier d’alias macOS stocké sur Nextcloud est ouvert pour la première fois sur un appareil sur lequel il n’a encore jamais été téléchargé, le fichier peut s’ouvrir dans un éditeur de texte en tant que document binaire au lieu de sauter vers sa cible. Cela arrive car macOS décide de quelle façon un fichier doit s’ouvrir avant de le télécharger, et les fichiers d’alias ne comportent pas d’informations de type ni d’extension de fichier reconnaissable sur le serveur — la seule façon de les identifier consiste à lire leur contenu. Une fois le fichier ouvert ou téléchargé une première fois, le Bureau Nextcloud se rend compte qu’il s’agit d’un alias et stocke cette information en local de manière à ce que toutes les ouvertures ultérieures fonctionnent correctement. Pour complètement éviter ce problème, faites un clic droit sur le fichier d’alias dans le Finder et choisissez <strong>Garder en Téléchargés</strong> avant de l’ouvrir pour la première fois.</p>
 </section>
 <section id="edit-locally">
-<h3>Edit locally<a class="headerlink" href="#edit-locally" title="Lien vers cette rubrique"></a></h3>
-<p>The <span class="guilabel">Edit locally</span> action offered by the Nextcloud web interface
-cannot open files that are managed by the File Provider extension.
-It can only reveal them in Finder.</p>
-<p>This is a restriction of macOS itself, not a fault in the client. For your
-protection, macOS only lets specific apps open a given file, and it does not
-allow an app to grant itself that permission. The part of the client that is
-allowed to manage these files is not permitted to launch other apps, and the
-part that could launch your editor is not permitted to open the file.</p>
-<p>Granting Full Disk Access does not help, because a different part of the
-macOS security system is responsible for this.</p>
+<h3>Modifier localement<a class="headerlink" href="#edit-locally" title="Lien vers cette rubrique"></a></h3>
+<p>L’action <span class="guilabel">Modifier localement</span> offerte par l’interface web de Nextcloud ne peut pas ouvrir les fichiers qui sont gérés par l’extension File Provider. Elle peut seulement les révéler dans le Finder.</p>
+<p>Il s’agit d’une restriction de macOS lui-même et non de la faute du client. Pour votre protection, macOS n’autorise que certaines applications spécifiques à ouvrir un fichier donné, et il ne donne pas à une application le droit de s’accorder cette permission à elle-même. La composante du client qui est autorisée à gérer ces fichiers a l’interdiction de lancer d’autres applications et celle qui pourrait lancer l’exécution de votre éditeur n’a pas le droit d’ouvrir le fichier.</p>
+<p>Accorder l’Accès complet au disque n’est d’aucun secours car une partie différente du système de sécurité de macOS en est responsable.</p>
 </section>
 </section>
 <section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Lien vers cette rubrique"></a></h2>
+<h2>Dépannage<a class="headerlink" href="#troubleshooting" title="Lien vers cette rubrique"></a></h2>
 <section id="debug-level-logging">
-<h3>Debug-level Logging<a class="headerlink" href="#debug-level-logging" title="Lien vers cette rubrique"></a></h3>
-<p>Debug-level log entries for the File Provider extension are disabled by
-default.
-If you want to report an issue with the File Provider, it can be helpful to
-enable them to get more detailed information about what is happening under the
-hood. To enable them, you have to issue the following command in Terminal:</p>
+<h3>Journalisation de niveau débogage<a class="headerlink" href="#debug-level-logging" title="Lien vers cette rubrique"></a></h3>
+<p>Les entrées de journal de niveau débogage de l’extension Fournisseur de fichiers sont désactivées par défaut. Si vous voulez signaler un problème concernant le Fournisseur de fichiers, il peut être utile de les activer pour obtenir des informations plus détaillées sur ce qui se passe sous le capot. Pour les activer, vous devez entrer la commande suivante dans le Terminal :</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>defaults<span class="w"> </span>write<span class="w"> </span>com.nextcloud.desktopclient.FileProviderExt<span class="w"> </span>debugLoggingEnabled<span class="w"> </span>-bool<span class="w"> </span>YES
 </pre></div>
 </div>
-<p>The change takes effect within a couple of seconds; no restart of the extension
-or the Mac is required. It is recommended to restore the default value by
-deleting the explicit value after you have resolved the problem you were
-investigating:</p>
+<p>La modification prend effet en quelques secondes ; aucun redémarrage de l’extension ni du Mac n’est nécessaire. Il est conseillé de revenir à l’état par défaut en supprimant la valeur explicite une fois que vous avez résolu le problème qui était en cours d’investigation :</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>defaults<span class="w"> </span>delete<span class="w"> </span>com.nextcloud.desktopclient.FileProviderExt<span class="w"> </span>debugLoggingEnabled
 </pre></div>
 </div>
@@ -324,8 +261,8 @@ investigating:</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
-        <a href="usage.html" class="btn btn-neutral float-left" title="Using the Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-        <a href="client_features.html" class="btn btn-neutral float-right" title="Client features" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="usage.html" class="btn btn-neutral float-left" title="Utilisation du Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="client_features.html" class="btn btn-neutral float-right" title="Fonctionnalités du client" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

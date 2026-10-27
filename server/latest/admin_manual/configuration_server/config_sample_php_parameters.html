@@ -146,6 +146,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#carddav-sync-request-truncation">carddav_sync_request_truncation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#session-relaxed-expiry">session_relaxed_expiry</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#session-keepalive">session_keepalive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#archive-report-missing-files">archive_report_missing_files</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#auto-logout">auto_logout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#token-auth-enforced">token_auth_enforced</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#token-auth-activity-update">token_auth_activity_update</a></li>
@@ -1253,6 +1254,20 @@ requests.</p>
 <p>Enable or disable session keep-alive when a user is logged in to the Web UI.</p>
 <p>Enabling this sends a “heartbeat” to the server to keep it from timing out.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+</section>
+<section id="archive-report-missing-files">
+<h3>archive_report_missing_files<a class="headerlink" href="#archive-report-missing-files" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'archive_report_missing_files'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>When enabled, this flag allows the download of a directory to proceed
+even if some files or subdirectories are marked as non-downloadable.</p>
+<p>If files are corrupted, missing, or the server encounter temporary errors
+they are logged in a <cite>missing_files[_unique_id].json</cite> within the archive,
+along with the cause. When disabled, the download is denied if any file
+or subdirectory is marked as non-downloadable. Files that cannot be read
+while the archive is being streamed are left out or incomplete, and only
+logged in the server log.</p>
 </section>
 <section id="auto-logout">
 <h3>auto_logout<a class="headerlink" href="#auto-logout" title="Link to this heading"></a></h3>

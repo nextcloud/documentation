@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Advanced configuration &mdash; Nextcloud 36 User Manual</title>
+  <title>Configurare avansată &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -31,8 +31,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Căutare" href="../search.html" />
-    <link rel="next" title="The Automatic Updater" href="autoupdate.html" />
-    <link rel="prev" title="Client features" href="client_features.html" />
+    <link rel="next" title="Actualizarea automată" href="autoupdate.html" />
+    <link rel="prev" title="Funcțiile clientului" href="client_features.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -57,14 +57,14 @@
 
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <label for="rtd-search-input" class="sr-only">Caută în documentație</label>
     <div class="wy-form-search">
       <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
       <input id="rtd-search-input"
              type="text"
              name="q"
-             placeholder="Search docs"
-             aria-label="Search docs" />
+             placeholder="Caută în documentație"
+             aria-label="Caută în documentație" />
     </div>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -72,54 +72,54 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 introducere a manualului de utilizare</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introducere în manualul de utilizare Nextcloud 36</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Interfața web Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Folosirea aplicației Activitate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">Asistentul AI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Fișiere și sincronizare</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Articole de grup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Using the macOS File Provider</a></li>
-<li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Advanced configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#command-line-options">Command-line options</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#general-options">General options</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#logging-options">Logging options</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#account-setup-options">Account setup options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Colective</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Clientul pentru desktop</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Instalare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Folosirea clientului</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">Folosirea macOS File Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_features.html">Funcțiile clientului</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configurare avansată</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-options">Opțiuni din linia de comandă</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general-options">Opțiuni generale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#logging-options">Opțiuni de jurnalizare</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-setup-options">Opțiuni de configurare a contului</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration-file">Configuration file</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#nextcloud-section"><code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code> section</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#desktop-general-settings"><code class="docutils literal notranslate"><span class="pre">[General]</span></code> section</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#per-account-network-settings">Per-account network settings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#legacy-proxy-settings">Legacy proxy settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-file">Fișierul de configurare</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-section">Secțiunea <code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#desktop-general-settings">Secțiunea <code class="docutils literal notranslate"><span class="pre">[General]</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#per-account-network-settings">Setări de rețea pentru fiecare cont</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#legacy-proxy-settings">Setări proxy vechi</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#environment-variables">Environment variables</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#transfer-settings">Transfer settings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#synchronization-and-disk-space">Synchronization and disk space</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#checksums">Checksums</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-variables">Variabile de mediu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#transfer-settings">Setări de transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synchronization-and-disk-space">Sincronizare și spațiu pe disc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checksums">Sume de control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">Depanare</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">The Automatic Updater</a></li>
-<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update channels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflicts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commandline.html">Command-line client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Actualizarea automată</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Canale de actualizare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflicte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Clientul pentru linia de comandă</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Dezinstalare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">Întrebări frecvente</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setarea preferințelor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Accesibilitate universală</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Folosirea autentificării în doi pași</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestionarea browserelor și dispozitivelor conectate</a></li>
 </ul>
 
         </div>
@@ -136,8 +136,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
-      <li class="breadcrumb-item active">Advanced configuration</li>
+          <li class="breadcrumb-item"><a href="index.html">Clientul pentru desktop</a></li>
+      <li class="breadcrumb-item active">Configurare avansată</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/advanced_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -148,51 +148,43 @@
            <div itemprop="articleBody">
              
   <section id="advanced-configuration">
-<h1>Advanced configuration<a class="headerlink" href="#advanced-configuration" title="Link to this heading"></a></h1>
-<p>You can configure the desktop app through command-line options, <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code>, and environment variables.
-Use the app’s <strong>Settings</strong> window for options available there; this page describes advanced settings and overrides.
-For the separate tool that performs a single synchronization run, see <a class="reference internal" href="commandline.html"><span class="doc">Command-line client</span></a>.</p>
+<h1>Configurare avansată<a class="headerlink" href="#advanced-configuration" title="Link to this heading"></a></h1>
+<p>Poți configura aplicația pentru desktop prin opțiuni din linia de comandă, prin <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code> și prin variabile de mediu. Pentru opțiunile disponibile în fereastra <strong>Setări</strong> a aplicației, folosește acea fereastră; această pagină descrie setările avansate și suprascrierile. Pentru instrumentul separat care efectuează o singură rulare de sincronizare, vezi <a class="reference internal" href="commandline.html"><span class="doc">Clientul pentru linia de comandă</span></a>.</p>
 <nav class="contents local" id="on-this-page">
-<p class="topic-title">On this page</p>
+<p class="topic-title">Pe această pagină</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#command-line-options" id="id7">Command-line options</a></p>
+<li><p><a class="reference internal" href="#command-line-options" id="id7">Opțiuni din linia de comandă</a></p>
 <ul>
-<li><p><a class="reference internal" href="#general-options" id="id8">General options</a></p></li>
-<li><p><a class="reference internal" href="#logging-options" id="id9">Logging options</a></p></li>
-<li><p><a class="reference internal" href="#account-setup-options" id="id10">Account setup options</a></p></li>
+<li><p><a class="reference internal" href="#general-options" id="id8">Opțiuni generale</a></p></li>
+<li><p><a class="reference internal" href="#logging-options" id="id9">Opțiuni de jurnalizare</a></p></li>
+<li><p><a class="reference internal" href="#account-setup-options" id="id10">Opțiuni de configurare a contului</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#configuration-file" id="id11">Configuration file</a></p>
+<li><p><a class="reference internal" href="#configuration-file" id="id11">Fișierul de configurare</a></p>
 <ul>
-<li><p><a class="reference internal" href="#nextcloud-section" id="id12"><code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code> section</a></p></li>
-<li><p><a class="reference internal" href="#desktop-general-settings" id="id13"><code class="docutils literal notranslate"><span class="pre">[General]</span></code> section</a></p></li>
-<li><p><a class="reference internal" href="#per-account-network-settings" id="id14">Per-account network settings</a></p></li>
-<li><p><a class="reference internal" href="#legacy-proxy-settings" id="id15">Legacy proxy settings</a></p></li>
+<li><p><a class="reference internal" href="#nextcloud-section" id="id12">Secțiunea <code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code></a></p></li>
+<li><p><a class="reference internal" href="#desktop-general-settings" id="id13">Secțiunea <code class="docutils literal notranslate"><span class="pre">[General]</span></code></a></p></li>
+<li><p><a class="reference internal" href="#per-account-network-settings" id="id14">Setări de rețea pentru fiecare cont</a></p></li>
+<li><p><a class="reference internal" href="#legacy-proxy-settings" id="id15">Setări proxy vechi</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#environment-variables" id="id16">Environment variables</a></p>
+<li><p><a class="reference internal" href="#environment-variables" id="id16">Variabile de mediu</a></p>
 <ul>
-<li><p><a class="reference internal" href="#transfer-settings" id="id17">Transfer settings</a></p></li>
-<li><p><a class="reference internal" href="#synchronization-and-disk-space" id="id18">Synchronization and disk space</a></p></li>
-<li><p><a class="reference internal" href="#checksums" id="id19">Checksums</a></p></li>
-<li><p><a class="reference internal" href="#troubleshooting" id="id20">Troubleshooting</a></p></li>
+<li><p><a class="reference internal" href="#transfer-settings" id="id17">Setări de transfer</a></p></li>
+<li><p><a class="reference internal" href="#synchronization-and-disk-space" id="id18">Sincronizare și spațiu pe disc</a></p></li>
+<li><p><a class="reference internal" href="#checksums" id="id19">Sume de control</a></p></li>
+<li><p><a class="reference internal" href="#troubleshooting" id="id20">Depanare</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
-<p>Defaults below refer to the standard Nextcloud client. Branded clients, server capabilities, and operating system
-policies can change some defaults. Sync-engine settings apply to classic sync, including Windows virtual files.
-The macOS File Provider extension handles its own file transfers; these settings do not configure its transfer engine.
-See <a class="reference internal" href="macosfileprovider.html"><span class="doc">Using the macOS File Provider</span></a>.</p>
+<p>Valorile implicite de mai jos se referă la clientul Nextcloud standard. Clienții personalizați (branded), capabilitățile serverului și politicile sistemului de operare pot schimba unele valori implicite. Setările motorului de sincronizare se aplică sincronizării clasice, inclusiv fișierelor virtuale din Windows. Extensia macOS File Provider își gestionează singură transferurile de fișiere; aceste setări nu îi configurează motorul de transfer. Vezi <a class="reference internal" href="macosfileprovider.html"><span class="doc">Folosirea macOS File Provider</span></a>.</p>
 <section id="command-line-options">
-<span id="desktop-command-line-options"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">Command-line options</a><a class="headerlink" href="#command-line-options" title="Link to this heading"></a></h2>
-<p>Start the desktop app with <code class="docutils literal notranslate"><span class="pre">nextcloud</span> <span class="pre">[options]</span></code>. Use <code class="docutils literal notranslate"><span class="pre">nextcloud</span> <span class="pre">--help</span></code> to see the options in your installed
-version.
-Options with a value accept both <code class="docutils literal notranslate"><span class="pre">--option</span> <span class="pre">value</span></code> and <code class="docutils literal notranslate"><span class="pre">--option=value</span></code>.</p>
-<p>Quit the running client before applying startup options or environment variables. Starting another instance can forward
-commands to the existing process instead of starting a new process with the requested environment.</p>
+<span id="desktop-command-line-options"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">Opțiuni din linia de comandă</a><a class="headerlink" href="#command-line-options" title="Link to this heading"></a></h2>
+<p>Pornește aplicația pentru desktop cu <code class="docutils literal notranslate"><span class="pre">nextcloud</span> <span class="pre">[options]</span></code>. Folosește <code class="docutils literal notranslate"><span class="pre">nextcloud</span> <span class="pre">--help</span></code> pentru a vedea opțiunile din versiunea instalată. Opțiunile cu valoare acceptă atât <code class="docutils literal notranslate"><span class="pre">--option</span> <span class="pre">value</span></code>, cât și <code class="docutils literal notranslate"><span class="pre">--option=value</span></code>.</p>
+<p>Închide clientul care rulează înainte de a aplica opțiuni de pornire sau variabile de mediu. Pornirea unei alte instanțe poate transmite comenzile procesului existent, în loc să pornească un proces nou cu mediul cerut.</p>
 <section id="general-options">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">General options</a><a class="headerlink" href="#general-options" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Opțiuni generale</a><a class="headerlink" href="#general-options" title="Link to this heading"></a></h3>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -200,60 +192,57 @@ commands to the existing process instead of starting a new process with the requ
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--help</span></code>, <code class="docutils literal notranslate"><span class="pre">-h</span></code></p></td>
-<td><p>Not requested</p></td>
-<td><p>Show the available command-line options and exit.</p></td>
+<td><p>Necerut</p></td>
+<td><p>Afișează opțiunile disponibile în linia de comandă și iese.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>, <code class="docutils literal notranslate"><span class="pre">-v</span></code></p></td>
-<td><p>Not requested</p></td>
-<td><p>Show version information and exit.</p></td>
+<td><p>Necerut</p></td>
+<td><p>Afișează informațiile despre versiune și iese.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--quit</span></code>, <code class="docutils literal notranslate"><span class="pre">-q</span></code></p></td>
-<td><p>Not requested</p></td>
-<td><p>Quit the running desktop client.</p></td>
+<td><p>Necerut</p></td>
+<td><p>Închide clientul pentru desktop care rulează.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--confdir</span> <span class="pre">&lt;directory&gt;</span></code></p></td>
-<td><p>Standard location</p></td>
-<td><p>Use a different configuration directory. See <a class="reference internal" href="#desktop-configuration-file"><span class="std std-ref">Configuration file</span></a> for the standard locations.</p></td>
+<td><p>Locația standard</p></td>
+<td><p>Folosește alt dosar de configurare. Vezi <a class="reference internal" href="#desktop-configuration-file"><span class="std std-ref">Fișierul de configurare</span></a> pentru locațiile standard.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--background</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Start without opening the main dialog.</p></td>
+<td><p>Nesetat</p></td>
+<td><p>Pornește fără să deschidă fereastra principală.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--set-language</span> <span class="pre">&lt;language&gt;</span></code></p></td>
-<td><p>From <code class="docutils literal notranslate"><span class="pre">language</span></code></p></td>
-<td><p>Save the interface language and exit. For example, use <code class="docutils literal notranslate"><span class="pre">de</span></code> for German. An empty value restores the operating
-system language. Start the client again to apply it.</p></td>
+<td><p>Din <code class="docutils literal notranslate"><span class="pre">language</span></code></p></td>
+<td><p>Salvează limba interfeței și iese. De exemplu, folosește <code class="docutils literal notranslate"><span class="pre">ro</span></code> pentru română. O valoare goală restabilește limba sistemului de operare. Pornește din nou clientul pentru a o aplica.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--overrideserverurl</span> <span class="pre">&lt;url&gt;</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Save <code class="docutils literal notranslate"><span class="pre">overrideServerUrl</span></code> for the next account setup and exit. Start the client again to open the setup
-wizard.</p></td>
+<td><p>Nesetat</p></td>
+<td><p>Salvează <code class="docutils literal notranslate"><span class="pre">overrideServerUrl</span></code> pentru următoarea configurare a unui cont și iese. Pornește din nou clientul pentru a deschide expertul de configurare.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--overridelocaldir</span> <span class="pre">&lt;path&gt;</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Save <code class="docutils literal notranslate"><span class="pre">overrideLocalDir</span></code> for the next account setup and exit.</p></td>
+<td><p>Nesetat</p></td>
+<td><p>Salvează <code class="docutils literal notranslate"><span class="pre">overrideLocalDir</span></code> pentru următoarea configurare a unui cont și iese.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--forcelegacyconfigimport</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Force import of an available legacy client configuration. Only available in builds that support account
-migration.</p></td>
+<td><p>Nesetat</p></td>
+<td><p>Forțează importul unei configurații existente a unui client vechi. Disponibil doar în versiunile care acceptă migrarea conturilor.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--reverse</span></code></p></td>
-<td><p>Normal direction</p></td>
-<td><p>Reverse the interface layout direction for this run.</p></td>
+<td><p>Direcția normală</p></td>
+<td><p>Inversează direcția aranjării interfeței pentru această rulare.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="logging-options">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Logging options</a><a class="headerlink" href="#logging-options" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Opțiuni de jurnalizare</a><a class="headerlink" href="#logging-options" title="Link to this heading"></a></h3>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -261,52 +250,51 @@ migration.</p></td>
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--logwindow</span></code>, <code class="docutils literal notranslate"><span class="pre">-l</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Open the log output window.</p></td>
+<td><p>Nesetat</p></td>
+<td><p>Deschide fereastra cu jurnalul.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--logfile</span> <span class="pre">&lt;filename&gt;</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Write logs to this file. Use <code class="docutils literal notranslate"><span class="pre">-</span></code> to write to standard output. Takes precedence over <code class="docutils literal notranslate"><span class="pre">--logdir</span></code>.</p></td>
+<td><p>Nesetat</p></td>
+<td><p>Scrie jurnalele în acest fișier. Folosește <code class="docutils literal notranslate"><span class="pre">-</span></code> pentru a scrie la ieșirea standard. Are prioritate față de <code class="docutils literal notranslate"><span class="pre">--logdir</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--logdir</span> <span class="pre">&lt;directory&gt;</span></code></p></td>
-<td><p>From <code class="docutils literal notranslate"><span class="pre">logDir</span></code></p></td>
-<td><p>Write rotating log files to this directory.</p></td>
+<td><p>Din <code class="docutils literal notranslate"><span class="pre">logDir</span></code></p></td>
+<td><p>Scrie fișierele de jurnal rotative în acest dosar.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--logexpire</span> <span class="pre">&lt;hours&gt;</span></code></p></td>
-<td><p>From <code class="docutils literal notranslate"><span class="pre">logExpire</span></code></p></td>
-<td><p>Set retention for rotating logs. A positive value overrides <code class="docutils literal notranslate"><span class="pre">logExpire</span></code>; zero or a negative value uses the
-configuration setting.</p></td>
+<td><p>Din <code class="docutils literal notranslate"><span class="pre">logExpire</span></code></p></td>
+<td><p>Setează retenția jurnalelor rotative. O valoare pozitivă suprascrie <code class="docutils literal notranslate"><span class="pre">logExpire</span></code>; zero sau o valoare negativă folosește setarea din configurație.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--logflush</span></code></p></td>
-<td><p>From <code class="docutils literal notranslate"><span class="pre">logFlush</span></code></p></td>
-<td><p>Flush the log after each write so that recent messages are available immediately.</p></td>
+<td><p>Din <code class="docutils literal notranslate"><span class="pre">logFlush</span></code></p></td>
+<td><p>Golește bufferul jurnalului după fiecare scriere, ca mesajele recente să fie disponibile imediat.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--logdebug</span></code></p></td>
-<td><p>From <code class="docutils literal notranslate"><span class="pre">logDebug</span></code></p></td>
-<td><p>Enable debug messages in Nextcloud logging categories. This does not enable all Qt debug categories.</p></td>
+<td><p>Din <code class="docutils literal notranslate"><span class="pre">logDebug</span></code></p></td>
+<td><p>Activează mesajele de depanare în categoriile de jurnalizare Nextcloud. Nu activează toate categoriile de depanare Qt.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--debug</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Also enables debug logging. Prefer <code class="docutils literal notranslate"><span class="pre">--logdebug</span></code> when collecting diagnostic logs.</p></td>
+<td><p>Nesetat</p></td>
+<td><p>Activează și ea jurnalizarea de depanare. Pentru colectarea jurnalelor de diagnostic, folosește de preferință <code class="docutils literal notranslate"><span class="pre">--logdebug</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
-<p>For example, collect debug output in a file on Linux:</p>
+<p>De exemplu, pentru a colecta ieșirea de depanare într-un fișier pe Linux:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloud<span class="w"> </span>--logdebug<span class="w"> </span>--logflush<span class="w"> </span>--logfile<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/nextcloud-debug.log"</span>
 </pre></div>
 </div>
-<p>For persistent logging settings, see <a class="reference internal" href="#desktop-general-settings"><span class="std std-ref">[General] section</span></a>.</p>
+<p>Pentru setările de jurnalizare permanente, vezi <a class="reference internal" href="#desktop-general-settings"><span class="std std-ref">Secțiunea [General]</span></a>.</p>
 </section>
 <section id="account-setup-options">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Account setup options</a><a class="headerlink" href="#account-setup-options" title="Link to this heading"></a></h3>
-<p>These options create and save an account, then exit. Start the desktop app again to use the account.</p>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Opțiuni de configurare a contului</a><a class="headerlink" href="#account-setup-options" title="Link to this heading"></a></h3>
+<p>Aceste opțiuni creează și salvează un cont, apoi ies. Pornește din nou aplicația pentru desktop pentru a folosi contul.</p>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -314,64 +302,56 @@ configuration setting.</p></td>
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--userid</span> <span class="pre">&lt;user&gt;</span></code></p></td>
-<td><p>Required</p></td>
-<td><p>User ID for the account to create.</p></td>
+<td><p>Obligatoriu</p></td>
+<td><p>ID-ul de utilizator al contului de creat.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--serverurl</span> <span class="pre">&lt;url&gt;</span></code></p></td>
-<td><p>Required</p></td>
-<td><p>Base URL of the Nextcloud server, for example <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com</span></code>.</p></td>
+<td><p>Obligatoriu</p></td>
+<td><p>URL-ul de bază al serverului Nextcloud, de exemplu <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--apppassword</span> <span class="pre">&lt;password&gt;</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>App password for the account. If omitted, the account is saved and you must log in from the desktop app later.</p></td>
+<td><p>Nesetat</p></td>
+<td><p>Parola de aplicație pentru cont. Dacă lipsește, contul este salvat și trebuie să te autentifici ulterior din aplicația pentru desktop.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--localdirpath</span> <span class="pre">&lt;path&gt;</span></code></p></td>
-<td><p>Suggested folder</p></td>
-<td><p>Local sync folder. If omitted, use the folder suggested by the setup wizard. An existing folder must be empty.
-Ignored when macOS File Provider mode is enabled.</p></td>
+<td><p>Dosarul sugerat</p></td>
+<td><p>Dosarul local de sincronizare. Dacă lipsește, se folosește dosarul sugerat de expertul de configurare. Un dosar existent trebuie să fie gol. Este ignorat când modul macOS File Provider este activat.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--remotedirpath</span> <span class="pre">&lt;path&gt;</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
-<td><p>Remote folder for the new classic sync connection. Applies when a local sync folder is created.</p></td>
+<td><p>Dosarul de pe server pentru noua conexiune de sincronizare clasică. Se aplică atunci când este creat un dosar local de sincronizare.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--isvfsenabled</span> <span class="pre">&lt;0|1&gt;</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>Use <code class="docutils literal notranslate"><span class="pre">1</span></code> to request virtual files for the new classic sync folder, where supported, or <code class="docutils literal notranslate"><span class="pre">0</span></code> to download
-files. This does not enable macOS File Provider mode.</p></td>
+<td><p>Folosește <code class="docutils literal notranslate"><span class="pre">1</span></code> pentru a cere fișiere virtuale pentru noul dosar de sincronizare clasică, acolo unde sunt acceptate, sau <code class="docutils literal notranslate"><span class="pre">0</span></code> pentru a descărca fișierele. Nu activează modul macOS File Provider.</p></td>
 </tr>
 </tbody>
 </table>
-<p>For example, create an account and log in from the desktop app afterward:</p>
+<p>De exemplu, pentru a crea un cont și a te autentifica ulterior din aplicația pentru desktop:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloud<span class="w"> </span>--userid<span class="w"> </span>carla<span class="w"> </span>--serverurl<span class="w"> </span>https://cloud.example.com<span class="w"> </span>--localdirpath<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/Nextcloud"</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="configuration-file">
-<span id="desktop-configuration-file"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Configuration file</a><a class="headerlink" href="#configuration-file" title="Link to this heading"></a></h2>
-<p>The client stores its settings in <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code> using the INI format. Quit the client and back up this file before
-editing it, then start the client again. Changes made in the app’s <strong>Settings</strong> window can overwrite the corresponding
-values in the file.</p>
-<p>The standard locations are:</p>
+<span id="desktop-configuration-file"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Fișierul de configurare</a><a class="headerlink" href="#configuration-file" title="Link to this heading"></a></h2>
+<p>Clientul își stochează setările în <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code>, în format INI. Închide clientul și fă o copie de rezervă a fișierului înainte de a-l edita, apoi pornește din nou clientul. Modificările făcute în fereastra <strong>Setări</strong> a aplicației pot suprascrie valorile corespunzătoare din fișier.</p>
+<p>Locațiile standard sunt:</p>
 <ul class="simple">
-<li><p>Linux: <code class="docutils literal notranslate"><span class="pre">$HOME/.config/Nextcloud/nextcloud.cfg</span></code>. If <code class="docutils literal notranslate"><span class="pre">XDG_CONFIG_HOME</span></code> is set, use
-<code class="docutils literal notranslate"><span class="pre">$XDG_CONFIG_HOME/Nextcloud/nextcloud.cfg</span></code>.</p></li>
+<li><p>Linux: <code class="docutils literal notranslate"><span class="pre">$HOME/.config/Nextcloud/nextcloud.cfg</span></code>. Dacă <code class="docutils literal notranslate"><span class="pre">XDG_CONFIG_HOME</span></code> este setată, <code class="docutils literal notranslate"><span class="pre">$XDG_CONFIG_HOME/Nextcloud/nextcloud.cfg</span></code>.</p></li>
 <li><p>Windows: <code class="docutils literal notranslate"><span class="pre">%APPDATA%\Nextcloud\nextcloud.cfg</span></code>.</p></li>
-<li><p>macOS, client 33.0.0 and later:
-<code class="docutils literal notranslate"><span class="pre">$HOME/Library/Containers/com.nextcloud.desktopclient/Data/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>.</p></li>
-<li><p>Older macOS clients: <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>.</p></li>
+<li><p>macOS, clientul 33.0.0 și versiunile ulterioare: <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Containers/com.nextcloud.desktopclient/Data/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>.</p></li>
+<li><p>Clienții macOS mai vechi: <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">--confdir</span></code> overrides the configuration directory. Branded clients can use a different directory and filename.
-In Citrix and other environments with roaming profiles, persist the user’s configuration between sessions to retain
-account setup.</p>
-<p>The tables identify the INI section for each setting. For example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">--confdir</span></code> suprascrie dosarul de configurare. Clienții personalizați pot folosi alt dosar și alt nume de fișier. În Citrix și în alte medii cu profiluri itinerante, păstrează configurația utilizatorului între sesiuni, ca să se păstreze configurarea contului.</p>
+<p>Tabelele indică secțiunea INI pentru fiecare setare. De exemplu:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Nextcloud]</span>
 <span class="na">remotePollInterval</span><span class="o">=</span><span class="s">30000</span>
 
@@ -380,14 +360,10 @@ account setup.</p>
 <span class="na">logExpire</span><span class="o">=</span><span class="s">48</span>
 </pre></div>
 </div>
-<p>Account identities, credentials, sync-folder state, window geometry, caches, migration markers, and updater state are
-managed by the client. Use the setup wizard and <strong>Settings</strong> window to change those values.</p>
-<p>Precedence depends on the setting. The environment overrides listed below apply only to their corresponding settings.
-For <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> and <code class="docutils literal notranslate"><span class="pre">autoUpdateCheck</span></code>, a value in <code class="docutils literal notranslate"><span class="pre">[General]</span></code> takes precedence over <code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code>.
-On Windows, administrator policies can override those update settings and the folder-size and external-storage settings.
-See <a class="reference internal" href="autoupdate.html#preventing-automatic-updates-in-windows-environments"><span class="std std-ref">Preventing Automatic Updates in Windows Environments</span></a> for details about update policies.</p>
+<p>Identitățile conturilor, datele de autentificare, starea dosarelor de sincronizare, geometria ferestrelor, cache-urile, marcajele de migrare și starea actualizatorului sunt gestionate de client. Pentru a schimba aceste valori, folosește expertul de configurare și fereastra <strong>Setări</strong>.</p>
+<p>Prioritatea depinde de setare. Suprascrierile prin variabile de mediu de mai jos se aplică doar setărilor corespunzătoare. Pentru <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> și <code class="docutils literal notranslate"><span class="pre">autoUpdateCheck</span></code>, o valoare din <code class="docutils literal notranslate"><span class="pre">[General]</span></code> are prioritate față de <code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code>. Pe Windows, politicile administratorului pot suprascrie aceste setări de actualizare, precum și setările pentru dimensiunea dosarelor și stocarea externă. Vezi <a class="reference internal" href="autoupdate.html#preventing-automatic-updates-in-windows-environments"><span class="std std-ref">Împiedicarea actualizărilor automate în mediile Windows</span></a> pentru detalii despre politicile de actualizare.</p>
 <section id="nextcloud-section">
-<span id="id1"></span><h3><a class="toc-backref" href="#id12" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code> section</a><a class="headerlink" href="#nextcloud-section" title="Link to this heading"></a></h3>
+<span id="id1"></span><h3><a class="toc-backref" href="#id12" role="doc-backlink">Secțiunea <code class="docutils literal notranslate"><span class="pre">[Nextcloud]</span></code></a><a class="headerlink" href="#nextcloud-section" title="Link to this heading"></a></h3>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -395,272 +371,243 @@ See <a class="reference internal" href="autoupdate.html#preventing-automatic-upd
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">remotePollInterval</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">30000</span></code> ms</p></td>
-<td><p>Interval for polling the server for changes. Values below <code class="docutils literal notranslate"><span class="pre">5000</span></code> ms fall back to <code class="docutils literal notranslate"><span class="pre">30000</span></code> ms. Server push
-can reduce the need for polling.</p></td>
+<td><p>Intervalul de interogare a serverului pentru modificări. Valorile sub <code class="docutils literal notranslate"><span class="pre">5000</span></code> ms revin la <code class="docutils literal notranslate"><span class="pre">30000</span></code> ms. Notificările push de la server pot reduce nevoia de interogare.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">forceSyncInterval</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">7200000</span></code> ms</p></td>
-<td><p>Schedule a sync after this much time has passed since the last sync (2 hours). Values below
-<code class="docutils literal notranslate"><span class="pre">remotePollInterval</span></code> are raised to that interval.</p></td>
+<td><p>Programează o sincronizare după ce a trecut acest timp de la ultima sincronizare (2 ore). Valorile sub <code class="docutils literal notranslate"><span class="pre">remotePollInterval</span></code> sunt ridicate la acel interval.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fullLocalDiscoveryInterval</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">3600000</span></code> ms</p></td>
-<td><p>After this interval (1 hour), the next eligible sync scans the local filesystem fully. Use <code class="docutils literal notranslate"><span class="pre">-1</span></code> to disable
-periodic full scans. Overridden by <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_FULL_LOCAL_DISCOVERY_INTERVAL</span></code>.</p></td>
+<td><p>După acest interval (1 oră), următoarea sincronizare eligibilă scanează complet sistemul de fișiere local. Folosește <code class="docutils literal notranslate"><span class="pre">-1</span></code> pentru a dezactiva scanările complete periodice. Suprascrisă de <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_FULL_LOCAL_DISCOVERY_INTERVAL</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notificationRefreshInterval</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">60000</span></code> ms</p></td>
-<td><p>Interval for polling server notifications. Values below <code class="docutils literal notranslate"><span class="pre">60000</span></code> ms are raised to <code class="docutils literal notranslate"><span class="pre">60000</span></code> ms.</p></td>
+<td><p>Intervalul de interogare a notificărilor de pe server. Valorile sub <code class="docutils literal notranslate"><span class="pre">60000</span></code> ms sunt ridicate la <code class="docutils literal notranslate"><span class="pre">60000</span></code> ms.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Disable update checks and hide the updater interface.</p></td>
+<td><p>Dezactivează verificarea actualizărilor și ascunde interfața actualizatorului.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">autoUpdateCheck</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
-<td><p>Enable automatic update checks, provided <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> is false.</p></td>
+<td><p>Activează verificarea automată a actualizărilor, cu condiția ca <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> să fie false.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">updateCheckInterval</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">36000000</span></code> ms</p></td>
-<td><p>Automatic update-check interval (default: 10 hours). Values below <code class="docutils literal notranslate"><span class="pre">300000</span></code> ms (5 minutes) are raised to that minimum.</p></td>
+<td><p>Intervalul verificării automate a actualizărilor (implicit: 10 ore). Valorile sub <code class="docutils literal notranslate"><span class="pre">300000</span></code> ms (5 minute) sunt ridicate la acest minim.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="desktop-general-settings">
-<span id="general-section"></span><span id="id2"></span><h3><a class="toc-backref" href="#id13" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">[General]</span></code> section</a><a class="headerlink" href="#desktop-general-settings" title="Link to this heading"></a></h3>
+<span id="general-section"></span><span id="id2"></span><h3><a class="toc-backref" href="#id13" role="doc-backlink">Secțiunea <code class="docutils literal notranslate"><span class="pre">[General]</span></code></a><a class="headerlink" href="#desktop-general-settings" title="Link to this heading"></a></h3>
 <table class="configuration-table docutils align-default" id="id3">
-<caption><span class="caption-text">Synchronization and transfers</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<caption><span class="caption-text">Sincronizare și transferuri</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 32.0%" />
 <col style="width: 18.0%" />
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">chunkSize</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">104857600</span></code> bytes</p></td>
-<td><p>Initial upload chunk size (100 MiB). The client can adjust it during upload. Server capabilities can replace
-it; <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CHUNK_SIZE</span></code> overrides the resulting value.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">104857600</span></code> octeți</p></td>
+<td><p>Dimensiunea inițială a fragmentelor de încărcare (100 MiB). Clientul o poate ajusta în timpul încărcării. Capabilitățile serverului o pot înlocui; <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CHUNK_SIZE</span></code> suprascrie valoarea rezultată.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">minChunkSize</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">5242880</span></code> bytes</p></td>
-<td><p>Minimum configured upload chunk size (5 MiB). The sync engine initially bounds it between 5 MB and 5 GB.
-Overridden by <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MIN_CHUNK_SIZE</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5242880</span></code> octeți</p></td>
+<td><p>Dimensiunea minimă configurată a fragmentelor de încărcare (5 MiB). Inițial, motorul de sincronizare o limitează între 5 MB și 5 GB. Suprascrisă de <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MIN_CHUNK_SIZE</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">maxChunkSize</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">104857600</span></code> bytes</p></td>
-<td><p>Maximum configured upload chunk size (100 MiB). A server-provided maximum takes precedence.
-<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MAX_CHUNK_SIZE</span></code> overrides the resulting value.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">104857600</span></code> octeți</p></td>
+<td><p>Dimensiunea maximă configurată a fragmentelor de încărcare (100 MiB). Un maxim furnizat de server are prioritate. <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MAX_CHUNK_SIZE</span></code> suprascrie valoarea rezultată.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">300</span></code> seconds</p></td>
-<td><p>Default network inactivity timeout. Activity can reset the timer and individual requests can use different
-timeouts. A nonzero <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_TIMEOUT</span></code> overrides it.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">300</span></code> de secunde</p></td>
+<td><p>Timpul implicit de expirare pentru inactivitatea rețelei. Activitatea poate reseta cronometrul, iar unele cereri pot folosi alte timpuri de expirare. O valoare nenulă a <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_TIMEOUT</span></code> îl suprascrie.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">promptDeleteAllFiles</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Ask for confirmation when all files are detected as deleted or when the number of deleted files exceeds
-<code class="docutils literal notranslate"><span class="pre">deleteFilesThreshold</span></code>. Applies to desktop classic sync; <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> does not show this prompt.</p></td>
+<td><p>Cere confirmarea când toate fișierele sunt detectate ca șterse sau când numărul fișierelor șterse depășește <code class="docutils literal notranslate"><span class="pre">deleteFilesThreshold</span></code>. Se aplică sincronizării clasice din aplicația pentru desktop; <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> nu afișează această solicitare.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">deleteFilesThreshold</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">100</span></code> files</p></td>
-<td><p>Deletion count above which <code class="docutils literal notranslate"><span class="pre">promptDeleteAllFiles</span></code> asks for confirmation. Has no effect unless that setting is
-enabled.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100</span></code> de fișiere</p></td>
+<td><p>Numărul de ștergeri peste care <code class="docutils literal notranslate"><span class="pre">promptDeleteAllFiles</span></code> cere confirmarea. Nu are efect decât dacă acea setare este activată.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">moveToTrash</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Move files deleted on the server to the local trash instead of deleting them permanently, where the local
-filesystem supports it.</p></td>
+<td><p>Mută fișierele șterse pe server în coșul de gunoi local, în loc să le șteargă definitiv, dacă sistemul de fișiere local permite acest lucru.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newBigFolderSizeLimit</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">500</span></code> MB</p></td>
-<td><p>Size above which a new remote folder requires confirmation before downloading. Used when
-<code class="docutils literal notranslate"><span class="pre">useNewBigFolderSizeLimit</span></code> is true; a negative value disables the limit. Does not apply to virtual-file
-folders.</p></td>
+<td><p>Dimensiunea peste care un dosar nou de pe server necesită confirmare înainte de descărcare. Se folosește când <code class="docutils literal notranslate"><span class="pre">useNewBigFolderSizeLimit</span></code> este true; o valoare negativă dezactivează limita. Nu se aplică dosarelor cu fișiere virtuale.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">useNewBigFolderSizeLimit</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
-<td><p>Enable the folder-size confirmation limit.</p></td>
+<td><p>Activează limita de dimensiune a dosarelor care necesită confirmare.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">confirmExternalStorage</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
-<td><p>Ask before synchronizing newly discovered external storage folders.</p></td>
+<td><p>Întreabă înainte de a sincroniza dosarele de stocare externă nou descoperite.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notifyExistingFoldersOverLimit</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Notify when an existing synchronized folder grows beyond the active folder-size limit. Requires that limit to
-be enabled and virtual files to be disabled.</p></td>
+<td><p>Notifică atunci când un dosar sincronizat existent depășește limita activă de dimensiune a dosarelor. Necesită activarea acelei limite și dezactivarea fișierelor virtuale.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stopSyncingExistingFoldersOverLimit</span></code></p></td>
-<td><p>From <code class="docutils literal notranslate"><span class="pre">notifyExistingFoldersOverLimit</span></code></p></td>
-<td><p>Also stop synchronizing such folders until you choose to keep syncing them. Requires
-<code class="docutils literal notranslate"><span class="pre">notifyExistingFoldersOverLimit</span></code> and the folder-size limit to be enabled.</p></td>
+<td><p>Din <code class="docutils literal notranslate"><span class="pre">notifyExistingFoldersOverLimit</span></code></p></td>
+<td><p>Oprește și sincronizarea acestor dosare până când alegi să continui sincronizarea lor. Necesită activarea <code class="docutils literal notranslate"><span class="pre">notifyExistingFoldersOverLimit</span></code> și a limitei de dimensiune a dosarelor.</p></td>
 </tr>
 </tbody>
 </table>
-<p>For classic desktop sync, the client applies chunk settings from the configuration file, then server capabilities,
-then environment overrides. It adjusts the minimum and maximum afterward to include the initial chunk size.
-The <code class="docutils literal notranslate"><span class="pre">targetChunkUploadDuration</span></code> configuration key is not used by the sync engine; use
-<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_TARGET_CHUNK_UPLOAD_DURATION</span></code> instead. <code class="docutils literal notranslate"><span class="pre">forceLoginV2</span></code> is no longer read by the client.</p>
+<p>Pentru sincronizarea clasică din aplicația pentru desktop, clientul aplică setările de fragmentare din fișierul de configurare, apoi capabilitățile serverului, apoi suprascrierile prin variabile de mediu. Apoi ajustează minimul și maximul astfel încât să includă dimensiunea inițială a fragmentelor. Cheia de configurare <code class="docutils literal notranslate"><span class="pre">targetChunkUploadDuration</span></code> nu este folosită de motorul de sincronizare; folosește în schimb <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_TARGET_CHUNK_UPLOAD_DURATION</span></code>. <code class="docutils literal notranslate"><span class="pre">forceLoginV2</span></code> nu mai este citită de client.</p>
 <table class="configuration-table docutils align-default" id="id4">
-<caption><span class="caption-text">Interface and notifications</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<caption><span class="caption-text">Interfață și notificări</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 32.0%" />
 <col style="width: 18.0%" />
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">showExperimentalOptions</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Show experimental options in the interface. This does not itself enable experimental features.</p></td>
+<td><p>Afișează opțiunile experimentale în interfață. Nu activează prin ea însăși funcțiile experimentale.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showMainDialogAsNormalWindow</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Show the main dialog as a normal window even when a tray icon is available.</p></td>
+<td><p>Afișează fereastra principală ca fereastră normală, chiar dacă este disponibilă o pictogramă în zona de notificare.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">monoIcons</span></code></p></td>
-<td><p>Platform dependent</p></td>
-<td><p>Use monochrome tray icons. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> for the standard Nextcloud client on macOS and <code class="docutils literal notranslate"><span class="pre">false</span></code>
-elsewhere.</p></td>
+<td><p>Depinde de platformă</p></td>
+<td><p>Folosește pictograme monocrome în zona de notificare. Implicit <code class="docutils literal notranslate"><span class="pre">true</span></code> pentru clientul Nextcloud standard pe macOS și <code class="docutils literal notranslate"><span class="pre">false</span></code> în rest.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">optionalServerNotifications</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
-<td><p>Show optional server notifications. Individual notification settings below also apply.</p></td>
+<td><p>Afișează notificările opționale de pe server. Se aplică și setările individuale de notificare de mai jos.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">showChatNotifications</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
-<td><p>Show chat notifications when optional server notifications are enabled.</p></td>
+<td><p>Afișează notificările de chat când notificările opționale de pe server sunt activate.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showCallNotifications</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
-<td><p>Show call notifications when optional server notifications are enabled.</p></td>
+<td><p>Afișează notificările de apel când notificările opționale de pe server sunt activate.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">showQuotaWarningNotifications</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
-<td><p>Show quota warnings when optional server notifications are enabled.</p></td>
+<td><p>Afișează avertismentele legate de cota de stocare când notificările opționale de pe server sunt activate.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showInExplorerNavigationPane</span></code></p></td>
-<td><p>Platform dependent</p></td>
-<td><p>Show sync folders in the Windows Explorer navigation pane. Defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code> on Windows 10 and later, and
-<code class="docutils literal notranslate"><span class="pre">false</span></code> on other platforms.</p></td>
+<td><p>Depinde de platformă</p></td>
+<td><p>Afișează dosarele de sincronizare în panoul de navigare din Windows Explorer. Implicit <code class="docutils literal notranslate"><span class="pre">true</span></code> pe Windows 10 și versiunile ulterioare și <code class="docutils literal notranslate"><span class="pre">false</span></code> pe celelalte platforme.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">launchOnSystemStartup</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
-<td><p>Store the startup preference. Use <strong>Settings</strong> to change it so that the operating system startup registration
-is updated too.</p></td>
+<td><p>Stochează preferința de pornire. Schimb-o din <strong>Setări</strong>, ca să fie actualizată și înregistrarea pentru pornirea odată cu sistemul de operare.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">language</span></code></p></td>
-<td><p>Empty</p></td>
-<td><p>Interface language code, for example <code class="docutils literal notranslate"><span class="pre">de</span></code>. An empty value uses the operating system language.</p></td>
+<td><p>Gol</p></td>
+<td><p>Codul limbii interfeței, de exemplu <code class="docutils literal notranslate"><span class="pre">ro</span></code>. O valoare goală folosește limba sistemului de operare.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">updateChannel</span></code></p></td>
-<td><p>Build/server dependent</p></td>
-<td><p>Select a supported update channel. Invalid values are ignored. Branded clients and server subscription settings
-can restrict the selection. See <a class="reference internal" href="updatechannel.html"><span class="doc">Update channels</span></a>.</p></td>
+<td><p>Depinde de versiune/server</p></td>
+<td><p>Selectează un canal de actualizare acceptat. Valorile nevalide sunt ignorate. Clienții personalizați și setările abonamentului serverului pot restrânge opțiunile. Vezi <a class="reference internal" href="updatechannel.html"><span class="doc">Canale de actualizare</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">showConfigBackupWarning</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Show a notification listing configuration backups created during startup.</p></td>
+<td><p>Afișează o notificare cu copiile de rezervă ale configurației create la pornire.</p></td>
 </tr>
 </tbody>
 </table>
 <table class="configuration-table docutils align-default" id="id5">
-<caption><span class="caption-text">Logging</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<caption><span class="caption-text">Jurnalizare</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 32.0%" />
 <col style="width: 18.0%" />
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logToTemporaryLogDir</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Use a temporary log directory when logging has not already been directed to a file or standard output. Also
-enables debug logging and sets retention to 4 hours.</p></td>
+<td><p>Folosește un dosar temporar pentru jurnale, dacă jurnalizarea nu a fost deja direcționată către un fișier sau către ieșirea standard. Activează și jurnalizarea de depanare și setează retenția la 4 ore.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logDir</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;config</span> <span class="pre">path&gt;/logs</span></code></p></td>
-<td><p>Directory for rotating log files. Overridden by <code class="docutils literal notranslate"><span class="pre">--logdir</span></code>; <code class="docutils literal notranslate"><span class="pre">--logfile</span></code> selects a file or standard output
-instead.</p></td>
+<td><p>Dosarul pentru fișierele de jurnal rotative. Suprascris de <code class="docutils literal notranslate"><span class="pre">--logdir</span></code>; <code class="docutils literal notranslate"><span class="pre">--logfile</span></code> selectează în schimb un fișier sau ieșirea standard.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logDebug</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Enable Nextcloud debug logging. <code class="docutils literal notranslate"><span class="pre">--logdebug</span></code> also enables it.</p></td>
+<td><p>Activează jurnalizarea de depanare Nextcloud. O activează și <code class="docutils literal notranslate"><span class="pre">--logdebug</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logExpire</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">24</span></code> hours</p></td>
-<td><p>Retention for rotating logs. A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> disables age-based removal. A positive <code class="docutils literal notranslate"><span class="pre">--logexpire</span></code> value
-overrides this setting.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">24</span></code> de ore</p></td>
+<td><p>Retenția jurnalelor rotative. Valoarea <code class="docutils literal notranslate"><span class="pre">0</span></code> dezactivează eliminarea în funcție de vechime. O valoare pozitivă a <code class="docutils literal notranslate"><span class="pre">--logexpire</span></code> suprascrie această setare.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logFlush</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Flush the log after every write. <code class="docutils literal notranslate"><span class="pre">--logflush</span></code> also enables it.</p></td>
+<td><p>Golește bufferul jurnalului după fiecare scriere. O activează și <code class="docutils literal notranslate"><span class="pre">--logflush</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Development and debug builds can enable debug logging and immediate flushing regardless of these defaults.</p>
+<p>Versiunile de dezvoltare și de depanare pot activa jurnalizarea de depanare și golirea imediată a bufferului, indiferent de aceste valori implicite.</p>
 <table class="configuration-table docutils align-default" id="id6">
-<caption><span class="caption-text">Account setup defaults</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<caption><span class="caption-text">Valori implicite pentru configurarea contului</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 32.0%" />
 <col style="width: 18.0%" />
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">overrideServerUrl</span></code></p></td>
-<td><p>Empty</p></td>
-<td><p>Force the server URL in the next account setup and start login automatically. Cleared after successful wizard
-setup. Can also be set with <code class="docutils literal notranslate"><span class="pre">--overrideserverurl</span></code>.</p></td>
+<td><p>Gol</p></td>
+<td><p>Impune URL-ul serverului la următoarea configurare a unui cont și pornește automat autentificarea. Este șters după configurarea reușită prin expert. Poate fi setat și cu <code class="docutils literal notranslate"><span class="pre">--overrideserverurl</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">overrideLocalDir</span></code></p></td>
-<td><p>Empty</p></td>
-<td><p>Suggested local directory for account setup. Cleared after successful wizard setup. Can also be set with
-<code class="docutils literal notranslate"><span class="pre">--overridelocaldir</span></code>.</p></td>
+<td><p>Gol</p></td>
+<td><p>Dosarul local sugerat pentru configurarea contului. Este șters după configurarea reușită prin expert. Poate fi setat și cu <code class="docutils literal notranslate"><span class="pre">--overridelocaldir</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">isVfsEnabled</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Virtual-file preference used with <code class="docutils literal notranslate"><span class="pre">overrideServerUrl</span></code> during setup. Does not convert existing sync folders or
-enable macOS File Provider mode.</p></td>
+<td><p>Preferința pentru fișiere virtuale, folosită împreună cu <code class="docutils literal notranslate"><span class="pre">overrideServerUrl</span></code> la configurare. Nu convertește dosarele de sincronizare existente și nu activează modul macOS File Provider.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="per-account-network-settings">
-<h3><a class="toc-backref" href="#id14" role="doc-backlink">Per-account network settings</a><a class="headerlink" href="#per-account-network-settings" title="Link to this heading"></a></h3>
-<p>Use the account’s network settings in the app where possible. Values below belong to the existing account group inside
-<code class="docutils literal notranslate"><span class="pre">[Accounts]</span></code>. In the INI file they appear with the account ID prefix, for example <code class="docutils literal notranslate"><span class="pre">0\networkProxyType=0</span></code> for account
-<code class="docutils literal notranslate"><span class="pre">0</span></code>. Use the account ID already present in your file. Proxy passwords belong in the system keychain.</p>
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Setări de rețea pentru fiecare cont</a><a class="headerlink" href="#per-account-network-settings" title="Link to this heading"></a></h3>
+<p>Pe cât posibil, folosește setările de rețea ale contului din aplicație. Valorile de mai jos aparțin grupului contului existent din <code class="docutils literal notranslate"><span class="pre">[Accounts]</span></code>. În fișierul INI apar cu prefixul ID-ului de cont, de exemplu <code class="docutils literal notranslate"><span class="pre">0\networkProxyType=0</span></code> pentru contul <code class="docutils literal notranslate"><span class="pre">0</span></code>. Folosește ID-ul de cont care există deja în fișier. Parolele pentru proxy se păstrează în depozitul de chei al sistemului.</p>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -668,58 +615,54 @@ enable macOS File Provider mode.</p></td>
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyType</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> if absent</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code>: system proxy; <code class="docutils literal notranslate"><span class="pre">1</span></code>: SOCKS5 proxy; <code class="docutils literal notranslate"><span class="pre">2</span></code>: no proxy; <code class="docutils literal notranslate"><span class="pre">3</span></code>: HTTP proxy. Account setup or migration can
-store a different value.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> dacă lipsește</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code>: proxyul sistemului; <code class="docutils literal notranslate"><span class="pre">1</span></code>: proxy SOCKS5; <code class="docutils literal notranslate"><span class="pre">2</span></code>: fără proxy; <code class="docutils literal notranslate"><span class="pre">3</span></code>: proxy HTTP. Configurarea sau migrarea contului poate stoca altă valoare.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyHostName</span></code></p></td>
-<td><p>Empty</p></td>
-<td><p>Proxy hostname.</p></td>
+<td><p>Gol</p></td>
+<td><p>Numele gazdei proxyului.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyPort</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>Proxy port. Set the actual port when configuring a manual proxy.</p></td>
+<td><p>Portul proxyului. Setează portul real când configurezi manual un proxy.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyNeedsAuth</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Whether the proxy requires authentication.</p></td>
+<td><p>Dacă proxyul necesită autentificare.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkProxyUser</span></code></p></td>
-<td><p>Empty</p></td>
-<td><p>Proxy username.</p></td>
+<td><p>Gol</p></td>
+<td><p>Numele de utilizator pentru proxy.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">networkUploadLimitSetting</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>Upload limit mode: <code class="docutils literal notranslate"><span class="pre">0</span></code> for unlimited, <code class="docutils literal notranslate"><span class="pre">1</span></code> for a manual limit. Negative values are reserved for legacy
-migration.</p></td>
+<td><p>Modul limitei de încărcare: <code class="docutils literal notranslate"><span class="pre">0</span></code> pentru nelimitat, <code class="docutils literal notranslate"><span class="pre">1</span></code> pentru o limită manuală. Valorile negative sunt rezervate migrării din versiuni vechi.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkDownloadLimitSetting</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>Download limit mode: <code class="docutils literal notranslate"><span class="pre">0</span></code> for unlimited, <code class="docutils literal notranslate"><span class="pre">1</span></code> for a manual limit. Negative values are reserved for legacy
-migration.</p></td>
+<td><p>Modul limitei de descărcare: <code class="docutils literal notranslate"><span class="pre">0</span></code> pentru nelimitat, <code class="docutils literal notranslate"><span class="pre">1</span></code> pentru o limită manuală. Valorile negative sunt rezervate migrării din versiuni vechi.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">networkUploadLimit</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> KB/s</p></td>
-<td><p>Manual upload limit, used when <code class="docutils literal notranslate"><span class="pre">networkUploadLimitSetting</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></td>
+<td><p>Limita manuală de încărcare, folosită când <code class="docutils literal notranslate"><span class="pre">networkUploadLimitSetting</span></code> este <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">networkDownloadLimit</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> KB/s</p></td>
-<td><p>Manual download limit, used when <code class="docutils literal notranslate"><span class="pre">networkDownloadLimitSetting</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></td>
+<td><p>Limita manuală de descărcare, folosită când <code class="docutils literal notranslate"><span class="pre">networkDownloadLimitSetting</span></code> este <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="legacy-proxy-settings">
-<span id="legacy-proxy-section"></span><h3><a class="toc-backref" href="#id15" role="doc-backlink">Legacy proxy settings</a><a class="headerlink" href="#legacy-proxy-settings" title="Link to this heading"></a></h3>
-<p>The top-level <code class="docutils literal notranslate"><span class="pre">[Proxy]</span></code> section is retained for migration from older clients. Current desktop accounts use the
-per-account settings above. Legacy proxy settings can be removed automatically after migration.</p>
+<span id="legacy-proxy-section"></span><h3><a class="toc-backref" href="#id15" role="doc-backlink">Setări proxy vechi</a><a class="headerlink" href="#legacy-proxy-settings" title="Link to this heading"></a></h3>
+<p>Secțiunea de nivel superior <code class="docutils literal notranslate"><span class="pre">[Proxy]</span></code> este păstrată pentru migrarea de la clienții mai vechi. Conturile actuale din aplicația pentru desktop folosesc setările pe cont de mai sus. Setările proxy vechi pot fi eliminate automat după migrare.</p>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -727,52 +670,46 @@ per-account settings above. Legacy proxy settings can be removed automatically a
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>Legacy proxy type: <code class="docutils literal notranslate"><span class="pre">0</span></code> for system proxy, <code class="docutils literal notranslate"><span class="pre">1</span></code> for SOCKS5, <code class="docutils literal notranslate"><span class="pre">2</span></code> for no proxy, or <code class="docutils literal notranslate"><span class="pre">3</span></code> for HTTP proxy.</p></td>
+<td><p>Tipul proxyului vechi: <code class="docutils literal notranslate"><span class="pre">0</span></code> pentru proxyul sistemului, <code class="docutils literal notranslate"><span class="pre">1</span></code> pentru SOCKS5, <code class="docutils literal notranslate"><span class="pre">2</span></code> pentru fără proxy sau <code class="docutils literal notranslate"><span class="pre">3</span></code> pentru proxy HTTP.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">host</span></code></p></td>
-<td><p>Empty</p></td>
-<td><p>Legacy proxy hostname.</p></td>
+<td><p>Gol</p></td>
+<td><p>Numele gazdei proxyului vechi.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">port</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>Legacy proxy port.</p></td>
+<td><p>Portul proxyului vechi.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">needsAuth</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
-<td><p>Whether the legacy proxy requires authentication.</p></td>
+<td><p>Dacă proxyul vechi necesită autentificare.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">user</span></code></p></td>
-<td><p>Empty</p></td>
-<td><p>Legacy proxy username.</p></td>
+<td><p>Gol</p></td>
+<td><p>Numele de utilizator pentru proxyul vechi.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 </section>
 <section id="environment-variables">
-<span id="desktop-environment-variables"></span><h2><a class="toc-backref" href="#id16" role="doc-backlink">Environment variables</a><a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h2>
-<p>Set environment variables before starting the client. A variable set in a terminal applies to processes launched from
-that terminal; an already running client or a client launched from the desktop does not automatically inherit it.
-For example, temporarily change the network inactivity timeout on Linux:</p>
+<span id="desktop-environment-variables"></span><h2><a class="toc-backref" href="#id16" role="doc-backlink">Variabile de mediu</a><a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h2>
+<p>Setează variabilele de mediu înainte de a porni clientul. O variabilă setată într-un terminal se aplică proceselor pornite din acel terminal; un client care rulează deja sau unul pornit din mediul desktop nu o moștenește automat. De exemplu, pentru a schimba temporar pe Linux timpul de expirare pentru inactivitatea rețelei:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">OWNCLOUD_TIMEOUT</span><span class="o">=</span><span class="m">600</span><span class="w"> </span>nextcloud
 </pre></div>
 </div>
-<p>The historic <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_</span></code> prefix is still used by the Nextcloud client. Follow the value format in each description:
-some switches require <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>, while others react to any nonempty value, including <code class="docutils literal notranslate"><span class="pre">0</span></code>.
-<code class="docutils literal notranslate"><span class="pre">Default</span></code> describes behavior when the variable is unset.</p>
+<p>Clientul Nextcloud folosește în continuare prefixul istoric <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_</span></code>. Respectă formatul valorii din fiecare descriere: unele comutatoare necesită <code class="docutils literal notranslate"><span class="pre">0</span></code> sau <code class="docutils literal notranslate"><span class="pre">1</span></code>, iar altele reacționează la orice valoare nevidă, inclusiv <code class="docutils literal notranslate"><span class="pre">0</span></code>. Coloana <code class="docutils literal notranslate"><span class="pre">Implicit</span></code> descrie comportamentul când variabila nu este setată.</p>
 <section id="transfer-settings">
-<h3><a class="toc-backref" href="#id17" role="doc-backlink">Transfer settings</a><a class="headerlink" href="#transfer-settings" title="Link to this heading"></a></h3>
-<p>The chunk-size and parallel-job overrides apply after configuration values and server capabilities in desktop classic
-sync. <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> also reads these variables, but starts with its sync-engine defaults instead of the desktop app’s
-chunk configuration.</p>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Setări de transfer</a><a class="headerlink" href="#transfer-settings" title="Link to this heading"></a></h3>
+<p>În sincronizarea clasică din aplicația pentru desktop, suprascrierile pentru dimensiunea fragmentelor și pentru sarcinile paralele se aplică după valorile din configurație și după capabilitățile serverului. <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> citește și el aceste variabile, dar pornește de la valorile implicite ale motorului de sincronizare, nu de la configurația de fragmentare a aplicației pentru desktop.</p>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -780,76 +717,62 @@ chunk configuration.</p>
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CHUNK_SIZE</span></code></p></td>
-<td><p>Effective chunk size</p></td>
-<td><p>Initial chunk size in bytes. Desktop sync starts from <code class="docutils literal notranslate"><span class="pre">chunkSize</span></code> or the server-provided size.
-<code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">104857600</span></code> bytes (100 MiB).</p></td>
+<td><p>Dimensiunea efectivă a fragmentelor</p></td>
+<td><p>Dimensiunea inițială a fragmentelor, în octeți. Sincronizarea din aplicația pentru desktop pornește de la <code class="docutils literal notranslate"><span class="pre">chunkSize</span></code> sau de la dimensiunea furnizată de server. Pentru <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>, valoarea implicită este <code class="docutils literal notranslate"><span class="pre">104857600</span></code> octeți (100 MiB).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MIN_CHUNK_SIZE</span></code></p></td>
-<td><p>Effective minimum</p></td>
-<td><p>Minimum chunk size in bytes. Desktop sync starts from <code class="docutils literal notranslate"><span class="pre">minChunkSize</span></code>; <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> defaults to
-<code class="docutils literal notranslate"><span class="pre">5000000</span></code> bytes (5 MB).</p></td>
+<td><p>Minimul efectiv</p></td>
+<td><p>Dimensiunea minimă a fragmentelor, în octeți. Sincronizarea din aplicația pentru desktop pornește de la <code class="docutils literal notranslate"><span class="pre">minChunkSize</span></code>; pentru <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>, valoarea implicită este <code class="docutils literal notranslate"><span class="pre">5000000</span></code> octeți (5 MB).</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MAX_CHUNK_SIZE</span></code></p></td>
-<td><p>Effective maximum</p></td>
-<td><p>Maximum chunk size in bytes. Desktop sync starts from <code class="docutils literal notranslate"><span class="pre">maxChunkSize</span></code> or the server-provided maximum;
-<code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">5000000000</span></code> bytes (5 GB).</p></td>
+<td><p>Maximul efectiv</p></td>
+<td><p>Dimensiunea maximă a fragmentelor, în octeți. Sincronizarea din aplicația pentru desktop pornește de la <code class="docutils literal notranslate"><span class="pre">maxChunkSize</span></code> sau de la maximul furnizat de server; pentru <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>, valoarea implicită este <code class="docutils literal notranslate"><span class="pre">5000000000</span></code> octeți (5 GB).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_TARGET_CHUNK_UPLOAD_DURATION</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">60000</span></code> ms</p></td>
-<td><p>Target duration for dynamic chunk sizing (1 minute). Use <code class="docutils literal notranslate"><span class="pre">0</span></code> to disable dynamic sizing. The similarly named
-configuration-file key has no effect.</p></td>
+<td><p>Durata țintă pentru dimensionarea dinamică a fragmentelor (1 minut). Folosește <code class="docutils literal notranslate"><span class="pre">0</span></code> pentru a dezactiva dimensionarea dinamică. Cheia cu nume asemănător din fișierul de configurare nu are niciun efect.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_MAX_PARALLEL</span></code></p></td>
-<td><p>Server/protocol dependent</p></td>
-<td><p>Positive maximum number of parallel sync jobs. Desktop sync uses the server-provided value when available;
-otherwise it uses <code class="docutils literal notranslate"><span class="pre">20</span></code> for HTTP/2 or <code class="docutils literal notranslate"><span class="pre">6</span></code> for HTTP/1. <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">6</span></code>. This is not the
-number of simultaneous file transfers.</p></td>
+<td><p>Depinde de server/protocol</p></td>
+<td><p>Numărul maxim (pozitiv) de sarcini de sincronizare paralele. Sincronizarea din aplicația pentru desktop folosește valoarea furnizată de server, dacă există; altfel folosește <code class="docutils literal notranslate"><span class="pre">20</span></code> pentru HTTP/2 sau <code class="docutils literal notranslate"><span class="pre">6</span></code> pentru HTTP/1. Pentru <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>, valoarea implicită este <code class="docutils literal notranslate"><span class="pre">6</span></code>. Nu este numărul de transferuri simultane de fișiere.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_TIMEOUT</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code> or 300 seconds</p></td>
-<td><p>Network inactivity timeout. A nonzero integer overrides <code class="docutils literal notranslate"><span class="pre">timeout</span></code> in the desktop app. <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>
-defaults to 300 seconds. Zero or an invalid value uses the normal default.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code> sau 300 de secunde</p></td>
+<td><p>Timpul de expirare pentru inactivitatea rețelei. Un număr întreg nenul suprascrie <code class="docutils literal notranslate"><span class="pre">timeout</span></code> în aplicația pentru desktop. Pentru <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>, valoarea implicită este de 300 de secunde. Zero sau o valoare nevalidă folosește valoarea implicită obișnuită.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_HTTP2_ENABLED</span></code></p></td>
-<td><p>Disabled</p></td>
-<td><p>Set to <code class="docutils literal notranslate"><span class="pre">1</span></code> to allow HTTP/2 for HTTPS requests. Other values disable it. Actual use still depends on the
-server and network connection.</p></td>
+<td><p>Dezactivat</p></td>
+<td><p>Setează la <code class="docutils literal notranslate"><span class="pre">1</span></code> pentru a permite HTTP/2 pentru cererile HTTPS. Alte valori îl dezactivează. Folosirea efectivă depinde în continuare de server și de conexiunea la rețea.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CHUNKING_NG</span></code></p></td>
-<td><p>Server capability</p></td>
-<td><p>Set to <code class="docutils literal notranslate"><span class="pre">0</span></code> to disable the newer chunked-upload protocol or <code class="docutils literal notranslate"><span class="pre">1</span></code> to force it. Other values use the server
-capability. Only force it when the server supports it.</p></td>
+<td><p>Capabilitatea serverului</p></td>
+<td><p>Setează la <code class="docutils literal notranslate"><span class="pre">0</span></code> pentru a dezactiva protocolul mai nou de încărcare pe fragmente sau la <code class="docutils literal notranslate"><span class="pre">1</span></code> pentru a-l impune. Alte valori folosesc capabilitatea serverului. Impune-l doar dacă serverul îl acceptă.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_BULK_UPLOAD</span></code></p></td>
-<td><p>Server capability</p></td>
-<td><p>Set to <code class="docutils literal notranslate"><span class="pre">0</span></code> to disable bulk uploads or <code class="docutils literal notranslate"><span class="pre">1</span></code> to force them. Other values use the server capability. Only force
-them when the server supports them.</p></td>
+<td><p>Capabilitatea serverului</p></td>
+<td><p>Setează la <code class="docutils literal notranslate"><span class="pre">0</span></code> pentru a dezactiva încărcările în bloc sau la <code class="docutils literal notranslate"><span class="pre">1</span></code> pentru a le impune. Alte valori folosesc capabilitatea serverului. Impune-le doar dacă serverul le acceptă.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_PARALLEL_CHUNK</span></code></p></td>
-<td><p>Server dependent</p></td>
-<td><p>For the legacy chunked-upload path only: <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code> disables parallel chunks. Other nonempty values
-enable them unless the server disables them.</p></td>
+<td><p>Depinde de server</p></td>
+<td><p>Doar pentru vechiul mecanism de încărcare pe fragmente: <code class="docutils literal notranslate"><span class="pre">0</span></code> sau <code class="docutils literal notranslate"><span class="pre">false</span></code> dezactivează fragmentele paralele. Alte valori nevide le activează, cu excepția cazului în care serverul le dezactivează.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_LAZYOPS</span></code></p></td>
-<td><p>Disabled</p></td>
-<td><p>A nonzero integer adds the <code class="docutils literal notranslate"><span class="pre">OC-LazyOps:</span> <span class="pre">true</span></code> header to upload requests. Its effect depends on server
-support.</p></td>
+<td><p>Dezactivat</p></td>
+<td><p>Un număr întreg nenul adaugă antetul <code class="docutils literal notranslate"><span class="pre">OC-LazyOps:</span> <span class="pre">true</span></code> la cererile de încărcare. Efectul depinde de suportul serverului.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Keep chunk sizes positive. The client adjusts the minimum and maximum to include the initial chunk size.
-The environment parser accepts unsigned 32-bit byte values for the three chunk-size overrides, so do not use values
-above <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> bytes for those variables.</p>
+<p>Folosește dimensiuni pozitive pentru fragmente. Clientul ajustează minimul și maximul astfel încât să includă dimensiunea inițială a fragmentelor. Pentru cele trei suprascrieri ale dimensiunii fragmentelor, analizorul variabilelor de mediu acceptă valori de octeți pe 32 de biți fără semn, așa că nu folosi valori peste <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> octeți pentru aceste variabile.</p>
 </section>
 <section id="synchronization-and-disk-space">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink">Synchronization and disk space</a><a class="headerlink" href="#synchronization-and-disk-space" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Sincronizare și spațiu pe disc</a><a class="headerlink" href="#synchronization-and-disk-space" title="Link to this heading"></a></h3>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -857,47 +780,42 @@ above <code class="docutils literal notranslate"><span class="pre">4294967295</s
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_FULL_LOCAL_DISCOVERY_INTERVAL</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">fullLocalDiscoveryInterval</span></code></p></td>
-<td><p>Desktop classic sync only. Override the full local scan interval in milliseconds. Use <code class="docutils literal notranslate"><span class="pre">-1</span></code> to disable
-periodic full scans.</p></td>
+<td><p>Doar pentru sincronizarea clasică din aplicația pentru desktop. Suprascrie intervalul scanării locale complete, în milisecunde. Folosește <code class="docutils literal notranslate"><span class="pre">-1</span></code> pentru a dezactiva scanările complete periodice.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CRITICAL_FREE_SPACE_BYTES</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">512000000</span></code> bytes</p></td>
-<td><p>Abort the folder sync when remaining local space is below this threshold (512 MB). The value is bounded between
-zero and <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_FREE_SPACE_BYTES</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">512000000</span></code> octeți</p></td>
+<td><p>Întrerupe sincronizarea dosarului când spațiul local rămas scade sub acest prag (512 MB). Valoarea este limitată între zero și <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_FREE_SPACE_BYTES</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_FREE_SPACE_BYTES</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1000000000</span></code> bytes</p></td>
-<td><p>Skip or abort downloads that would leave less than this amount of local free space (1 GB). Other
-synchronization can continue.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1000000000</span></code> octeți</p></td>
+<td><p>Omite sau întrerupe descărcările care ar lăsa mai puțin decât atât spațiu liber local (1 GB). Restul sincronizării poate continua.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_BLACKLIST_TIME_MIN</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">25</span></code> seconds</p></td>
-<td><p>Minimum retry delay for files that failed to synchronize. Values below <code class="docutils literal notranslate"><span class="pre">25</span></code> are raised to <code class="docutils literal notranslate"><span class="pre">25</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">25</span></code> de secunde</p></td>
+<td><p>Intervalul minim până la reîncercare pentru fișierele care nu au putut fi sincronizate. Valorile sub <code class="docutils literal notranslate"><span class="pre">25</span></code> sunt ridicate la <code class="docutils literal notranslate"><span class="pre">25</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_BLACKLIST_TIME_MAX</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">86400</span></code> seconds</p></td>
-<td><p>Maximum retry delay for files that failed to synchronize (1 day). Only positive values override the default.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">86400</span></code> de secunde</p></td>
+<td><p>Intervalul maxim până la reîncercare pentru fișierele care nu au putut fi sincronizate (1 zi). Doar valorile pozitive suprascriu valoarea implicită.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES</span></code></p></td>
-<td><p>Server capability</p></td>
-<td><p>Set to <code class="docutils literal notranslate"><span class="pre">1</span></code> to upload conflict copies or <code class="docutils literal notranslate"><span class="pre">0</span></code> to prevent their upload. A nonempty value overrides the server
-setting. See <a class="reference internal" href="conflicts.html"><span class="doc">Conflicts</span></a>.</p></td>
+<td><p>Capabilitatea serverului</p></td>
+<td><p>Setează la <code class="docutils literal notranslate"><span class="pre">1</span></code> pentru a încărca copiile de conflict sau la <code class="docutils literal notranslate"><span class="pre">0</span></code> pentru a împiedica încărcarea lor. O valoare nevidă suprascrie setarea serverului. Vezi <a class="reference internal" href="conflicts.html"><span class="doc">Conflicte</span></a>.</p></td>
 </tr>
 </tbody>
 </table>
-<p id="low-disk-space">Downloads skipped because of the free-space threshold are retried in later sync runs. The critical threshold stops the
-whole folder sync. These limits are independent of your server storage quota.</p>
+<p id="low-disk-space">Descărcările omise din cauza pragului de spațiu liber sunt reîncercate la sincronizările următoare. Pragul critic oprește sincronizarea întregului dosar. Aceste limite sunt independente de cota de stocare de pe server.</p>
 </section>
 <section id="checksums">
-<h3><a class="toc-backref" href="#id19" role="doc-backlink">Checksums</a><a class="headerlink" href="#checksums" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Sume de control</a><a class="headerlink" href="#checksums" title="Link to this heading"></a></h3>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -905,32 +823,30 @@ whole folder sync. These limits are independent of your server storage quota.</p
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CONTENT_CHECKSUM_TYPE</span></code></p></td>
-<td><p>Server preference, then <code class="docutils literal notranslate"><span class="pre">SHA1</span></code></p></td>
-<td><p>Override the preferred upload checksum algorithm. Choose an algorithm supported by both client and server.</p></td>
+<td><p>Preferința serverului, apoi <code class="docutils literal notranslate"><span class="pre">SHA1</span></code></p></td>
+<td><p>Suprascrie algoritmul preferat pentru suma de control la încărcare. Alege un algoritm acceptat atât de client, cât și de server.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_DISABLE_CHECKSUM_UPLOAD</span></code></p></td>
-<td><p>Unset</p></td>
-<td><p>Any nonempty value disables sending upload checksums. Unset it to restore normal checksum uploads.</p></td>
+<td><p>Nesetată</p></td>
+<td><p>Orice valoare nevidă dezactivează trimiterea sumelor de control la încărcare. Elimin-o pentru a reveni la trimiterea normală a sumelor de control.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_DISABLE_CHECKSUM_COMPUTATIONS</span></code></p></td>
-<td><p>Unset</p></td>
-<td><p>Any nonempty value disables synchronous checksum calculations. Upload and download paths using asynchronous
-calculations still run.</p></td>
+<td><p>Nesetată</p></td>
+<td><p>Orice valoare nevidă dezactivează calculele sincrone ale sumelor de control. Încărcările și descărcările care folosesc calcule asincrone rulează în continuare.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Use checksum overrides only when diagnosing a specific compatibility problem; disabling checksums reduces integrity
-checks used during synchronization.</p>
+<p>Folosește suprascrierile sumelor de control doar pentru diagnosticarea unei probleme de compatibilitate anume; dezactivarea sumelor de control reduce verificările de integritate din timpul sincronizării.</p>
 </section>
 <section id="troubleshooting">
-<h3><a class="toc-backref" href="#id20" role="doc-backlink">Troubleshooting</a><a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Depanare</a><a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -938,39 +854,35 @@ checks used during synchronization.</p>
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametru</p></th>
+<th class="head"><p>Implicit</p></th>
+<th class="head"><p>Descriere</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_SQLITE_JOURNAL_MODE</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">WAL</span></code> or <code class="docutils literal notranslate"><span class="pre">DELETE</span></code></p></td>
-<td><p>Override the sync journal database mode. Normally <code class="docutils literal notranslate"><span class="pre">WAL</span></code>; <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> on Windows FAT filesystems and macOS sync
-paths under <code class="docutils literal notranslate"><span class="pre">/Volumes/</span></code>. Change only when diagnosing a database compatibility problem.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WAL</span></code> sau <code class="docutils literal notranslate"><span class="pre">DELETE</span></code></p></td>
+<td><p>Suprascrie modul bazei de date a jurnalului de sincronizare. În mod normal <code class="docutils literal notranslate"><span class="pre">WAL</span></code>; <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> pe sistemele de fișiere FAT din Windows și pe căile de sincronizare macOS din <code class="docutils literal notranslate"><span class="pre">/Volumes/</span></code>. Modific-o doar pentru diagnosticarea unei probleme de compatibilitate a bazei de date.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_SQLITE_LOCKING_MODE</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">EXCLUSIVE</span></code></p></td>
-<td><p>Override the SQLite locking mode for the sync journal database.</p></td>
+<td><p>Suprascrie modul de blocare SQLite pentru baza de date a jurnalului de sincronizare.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_SQLITE_TEMP_STORE</span></code></p></td>
-<td><p>SQLite default</p></td>
-<td><p>Override the SQLite <code class="docutils literal notranslate"><span class="pre">temp_store</span></code> setting for the sync journal database.</p></td>
+<td><p>Valoarea implicită SQLite</p></td>
+<td><p>Suprascrie setarea SQLite <code class="docutils literal notranslate"><span class="pre">temp_store</span></code> pentru baza de date a jurnalului de sincronizare.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CORE_DUMP</span></code></p></td>
-<td><p>Unset</p></td>
-<td><p>On Unix systems, any nonempty value requests an unlimited core-dump size limit for the desktop app. Operating
-system restrictions still apply.</p></td>
+<td><p>Nesetată</p></td>
+<td><p>Pe sistemele Unix, orice valoare nevidă cere o limită nelimitată pentru dimensiunea core dump a aplicației pentru desktop. Restricțiile sistemului de operare se aplică în continuare.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">QT_LOGGING_RULES</span></code></p></td>
-<td><p>Qt logging defaults</p></td>
-<td><p>Set logging-category filters, for example <code class="docutils literal notranslate"><span class="pre">nextcloud.*.debug=true</span></code>. This Qt variable also allows selecting
-individual categories.</p></td>
+<td><p>Valorile implicite de jurnalizare Qt</p></td>
+<td><p>Setează filtre pentru categoriile de jurnalizare, de exemplu <code class="docutils literal notranslate"><span class="pre">nextcloud.*.debug=true</span></code>. Această variabilă Qt permite și selectarea categoriilor individuale.</p></td>
 </tr>
 </tbody>
 </table>
-<p>For <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> credentials, see <a class="reference internal" href="commandline.html#desktop-command-line-credentials"><span class="std std-ref">Credential handling</span></a>. Its <code class="docutils literal notranslate"><span class="pre">NC_USER</span></code> and <code class="docutils literal notranslate"><span class="pre">NC_PASSWORD</span></code>
-variables do not configure accounts in the desktop app.</p>
+<p>Pentru datele de autentificare ale <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>, vezi <a class="reference internal" href="commandline.html#desktop-command-line-credentials"><span class="std std-ref">Gestionarea datelor de autentificare</span></a>. Variabilele sale <code class="docutils literal notranslate"><span class="pre">NC_USER</span></code> și <code class="docutils literal notranslate"><span class="pre">NC_PASSWORD</span></code> nu configurează conturi în aplicația pentru desktop.</p>
 </section>
 </section>
 </section>
@@ -979,8 +891,8 @@ variables do not configure accounts in the desktop app.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="client_features.html" class="btn btn-neutral float-left" title="Client features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="autoupdate.html" class="btn btn-neutral float-right" title="The Automatic Updater" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="client_features.html" class="btn btn-neutral float-left" title="Funcțiile clientului" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="autoupdate.html" class="btn btn-neutral float-right" title="Actualizarea automată" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -1104,7 +1016,7 @@ variables do not configure accounts in the desktop app.</p>
     </button>
     <div id="rst-other-versions-user" class="rst-other-versions">
       <dl class="nc-languages-list">
-        <dt>Languages</dt>
+        <dt>Limbi</dt>
         
           <dd>
             <a href="/server/latest/user_manual/ar/"
