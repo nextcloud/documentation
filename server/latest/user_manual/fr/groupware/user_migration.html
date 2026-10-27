@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Migrate data between instances &mdash; Nextcloud 36 User Manual</title>
+  <title>Migrer les données entre instances &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -73,7 +73,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud 36 : Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">L’interface web de Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Utilisation de l’application Activité</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Fichiers &amp; synchronisation</a></li>
@@ -89,16 +89,16 @@
 <li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synchronisation avec Contact de KDE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synchronisation avec le bureau GNOME</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synchronisation avec Windows 10</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Migrate data between instances</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Migrer les données entre instances</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectifs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Définir vos préférences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Accès universel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Utilisation de l’authentification à deux facteurs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils liés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils connectés</a></li>
 </ul>
 
         </div>
@@ -116,7 +116,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
-      <li class="breadcrumb-item active">Migrate data between instances</li>
+      <li class="breadcrumb-item active">Migrer les données entre instances</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/user_migration.rst" class="fa fa-github"> Éditer sur GitHub</a>
       </li>
@@ -127,25 +127,20 @@
            <div itemprop="articleBody">
              
   <section id="migrate-data-between-instances">
-<h1>Migrate data between instances<a class="headerlink" href="#migrate-data-between-instances" title="Lien vers cette rubrique"></a></h1>
-<p>The <a class="reference external" href="https://apps.nextcloud.com/apps/user_migration">User Migration App</a> lets you move your Nextcloud Groupware
-data between instances.</p>
-<p>The following data can be migrated:</p>
+<h1>Migrer les données entre instances<a class="headerlink" href="#migrate-data-between-instances" title="Lien vers cette rubrique"></a></h1>
+<p>L’application <a class="reference external" href="https://apps.nextcloud.com/apps/user_migration">Migration utilisateur</a> vous permet de déplacer vos données de Nextcloud Groupware d’une instance à une autre.</p>
+<p>Les données suivantes peuvent être migrées :</p>
 <ul class="simple">
-<li><p>Contacts and groups</p></li>
-<li><p>Calendars including events, details and attendees</p></li>
-<li><p>Calendar app settings including appointment and proposal schedule configurations</p></li>
-<li><p>Mail account parameters, aliases and preferences</p></li>
+<li><p>Groupes et contacts</p></li>
+<li><p>Agendas, y compris événements, détails et participants</p></li>
+<li><p>Paramètres de l’application Agenda, y compris les configurations des calendriers de propositions et de rendez-vous</p></li>
+<li><p>Paramètres des comptes de messagerie, alias et préférences</p></li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The User Migration App must be installed on both instances, along with the latest version of the respective
-Nextcloud Groupware app.</p>
+<p>L’application Migration utilisateur doit être installée sur les deux instances, tout comme leurs dernières versions respectives de l’application Nextcloud Groupware.</p>
 </div>
-<p>Once the User Migration App is installed, you can start the migration process by going to your <strong>Personal settings</strong>
-and clicking on <strong>Data migration</strong> on the left side. You can choose which data you want to migrate and start the
-export process. Once the export is finished, download the generated file and import it onto the new instance by going
-to the same section.</p>
+<p>Après avoir installé l’application Migration utilisateur, vous pouvez démarrer le processus de migration en allant dans vos <strong>Paramètres personnels</strong> puis en cliquant sur <strong>Migration de données</strong> sur le côté gauche. Vous pouvez choisir les données à migrer et démarrer le processus d’exportation. Une fois l’export terminé, téléchargez le fichier généré puis importez-le sur la nouvelle instance en allant dans la même section.</p>
 </section>
 
 

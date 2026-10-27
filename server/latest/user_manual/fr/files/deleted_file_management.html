@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deleted files &mdash; Nextcloud 36 User Manual</title>
+  <title>Fichiers supprimés &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -73,21 +73,21 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud 36 : Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">L’interface web de Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Utilisation de l’application Activité</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Fichiers &amp; synchronisation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Accéder à vos fichiers</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">Gérer vos fichiers</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Deleted files</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Fichiers supprimés</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#quotas">Les quotas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#what-happens-when-shared-files-are-deleted">Que se passe-t-il lorsque des fichiers partagés sont supprimés?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">How the Deleted Files app manages storage space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">Comment l’application Fichiers supprimés gère l’espace de stockage</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="version_control.html">Contrôle de version</a></li>
 <li class="toctree-l3"><a class="reference internal" href="quota.html">Quota de stockage utilisable</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tagging.html">System tags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tagging.html">Étiquettes système</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="collaboration.html">Partage &amp; Collaboration</a></li>
@@ -96,12 +96,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectifs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Définir vos préférences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Accès universel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Utilisation de l’authentification à deux facteurs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils liés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils connectés</a></li>
 </ul>
 
         </div>
@@ -120,7 +120,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Fichiers &amp; synchronisation</a></li>
           <li class="breadcrumb-item"><a href="managing.html">Gérer vos fichiers</a></li>
-      <li class="breadcrumb-item active">Deleted files</li>
+      <li class="breadcrumb-item active">Fichiers supprimés</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/deleted_file_management.rst" class="fa fa-github"> Éditer sur GitHub</a>
       </li>
@@ -131,113 +131,66 @@
            <div itemprop="articleBody">
              
   <section id="deleted-files">
-<h1>Deleted files<a class="headerlink" href="#deleted-files" title="Lien vers cette rubrique"></a></h1>
-<p>When you delete a file or folder in Nextcloud, it is normally moved to the
-trash bin instead of being deleted immediately. This allows you to restore it
-later.</p>
-<p>Items in the trash bin are permanently deleted when one of the following
-occurs:</p>
+<h1>Fichiers supprimés<a class="headerlink" href="#deleted-files" title="Lien vers cette rubrique"></a></h1>
+<p>Lorsque vous supprimez un fichier ou un dossier dans Nextcloud, il est normalement déplacé dans la corbeille au lieu d’être immédiatement supprimé. Cela vous permet de le restaurer plus tard.</p>
+<p>Les éléments dans la corbeille sont définitivement supprimés lorsqu’un des événements suivants se produit :</p>
 <ul class="simple">
-<li><p>You manually select <em>Delete permanently</em>.</p></li>
-<li><p>The Deleted Files app removes the item according to the configured retention
-policy.</p></li>
-<li><p>The effective trash-bin size limit is exceeded and the item is eligible for
-removal to free space.</p></li>
+<li><p>Vous sélectionnez manuellement <em>Supprimer définitivement</em>.</p></li>
+<li><p>L’application Fichiers Supprimés supprime l’élément en suivant la politique de rétention configurée.</p></li>
+<li><p>La limite de la taille effective de la corbeille est dépassée et l’élément est éligible à la suppression pour libérer de l’espace.</p></li>
 </ul>
-<p>Find your deleted files by selecting <strong>Deleted files</strong> in the Files area of the
-Nextcloud Web interface. From there, you can restore items, download them to
-your device, or delete them permanently.</p>
-<p>When you restore an item, Nextcloud normally attempts to return it to its
-original location. If that location no longer exists or is not writable, the
-item is restored to the root of your Files area. If an item with the same name
-already exists, Nextcloud gives the restored item a unique name.</p>
+<p>Trouvez vos fichiers supprimés en sélectionnant <strong>Fichiers supprimés</strong> sur la zone des Fichiers de l’interface Web Nextcloud. À partir de là, vous pourrez restaurer des éléments, les télécharger sur votre appareil ou les supprimer définitivement.</p>
+<p>Quand vous restaurez un élément, Nextcloud essaye normalement de le remettre à son emplacement d’origine. Si cet emplacement n’existe plus, ou s’il n’est plus accessible en écriture, l’élément est restauré à la racine de votre zone de Fichiers. S’il existe déjà un élément avec le même nom, Nextcloud donnera un nom unique à l’élément restauré.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If the Versions app is enabled, versions associated with a deleted
-file are moved to the trash bin and are restored when the file is restored.</p>
+<p>Si l’application Versions est activée, les versions associées à un fichier supprimé sont déplacées dans la corbeille et elles sont restaurées lorsque le fichier est restauré.</p>
 </div>
 <section id="quotas">
 <h2>Les quotas<a class="headerlink" href="#quotas" title="Lien vers cette rubrique"></a></h2>
-<p>Files and folders in your trash bin do not count against your normal storage
-quota.</p>
-<p>See <a class="reference internal" href="quota.html"><span class="doc">Quota de stockage utilisable</span></a> for more information about how storage quotas are calculated.</p>
+<p>Les fichiers et les dossiers mis à la corbeille ne sont pas comptabilisés dans votre quota de stockage normal.</p>
+<p>Voir <a class="reference internal" href="quota.html"><span class="doc">Quota de stockage utilisable</span></a> pour plus d’informations sur la façon dont les quotas de stockage sont calculés.</p>
 </section>
 <section id="what-happens-when-shared-files-are-deleted">
 <h2>Que se passe-t-il lorsque des fichiers partagés sont supprimés?<a class="headerlink" href="#what-happens-when-shared-files-are-deleted" title="Lien vers cette rubrique"></a></h2>
-<p>The behavior of deleted shared files depends on who deletes the item and who
-owns it.</p>
-<p>For example, User1 shares a folder named <code class="docutils literal notranslate"><span class="pre">TheProject/</span></code> with User2 and User3:</p>
+<p>Le comportement des fichiers partagés supprimés dépend de qui supprime l’élément et de qui en est propriétaire.</p>
+<p>Par exemple, Utilisateur1 partage un dossier nommé <code class="docutils literal notranslate"><span class="pre">LeProjet/</span></code> avec Utilisateur2 et Utilisateur3 :</p>
 <ol class="arabic">
-<li><p>User2, a share recipient (sharee), deletes a folder or file named
-<code class="docutils literal notranslate"><span class="pre">Phase2</span></code> inside <code class="docutils literal notranslate"><span class="pre">TheProject/</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">TheProject/Phase2</span></code> is moved to the trash bin of User1, the owner, and a
-copy is placed in User2’s trash bin when possible. The item is removed from
-the shared folder for User3, but User3 does not receive a copy in their
-trash bin.</p>
+<li><p>Utilisateur2, un destinataire du partage, supprime un dossier ou un fichier nommé <code class="docutils literal notranslate"><span class="pre">Étape2</span></code> situé à l’intérieur de <code class="docutils literal notranslate"><span class="pre">LeProjet/</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">LeProjet/Étape2</span></code> est déplacé dans la corbeille de Utilisateur1, le propriétaire, et une copie est placée dans la corbeille de Utilisateur2 si possible. L’élément est supprimé du dossier partagé pour Utilisateur3, mais ce dernier n’en reçoit pas de copie dans sa corbeille.</p>
 </li>
-<li><p>User1, the owner, deletes <code class="docutils literal notranslate"><span class="pre">TheProject/Phase2</span></code>.</p>
-<p>The item is moved to User1’s trash bin and removed from the shared folder for
-User2 and User3. It is not placed in their trash bins.</p>
+<li><p>Utilisateur1, le propriétaire, supprime <code class="docutils literal notranslate"><span class="pre">LeProjet/Étape2</span></code>.</p>
+<p>L’élément est déplacé dans la corbeille de Utilisateur1 et supprimé du dossier partagé pour Utilisateur2 et Utilisateur3. Il n’est pas placé dans leurs corbeilles.</p>
 </li>
 </ol>
-<p>The exact behavior can depend on the type of share and the permissions granted
-by the share. Depending on those permissions, other users may be able to copy,
-rename, move, or re-share shared files. These operations can affect which
-account owns the resulting files and which trash bin receives a deleted item.</p>
+<p>Le comportement exact peut dépendre du type de partage et des permissions accordées par celui-ci. En fonction de ces permissions, les autres utilisateurs peuvent être capables de copier, renommer, déplacer ou repartager des fichiers partagés. Ces opérations peuvent affecter tout compte propriétaire des fichiers résultants et toute corbeille qui reçoit un élément supprimé.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When a sharee deletes an item owned by another user, Nextcloud moves the item
-to the owner’s trash bin. A copy in the deleting user’s trash bin is also
-created (in most cases; the copy is on a best-effort basis and is not
-guaranteed).</p>
+<p>Quand le destinataire d’un partage supprime un élément appartenant à un autre utilisateur, Nextcloud déplace l’élément dans la corbeille du propriétaire. Une copie est également créée dans la corbeille de l’utilisateur à l’origine de la suppression (dans la plupart des cas ; la copie est faite dans la mesure du possible mais ce n’est pas garanti).</p>
 </div>
 </section>
 <section id="how-the-deleted-files-app-manages-storage-space">
-<h2>How the Deleted Files app manages storage space<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Lien vers cette rubrique"></a></h2>
-<p>The Deleted Files app manages trash-bin contents using two related rules:</p>
+<h2>Comment l’application Fichiers supprimés gère l’espace de stockage<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Lien vers cette rubrique"></a></h2>
+<p>L’application Fichiers supprimés gère le contenu de la corbeille en employant une combinaison de deux règles :</p>
 <ul class="simple">
-<li><p>A storage limit determines how much space the trash bin may use.</p></li>
-<li><p>A retention policy determines when deleted items become eligible for
-permanent deletion.</p></li>
+<li><p>Une limite de stockage détermine la quantité d’espace que la corbeille peut utiliser.</p></li>
+<li><p>Une politique de rétention détermine à quel moment les éléments supprimés sont susceptibles de faire l’objet d’une suppression définitive.</p></li>
 </ul>
 <section id="trash-bin-storage-limit">
-<h3>Trash-bin storage limit<a class="headerlink" href="#trash-bin-storage-limit" title="Lien vers cette rubrique"></a></h3>
-<p>For accounts with a storage quota, the default trash-bin limit is up to 50% of
-the account’s remaining quota space. This is calculated after the account’s
-active files have been taken into account; it is not 50% of the account’s total
-quota.</p>
-<p>For example, if your quota is 10 GB and your active files use 8 GB, the default
-trash-bin allowance is calculated from the remaining 2 GB.</p>
-<p>For accounts without a storage quota, the default limit is calculated using
-available filesystem space instead. Your administrator can override either
-default by configuring a global or per-account trash-bin size.</p>
-<p>When the effective trash-bin limit is exceeded, Nextcloud removes eligible
-deleted items, starting with the oldest items, until the limit is satisfied
-again.</p>
+<h3>Limite de stockage de la corbeille<a class="headerlink" href="#trash-bin-storage-limit" title="Lien vers cette rubrique"></a></h3>
+<p>Pour les comptes avec un quota de stockage, la limite par défaut pour la corbeille peut atteindre jusqu’à 50% de l’espace restant sur le quota du compte. Elle est calculée après que les fichiers actifs du compte aient été pris en considération ; ce n’est pas 50% du quota total du compte.</p>
+<p>Par exemple, si votre quota est de 10 Go et que vos fichiers actifs occupent 8 Go, la quantité allouée par défaut à la corbeille sera calculée à partir des 2 Go restants.</p>
+<p>Pour les comptes sans quota de stockage, la limite par défaut est à la place calculée en fonction de l’espace disponible sur le système de fichiers. Votre administrateur peut outrepasser la valeur par défaut en définissant une taille de corbeille globale ou par compte.</p>
+<p>Quand la limite effective de la corbeille est dépassée, Nextcloud supprime les éléments éligibles de la corbeille, en commençant par les plus anciens, jusqu’à ce que la limite soit à nouveau respectée.</p>
 </section>
 <section id="retention-and-permanent-deletion">
-<h3>Retention and permanent deletion<a class="headerlink" href="#retention-and-permanent-deletion" title="Lien vers cette rubrique"></a></h3>
-<p>By default, deleted files are retained for at least 30 days. After that,
-eligible items may be permanently deleted when space is needed; they are not
-necessarily deleted immediately after 30 days.</p>
-<p>Your administrator can configure different minimum and maximum retention
-periods. Depending on the configuration, items may be permanently deleted
-after a maximum age even when storage space is not currently needed. Automatic
-expiration can also be disabled.</p>
-<p>For policies with a configured minimum retention period, an item is eligible
-for space-based cleanup only after that period has elapsed. Policies without a
-minimum retention period may allow space-based cleanup regardless of the
-item’s age. Items that have exceeded a configured maximum retention period can
-be permanently deleted regardless of whether space is currently needed.</p>
-<p>The relevant configuration setting is
-<code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code>. For details about the available values and
-their interaction with quotas and trash-bin sizes, see the
-<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">Deleted Files section of the Administrator Manual</a>.</p>
+<h3>Rétention et suppression définitive<a class="headerlink" href="#retention-and-permanent-deletion" title="Lien vers cette rubrique"></a></h3>
+<p>Par défaut, les fichiers supprimés sont conservés pendant au moins 30 jours. Après ça, les éléments éligibles peuvent être supprimés définitivement dans le cas où il y aurait besoin d’espace ; ils ne sont pas forcément supprimés immédiatement après 30 jours.</p>
+<p>Votre administrateur peut configurer des périodes de rétention minimale et maximale différentes. En fonction de la configuration, les éléments peuvent être supprimés définitivement une fois une durée maximale atteinte, même s’il n’y a pas besoin de récupérer de l’espace de stockage. L’expiration automatique peut également être désactivée.</p>
+<p>Pour les politiques avec une période de rétention minimale configurée, un élément est éligible pour être supprimé s’il y a besoin de place uniquement après l’expiration de cette période. Les politiques sans période de rétention minimale peuvent autoriser le nettoyage pour récupérer de l’espace quelle que soit l’ancienneté de l’élément. Les éléments qui ont dépassé une période de rétention maximale configurée peuvent être supprimés définitivement, qu’il y ait besoin d’espace de stockage ou pas.</p>
+<p>Le paramètre approprié dans la configuration est <code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code>. Pour les détails sur les valeurs disponibles et leur interaction avec les quotas et les tailles des corbeilles, consultez la <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">section Fichiers supprimés du Manuel d’administration</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Deleted Files app may permanently delete an item before its maximum
-retention period when the effective trash-bin limit is exceeded and the
-item’s minimum retention period has elapsed.</p>
+<p>L’application Fichiers supprimés peut supprimer définitivement un élément avant sa période de rétention maximale si la limite effective de la corbeille est dépassée et que la période de rétention minimale de l’élément est écoulée.</p>
 </div>
 </section>
 </section>

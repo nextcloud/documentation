@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Command-line client &mdash; Nextcloud 36 User Manual</title>
+  <title>Komut satırı istemcisi &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -75,7 +75,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 kullanıcı rehberi giriş</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud site arayüzü</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">İşlem uygulamasını kullanmak</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">Yapay zeka yardımcısı</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dosyalar ve eşitleme</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Konuş</a></li>
@@ -85,17 +85,17 @@
 <li class="toctree-l2"><a class="reference internal" href="usage.html">İstemciyi kullanmak</a></li>
 <li class="toctree-l2"><a class="reference internal" href="macosfileprovider.html">macOS Dosya Sağlayıcı uygulamasını kullanmak</a></li>
 <li class="toctree-l2"><a class="reference internal" href="client_features.html">İstemci özellikleri</a></li>
-<li class="toctree-l2"><a class="reference internal" href="advanced_configuration.html">Advanced configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_configuration.html">Gelişmiş yapılandırma</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Otomatik güncelleyici</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Güncelleme kanalları</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Çakışmalar</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Command-line client</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#options">Options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#desktop-command-line-credentials">Credential handling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exclude-lists">Exclude lists</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#account-setup">Account setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Komut satırı istemcisi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Kurulum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Kullanım</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#options">Seçenekler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#desktop-command-line-credentials">Kimlik doğrulama bilgilerinin işlenmesi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exclude-lists">Katılmayacaklar listeleri</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#account-setup">Hesap kurulumu</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Kaldırmak</a></li>
@@ -123,7 +123,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Bilgisayar istemcisi</a></li>
-      <li class="breadcrumb-item active">Command-line client</li>
+      <li class="breadcrumb-item active">Komut satırı istemcisi</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/commandline.rst" class="fa fa-github"> GitHub'da Düzenle</a>
       </li>
@@ -134,21 +134,19 @@
            <div itemprop="articleBody">
              
   <section id="command-line-client">
-<span id="using-the-command-line-client"></span><h1>Command-line client<a class="headerlink" href="#command-line-client" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> synchronizes a local directory with a Nextcloud server, then exits. It can perform follow-up syncs
-when needed, but it does not continuously monitor local files or poll for server changes like the desktop app.
-For options passed to the desktop app’s <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> command, see <a class="reference internal" href="advanced_configuration.html#desktop-command-line-options"><span class="std std-ref">Command-line options</span></a>.</p>
+<span id="using-the-command-line-client"></span><h1>Komut satırı istemcisi<a class="headerlink" href="#command-line-client" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> yerel bir klasörü bir Nextcloud sunucusuyla eşitler, ardından çıkar. Gerektiğinde izleyen eşitlemeler yapılabilir. Ancak bilgisayar uygulaması gibi sunucu değişiklikleri için yerel dosyaları veya anketleri sürekli olarak izlemez. Bilgisayar uygulamasının <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> komutuna iletilen seçenekler için <a class="reference internal" href="advanced_configuration.html#desktop-command-line-options"><span class="std std-ref">Komut satırı seçenekleri</span></a> bölümüne bakabilirsiniz.</p>
 <section id="installation">
-<span id="install"></span><h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
-<p>Install a package that provides <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>. Availability depends on your operating system and package:</p>
+<span id="install"></span><h2>Kurulum<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> sağlayan bir paket kurun. Kullanılabilirlik işletim sisteminize ve paketinize bağlıdır:</p>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Operating system</p></th>
-<th class="head"><p>Package source</p></th>
+<tr class="row-odd"><th class="head"><p>İşletim sistemi</p></th>
+<th class="head"><p>Paket kaynağı</p></th>
 </tr>
 </thead>
 <tbody>
@@ -168,28 +166,26 @@ For options passed to the desktop app’s <code class="docutils literal notransl
 <td><p><a class="reference external" href="https://launchpad.net/~nextcloud-devs/+archive/ubuntu/client">Nextcloud client PPA</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Windows</p></td>
-<td><p><a class="reference external" href="https://nextcloud.com/install/#install-clients">Nextcloud downloads</a></p></td>
+<td><p><a class="reference external" href="https://nextcloud.com/install/#install-clients">Nextcloud indirmeleri</a></p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
-<p>Use an existing local directory and the base URL of the Nextcloud server:</p>
+<h2>Kullanım<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>Var olan bir yerel klasörü ve Nextcloud sunucusunun temel adresini kullanın:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nextcloudcmd [options] local_directory server_url</span>
 </pre></div>
 </div>
-<p id="example">For example, synchronize the remote <code class="docutils literal notranslate"><span class="pre">Music</span></code> folder into an existing local folder:</p>
+<p id="example">Örneğin, uzak <code class="docutils literal notranslate"><span class="pre">Music</span></code> klasörünü var olan bir yerel klasör ile eşitleyin:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloudcmd<span class="w"> </span>--user<span class="w"> </span>carla<span class="w"> </span>--path<span class="w"> </span>/Music<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/media/music"</span><span class="w"> </span>https://cloud.example.com
 </pre></div>
 </div>
-<p>The client prompts for the password. You can use an app password from your Nextcloud account’s security settings.
-Do not append a WebDAV endpoint to the server URL; use <code class="docutils literal notranslate"><span class="pre">--path</span></code> for a remote subfolder.</p>
-<p>Run <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> without arguments to display its help, or <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span> <span class="pre">--version</span></code> to display its version.
-Options with values accept both <code class="docutils literal notranslate"><span class="pre">--option</span> <span class="pre">value</span></code> and <code class="docutils literal notranslate"><span class="pre">--option=value</span></code>.</p>
+<p>İstemci parolayı sorar. Nextcloud hesabınızın güvenlik ayarlarından bir uygulama parolası kullanabilirsiniz. Sunucu adresine bir WebDAV uç noktası eklemeyin. Uzak bir alt klasör için <code class="docutils literal notranslate"><span class="pre">--path</span></code> kullanın.</p>
+<p>Yardımını görüntülemek için parametreler olmadan <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> veya sürümünü görüntülemek için <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span> <span class="pre">--version</span></code> komutunu yürütün. Değerleri olan seçenekler hem <code class="docutils literal notranslate"><span class="pre">--option</span> <span class="pre">value</span></code> hem de <code class="docutils literal notranslate"><span class="pre">--option=value</span></code> parametresini kabul eder.</p>
 </section>
 <section id="options">
-<h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<h2>Seçenekler<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -197,103 +193,97 @@ Options with values accept both <code class="docutils literal notranslate"><span
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametre</p></th>
+<th class="head"><p>Varsayılan</p></th>
+<th class="head"><p>Açıklama</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--path</span> <span class="pre">&lt;path&gt;</span></code></p></td>
-<td><p>Server root</p></td>
-<td><p>Synchronize a remote subfolder, for example <code class="docutils literal notranslate"><span class="pre">/Documents</span></code>.</p></td>
+<td><p>Sunucu kök klasörü</p></td>
+<td><p>Uzak bir alt klasörü eşitler. Örnek: <code class="docutils literal notranslate"><span class="pre">/Documents</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--user</span> <span class="pre">&lt;user&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">-u</span> <span class="pre">&lt;user&gt;</span></code></p></td>
-<td><p>See credentials below</p></td>
-<td><p>Login name. Overrides the username in the server URL.</p></td>
+<td><p>Aşağıdaki kimlik doğrulama bilgilerine bakın</p></td>
+<td><p>Kullanıcı adı. Sunucu adresindeki kullanıcı adını değiştirir.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--password</span> <span class="pre">&lt;password&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;password&gt;</span></code></p></td>
-<td><p>See credentials below</p></td>
-<td><p>Password or app password. Overrides the password in the server URL. Command-line passwords may be visible in
-process listings and shell history.</p></td>
+<td><p>Aşağıdaki kimlik doğrulama bilgilerine bakın</p></td>
+<td><p>Parola veya uygulama parolası. Sunucu adresindeki parolayı değiştirir. Betik parolaları işlem listelerinde ve kabuk geçmişinde görülebilir.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-n</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Read credentials from a matching host or default entry in <code class="docutils literal notranslate"><span class="pre">.netrc</span></code>. These replace credentials supplied in the URL or
-with <code class="docutils literal notranslate"><span class="pre">--user</span></code> and <code class="docutils literal notranslate"><span class="pre">--password</span></code>.</p></td>
+<td><p>Ayarlanmaz</p></td>
+<td><p>Kimlik doğrulama bilgilerini <code class="docutils literal notranslate"><span class="pre">.netrc</span></code> içindeki eşleşen bir sunucudan veya varsayılan kayıttan okur. Bunlar, adresteeki kimlik doğrulama bilgilerini, <code class="docutils literal notranslate"><span class="pre">--user</span></code> ve <code class="docutils literal notranslate"><span class="pre">--password</span></code> ile değiştirir.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Do not prompt for credentials. Read missing credentials from <code class="docutils literal notranslate"><span class="pre">NC_USER</span></code> and <code class="docutils literal notranslate"><span class="pre">NC_PASSWORD</span></code>.</p></td>
+<td><p>Ayarlanmaz</p></td>
+<td><p>Kimlik doğrulama bilgileri sorulmaz. Eksik kimlik doğrulama bilgileri <code class="docutils literal notranslate"><span class="pre">NC_USER</span></code> ve <code class="docutils literal notranslate"><span class="pre">NC_PASSWORD</span></code> değişkenlerinden okunur.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--silent</span></code>, <code class="docutils literal notranslate"><span class="pre">-s</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Suppress Qt log messages. Does not suppress every console message.</p></td>
+<td><p>Ayarlanmaz</p></td>
+<td><p>Qt günlük iletilerini gizler. Her konsol iletisini gizlemez.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--trust</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Accept untrusted TLS certificates. Use only for a controlled diagnostic run; normally fix the certificate trust
-configuration.</p></td>
+<td><p>Ayarlanmaz</p></td>
+<td><p>Güvenilmeyen TLS sertifikalarını kabul eder. Yalnızca kontrol altında bir tanılama çalışması için kullanın. Normal çalışmada sertifika güvenliği yapılandırmasını düzeltin.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--httpproxy</span> <span class="pre">&lt;url&gt;</span></code></p></td>
-<td><p>No explicit proxy</p></td>
-<td><p>Set an HTTP proxy using <code class="docutils literal notranslate"><span class="pre">http://hostname:port</span></code>. This option does not parse proxy credentials in the URL.</p></td>
+<td><p>Vekil sunucu açıkça belirtilmemiş</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">http://sunucuadi:baglantinoktasi</span></code> ile bir HTTP vekil sunucusu ayarlar. Bu seçenek, adresteki vekil sunucu kimlik doğrulama bilgilerini işlemez.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--exclude</span> <span class="pre">&lt;file&gt;</span></code></p></td>
-<td><p>System exclude list</p></td>
-<td><p>Add an exclude list. The file must exist. Pattern anchoring depends on its filename; see
-<a class="reference internal" href="#desktop-command-line-excludes"><span class="std std-ref">Exclude lists</span></a>.</p></td>
+<td><p>Sistem katılmayacaklar listesi</p></td>
+<td><p>Bir katılmayacaklar listesi ekler. Dosya var olmalıdır. Model sabitlemesi dosya adına bağlıdır. Ayrıntılı bilgi almak için: <a class="reference internal" href="#desktop-command-line-excludes"><span class="std std-ref">Katılmayacaklar listeleri</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--exclude-anchored</span> <span class="pre">&lt;file&gt;</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Add an exclude list with patterns anchored at the sync root, regardless of the filename.</p></td>
+<td><p>Ayarlanmaz</p></td>
+<td><p>Dosya adından bağımsız olarak, eşitleme kök klasörüne sabitlenmiş modeller ile bir katılmayacaklar listesi ekler.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--unsyncedfolders</span> <span class="pre">&lt;file&gt;</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Read remote folders to exclude from synchronization, one relative path per line. Empty lines and lines starting
-with <code class="docutils literal notranslate"><span class="pre">#</span></code> are ignored.</p></td>
+<td><p>Ayarlanmaz</p></td>
+<td><p>Eşitlemeye katılmayacak uzak klasörleri okur. Her satıra bir göreceli yol yazın. Boş satırlar ve <code class="docutils literal notranslate"><span class="pre">#</span></code> ile başlayan satırlar yok sayılır.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--max-sync-retries</span> <span class="pre">&lt;number&gt;</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
-<td><p>Maximum number of follow-up runs when the sync engine requests another sync. This is not a general retry count
-for every failed request.</p></td>
+<td><p>Eşitleme işleyicinin isteyeceği izleyen en fazla eşitleme sayısı. Her başarısız olan istek için genel bir yeniden deneme sayısı değildir.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--uplimit</span> <span class="pre">&lt;number&gt;</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> KB/s</p></td>
-<td><p>Upload speed limit in KB/s (1000 bytes per second). Zero means unlimited.</p></td>
+<td><p>KB/s olarak yükleme hızı sınırı (saniyede 1000 bayt). Sıfır sınırlama olmadığı anlamına gelir.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--downlimit</span> <span class="pre">&lt;number&gt;</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> KB/s</p></td>
-<td><p>Download speed limit in KB/s (1000 bytes per second). Zero means unlimited.</p></td>
+<td><p>KB/s olarak indirme hızı sınırı (saniyede 1000 bayt). Sıfır sınırlama olmadığı anlamına gelir.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-h</span></code></p></td>
-<td><p>Hidden files included</p></td>
-<td><p>Include hidden files. This is already the default; <code class="docutils literal notranslate"><span class="pre">-h</span></code> does not display help.</p></td>
+<td><p>Gizli dosyalar katılır</p></td>
+<td><p>Gizli dosyaları katar. Bu zaten varsayılan durumdur. <code class="docutils literal notranslate"><span class="pre">-h</span></code> yardımı göstermez.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--logdebug</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>Enable Nextcloud debug logging and send log output to standard output.</p></td>
+<td><p>Ayarlanmaz</p></td>
+<td><p>Nextcloud hata ayıklama günlüğünü etkinleştirir ve günlük çıktısını standart çıktıya gönderir.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--confdir</span> <span class="pre">&lt;directory&gt;</span></code></p></td>
-<td><p>Standard location</p></td>
-<td><p>Use a different configuration directory. Does not make the one-run sync inherit all desktop sync settings.</p></td>
+<td><p>Standart konum</p></td>
+<td><p>Farklı bir yapılandırma klasörü kullanır. Tek seferlik eşitleme çalışmasının tüm bilgisayar eşitleme ayarlarını devralmasını sağlamaz.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--version</span></code>, <code class="docutils literal notranslate"><span class="pre">-v</span></code></p></td>
-<td><p>Not requested</p></td>
-<td><p>Display version information and exit. Run this option without the directory and server arguments.</p></td>
+<td><p>Gerekmez</p></td>
+<td><p>Sürüm bilgilerini görüntüler ve çıkar. Bu seçeneği klasör ve sunucu parametreleri olmadan kullanın.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="desktop-command-line-credentials">
-<span id="credential-handling"></span><span id="id1"></span><h2>Credential handling<a class="headerlink" href="#desktop-command-line-credentials" title="Link to this heading"></a></h2>
-<p>Credentials are read in this order:</p>
+<span id="credential-handling"></span><span id="id1"></span><h2>Kimlik doğrulama bilgilerinin işlenmesi<a class="headerlink" href="#desktop-command-line-credentials" title="Link to this heading"></a></h2>
+<p>Kimlik doğrulama bilgileri şu sırayla okunur:</p>
 <ol class="arabic simple">
-<li><p>Username and password in the server URL, if supplied.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--user</span></code> and <code class="docutils literal notranslate"><span class="pre">--password</span></code>, which replace the corresponding URL values.</p></li>
-<li><p>A matching host or default <code class="docutils literal notranslate"><span class="pre">.netrc</span></code> entry when <code class="docutils literal notranslate"><span class="pre">-n</span></code> is used, which replaces both values.</p></li>
-<li><p>Prompts for any missing values, or the environment variables below when <code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code> is used.</p></li>
+<li><p>Belirtilmiş ise, sunucu adresinde kullanıcı adı ve parola.</p></li>
+<li><p>İlgili adres değerlerinin yerini alan <code class="docutils literal notranslate"><span class="pre">--user</span></code> ve <code class="docutils literal notranslate"><span class="pre">--password</span></code>.</p></li>
+<li><p>Her iki değerin yerini alan <code class="docutils literal notranslate"><span class="pre">-n</span></code> kullanıldığında eşleşen bir sunucu veya varsayılan <code class="docutils literal notranslate"><span class="pre">.netrc</span></code> kaydı.</p></li>
+<li><p>Değerler eksik olduğunda veya <code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code> kullanıldığında aşağıdaki ortam değişkenlerini sorar.</p></li>
 </ol>
-<p>Prefer a password prompt or a protected <code class="docutils literal notranslate"><span class="pre">.netrc</span></code> file over putting passwords in a command or URL.</p>
+<p>Bir komuta veya adrese parola koymak yerine bir parola istemini veya korunan bir <code class="docutils literal notranslate"><span class="pre">.netrc</span></code> dosyasını tercih edin.</p>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -301,37 +291,29 @@ for every failed request.</p></td>
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametre</p></th>
+<th class="head"><p>Varsayılan</p></th>
+<th class="head"><p>Açıklama</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NC_USER</span></code></p></td>
-<td><p>Unset</p></td>
-<td><p>Username fallback for a one-run sync with <code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code>. Only used if no username was supplied by the
-preceding methods.</p></td>
+<td><p>Ayarlanmamış</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code> ile tek seferlik eşitleme için varsayılan kullanıcı adı. Yalnızca önceki yöntemler tarafından bir kullanıcı adı belirtilmemiş ise kullanılır.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NC_PASSWORD</span></code></p></td>
-<td><p>Unset</p></td>
-<td><p>Password fallback for a one-run sync with <code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code>. Only used if no password was supplied by the
-preceding methods.</p></td>
+<td><p>Ayarlanmamış</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code> ile tek seferlik eşitleme için varsayılan parola. Yalnızca önceki yöntemler tarafından parola belirtilmemiş ise kullanılır.</p></td>
 </tr>
 </tbody>
 </table>
-<p>These variables do not supply credentials for the account setup mode below.
-For transfer overrides shared with the desktop sync engine, see <a class="reference internal" href="advanced_configuration.html#desktop-environment-variables"><span class="std std-ref">Environment variables</span></a>.
-<code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> uses an initial chunk size of 100 MiB, a minimum of 5 MB, a maximum of 5 GB, and 6 parallel jobs unless
-overridden by those variables. It does not read the desktop app’s chunk-size settings from <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code>.</p>
+<p>Bu değişkenler aşağıdaki hesap kurulum kipi için kimlik doğrulama bilgilerini sağlamaz. Bilgisayar eşitleme işleyicisi ile paylaşılan aktarım değişiklikleri için <a class="reference internal" href="advanced_configuration.html#desktop-environment-variables"><span class="std std-ref">Ortam değişkenleri</span></a> bölümüne bakabilirsiniz. <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>, bu değişkenler tarafından değiştirilmediği sürece başlangıçta parça boyutu olarak 100 MiB, en az 5 MB, en fazla 5 GB ve 6 paralel işlem kullanır. Bilgisayar uygulamasının parça boyutu ayarları <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code> içinden okunmaz.</p>
 </section>
 <section id="exclude-lists">
-<span id="desktop-command-line-excludes"></span><span id="exclude-list"></span><h2>Exclude lists<a class="headerlink" href="#exclude-lists" title="Link to this heading"></a></h2>
-<p>The client loads the system exclude list when available. You can add your own list with <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> or
-<code class="docutils literal notranslate"><span class="pre">--exclude-anchored</span></code>. A missing explicitly supplied file is an error.</p>
-<p>With <code class="docutils literal notranslate"><span class="pre">--exclude</span></code>, a file named <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code> uses the sync root for pattern matching. Other filenames can use
-the exclude file’s directory as the base. Use <code class="docutils literal notranslate"><span class="pre">--exclude-anchored</span></code> when the filename and location should not affect
-matching.</p>
-<p>Write one pattern per line. Wildcards are supported, for example:</p>
+<span id="desktop-command-line-excludes"></span><span id="exclude-list"></span><h2>Katılmayacaklar listeleri<a class="headerlink" href="#exclude-lists" title="Link to this heading"></a></h2>
+<p>İstemci, kullanılabildiğinde sistem katılmayacaklar listesini yükler. Kendi listenizi <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> veya <code class="docutils literal notranslate"><span class="pre">--exclude-anchored</span></code> ile ekleyebilirsiniz. Açıkça belirtilen eksik bir dosya bir hataya yol açar.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--exclude</span></code> ile, <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code> adlı bir dosya, model eşleştirme için eşitleme kök klasörünü kullanır. Diğer dosya adları, katılmayacaklar dosyasının klasörünü temel olarak kullanabilir. Dosya adı ve konum eşleştirmeyi etkilememesi gerektiğinde <code class="docutils literal notranslate"><span class="pre">--exclude-anchored</span></code> kullanın.</p>
+<p>Her satıra bir model yazın. Genel arama karakterleri desteklenir. Örneğin:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>*.tmp
 ._*
 Thumbs.db
@@ -339,9 +321,8 @@ Thumbs.db
 </div>
 </section>
 <section id="account-setup">
-<h2>Account setup<a class="headerlink" href="#account-setup" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> can also save an account for use by the desktop app. The presence of <code class="docutils literal notranslate"><span class="pre">--userid</span></code> selects this mode;
-omit the positional local directory and server URL used for a one-run sync. The command exits after setup completes.</p>
+<h2>Hesap kurulumu<a class="headerlink" href="#account-setup" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> ayrıca bilgisayar uygulaması tarafından kullanılmak üzere bir hesap kaydedebilir. <code class="docutils literal notranslate"><span class="pre">--userid</span></code> varlığı bu kipi seçer. Tek seferlik eşitleme için kullanılan konumsal yerel klasör ve sunucu adresi atlanır. Kurulum tamamlandıktan sonra komut çıkar.</p>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -349,41 +330,39 @@ omit the positional local directory and server URL used for a one-run sync. The 
 <col style="width: 50.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parametre</p></th>
+<th class="head"><p>Varsayılan</p></th>
+<th class="head"><p>Açıklama</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--userid</span> <span class="pre">&lt;user&gt;</span></code></p></td>
-<td><p>Required</p></td>
-<td><p>User ID for the account to create.</p></td>
+<td><p>Gerekir</p></td>
+<td><p>Oluşturulacak hesabın kullanıcı kimliği.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--serverurl</span> <span class="pre">&lt;url&gt;</span></code></p></td>
-<td><p>Required</p></td>
-<td><p>Base URL of the Nextcloud server, for example <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com</span></code>.</p></td>
+<td><p>Gerekir</p></td>
+<td><p>Nextcloud sunucusunun temel adresi. <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com</span></code> gibi.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--apppassword</span> <span class="pre">&lt;password&gt;</span></code></p></td>
-<td><p>Not set</p></td>
-<td><p>App password for the account. If omitted, the account is saved and you must log in from the desktop app later.</p></td>
+<td><p>Ayarlanmaz</p></td>
+<td><p>Hesabın uygulama parolası. Atlanırsa, hesap kaydedilir ve daha sonra bilgisayr uygulamasından oturum açmanız gerekir.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--localdirpath</span> <span class="pre">&lt;path&gt;</span></code></p></td>
-<td><p>Suggested folder</p></td>
-<td><p>Local sync folder. If omitted, use the folder suggested by the setup wizard. An existing folder must be empty.
-Ignored when macOS File Provider mode is enabled.</p></td>
+<td><p>Önerilen klasör</p></td>
+<td><p>Yerel eşitleme klasörü. Atlanırsa, kurulum yardımcısı tarafından önerilen klasör kullanılır. Var olan bir klasör boş olmalıdır. macOS dosya sağlayıcı kipi açıldığında yok sayılır.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--remotedirpath</span> <span class="pre">&lt;path&gt;</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
-<td><p>Remote folder for the new classic sync connection. Applies when a local sync folder is created.</p></td>
+<td><p>Yeni klasik eşitleme bağlantısının uzak klasörü. Yerel bir eşitleme klasörü oluşturulduğunda geçerlidir.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--isvfsenabled</span> <span class="pre">&lt;0|1&gt;</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>Use <code class="docutils literal notranslate"><span class="pre">1</span></code> to request virtual files for the new classic sync folder, where supported, or <code class="docutils literal notranslate"><span class="pre">0</span></code> to download
-files. This does not enable macOS File Provider mode.</p></td>
+<td><p>Desteklenen yeni klasik eşitleme klasörüne sanal dosyalar istemek için <code class="docutils literal notranslate"><span class="pre">1</span></code> ya da dosyaları indirmek için <code class="docutils literal notranslate"><span class="pre">0</span></code> kullanın. Bu seçenek, macOS dosya sağlayıcı kipini açmaz.</p></td>
 </tr>
 </tbody>
 </table>
-<p>For example, save an account and log in from the desktop app afterward:</p>
+<p>Örneğin, bir hesap kaydedin ve daha sonra bilgisayar uygulamasından oturum açın:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloudcmd<span class="w"> </span>--userid<span class="w"> </span>carla<span class="w"> </span>--serverurl<span class="w"> </span>https://cloud.example.com<span class="w"> </span>--localdirpath<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/Nextcloud"</span>
 </pre></div>
 </div>
