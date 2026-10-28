@@ -416,15 +416,14 @@ jobs:
 
           git fetch origin ${{ github.event.repository.default_branch }} ${{ github.ref_name }}
 
+          # git show, not checkout: gh-pages has its own copies at the root, leave them alone
           # Add go.php redirect from main branch
-          git checkout origin/${{ github.event.repository.default_branch }} -- go.php/index.html
           mkdir -p server/${branch}/go.php
-          mv go.php/index.html server/${branch}/go.php/index.html
+          git show origin/${{ github.event.repository.default_branch }}:go.php/index.html > server/${branch}/go.php/index.html
 
           # Add user_manual english redirect
-          git checkout origin/${{ github.ref_name }} -- user_manual/index.html
           mkdir -p server/${branch}/user_manual
-          mv user_manual/index.html server/${branch}/user_manual/index.html
+          git show origin/${{ github.ref_name }}:user_manual/index.html > server/${branch}/user_manual/index.html
 
           # Also copy to versioned folder if applicable
           if [ -n "${additional}" ]; then
