@@ -3620,6 +3620,19 @@ sqlite.journal_mode
 SQLite3 journal mode can be specified using this configuration parameter -
 can be ``'WAL'`` or ``'DELETE'``. See https://www.sqlite.org/wal.html for more details.
 
+sqlite.busy_timeout
+^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'sqlite.busy_timeout' => 30000,
+
+Number of milliseconds a SQLite3 connection will wait for a lock held by
+another connection to clear before giving up with a "database is locked"
+error. See https://www.sqlite.org/pragma.html#pragma_busy_timeout for
+more details.
+
 mysql.utf8mb4
 ^^^^^^^^^^^^^
 
