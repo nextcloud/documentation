@@ -2,7 +2,7 @@
 Energy consumption
 ==================
 
-The Green Metrics Tool is certified under the `Blue Angel for Software DE-UZ 215 <https://www.blauer-engel.de/en/productworld/software>`_.
+The Nextcloud server is certified under the `Blue Angel for Software DE-UZ 215 <https://www.blauer-engel.de/en/productworld/software>`_.
 
 This page contains the typical energy consumption according to the Standard Usage Scenarios used in the certification.
 
