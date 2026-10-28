@@ -474,7 +474,7 @@ Share tools
 
 * Retrieve share details
 
- * Example prompt: *"Does martin have write access to the Design/Ideas.md file I shared with him?"*
+  * Example prompt: *"Does martin have write access to the Design/Ideas.md file I shared with him?"*
 
 
 Talk tools (require `Talk <https://apps.nextcloud.com/apps/spreed>`_)
@@ -598,6 +598,7 @@ Miscellaneous tools
   * Example prompt: *"List all available assignees for the 'Product launch' project in OpenProject"*
 
 * Create a new work package in a given project in OpenProject (requires the `OpenProject integration <https://apps.nextcloud.com/apps/integration_openproject>`_)
+
   * Example prompt: *"Create a work package called 'Publish release video' in the 'Product launch' project in OpenProject"*
 
 

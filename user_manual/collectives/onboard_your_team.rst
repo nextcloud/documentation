@@ -36,5 +36,5 @@ Step 3: Everyone creates their own! 💫
 1. This is where the magic happens 🪄! Everyone on their own computers now! Click the ➕ button next to
    your "Introductions" page that we created in step one. Select the "Introductions" template. Title
    the page with your name or nick and fill out the fields your decided on!
-2. Wow! We just quickly created a cohesive und unifying "Introductions" page in our collective. Becoming
+2. Wow! We just quickly created a cohesive and unifying "Introductions" page in our collective. Becoming
    part of your collective will be much less scary now for new members! Congratulations! 🎉
