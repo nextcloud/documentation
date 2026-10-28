@@ -810,7 +810,7 @@ firewall-cmd<span class="w"> </span>--reload
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">"some_very_secure_password"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">"https://cloud.acme.com"</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_TRUSTED_PROXY_IPS</span><span class="o">=</span><span class="s2">"192.168.0.0/24"</span><span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># Replace with your actual trusted proxy subnet (Host3's IP or subnet)</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_TRUSTED_PROXY_IPS</span><span class="o">=</span><span class="s2">"192.168.0.0/24"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span>/some/path/certs:/certs<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-p<span class="w"> </span><span class="m">8780</span>:8780<span class="w"> </span><span class="se">\</span>
@@ -820,6 +820,7 @@ firewall-cmd<span class="w"> </span>--reload
 <span class="w">  </span>-d<span class="w"> </span>ghcr.io/nextcloud/nextcloud-appapi-harp:release
 </pre></div>
 </div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">192.168.0.0/24</span></code> with the IP address or subnet of your reverse proxy (Host3).</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li><p>On the Host3 Apache Reverse Proxy - Reverse proxy redirections</p></li>

@@ -358,6 +358,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#all-other-configuration-options">All other configuration options</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#dbdriveroptions">dbdriveroptions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sqlite-journal-mode">sqlite.journal_mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sqlite-busy-timeout">sqlite.busy_timeout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mysql-utf8mb4">mysql.utf8mb4</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mysql-collation">mysql.collation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pgsql-ssl">pgsql_ssl</a></li>
@@ -3395,6 +3396,16 @@ does not verify the server cert except <code class="docutils literal notranslate
 </div>
 <p>SQLite3 journal mode can be specified using this configuration parameter -
 can be <code class="docutils literal notranslate"><span class="pre">'WAL'</span></code> or <code class="docutils literal notranslate"><span class="pre">'DELETE'</span></code>. See <a class="reference external" href="https://www.sqlite.org/wal.html">https://www.sqlite.org/wal.html</a> for more details.</p>
+</section>
+<section id="sqlite-busy-timeout">
+<h3>sqlite.busy_timeout<a class="headerlink" href="#sqlite-busy-timeout" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'sqlite.busy_timeout'</span> <span class="o">=&gt;</span> <span class="mi">30000</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Number of milliseconds a SQLite3 connection will wait for a lock held by
+another connection to clear before giving up with a “database is locked”
+error. See <a class="reference external" href="https://www.sqlite.org/pragma.html#pragma_busy_timeout">https://www.sqlite.org/pragma.html#pragma_busy_timeout</a> for
+more details.</p>
 </section>
 <section id="mysql-utf8mb4">
 <h3>mysql.utf8mb4<a class="headerlink" href="#mysql-utf8mb4" title="Link to this heading"></a></h3>
