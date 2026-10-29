@@ -98,6 +98,42 @@ fields:
   name (e.g., localhost:5432)."*
 * **Database tablespace** *(Oracle only)*: Shown only when Oracle is selected.
 
+.. _installation_wizard_database_encryption_label:
+
+Encrypted database connection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 35
+
+When the database does not run on the same host as Nextcloud, the connection should be encrypted so
+that the credentials and all queries are not sent in plaintext. For MySQL/MariaDB and PostgreSQL the
+wizard shows a collapsed **Encrypted database connection** section with the following fields. They
+are applied before the first connection is opened, so the installation itself already uses an
+encrypted connection.
+
+* **Encryption mode** *(PostgreSQL only)*: Encryption mode of the connection. Supported modes are
+  ``disable``, ``allow``, ``prefer``, ``require``, ``verify-ca``, and ``verify-full``. Only
+  ``verify-full`` verifies that the certificate of the database server was issued for the hostname
+  used to connect.
+* **CA certificate path**: Path to the CA certificate the database server is verified against.
+* **Client certificate path**: Path to the client certificate used to authenticate against the
+  database server.
+* **Client certificate key path**: Path to the private key belonging to the client certificate.
+* **Certificate revocation list path** *(PostgreSQL only)*: Path to the certificate revocation list.
+* **Do not verify that the server certificate matches the database host** *(MySQL/MariaDB only)*:
+  MySQL and MariaDB verify this by default. Enable this option when the certificate of the database
+  server was not issued for the hostname used to connect.
+
+The client certificate and its key have to be provided together, and all certificates and keys have
+to be readable by the web server. If a value is invalid, the wizard reports the error and the
+installation does not proceed.
+
+Nextcloud stores the resulting configuration as ``dbdriveroptions`` (MySQL/MariaDB) or ``pgsql_ssl``
+(PostgreSQL) in ``config.php``, as described in
+:doc:`../configuration_server/config_sample_php_parameters`. The same connection can be configured
+without using the wizard, see :ref:`autoconfig_database_encryption_label` for autoconfig files and
+:ref:`command_line_installation_ssl_label` for ``occ maintenance:install``.
+
 Automatic database user creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -138,6 +174,9 @@ If an autoconfig file is detected, the wizard displays a success notice:
 values from the config file."* The **Storage & database** section is
 automatically collapsed when the autoconfig provides valid values. For
 details on autoconfig files, see :doc:`automatic_configuration`.
+
+The fields of the **Encrypted database connection** section are prefilled from an autoconfig file as
+well, see :ref:`autoconfig_database_encryption_label`.
 
 .. figure:: images/install-wizard-autoconfig.png
    :scale: 75%
@@ -187,6 +226,6 @@ A typical configuration looks like this::
 
 When a user tries a URL that is not whitelisted the following error appears:
 
-.. figure:: images/install-wizard-a4.png
+.. figure:: images/install-wizard-untrusted-domain.png
    :scale: 75%
    :alt: Error message when URL is not whitelisted
