@@ -22,6 +22,10 @@ Files and notifications
 Contacts and Calendar
 ---------------------
 
+.. note:: These instructions use DAVx⁵. Other open-source CalDAV/CardDAV clients, such as
+   `KashCal <https://f-droid.org/packages/org.onekash.kashcal>`_, also sync Nextcloud
+   calendars and contacts.
+
 With the Nextcloud mobile app
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
