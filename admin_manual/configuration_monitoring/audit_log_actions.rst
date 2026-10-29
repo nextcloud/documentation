@@ -296,6 +296,35 @@ Sharing
      - ``sharing.share.restored``
      - A recipient restored a share they had removed before.
 
+Share download limits
+---------------------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 35 40
+   :class: configuration-table
+
+   * - Friendly name
+     - Event name
+     - Description
+   * - Set share download limit
+     - ``files_downloadlimit.share_limit.set``
+     - The download limit of a public link or email share was set or changed. This also resets the download count of
+       the share.
+   * - Remove share download limit
+     - ``files_downloadlimit.share_limit.removed``
+     - The download limit of a public link or email share was removed.
+   * - Download limit reached
+     - ``files_downloadlimit.share_limit.reached``
+     - A public link or email share was deleted automatically because its download limit was reached. The deletion of
+       the share is also recorded as ``sharing.share.deleted``.
+   * - Change default download limit
+     - ``files_downloadlimit.default_limit.updated``
+     - An administrator set or changed the default download limit for new public link and email shares.
+   * - Remove default download limit
+     - ``files_downloadlimit.default_limit.removed``
+     - An administrator removed the default download limit for new public link and email shares.
+
 Unified sharing
 ---------------
 
