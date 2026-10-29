@@ -16,6 +16,7 @@ Table of contents
     talk/index
     collectives/index
     desktop/index
+    office_desktop_editors
     userpreferences
     universal_access
     user_2fa
