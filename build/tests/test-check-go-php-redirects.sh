@@ -12,8 +12,10 @@ trap 'rm -rf "$tmp"' EXIT
 
 failures=0
 
-mkdir -p "$tmp/build/admin_manual/ai"
+mkdir -p "$tmp/build/admin_manual/ai" "$tmp/build/user_manual/en/files"
 echo '<html></html>' > "$tmp/build/admin_manual/index.html"
+echo '<html></html>' > "$tmp/build/user_manual/en/index.html"
+echo '<html></html>' > "$tmp/build/user_manual/en/files/access_webdav.html"
 echo '<section id="improve-ai-task-pickup-speed"></section>' > "$tmp/build/admin_manual/ai/overview.html"
 
 # Runs the check on a go.php holding the given mapping lines, prints exit code and errors
@@ -39,6 +41,14 @@ assert_eq() {
 assert_eq "valid page, directory and anchor targets pass" "0 " "$(run_check \
 	"'admin': '/admin_manual'," \
 	"'admin-ai-pickup-speed': '/admin_manual/ai/overview.html#improve-ai-task-pickup-speed'")"
+
+assert_eq "user manual targets are checked in English, like go.php redirects them" "0 " "$(run_check \
+	"'user': '/user_manual'," \
+	"'user-webdav': '/user_manual/de/files/access_webdav.html',")"
+
+assert_eq "user manual target without a language segment fails" \
+	"1 ::error file=go.html::'user-webdav': /user_manual/en/access_webdav.html does not exist in the build" \
+	"$(run_check "'user-webdav': '/user_manual/files/access_webdav.html',")"
 
 assert_eq "target without leading slash fails" \
 	"1 ::error file=go.html::'admin-ai-pickup-speed': 'admin_manual/ai/overview.html' must start with /" \

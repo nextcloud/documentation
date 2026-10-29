@@ -26,17 +26,23 @@ while read -r key target; do
 		continue
 	fi
 
-	path="${build_dir}${target%%#*}"
+	page="${target%%#*}"
+	# Like go.php, put the language in the second user_manual segment, English here
+	if [[ "$page" =~ ^/user_manual(/[^/]*)?(/.*)?$ ]]; then
+		page="/user_manual/en${BASH_REMATCH[2]}"
+	fi
+
+	path="${build_dir}${page}"
 	if [[ -d "$path" ]]; then
 		path="${path%/}/index.html"
 	fi
 	if [[ ! -f "$path" ]]; then
-		fail "'${key}': ${target%%#*} does not exist in the build"
+		fail "'${key}': ${page} does not exist in the build"
 		continue
 	fi
 
 	if [[ "$target" == *#* ]] && ! grep -qF "id=\"${target#*#}\"" "$path"; then
-		fail "'${key}': anchor #${target#*#} not found in ${target%%#*}"
+		fail "'${key}': anchor #${target#*#} not found in ${page}"
 	fi
 done < <(sed -nE "s/^[[:space:]]*'([a-z0-9-]+)': '([^']*)',?[[:space:]]*$/\1 \2/p" "$go_php")
 
