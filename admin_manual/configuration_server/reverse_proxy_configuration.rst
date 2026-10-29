@@ -27,6 +27,12 @@ to define the servers Nextcloud should trust as proxies. This parameter
 provides protection against client spoofing, and you should secure those
 servers as you would your Nextcloud server.
 
+.. note:: Hostnames are **not** resolved. Entries such as a Docker Compose
+   service name (for example ``nginx``) will not match. Use the proxy's IP
+   address or a CIDR range that covers the Docker / private network instead
+   (for example ``172.16.0.0/12`` or ``10.0.0.0/8``). Pair this with
+   ``overwritehost`` / ``overwriteprotocol`` when automatic detection fails.
+
 A reverse proxy can define HTTP headers with the original client IP address,
 and Nextcloud can use those headers to retrieve that IP address. Nextcloud uses
 the de-facto standard header 'X-Forwarded-For' by default, but this can be
