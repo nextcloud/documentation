@@ -43,16 +43,32 @@ In the submenu, you can select an appropriate time to receive a notification lat
 
 You can also forward a message to another conversation using the ``...`` menu, or send it to your **Note to self** conversation for personal reference.
 
+Global message search
+----------------------
+
+You can search for messages across all your conversations at once from the conversation list search field, without
+opening each conversation individually. When you start typing, select the ``Messages`` filter below the search field
+to show matching messages in addition to conversations. Talk remembers your choice.
+
+Results show a preview of the matching message and its conversation, so you can jump straight to it. The list shows
+up to 10 results, so make your search term more specific if you do not find the message.
+
+.. TODO: feature is live in 25.0.0, mock screenshot below needs to be replaced with a real capture
+.. image:: images/chat-search-messages.png
+   :alt: Talk global search results showing matching messages across conversations
+   :width: 500px
+
 Messages search in a conversation
 ---------------------------------
 
-In addition to global unified search, you can search for messages within a specific conversation. In the content sidebar of a conversation, click the search icon to open the search tab.
+In addition to the global message search, you can search for messages within a specific conversation. In the content sidebar of a conversation, click the search icon to open the search tab.
 
 .. image:: images/chat-search-messages.png
    :alt: Talk in-conversation message search field
    :width: 500px
 
-You can narrow down your search by using filters such as date range, and sender.
+You can narrow down your search by using filters such as date range, and sender. To see all messages from one
+participant, select them in the ``From User`` filter and leave the search field empty.
 
 .. image:: images/chat-search-messages-tab.png
    :alt: Talk message search with date range and sender filter options

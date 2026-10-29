@@ -72,9 +72,11 @@ The Talk Dashboard is your central hub for managing and accessing your conversat
 
 - Unread mentions and messages in private chats;
 - Message reminders, scheduled to be tackled on later;
-- Scheduled meetings, with event details and shortcut buttons to join them;
-- Shortcut actions to create new conversations, join open ones, or quickly check your media devices.
+- Upcoming meetings, with event details and shortcut buttons to join them;
+- Shortcut actions to start a meeting now, create new conversations, join open ones, call a phone number,
+  or check your media devices.
 
+.. TODO: update screenshot to reflect the redesigned Talk dashboard panel
 .. image:: images/talk-dashboard.png
     :alt: Talk dashboard showing recent conversations and shortcut actions
     :width: 600px
@@ -96,6 +98,7 @@ If you want to create a custom group conversation, click the button next to the 
 
 You can then pick a name for the conversation, put a description, and set up an avatar for it (with uploaded photo or emoji), and select if the conversation should be open to external users and if other users on the server can see and join the conversation.
 
+.. TODO: update screenshot to show the Conversation type field in the new conversation dialog
 .. image:: images/creating-open-conversation.png
     :alt: Talk new conversation setup dialog for name, description, and access type
     :width: 500px
@@ -120,12 +123,14 @@ You can filter your conversations using the filter button next to the search fie
 2. **Unread messages**: view unread messages in all conversations you are a part of.
 3. **Meeting conversations**: view all conversations, created for upcoming or past events.
 
+.. TODO: update screenshot to show the last message time next to each conversation
 .. image:: images/filters-menu.png
     :alt: Talk conversation list filter menu
     :width: 400px
 
 You can then clear the filter from the filters menu.
 
+.. TODO: update screenshot to show the last message time next to each conversation
 .. image:: images/clear-filter.png
     :alt: Talk conversation list with active filter and clear filter option
     :width: 400px
@@ -135,6 +140,7 @@ Archive conversations
 You can archive conversations that you no longer need to see in your main conversation list. When a conversation is archived, it will be moved to the ``Archived conversations`` section.
 An archived conversation will not appear in your main conversation list, but it will still align with notification level set in its settings.
 
+.. TODO: update screenshot to show the last message time next to each conversation
 .. image:: images/archived-conversations-list.png
     :alt: Talk list of archived conversations
     :width: 400px
@@ -145,6 +151,15 @@ The list is accessible from the button at the bottom of the navigation bar.
     :alt: Talk navigation bar showing the archived conversations button
     :width: 400px
 
+To unarchive conversations automatically when new messages arrive, open the Talk settings and choose an option
+for ``Unarchive conversation when new messages are received``:
+
+- **Off**: Keep conversations archived (default)
+- **@-mentions only**: Unarchive on a mention or a reply to your message, and on any message in private chats
+- **All messages**: Unarchive on any new message
+
+Your own messages never unarchive a conversation.
+
 Managing a conversation
 -----------------------
 
@@ -152,6 +167,7 @@ You are always moderator in your new conversation. In the participant list you c
 
 Changing permissions of a user that joined a public conversation will also permanently add them to the conversation.
 
+.. TODO: update screenshot to show the owner badge and owner actions in the participant menu
 .. image:: images/participant-menu.png
     :alt: Talk participant menu showing permission and moderation options
     :width: 400px
@@ -164,9 +180,46 @@ Moderators can configure the conversation. Select ``Conversation settings`` from
 
 Here you can configure the description, guest access, if the conversation is visible to others on the server and more.
 
+.. TODO: update screenshot to show the Danger zone section with the Preserve conversation setting
 .. image:: images/conversation-settings-dialog.png
    :alt: Talk conversation settings dialog showing description and access configuration
    :width: 600px
+
+Owner role
+----------
+
+The person who created a group conversation is its owner. Owners are marked with the ``Owner`` badge in the
+participant list. An owner can promote other users to owners with ``Promote to owner`` in the participant list
+``...`` menu. To demote an owner, choose ``Demote from owner to moderator`` or ``Demote from owner to participant``.
+Guests, federated users and phone participants cannot become owners.
+
+.. TODO: feature is live in 25.0.0, mock screenshot below needs to be replaced with a real capture
+.. image:: images/participant-menu.png
+    :alt: Talk participant menu with promote/demote owner options
+    :width: 400px
+
+Only owners can promote or demote owners. An owner cannot be removed from the conversation, so demote them first.
+You can step down from the owner role yourself, but only to moderator. The last owner or moderator of a conversation
+cannot be demoted to participant.
+
+Preserved conversations
+------------------------
+
+An owner can mark a conversation as preserved, for conversations that must be kept for record-keeping or compliance
+reasons. While a conversation is preserved, nobody can delete it, clear its chat history, or change its guest access
+and whether other users on the server can see and join it.
+
+To preserve a conversation, open ``Conversation settings`` and turn on ``Preserve conversation`` in the
+``Danger zone`` section. Moderators can see this setting, but only owners can change it. To stop preserving the
+conversation, turn the setting off and confirm by typing the conversation token.
+
+.. note:: Preserving does not stop the automatic deletion of a classified conversation after a call.
+   See :doc:`conversation_presets`.
+
+.. TODO: feature is live in 25.0.0, mock screenshot below needs to be replaced with a real capture
+.. image:: images/conversation-settings-dialog.png
+    :alt: Talk conversation settings showing the preserve conversation option
+    :width: 600px
 
 Ban participants
 ----------------
