@@ -111,11 +111,29 @@ The last missing part is to register both classes inside **<myapp>/appinfo/info.
    To register personal sections and settings class use `<personal-section>` and
    `<personal>` instead.
 
-Additionally since Nextcloud 23, groups can be granted authorization to access individual
-admin settings (`see admin docs <https://docs.nextcloud.com/server/33/admin_manual/configuration_server/admin_delegation_configuration.html>`_).
-This is a feature that needs to be enabled for each admin setting class.
-To do so, the setting class needs to implement `IDelegatedSettings` instead of `ISettings`
-and implement two additional methods.
+Delegated administration
+------------------------
+
+.. versionadded:: 23
+
+Nextcloud has built-in functionality which permits `administrators to delegate authority
+<https://docs.nextcloud.com/server/33/admin_manual/configuration_server/admin_delegation_configuration.html>`_
+to others without granting them full administration privileges (and without making them a
+member of the ``admin`` group).
+
+Specific groups can be granted authorization to access individual admin settings. This is a
+feature that needs to be enabled for each admin setting class. To do so, the setting class
+needs to implement ``IDelegatedSettings`` instead of ``ISettings`` and implement two additional
+methods.
+
+Authorizing app-config keys
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The values returned by ``getAuthorizedAppConfig()`` define which app-config keys delegated
+administrators may modify. Use exact key names whenever possible. Regular expressions are
+supported for dynamic key names, but should match the complete key using ``^`` and ``$``.
+Avoid unanchored expressions such as ``/notes_.*/``, which can match a key that merely
+contains the intended prefix.
 
 .. code-block:: php
 
