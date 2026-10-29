@@ -185,8 +185,9 @@ Element sizes and spacing
 Icons
 -----
 
-Icons can be used to communicate the intent of an action, or to provide visual interest to an element. On the browser always use Material Symbols (outlined, 20px).
+Icons can be used to communicate the intent of an action, or to provide visual interest to an element. On the browser always use `Material Symbols <https://fonts.google.com/icons>`__ (outlined, 20px).
 
--  Never use a custom icon except for the icon of the app itself. Still, most apps use an app icon from Material Symbols to keep consistency.
+-  Never use a custom icon except for the icon of the app itself.
 -  When possible, use text together with icons so it’s clear what they refer to.
+-  For the main app icon, you can use a custom icon or just pick a fitting one from `Material Symbols <https://fonts.google.com/icons>`__ to keep consistency. While the interface icons should be outlined, we recommend using the filled version for the main app icon so it stands out better, also on the header background which can be an image and/or themed.
 -  Elements that contain AI-generated content should have a clear indication that they are AI-generated in the form of a written disclaimer or by the use of the Assistant icon ('creation' in Material Symbols) in the Assistant color.
