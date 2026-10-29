@@ -538,7 +538,7 @@ Event fired after the filesystem has been torn down
 .. versionadded:: 36
 
 A user opened a node in a client, as reported by that client.
-Unlike {@see \BeforeNodeReadEvent}, this is not dispatched when the content
+Unlike ``OCP\Files\Events\Node\BeforeNodeReadEvent``, this is not dispatched when the content
 is read (sync, previews, downloads) but only when a client says the user
 actually opened it.
 
@@ -755,9 +755,9 @@ such as:
 This event can be emitted to check if a user is allowed to perform an action, such that the receivers would become aware of the resources.
 If the resources have a distinction between an owner and a initiator, the event must be emitted for each separately.
 Emitters may omit one or multiple properties, if they are not known.
-Emitters must call {@see \isInteractionRestricted} instead of dispatching the event manually, to ensure exception handling and audit logging is done correctly.
+Emitters must call ``OCP\Interaction\isInteractionRestricted`` instead of dispatching the event manually, to ensure exception handling and audit logging is done correctly.
 Listeners may ignore any of the properties and only check the ones that are relevant to them.
-Listeners must throw an {@see \InteractionRestrictedException}, if they want to restrict the interaction.
+Listeners must throw an ``OCP\Interaction\InteractionRestrictedException``, if they want to restrict the interaction.
 
 ``OCP\Log\Audit\CriticalActionPerformedEvent``
 **********************************************
@@ -959,10 +959,10 @@ Event that allows to register a feature policy header to a request.
 
 Authorization gate for deleting an app-managed share through a share-review app.
 Background: Apps such as Deck or Tables manage their own shares outside of
-the regular sharing backend ({@see \OCP\Share\IManager}). They can expose
+the regular sharing backend (``OCP\Share\IManager``). They can expose
 those shares to a share-review app — a compliance tool that lets designated
 operators audit and revoke shares across all apps — by implementing
-{@see \OCP\Share\ShareReview\IShareReviewSource}. When a share-review
+``OCP\Share\ShareReview\IShareReviewSource``. When a share-review
 operator requests the deletion of such a share, the deletion is executed by
 the app that owns the share, not by the share-review app. The owning app
 has no way of knowing whether the acting user is actually authorized to
@@ -971,7 +971,7 @@ closes that gap: it lets the owning app ask "may the current user delete
 this share on behalf of a share review?" before deleting anything.
 
 Dispatched by: the app that owns the share, i.e. the
-{@see \OCP\Share\ShareReview\IShareReviewSource} implementation, at the
+``OCP\Share\ShareReview\IShareReviewSource`` implementation, at the
 beginning of its deleteShare() method:
 
   public function deleteShare(string $shareId): bool {

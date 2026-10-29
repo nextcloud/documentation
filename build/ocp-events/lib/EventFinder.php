@@ -69,7 +69,10 @@ class EventFinder {
 				continue;
 			}
 
-			$docBlock = $docBlockFactory->create($reflection->getDocComment() ?: '/** */');
+			$docBlock = $docBlockFactory->create(
+				$reflection->getDocComment() ?: '/** */',
+				(new \phpDocumentor\Reflection\Types\ContextFactory())->createFromReflector($reflection),
+			);
 
 			$sinceTags = array_map(function (\phpDocumentor\Reflection\DocBlock\Tags\Since $tag) {
 				$data = [
@@ -79,7 +82,7 @@ class EventFinder {
 
 				$description = $tag->getDescription();
 				if ($description instanceof \phpDocumentor\Reflection\DocBlock\Description) {
-					$data['description'] = $description->render();
+					$data['description'] = $this->renderDescription($description);
 				}
 
 				return $data;
@@ -92,7 +95,7 @@ class EventFinder {
 			$result[] = new EventClass(
 				$reflection->getName(),
 				$docBlock->getSummary(),
-				$docBlock->getDescription()->render(),
+				$this->renderDescription($docBlock->getDescription()),
 				$sinceTags
 			);
 		}
@@ -118,5 +121,17 @@ class EventFinder {
 
 		usort($versions, 'version_compare');
 		return [['version' => $versions[0], 'description' => '']];
+	}
+
+	private function renderDescription(\phpDocumentor\Reflection\DocBlock\Description $description): string {
+		$tags = array_map(static function (\phpDocumentor\Reflection\DocBlock\Tag $tag) {
+			if ($tag instanceof \phpDocumentor\Reflection\DocBlock\Tags\See) {
+				return '``' . ltrim((string)$tag->getReference(), '\\') . '``';
+			}
+
+			return '{' . $tag . '}';
+		}, $description->getTags());
+
+		return vsprintf($description->getBodyTemplate(), $tags);
 	}
 }
