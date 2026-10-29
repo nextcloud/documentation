@@ -599,20 +599,17 @@ db:convert-type
 
 .. _database_add_indices_label:
 
-Convert the Nextcloud database from SQLite to MySQL, MariaDB, or
-PostgreSQL. SQLite is suitable for testing and single-user setups, but
-production servers with multiple users should use one of the other
-supported databases.
+Convert the Nextcloud database from one type to another.
+SQLite is suitable for testing and single-user setups, but production servers with multiple users should use one of the other supported databases.
 
 Requirements:
 
 * The target database and its PHP connector must be installed.
-* Login credentials for a database admin user.
-* The database port number, if non-standard.
+* The target database configuration must be included in a second config file alongside the current ``config.php``.
 
-This example converts from SQLite to MySQL/MariaDB::
+This example converts from the current configuration in ``config.php`` to a new configuration in ``newConfig.php``::
 
- sudo -E -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1 oc_database
+ sudo -E -u www-data php occ db:convert-type newConfig.php
 
 For a detailed walkthrough see
 :doc:`../configuration_database/db_conversion`.
