@@ -536,6 +536,7 @@ When Oracle (``oci``) is supported (also when you don't list any databases), Nex
 * Sequence names can not be longer than 30 characters
 * String columns can not be NotNull and have an empty string as default value when being added in a later migration
 * String columns can not have a length longer than 4.000 characters, use text instead
+* Existing string columns can not be changed to text in place. Oracle stores text as ``CLOB`` and rejects ``ALTER TABLE ... MODIFY`` from ``VARCHAR2`` to ``CLOB`` with ``ORA-22858``, even on an empty table. This is not checked automatically. See :ref:`oracle-string-to-text`.
 * Boolean columns can not be NotNull
 
 Additionally we assume that Oracle support means you are interested in scaling and therefore check additional restrictions of other databases in clustered setups:
@@ -546,3 +547,25 @@ On top of that there are some configs which influence the queries you can run. K
 
 * MySQL deleting lot of entries - Use a ``LIMIT`` on the delete (not supported on other databases), see this `sample of the activity app <https://github.com/nextcloud/activity/blob/master/lib/Data.php#L385-L397>`_
 * MySQL ``ONLY_FULL_GROUP_BY`` - All values selected in a query with a ``GROUP BY`` need to be aggregated as per `MySQL manual <https://dev.mysql.com/doc/refman/8.0/en/sql-mode.html#sqlmode_only_full_group_by>`_
+
+.. _oracle-string-to-text:
+
+Changing a string column to text
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Oracle can not convert a ``VARCHAR2`` column to ``CLOB`` in place, so a migration that calls ``setType()`` to change a string column to text fails on Oracle. Do the change out of place instead, with each step in its own migration class:
+
+1. Add a nullable text column ``<name>_copy`` and copy the data into it in ``postSchemaChange()``.
+2. Drop ``<name>``.
+3. Add ``<name>`` again as a nullable text column and copy the data back in ``postSchemaChange()``.
+4. Drop ``<name>_copy``.
+
+The steps in ``apps/dav/lib/Migration/Version1008Date20181105*.php`` follow this pattern.
+
+Things to keep in mind:
+
+* **One migration class per step.** Within a single step only the end state is compared with the database. Dropping and re-adding a column under the same name in one step is therefore an in-place type change again, and fails with ``ORA-22858``.
+* **The column ends up nullable.** Once a column is ``CLOB``, Oracle rejects any ``MODIFY`` that names the type, and Doctrine always names it, so ``NOT NULL`` can not be added back through the schema API. Adding a text column as ``NotNull`` with an empty-string default is also rejected by Nextcloud's schema check, as for string columns.
+* **Guard the data copies.** ``postSchemaChange()`` runs even when ``changeSchema()`` returns ``null``. Check that the columns you copy between exist, so the step does not fail on instances where the change was already made.
+* **Keeping NOT NULL.** If the column must stay ``NOT NULL``, do the conversion on Oracle only, with raw SQL in ``preSchemaChange()``: add a ``CLOB`` copy, copy and verify the data, drop the original, rename the copy. ``changeSchema()`` then sees a text column and changes nothing. Core's ``Version34000Date20260318095645`` does this for ``oc_jobs.argument``.
+* **Fixing an already released migration.** Every migration that has not run yet is executed in version order, so a new migration dated after a released one that fails never gets to run. Change the failing migration itself. Instances where it already succeeded have it recorded and do not run it again.
