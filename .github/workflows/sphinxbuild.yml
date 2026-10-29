@@ -46,6 +46,25 @@ jobs:
           name: ${{ needs.build.outputs.artifact_name }}
           path: stage/
 
+      # go.php is only deployed from master, so only check it against the master build
+      - name: Checkout go.php and its check
+        if: needs.build.outputs.branch_name == 'latest'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          path: repo
+          sparse-checkout: |
+            go.php/index.html
+            build/check-go-php-redirects.sh
+            build/tests/test-check-go-php-redirects.sh
+          sparse-checkout-cone-mode: false
+
+      - name: Check go.php redirect targets
+        if: needs.build.outputs.branch_name == 'latest'
+        run: |
+          bash repo/build/tests/test-check-go-php-redirects.sh
+          repo/build/check-go-php-redirects.sh repo/go.php/index.html "stage/${{ needs.build.outputs.branch_name }}"
+
       - name: Strip canonical links from validation HTML
         run: |
           find "stage/${{ needs.build.outputs.branch_name }}" -name '*.html' -print0 | while IFS= read -r -d '' f; do
