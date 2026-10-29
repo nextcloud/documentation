@@ -22,6 +22,14 @@ This event is triggered when an app is disabled.
 
 This event is triggered when an app is enabled.
 
+``OCP\App\Events\AppsLoadedEvent``
+**********************************
+
+.. versionadded:: 35
+
+This event is triggered when all enabled apps are loaded and available.
+So this can be used if your app needs to interact with other apps, which is not guaranteed to be available during the app bootstrapping phase.
+
 ``OCP\App\Events\AppUpdateEvent``
 *********************************
 
@@ -70,7 +78,7 @@ Emitted when the authentication fails, but only if the login name can be associa
 
 .. versionadded:: 32
 
-Emitted when an authentication token is invalidated.
+Emitted when an authentication token is invalidated
 
 ``OCP\Authentication\TwoFactorAuth\RegistryEvent``
 **************************************************
@@ -170,12 +178,6 @@ This can be used to inject a Sabre plugin for example
 .. versionadded:: 32
 
 
-``OCP\Collaboration\AutoComplete\AutoCompleteEvent``
-****************************************************
-
-.. versionadded:: 16
-
-
 ``OCP\Collaboration\AutoComplete\AutoCompleteFilterEvent``
 **********************************************************
 
@@ -214,8 +216,37 @@ Class CommentsEntityEvent
 ******************************
 
 .. versionadded:: 9
+   In the future, once the deprecated methods are removed, this class will be abstract.
 
 Class CommentsEvent
+
+``OCP\Comments\Events\BeforeCommentUpdatedEvent``
+*************************************************
+
+.. versionadded:: 33
+
+Class BeforeCommentAddedEvent
+
+``OCP\Comments\Events\CommentAddedEvent``
+*****************************************
+
+.. versionadded:: 33
+
+Class CommentAddedEvent
+
+``OCP\Comments\Events\CommentDeletedEvent``
+*******************************************
+
+.. versionadded:: 33
+
+Class CommentRemovedEvent
+
+``OCP\Comments\Events\CommentUpdatedEvent``
+*******************************************
+
+.. versionadded:: 33
+
+Class CommentUpdatedEvent
 
 ``OCP\Config\BeforePreferenceDeletedEvent``
 *******************************************
@@ -246,6 +277,12 @@ between two users. This can be used to build better recommendations and
 suggestions in user interfaces.
 Emitters should add at least one identifier (uid, email, federated cloud ID)
 of the recipient of the interaction.
+
+``OCP\ContextChat\Events\ContentProviderRegisterEvent``
+*******************************************************
+
+.. versionadded:: 32
+
 
 ``OCP\DB\Events\AddMissingColumnsEvent``
 ****************************************
@@ -302,6 +339,14 @@ convenience re-implementation of \Symfony\Component\GenericEvent against
 .. versionadded:: 22
 
 
+``OCP\Files\Cache\CacheEntriesRemovedEvent``
+********************************************
+
+.. versionadded:: 34
+
+Meta-event wrapping multiple CacheEntryRemovedEvent for when an existing
+entry in the cache gets removed.
+
 ``OCP\Files\Cache\CacheEntryInsertedEvent``
 *******************************************
 
@@ -315,6 +360,8 @@ Event for when an existing entry in the cache gets inserted
 .. versionadded:: 21
 
 Event for when an existing entry in the cache gets removed
+Prefer using CacheEntriesRemovedEvent as it is more efficient when deleting
+multiple files at the same time.
 
 ``OCP\Files\Cache\CacheEntryUpdatedEvent``
 ******************************************
@@ -323,38 +370,24 @@ Event for when an existing entry in the cache gets removed
 
 Event for when an existing entry in the cache gets updated
 
-``OCP\Files\Cache\CacheInsertEvent``
-************************************
-
-.. versionadded:: 16
-
-Event for when a new entry gets added to the cache
-
-``OCP\Files\Cache\CacheUpdateEvent``
-************************************
-
-.. versionadded:: 16
-
-Event for when an existing entry in the cache gets updated
-
 ``OCP\Files\Config\Event\UserMountAddedEvent``
 **********************************************
 
-.. versionadded:: 31
+.. versionadded:: 32
 
 Event emitted when a user mount was added.
 
 ``OCP\Files\Config\Event\UserMountRemovedEvent``
 ************************************************
 
-.. versionadded:: 31
+.. versionadded:: 32
 
 Event emitted when a user mount was removed.
 
 ``OCP\Files\Config\Event\UserMountUpdatedEvent``
 ************************************************
 
-.. versionadded:: 31
+.. versionadded:: 32
 
 Event emitted when a user mount was moved.
 
@@ -377,7 +410,7 @@ directly.
 
 .. versionadded:: 31
 
-Event triggered before the file system is setup
+Event triggered before the file system is set up.
 
 ``OCP\Files\Events\BeforeFolderScannedEvent``
 *********************************************
@@ -385,14 +418,27 @@ Event triggered before the file system is setup
 .. versionadded:: 18
 
 
+``OCP\Files\Events\BeforeRemotePropfindEvent``
+**********************************************
+
+.. versionadded:: 33
+
+This event is fired before a PROPFIND request is sent to remote WebDAV storage
+Used to extend the list of properties to request additional data from the remote server
+
 ``OCP\Files\Events\BeforeZipCreatedEvent``
 ******************************************
 
 .. versionadded:: 25
 
-This event is triggered before a archive is created when a user requested
+This event is triggered before an archive is created when a user requested
 downloading a folder or multiple files.
 By setting `successful` to false the tar creation can be aborted and the download denied.
+
+If `allowsPartialArchive` returns true, listeners should only block the
+archive creation if access to the entire directory or all files is denied.
+Single nodes can be excluded from the archive with `addNodeFilter`.
+Listeners can always block the whole archive with `setSuccessful(false)`.
 
 ``OCP\Files\Events\FileCacheUpdated``
 *************************************
@@ -486,6 +532,21 @@ Event fired after the filesystem has been torn down
 .. versionadded:: 20
 
 
+``OCP\Files\Events\Node\NodeOpenedEvent``
+*****************************************
+
+.. versionadded:: 36
+
+A user opened a node in a client, as reported by that client.
+Unlike {@see \BeforeNodeReadEvent}, this is not dispatched when the content
+is read (sync, previews, downloads) but only when a client says the user
+actually opened it.
+
+It is meant for statistics only, like recommending the files a user works
+with. Clients report it when they choose to, so it can be missing, repeated
+or sent for a node the user never looked at. Never use it for permissions,
+access control, auditing, or anything else that has to be reliable.
+
 ``OCP\Files\Events\Node\NodeRenamedEvent``
 ******************************************
 
@@ -526,6 +587,15 @@ Event fired after the filesystem has been torn down
 ********************************************
 
 .. versionadded:: 28
+
+
+``OCP\Files\Events\UserHomeSetupEvent``
+***************************************
+
+.. versionadded:: 34
+
+Event triggered after the users home mount has been setup, before any other
+mounts are setup.
 
 ``OCP\Files\ObjectStore\Events\BucketCreatedEvent``
 ***************************************************
@@ -657,6 +727,38 @@ This event is mostly triggered when a registered name is added to the files scan
 .. versionadded:: 18
 
 
+``OCP\Install\Events\InstallationCompletedEvent``
+*************************************************
+
+.. versionadded:: 33
+
+Emitted when the Nextcloud installation has been completed successfully.
+This event is dispatched after:
+- The database has been configured and migrations have run
+- The admin user has been created (if applicable)
+- Default apps have been installed
+- Background jobs have been configured
+- The system has been marked as installed
+
+Apps can listen to this event to perform additional actions after installation,
+such as:
+- Sending notification emails
+- Triggering external APIs
+- Initializing app-specific data
+- Setting up integrations
+
+``OCP\Interaction\RestrictInteractionEvent``
+********************************************
+
+.. versionadded:: 34.0.2
+
+This event can be emitted to check if a user is allowed to perform an action, such that the receivers would become aware of the resources.
+If the resources have a distinction between an owner and a initiator, the event must be emitted for each separately.
+Emitters may omit one or multiple properties, if they are not known.
+Emitters must call {@see \isInteractionRestricted} instead of dispatching the event manually, to ensure exception handling and audit logging is done correctly.
+Listeners may ignore any of the properties and only check the ones that are relevant to them.
+Listeners must throw an {@see \InteractionRestrictedException}, if they want to restrict the interaction.
+
 ``OCP\Log\Audit\CriticalActionPerformedEvent``
 **********************************************
 
@@ -682,6 +784,27 @@ Emitted before a system mail is sent. It can be used to alter the message.
 ****************************************************
 
 .. versionadded:: 31
+
+
+``OCP\OCM\Events\LocalOCMDiscoveryEvent``
+*****************************************
+
+.. versionadded:: 33
+
+Use this event to register additional resources before the API returns
+them in the OCM provider list and capability
+
+``OCP\OCM\Events\OCMEndpointRequestEvent``
+******************************************
+
+.. versionadded:: 33
+
+Use this event to catch and manage incoming OCM request
+
+``OCP\OCM\Events\OCMNotificationReceivedEvent``
+***********************************************
+
+.. versionadded:: 35
 
 
 ``OCP\OCM\Events\ResourceTypeRegisterEvent``
@@ -739,10 +862,7 @@ that it is not possible to use the `disallowXYZ` functions.
 
 .. versionadded:: 18
 
-Event to request a secure password to be generated.
-
-Since Nextcloud 31 this event also provides a ``getContext`` method
-allowing to apply different rules for different password context like account passwords or share passwords.
+Event to request a secure password to be generated
 
 ``OCP\Security\Events\ValidatePasswordPolicyEvent``
 ***************************************************
@@ -752,9 +872,6 @@ allowing to apply different rules for different password context like account pa
 This event can be emitted to request a validation of a password.
 If a password policy app is installed and the password
 is invalid, an `\OCP\HintException` will be thrown.
-
-Since Nextcloud 31 this event also provides a ``getContext`` method
-allowing to apply different rules for different password context like account passwords or share passwords.
 
 ``OCP\Security\FeaturePolicy\AddFeaturePolicyEvent``
 ****************************************************
@@ -817,6 +934,18 @@ Event that allows to register a feature policy header to a request.
 .. versionadded:: 28
 
 
+``OCP\Share\Events\ShareMovedEvent``
+************************************
+
+.. versionadded:: 33
+
+
+``OCP\Share\Events\ShareTransferredEvent``
+******************************************
+
+.. versionadded:: 33
+
+
 ``OCP\Share\Events\VerifyMountPointEvent``
 ******************************************
 
@@ -828,21 +957,66 @@ Event that allows to register a feature policy header to a request.
 
 .. versionadded:: 34.0.2
 
-Authorization gate for deleting an app-managed share through a share-review app. Dispatched by the app that owns
-the share (its ``OCP\Share\ShareReview\IShareReviewSource`` implementation) at the beginning of ``deleteShare()``,
-before anything is deleted. The share-review app listens to this event and answers with ``grantAccess()`` or
-``denyAccess()`` depending on whether the current user is an authorized share-review operator; apps that merely
-expose shares must not listen to it. The event is default-deny: if no listener responds, the share must not be
-deleted. Once denied, further grants are ignored and event propagation is stopped.
+Authorization gate for deleting an app-managed share through a share-review app.
+Background: Apps such as Deck or Tables manage their own shares outside of
+the regular sharing backend ({@see \OCP\Share\IManager}). They can expose
+those shares to a share-review app — a compliance tool that lets designated
+operators audit and revoke shares across all apps — by implementing
+{@see \OCP\Share\ShareReview\IShareReviewSource}. When a share-review
+operator requests the deletion of such a share, the deletion is executed by
+the app that owns the share, not by the share-review app. The owning app
+has no way of knowing whether the acting user is actually authorized to
+perform share reviews — only the share-review app knows that. This event
+closes that gap: it lets the owning app ask "may the current user delete
+this share on behalf of a share review?" before deleting anything.
+
+Dispatched by: the app that owns the share, i.e. the
+{@see \OCP\Share\ShareReview\IShareReviewSource} implementation, at the
+beginning of its deleteShare() method:
+
+  public function deleteShare(string $shareId): bool {
+      $event = new ShareReviewAccessCheckEvent('MyApp', $shareId);
+      $this->dispatcher->dispatchTyped($event);
+      if (!$event->isHandled() || !$event->isGranted()) {
+          return false; // default-deny: no listener means no access
+      }
+      // ... actually delete the share ...
+  }
+
+Listened to by: the share-review app. Its listener decides whether the
+current user is an authorized share-review operator (e.g. the app is
+enabled for the user) and answers with grantAccess() or denyAccess():
+
+  public function handle(Event $event): void {
+      if (!$event instanceof ShareReviewAccessCheckEvent) {
+          return;
+      }
+      if ($this->isShareReviewOperator()) {
+          $event->grantAccess();
+      } else {
+          $event->denyAccess('User is not a share-review operator.');
+      }
+  }
+
+Apps that merely expose shares must not listen to this event; answering it
+is the responsibility of the share-review app that triggered the deletion.
+
+Semantics:
+ - Default-deny: if no listener responds (isHandled() is false, e.g. no
+   share-review app is installed), the dispatcher must not delete the share.
+ - Deny wins: once denyAccess() is called, further grantAccess() calls are
+   ignored and propagation is stopped immediately.
+ - Multiple grants are harmless; the last listener to deny is authoritative.
 
 ``OCP\Share\ShareReview\RegisterShareReviewSourceEvent``
 ********************************************************
 
 .. versionadded:: 34.0.2
 
-Event dispatched by a share-review app to collect share sources from other apps. Listeners register the class name
-of their ``OCP\Share\ShareReview\IShareReviewSource`` implementation, whose ``getShares()`` method returns a list of
-``OCP\Share\ShareReview\ShareReviewEntry`` objects.
+Event dispatched by a share-review app to collect share sources from other
+apps. Listeners register the class name of their {@see IShareReviewSource}
+implementation; the share-review app resolves it from the dependency
+injection container.
 
 ``OCP\SpeechToText\Events\TranscriptionFailedEvent``
 ****************************************************
@@ -857,6 +1031,27 @@ This Event is emitted if a transcription of a media file using a Speech-To-Text 
 .. versionadded:: 27
 
 This Event is emitted when a transcription of a media file happened successfully
+
+``OCP\SystemTag\Events\TagCreatedEvent``
+****************************************
+
+.. versionadded:: 35
+
+Event triggered when creating a new tag.
+
+``OCP\SystemTag\Events\TagDeletedEvent``
+****************************************
+
+.. versionadded:: 35
+
+Event triggered when deleting a new tag.
+
+``OCP\SystemTag\Events\TagUpdatedEvent``
+****************************************
+
+.. versionadded:: 35
+
+Event triggered when updated a tag.
 
 ``OCP\SystemTag\ManagerEvent``
 ******************************
@@ -881,6 +1076,20 @@ Class MapperEvent
    Dispatched as a typed event
 
 Class SystemTagsEntityEvent
+
+``OCP\SystemTag\TagAssignedEvent``
+**********************************
+
+.. versionadded:: 32
+
+Event class for when a system tag is assigned to an object
+
+``OCP\SystemTag\TagUnassignedEvent``
+************************************
+
+.. versionadded:: 32
+
+Event class for when a system tag is unassigned from an object
 
 ``OCP\TaskProcessing\Events\GetTaskProcessingProvidersEvent``
 *************************************************************
@@ -1029,6 +1238,12 @@ Emitted when the user password has been updated.
 .. versionadded:: 18
 
 
+``OCP\User\Events\UserConfigChangedEvent``
+******************************************
+
+.. versionadded:: 33
+
+
 ``OCP\User\Events\UserCreatedEvent``
 ************************************
 
@@ -1040,6 +1255,12 @@ Emitted when a new user has been created on the back-end.
 ************************************
 
 .. versionadded:: 18
+
+
+``OCP\User\Events\UserEnumerationFilterEvent``
+**********************************************
+
+.. versionadded:: 31.0.14
 
 
 ``OCP\User\Events\UserFirstTimeLoggedInEvent``
