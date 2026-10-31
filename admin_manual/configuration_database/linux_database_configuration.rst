@@ -66,14 +66,10 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
   [server]
   skip_name_resolve = 1
   innodb_buffer_pool_size = 128M
-  innodb_buffer_pool_instances = 1
+  # innodb_buffer_pool_instances = 1  # MySQL only; removed in MariaDB 10.6.
   innodb_flush_log_at_trx_commit = 2
   innodb_log_buffer_size = 32M
   innodb_max_dirty_pages_pct = 90
-  query_cache_type = 1
-  query_cache_limit = 2M
-  query_cache_min_res_unit = 2k
-  query_cache_size = 64M
   tmp_table_size= 64M
   max_heap_table_size= 64M
   slow_query_log = 1
@@ -92,38 +88,35 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
   collation_server = utf8mb4_bin
   transaction_isolation = READ-COMMITTED
   binlog_format = ROW
-  innodb_large_prefix=on
-  innodb_file_format=barracuda
   innodb_file_per_table=1
 
-Please refer to the `page in the MySQL manual <https://mariadb.com/kb/en/library/set-transaction/#read-committed>`_.
+Please refer to the `page in the MariaDB manual <https://mariadb.com/kb/en/library/set-transaction/#read-committed>`_.
 
 * That you have installed and enabled the pdo_mysql extension in PHP
 
-* That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as Nextcloud).
+* If the database runs on the same server as Nextcloud, ensure that ``pdo_mysql.default_socket`` points to
+  the correct socket when using a Unix socket connection.
 
-.. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.
+.. note::
 
-The PHP configuration in :file:`/etc/php7/conf.d/mysql.ini` could look like this:
+   MySQL and MariaDB share many configuration options, but some options are specific to one engine or version.
+   Check your database server's documentation before applying configuration changes. The include directories
+   in the example above are specific to Debian-based MariaDB installations; adjust them for your installation.
 
-::
+Enable the PDO_MYSQL extension using your distribution's PHP packages. If you need to override the default
+Unix socket path, set the following in the PHP configuration used by Nextcloud, adjusting the path for your server:
 
-  # configuration for PHP MySQL module
-  extension=pdo_mysql.so
+.. code-block:: ini
 
-  [mysql]
-  mysql.allow_local_infile=On
-  mysql.allow_persistent=On
-  mysql.cache_size=2000
-  mysql.max_persistent=-1
-  mysql.max_links=-1
-  mysql.default_port=
-  mysql.default_socket=/var/lib/mysql/mysql.sock  # Debian squeeze: /var/run/mysqld/mysqld.sock
-  mysql.default_host=
-  mysql.default_user=
-  mysql.default_password=
-  mysql.connect_timeout=60
-  mysql.trace_mode=Off
+   pdo_mysql.default_socket = /var/run/mysqld/mysqld.sock
+
+On Ubuntu with PHP 8.5-FPM, put this override in :file:`/etc/php/8.5/fpm/conf.d/99-nextcloud.ini`
+instead of editing the package-managed :file:`20-pdo_mysql.ini`. Adjust the version and socket path;
+only override an incorrect default. Then reload PHP-FPM::
+
+   sudo systemctl reload php8.5-fpm
+
+For CLI commands, configure the override separately in :file:`/etc/php/8.5/cli/conf.d/` if needed.
 
 Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by Nextcloud
