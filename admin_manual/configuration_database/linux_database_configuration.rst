@@ -110,6 +110,14 @@ Unix socket path, set the following in the PHP configuration used by Nextcloud, 
 
    pdo_mysql.default_socket = /var/run/mysqld/mysqld.sock
 
+On Ubuntu with PHP 8.5-FPM, put this override in :file:`/etc/php/8.5/fpm/conf.d/99-nextcloud.ini`
+instead of editing the package-managed :file:`20-pdo_mysql.ini`. Adjust the version and socket path;
+only override an incorrect default. Then reload PHP-FPM::
+
+   sudo systemctl reload php8.5-fpm
+
+For CLI commands, configure the override separately in :file:`/etc/php/8.5/cli/conf.d/` if needed.
+
 Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by Nextcloud
 when you login for the first time.
