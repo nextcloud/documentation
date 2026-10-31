@@ -37,12 +37,12 @@ You can define any custom container startup logic here if needed.
 Heartbeat
 *********
 
-The ``GET /heartbeat`` method is called periodically by Nextcloud to check the ExApp health status,
-i.e. if its webserver is running and receiving requests.
+AppAPI calls ``GET /heartbeat`` after installing, updating or enabling the ExApp, until it answers,
+to check that its web server is running.
 
 URL: ``GET http://localhost:2345/heartbeat``
 
-AppAPI expects a response with HTTP status 200.
+AppAPI expects HTTP status 200 with ``{"status": "ok"}``.
 This step fails if the ExApp does not respond within 10 minutes.
 
 .. note::
