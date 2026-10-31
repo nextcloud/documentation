@@ -310,7 +310,7 @@ Filtering the auto-complete results
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In case needed, you can also further filter the auto-complete results on the PHP side using the
-``OCP\Collaboration\AutoComplete\AutoCompleteEvent`` event. The event gives you access to the current
+``OCP\Collaboration\AutoComplete\AutoCompleteFilterEvent`` event. The event gives you access to the current
 result set, the item and share types and some more information that you can use to e.g. limit the autocomplete
 results to users that are actually in the current chat conversation.
 
