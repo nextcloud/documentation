@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deleted files &mdash; Nextcloud 36 User Manual</title>
+  <title>Arquivos excluídos &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -79,10 +79,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Arquivos e sincronização</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Acessar seus arquivos</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">Gerenciar seus arquivos</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Deleted files</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Arquivos excluídos</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#quotas">Cotas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#what-happens-when-shared-files-are-deleted">O que acontece quando arquivos compartilhados são excluídos</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">How the Deleted Files app manages storage space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">Como o aplicativo “Arquivos Excluídos” gerencia o espaço de armazenamento</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="version_control.html">Controle de versão</a></li>
@@ -120,7 +120,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Arquivos e sincronização</a></li>
           <li class="breadcrumb-item"><a href="managing.html">Gerenciar seus arquivos</a></li>
-      <li class="breadcrumb-item active">Deleted files</li>
+      <li class="breadcrumb-item active">Arquivos excluídos</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/deleted_file_management.rst" class="fa fa-github"> Editar no GitHub</a>
       </li>
@@ -131,113 +131,66 @@
            <div itemprop="articleBody">
              
   <section id="deleted-files">
-<h1>Deleted files<a class="headerlink" href="#deleted-files" title="Link para este cabeçalho"></a></h1>
-<p>When you delete a file or folder in Nextcloud, it is normally moved to the
-trash bin instead of being deleted immediately. This allows you to restore it
-later.</p>
-<p>Items in the trash bin are permanently deleted when one of the following
-occurs:</p>
+<h1>Arquivos excluídos<a class="headerlink" href="#deleted-files" title="Link para este cabeçalho"></a></h1>
+<p>Quando você exclui um arquivo ou uma pasta no Nextcloud, ele normalmente é movido para a lixeira, em vez de ser excluído imediatamente. Isso permite que você o recupere mais tarde.</p>
+<p>Os itens na lixeira são excluídos definitivamente quando ocorre uma das seguintes situações:</p>
 <ul class="simple">
-<li><p>You manually select <em>Delete permanently</em>.</p></li>
-<li><p>The Deleted Files app removes the item according to the configured retention
-policy.</p></li>
-<li><p>The effective trash-bin size limit is exceeded and the item is eligible for
-removal to free space.</p></li>
+<li><p>Você seleciona manualmente <em>Excluir permanentemente</em>.</p></li>
+<li><p>O aplicativo “Arquivos Excluídos” remove o item de acordo com a política de retenção configurada.</p></li>
+<li><p>O limite efetivo de tamanho da lixeira foi excedido e o item está apto a ser removido para liberar espaço.</p></li>
 </ul>
-<p>Find your deleted files by selecting <strong>Deleted files</strong> in the Files area of the
-Nextcloud Web interface. From there, you can restore items, download them to
-your device, or delete them permanently.</p>
-<p>When you restore an item, Nextcloud normally attempts to return it to its
-original location. If that location no longer exists or is not writable, the
-item is restored to the root of your Files area. If an item with the same name
-already exists, Nextcloud gives the restored item a unique name.</p>
+<p>Encontre seus arquivos excluídos selecionando <strong>Arquivos excluídos</strong> na área Arquivos da interface web do Nextcloud. A partir daí, você pode restaurar itens, baixá-los para o seu dispositivo ou excluí-los definitivamente.</p>
+<p>Ao restaurar um item, o Nextcloud normalmente tenta colocá-lo de volta em seu local original. Se esse local não existir mais ou não for gravável, o item será restaurado na raiz da sua área Arquivos. Se já existir um item com o mesmo nome, o Nextcloud atribuirá um nome exclusivo ao item restaurado.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>If the Versions app is enabled, versions associated with a deleted
-file are moved to the trash bin and are restored when the file is restored.</p>
+<p>Se o aplicativo “Versões” estiver ativado, as versões associadas a um arquivo excluído são movidas para a lixeira e são restauradas quando o arquivo é restaurado.</p>
 </div>
 <section id="quotas">
 <h2>Cotas<a class="headerlink" href="#quotas" title="Link para este cabeçalho"></a></h2>
-<p>Files and folders in your trash bin do not count against your normal storage
-quota.</p>
-<p>See <a class="reference internal" href="quota.html"><span class="doc">Cota de armazenamento</span></a> for more information about how storage quotas are calculated.</p>
+<p>Os arquivos e pastas na sua lixeira não são contabilizados na sua cota normal de armazenamento.</p>
+<p>Consulte <a class="reference internal" href="quota.html"><span class="doc">Cota de armazenamento</span></a> para obter mais informações sobre como as cotas de armazenamento são calculadas.</p>
 </section>
 <section id="what-happens-when-shared-files-are-deleted">
 <h2>O que acontece quando arquivos compartilhados são excluídos<a class="headerlink" href="#what-happens-when-shared-files-are-deleted" title="Link para este cabeçalho"></a></h2>
-<p>The behavior of deleted shared files depends on who deletes the item and who
-owns it.</p>
-<p>For example, User1 shares a folder named <code class="docutils literal notranslate"><span class="pre">TheProject/</span></code> with User2 and User3:</p>
+<p>O comportamento dos arquivos compartilhados excluídos depende de quem exclui o item e de quem é o proprietário dele.</p>
+<p>Por exemplo, o Usuário1 compartilha uma pasta chamada <code class="docutils literal notranslate"><span class="pre">OProjeto/</span></code> com o Usuário2 e o Usuário3:</p>
 <ol class="arabic">
-<li><p>User2, a share recipient (sharee), deletes a folder or file named
-<code class="docutils literal notranslate"><span class="pre">Phase2</span></code> inside <code class="docutils literal notranslate"><span class="pre">TheProject/</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">TheProject/Phase2</span></code> is moved to the trash bin of User1, the owner, and a
-copy is placed in User2’s trash bin when possible. The item is removed from
-the shared folder for User3, but User3 does not receive a copy in their
-trash bin.</p>
+<li><p>O Usuário2, um destinatário do compartilhamento, exclui uma pasta ou arquivo chamado “Fase2” dentro de “OProjeto/”.</p>
+<p><code class="docutils literal notranslate"><span class="pre">OProjeto/Fase2</span></code> é movido para a lixeira do Usuário1, o proprietário, e uma cópia é colocada na lixeira do Usuário2, quando possível. O item é removido da pasta compartilhada do Usuário3, mas o Usuário3 não recebe uma cópia em sua lixeira.</p>
 </li>
-<li><p>User1, the owner, deletes <code class="docutils literal notranslate"><span class="pre">TheProject/Phase2</span></code>.</p>
-<p>The item is moved to User1’s trash bin and removed from the shared folder for
-User2 and User3. It is not placed in their trash bins.</p>
+<li><p>O Usuário1, o proprietário, exclui <code class="docutils literal notranslate"><span class="pre">OProjeto/Fase2</span></code>.</p>
+<p>O item é movido para a lixeira do Usuário1 e removido da pasta compartilhada do Usuário2 e do Usuário3. Ele não é colocado nas lixeiras desses usuários.</p>
 </li>
 </ol>
-<p>The exact behavior can depend on the type of share and the permissions granted
-by the share. Depending on those permissions, other users may be able to copy,
-rename, move, or re-share shared files. These operations can affect which
-account owns the resulting files and which trash bin receives a deleted item.</p>
+<p>O comportamento exato pode depender do tipo de compartilhamento e das permissões concedidas por ele. Dependendo dessas permissões, outros usuários podem ter a possibilidade de copiar, renomear, mover ou compartilhar novamente os arquivos compartilhados. Essas operações podem afetar qual conta é a proprietária dos arquivos resultantes e em qual lixeira um item excluído é enviado.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>When a sharee deletes an item owned by another user, Nextcloud moves the item
-to the owner’s trash bin. A copy in the deleting user’s trash bin is also
-created (in most cases; the copy is on a best-effort basis and is not
-guaranteed).</p>
+<p>Quando um usuário com permissão de compartilhamento exclui um item de propriedade de outro usuário, o Nextcloud move o item para a lixeira do proprietário. Também é criada uma cópia na lixeira do usuário que está excluindo o item (na maioria dos casos; a cópia é feita na medida do possível e não é garantida).</p>
 </div>
 </section>
 <section id="how-the-deleted-files-app-manages-storage-space">
-<h2>How the Deleted Files app manages storage space<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Link para este cabeçalho"></a></h2>
-<p>The Deleted Files app manages trash-bin contents using two related rules:</p>
+<h2>Como o aplicativo “Arquivos Excluídos” gerencia o espaço de armazenamento<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Link para este cabeçalho"></a></h2>
+<p>O aplicativo “Arquivos Excluídos” gerencia o conteúdo da lixeira por meio de duas regras relacionadas:</p>
 <ul class="simple">
-<li><p>A storage limit determines how much space the trash bin may use.</p></li>
-<li><p>A retention policy determines when deleted items become eligible for
-permanent deletion.</p></li>
+<li><p>Um limite de armazenamento determina quanto espaço a lixeira pode ocupar.</p></li>
+<li><p>Uma política de retenção determina quando os itens excluídos se tornam elegíveis para exclusão definitiva.</p></li>
 </ul>
 <section id="trash-bin-storage-limit">
-<h3>Trash-bin storage limit<a class="headerlink" href="#trash-bin-storage-limit" title="Link para este cabeçalho"></a></h3>
-<p>For accounts with a storage quota, the default trash-bin limit is up to 50% of
-the account’s remaining quota space. This is calculated after the account’s
-active files have been taken into account; it is not 50% of the account’s total
-quota.</p>
-<p>For example, if your quota is 10 GB and your active files use 8 GB, the default
-trash-bin allowance is calculated from the remaining 2 GB.</p>
-<p>For accounts without a storage quota, the default limit is calculated using
-available filesystem space instead. Your administrator can override either
-default by configuring a global or per-account trash-bin size.</p>
-<p>When the effective trash-bin limit is exceeded, Nextcloud removes eligible
-deleted items, starting with the oldest items, until the limit is satisfied
-again.</p>
+<h3>Limite de armazenamento da lixeira<a class="headerlink" href="#trash-bin-storage-limit" title="Link para este cabeçalho"></a></h3>
+<p>Para contas com cota de armazenamento, o limite padrão da lixeira é de até 50% do espaço restante da cota da conta. Esse valor é calculado após a consideração dos arquivos ativos da conta; não se trata de 50% da cota total da conta.</p>
+<p>Por exemplo, se sua cota for de 10 GB e seus arquivos ativos ocuparem 8 GB, a capacidade padrão da lixeira será calculada com base nos 2 GB restantes.</p>
+<p>Para contas sem cota de armazenamento, o limite padrão é calculado com base no espaço disponível no sistema de arquivos. Seu administrador pode substituir qualquer um desses valores padrão configurando um tamanho global ou específico para cada conta para a lixeira.</p>
+<p>Quando o limite efetivo da lixeira é excedido, o Nextcloud remove os itens excluídos que atendem aos critérios, começando pelos mais antigos, até que o limite seja respeitado novamente.</p>
 </section>
 <section id="retention-and-permanent-deletion">
-<h3>Retention and permanent deletion<a class="headerlink" href="#retention-and-permanent-deletion" title="Link para este cabeçalho"></a></h3>
-<p>By default, deleted files are retained for at least 30 days. After that,
-eligible items may be permanently deleted when space is needed; they are not
-necessarily deleted immediately after 30 days.</p>
-<p>Your administrator can configure different minimum and maximum retention
-periods. Depending on the configuration, items may be permanently deleted
-after a maximum age even when storage space is not currently needed. Automatic
-expiration can also be disabled.</p>
-<p>For policies with a configured minimum retention period, an item is eligible
-for space-based cleanup only after that period has elapsed. Policies without a
-minimum retention period may allow space-based cleanup regardless of the
-item’s age. Items that have exceeded a configured maximum retention period can
-be permanently deleted regardless of whether space is currently needed.</p>
-<p>The relevant configuration setting is
-<code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code>. For details about the available values and
-their interaction with quotas and trash-bin sizes, see the
-<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">Deleted Files section of the Administrator Manual</a>.</p>
+<h3>Retenção e exclusão definitiva<a class="headerlink" href="#retention-and-permanent-deletion" title="Link para este cabeçalho"></a></h3>
+<p>Por padrão, os arquivos excluídos são mantidos por pelo menos 30 dias. Após esse período, os itens elegíveis podem ser excluídos permanentemente quando houver necessidade de espaço; eles não são necessariamente excluídos imediatamente após 30 dias.</p>
+<p>Seu administrador pode configurar diferentes períodos mínimos e máximos de retenção. Dependendo da configuração, os itens podem ser excluídos permanentemente após um prazo máximo, mesmo que não haja necessidade de espaço de armazenamento no momento. A expiração automática também pode ser desativada.</p>
+<p>Para políticas com um período mínimo de retenção configurado, um item só se torna elegível para limpeza com base no espaço após o término desse período. Políticas sem um período mínimo de retenção podem permitir a limpeza com base no espaço, independentemente da idade do item. Itens que excederam um período máximo de retenção configurado podem ser excluídos permanentemente, independentemente de haver necessidade de espaço no momento.</p>
+<p>A configuração relevante é <code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code>. Para obter detalhes sobre os valores disponíveis e sua interação com cotas e tamanhos da lixeira, consulte a seção <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">Arquivos excluídos do Manual do Administrador</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>The Deleted Files app may permanently delete an item before its maximum
-retention period when the effective trash-bin limit is exceeded and the
-item’s minimum retention period has elapsed.</p>
+<p>O aplicativo “Arquivos Excluídos” pode excluir permanentemente um item antes do término de seu período máximo de retenção quando o limite efetivo da lixeira for excedido e o período mínimo de retenção do item tiver expirado.</p>
 </div>
 </section>
 </section>
