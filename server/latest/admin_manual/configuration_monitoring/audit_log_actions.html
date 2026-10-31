@@ -141,6 +141,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#files">Files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trash-bin-and-versions">Trash bin and versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sharing">Sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#share-download-limits">Share download limits</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#unified-sharing">Unified sharing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#federated-sharing">Federated sharing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#external-storage">External storage</a></li>
@@ -591,6 +592,46 @@ produce many entries.</p></td>
 <tr class="row-odd"><td><p>Restore share</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">sharing.share.restored</span></code></p></td>
 <td><p>A recipient restored a share they had removed before.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="share-download-limits">
+<h2>Share download limits<a class="headerlink" href="#share-download-limits" title="Link to this heading"></a></h2>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Set share download limit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_downloadlimit.share_limit.set</span></code></p></td>
+<td><p>The download limit of a public link or email share was set or changed. This also resets the download count of
+the share.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Remove share download limit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_downloadlimit.share_limit.removed</span></code></p></td>
+<td><p>The download limit of a public link or email share was removed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Download limit reached</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_downloadlimit.share_limit.reached</span></code></p></td>
+<td><p>A public link or email share was deleted automatically because its download limit was reached. The deletion of
+the share is also recorded as <code class="docutils literal notranslate"><span class="pre">sharing.share.deleted</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change default download limit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_downloadlimit.default_limit.updated</span></code></p></td>
+<td><p>An administrator set or changed the default download limit for new public link and email shares.</p></td>
+</tr>
+<tr class="row-even"><td><p>Remove default download limit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_downloadlimit.default_limit.removed</span></code></p></td>
+<td><p>An administrator removed the default download limit for new public link and email shares.</p></td>
 </tr>
 </tbody>
 </table>
