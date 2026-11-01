@@ -138,26 +138,21 @@
 </section>
 <section id="example">
 <h2>Exemplo<a class="headerlink" href="#example" title="Link para este cabeçalho"></a></h2>
-<p>Imagine there is a file called <code class="docutils literal notranslate"><span class="pre">mydata.txt</span></code> in your synchronized folder. It has
-not changed for a while and contains the text “contents” locally and remotely.
-Now, nearly at the same time you update it locally to say “local contents” while
-the file on the server gets updated to contain “remote contents” by someone else.</p>
+<p>Imagine que haja um arquivo chamado <code class="docutils literal notranslate"><span class="pre">meusdados.txt</span></code> na sua pasta sincronizada. Ele não sofre alterações há algum tempo e contém o texto “conteúdos” tanto localmente quanto remotamente. Agora, quase ao mesmo tempo, você o atualiza localmente para que passe a dizer “conteúdos locais”, enquanto o arquivo no servidor é atualizado por outra pessoa para conter “conteúdos remotos”.</p>
 <p>Ao tentar fazer upload de suas alterações locais, o cliente de desktop perceberá que a versão do servidor também foi alterada. Isso cria um conflito e agora você terá dois arquivos em seu computador local:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mydata.txt</span></code> contendo “remote contents”</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mydata</span> <span class="pre">(conflicted</span> <span class="pre">copy</span> <span class="pre">2018-04-10</span> <span class="pre">093612).txt</span></code> contendo “local contents”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">meusdados.txt</span></code> contendo “conteúdos remotos”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">meusdados</span> <span class="pre">(conflicted</span> <span class="pre">copy</span> <span class="pre">2018-04-10</span> <span class="pre">093612).txt</span></code> contendo “conteúdos locais”</p></li>
 </ul>
 <p>Nesta situação, o arquivo <code class="docutils literal notranslate"><span class="pre">mydata.txt</span></code> tem as alterações remotas (e continuará a ser atualizado com outras alterações remotas quando elas ocorrerem), mas seus ajustes locais não foram enviados ao servidor (a menos que o servidor permita o upload de conflitos, veja abaixo).</p>
 <p>O cliente de desktop lhe avisa desta situação por meio de notificações do sistema, do ícone da área de notificação e de um emblema amarelo de “conflitos não resolvidos” na janela de configurações da conta. Clicar neste emblema mostra uma lista que inclui os conflitos não resolvidos e clicar em um deles abre uma janela do explorador que aponta para o arquivo relevante.</p>
-<p>Para resolver este conflito, abra os dois arquivos, compare as diferenças e copie as alterações locais do arquivo “conflicted copy” para o arquivo base, quando aplicável. Neste exemplo, você pode alterar <code class="docutils literal notranslate"><span class="pre">mydata.txt</span></code> para dizer “local and remote contents” e excluir o arquivo com “conflicted copy” no nome. Com isso, o conflito é resolvido.</p>
+<p>Para resolver este conflito, abra os dois arquivos, compare as diferenças e copie as alterações locais do arquivo “conflicted copy” para o arquivo base, quando aplicável. Neste exemplo, você pode alterar <code class="docutils literal notranslate"><span class="pre">meusdados.txt</span></code> para dizer “conteúdos locais e romotos” e excluir o arquivo com “conflicted copy” no nome. Com isso, o conflito é resolvido.</p>
 </section>
 <section id="uploading-conflicts-experimental">
 <h2>Carregamento de conflitos (experimental)<a class="headerlink" href="#uploading-conflicts-experimental" title="Link para este cabeçalho"></a></h2>
 <p>Por padrão, o arquivo de conflito (o arquivo com “conflicted copy” no nome que contém as alterações conflitantes locais) não é carregado no servidor. A ideia é que você, o autor das alterações, é a pessoa mais indicada para resolver o conflito e mostrar o conflito a outros usuários pode gerar confusão.</p>
 <p>No entanto, em alguns cenários, faz muito sentido carregar estas alterações conflitantes para que o trabalho local possa se tornar visível, mesmo que o conflito não seja resolvido imediatamente.</p>
-<p>The server can enable conflict uploads. To override the server setting, use
-<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=1</span></code> to enable uploads or <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=0</span></code> to disable them.
-See <a class="reference internal" href="advanced_configuration.html#desktop-environment-variables"><span class="std std-ref">Environment variables</span></a> for how to apply environment variables.</p>
+<p>O servidor pode habilitar uploads em caso de conflito. Para substituir a configuração do servidor, use <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=1</span></code> para habilitar os uploads ou <code class="docutils literal notranslate"><span class="pre">OWNCLOUD_UPLOAD_CONFLICT_FILES=0</span></code> para desabilitá-los. Consulte <a class="reference internal" href="advanced_configuration.html#desktop-environment-variables"><span class="std std-ref">Environment variables</span></a> para saber como aplicar variáveis de ambiente.</p>
 </section>
 </section>
 
