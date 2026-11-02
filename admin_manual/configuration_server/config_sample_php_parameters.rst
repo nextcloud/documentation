@@ -857,6 +857,24 @@ Enabling this sends a "heartbeat" to the server to keep it from timing out.
 
 Defaults to ``true``
 
+archive_report_missing_files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'archive_report_missing_files' => true,
+
+When enabled, this flag allows the download of a directory to proceed
+even if some files or subdirectories are marked as non-downloadable.
+
+If files are corrupted, missing, or the server encounter temporary errors
+they are logged in a `missing_files[_unique_id].json` within the archive,
+along with the cause. When disabled, the download is denied if any file
+or subdirectory is marked as non-downloadable. Files that cannot be read
+while the archive is being streamed are left out or incomplete, and only
+logged in the server log.
+
 auto_logout
 ^^^^^^^^^^^
 
@@ -2595,6 +2613,7 @@ enabledPreviewProviders
             'OC\Preview\XBitmap',
             'OC\Preview\Krita',
             'OC\Preview\WebP',
+            'OC\Preview\AVIF',
             'OC\Preview\MarkDown',
             'OC\Preview\TXT',
             'OC\Preview\OpenDocument',
@@ -2605,10 +2624,12 @@ Only register providers that have been explicitly enabled
 The following providers are disabled by default due to performance or privacy
 concerns:
 
+ - ``OC\Preview\AVIFImagick``
  - ``OC\Preview\EMF``
  - ``OC\Preview\Font``
  - ``OC\Preview\HEIC``
  - ``OC\Preview\Illustrator``
+ - ``OC\Preview\JP2``
  - ``OC\Preview\Movie``
  - ``OC\Preview\MP3``
  - ``OC\Preview\MSOffice2003``
@@ -2627,6 +2648,13 @@ The following providers are disabled by default, because they provide an alterna
   - ``OC\Preview\Imaginary``
   - ``OC\Preview\ImaginaryPDF``
 
+AVIF has two providers for the same mimetype. ``OC\Preview\AVIF`` is enabled
+by default and decodes with GD, which handles AVIF only when PHP was built
+against a libgd that supports it. ``OC\Preview\AVIFImagick`` covers the
+builds where it was not, and registers only when ImageMagick reports an
+AVIF delegate. Enabling it alongside the default is the useful case: GD is
+tried first, and ImageMagick is tried after it if GD returns nothing.
+
 Defaults to the following providers:
 
  - ``OC\Preview\PNG``
@@ -2636,6 +2664,7 @@ Defaults to the following providers:
  - ``OC\Preview\XBitmap``
  - ``OC\Preview\Krita``
  - ``OC\Preview\WebP``
+ - ``OC\Preview\AVIF``
  - ``OC\Preview\MarkDown``
  - ``OC\Preview\TXT``
  - ``OC\Preview\OpenDocument``
@@ -3590,6 +3619,19 @@ sqlite.journal_mode
 
 SQLite3 journal mode can be specified using this configuration parameter -
 can be ``'WAL'`` or ``'DELETE'``. See https://www.sqlite.org/wal.html for more details.
+
+sqlite.busy_timeout
+^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'sqlite.busy_timeout' => 30000,
+
+Number of milliseconds a SQLite3 connection will wait for a lock held by
+another connection to clear before giving up with a "database is locked"
+error. See https://www.sqlite.org/pragma.html#pragma_busy_timeout for
+more details.
 
 mysql.utf8mb4
 ^^^^^^^^^^^^^

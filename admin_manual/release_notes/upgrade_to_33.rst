@@ -31,7 +31,7 @@ OpenMetrics endpoint
 Nextcloud 33 introduces a ``/metrics`` endpoint that can be integrated into every OpenMetrics (Prometheus) system.
 For security, it only answers on localhost by default.
 
-See :doc:`../configuration_monitoring/index` for more information about it.
+See :doc:`../configuration_monitoring/openmetrics` for more information about it.
 
 
 Default user agent for outgoing requests changed

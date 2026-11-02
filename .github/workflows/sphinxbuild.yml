@@ -41,10 +41,29 @@ jobs:
 
     steps:
       - name: Download staged artifacts
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: ${{ needs.build.outputs.artifact_name }}
           path: stage/
+
+      # go.php is only deployed from master, so only check it against the master build
+      - name: Checkout go.php and its check
+        if: needs.build.outputs.branch_name == 'latest'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          path: repo
+          sparse-checkout: |
+            go.php/index.html
+            build/check-go-php-redirects.sh
+            build/tests/test-check-go-php-redirects.sh
+          sparse-checkout-cone-mode: false
+
+      - name: Check go.php redirect targets
+        if: needs.build.outputs.branch_name == 'latest'
+        run: |
+          bash repo/build/tests/test-check-go-php-redirects.sh
+          repo/build/check-go-php-redirects.sh repo/go.php/index.html "stage/${{ needs.build.outputs.branch_name }}"
 
       - name: Strip canonical links from validation HTML
         run: |
@@ -106,7 +125,7 @@ jobs:
 
     steps:
       - name: Download staged artifacts
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: ${{ needs.build.outputs.artifact_name }}
           path: stage/

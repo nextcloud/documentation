@@ -73,25 +73,37 @@ client binaries in your Docker image:
 
   .. code-block:: dockerfile
 
-    # Download and install FRP client
+    # Download and install FRP client with checksum verification
+    ARG FRP_VERSION=0.71.1
+    ARG FRP_AMD64_SHA256=1d9875210972a5d1a62b2dc4c48df45ab0af05d3ca1b5e494a014428259df803
+    ARG FRP_ARM64_SHA256=8edf590b0c396fa42f9c147121a76af83cfc2002b08f5aef0ea1008c43482019
+
     RUN set -ex; \
         ARCH=$(uname -m); \
         if [ "$ARCH" = "aarch64" ]; then \
-          FRP_URL="https://raw.githubusercontent.com/nextcloud/HaRP/main/exapps_dev/frp_0.61.1_linux_arm64.tar.gz"; \
+          FRP_ARCH="arm64"; FRP_SHA256="${FRP_ARM64_SHA256}"; \
         else \
-          FRP_URL="https://raw.githubusercontent.com/nextcloud/HaRP/main/exapps_dev/frp_0.61.1_linux_amd64.tar.gz"; \
+          FRP_ARCH="amd64"; FRP_SHA256="${FRP_AMD64_SHA256}"; \
         fi; \
-        echo "Downloading FRP client from $FRP_URL"; \
-        curl -L "$FRP_URL" -o /tmp/frp.tar.gz; \
+        FRP_DIR="frp_${FRP_VERSION}_linux_${FRP_ARCH}"; \
+        FRP_URL="https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/${FRP_DIR}.tar.gz"; \
+        curl -fsSL "${FRP_URL}" -o /tmp/frp.tar.gz; \
+        echo "${FRP_SHA256}  /tmp/frp.tar.gz" | sha256sum -c -; \
         tar -C /tmp -xzf /tmp/frp.tar.gz; \
-        mv /tmp/frp_0.61.1_linux_* /tmp/frp; \
-        cp /tmp/frp/frpc /usr/local/bin/frpc; \
+        cp "/tmp/${FRP_DIR}/frpc" /usr/local/bin/frpc; \
         chmod +x /usr/local/bin/frpc; \
-        rm -rf /tmp/frp /tmp/frp.tar.gz
+        rm -rf "/tmp/${FRP_DIR}" /tmp/frp.tar.gz
 
   .. note::
 
-      For Alpine 3.21 Linux you can just install FRP from repo using apk add frp command.
+      The checksums come from the ``frp_sha256_checksums.txt`` file of the
+      `FRP release <https://github.com/fatedier/frp/releases>`_. When upgrading FRP, update the version and both
+      checksums together.
+
+  .. note::
+
+      On Alpine Linux, ``apk add frp`` also installs the FRP client, but the Alpine package can be several releases
+      behind the version above.
 
 Running your ExApp with a non-root user
 ----------------------------------------

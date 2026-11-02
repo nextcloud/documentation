@@ -95,8 +95,8 @@ Only users who have private encryption keys have access to shared encrypted
 files and folders. Users who have not yet created their private encryption keys
 will not have access to encrypted shared files; they will see folders and
 filenames, but will not be able to open or download the files. They will see a
-yellow warning banner that says "Encryption App is enabled but your keys are not
-initialized, please log-out and log-in again."
+yellow warning banner that says "Your encryption keys are not initialized for this
+session. Please sign out and sign back in."
 
 Share owners may need to re-share files after encryption is enabled; users
 trying to access the share will see a message advising them to ask the share

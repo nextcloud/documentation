@@ -16,11 +16,11 @@ Manage a recording
 
 The moderator of the conversation can start a recording together with a call start or anytime during a call:
 
-- **Before the call**: tick the checkbox "Start recording immediately with the call" in "Media settings", then click on "Start call".
+- **Before the call**: tick the checkbox "Start recording immediately with the call" in the "Check devices" dialog, then click on "Start call".
 - **During the call**: click on the top-bar menu, then click "Start recording".
 
 .. image:: images/start-recording-before-call.png
-    :alt: Talk media settings showing start recording option before joining a call
+    :alt: Talk Check devices dialog showing start recording option before joining a call
     :width: 400px
 
 |
@@ -62,7 +62,7 @@ For compliance with privacy regulations, it is possible to ask participants for 
 
 .. FIXME make screenshots below from user perspective not moderator
 
-If recording consent is enabled, every participant, including moderators, will see a highlighted section in the "Media settings" before joining a call.
+If recording consent is enabled, every participant, including moderators, will see a highlighted section in the "Check devices" dialog before joining a call.
 This section informs participants that the call may be recorded. To give explicit consent for recording, participants must check the box. If they do not give consent, they will not be allowed to join the call.
 
 .. image:: images/give-recording-consent-checked.png

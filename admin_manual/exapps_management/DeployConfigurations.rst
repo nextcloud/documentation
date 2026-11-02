@@ -264,7 +264,7 @@ Please customize for your distribution.
     docker run \
       -e HP_SHARED_KEY="some_very_secure_password" \
       -e NC_INSTANCE_URL="https://cloud.acme.com" \
-      -e HP_TRUSTED_PROXY_IPS="192.168.0.0/24" \  # Replace with your actual trusted proxy subnet (Host3's IP or subnet)
+      -e HP_TRUSTED_PROXY_IPS="192.168.0.0/24" \
       -v /var/run/docker.sock:/var/run/docker.sock \
       -v /some/path/certs:/certs \
       -p 8780:8780 \
@@ -273,6 +273,7 @@ Please customize for your distribution.
       --restart unless-stopped \
       -d ghcr.io/nextcloud/nextcloud-appapi-harp:release
 
+  Replace ``192.168.0.0/24`` with the IP address or subnet of your reverse proxy (Host3).
 
 2. On the Host3 Apache Reverse Proxy - Reverse proxy redirections
 

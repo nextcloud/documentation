@@ -179,6 +179,36 @@ Clients can obtain capabilities provided by the Nextcloud server and its apps vi
     </ocs>
 
 
+.. _preview-capabilities:
+
+Preview capabilities
+--------------------
+
+.. versionadded:: 36
+
+The mime types the server can render a preview for. A client uses it to tell the formats a
+browser cannot display on its own, but the server can render, from the ones it can do neither
+of: ``image/heic``, ``image/heif`` and ``image/tiff`` are viewable through a preview and not
+otherwise.
+
+Each entry is the mime pattern a provider registered itself for, as a regular expression
+delimited by slashes. The list is empty when previews are turned off entirely
+(``enable_previews``), which means no preview can be requested for any file.
+
+.. code:: json
+
+    {
+        "core": {
+            "previews": {
+                "enabled_providers": [
+                    "/image\\/png/",
+                    "/image\\/jpeg/",
+                    "/image\\/hei(f|c)/"
+                ]
+            }
+        }
+    }
+
 Theming capabilities
 --------------------
 

@@ -57,7 +57,7 @@ This is a special conversation with yourself. Messages here do not have a limit 
 These conversations cover some special cases and exist for a limited period of time. Retention period can be configured by an instance administration:
 
 - **Instant meetings**: these conversations can be created for quick, ad-hoc meetings. They can be started instantly from the Talk Dashboard.
-- **Event conversations**: these are created when set as an event location by Calendar app.
+- **Meeting conversations**: these are created when set as an event location by Calendar app.
 - **Phone conversations**: these are dedicated for SIP dial-in & dial-out phone calls (requires a SIP gateway).
 - **Video verification**: these are created, when someone tries to access a public link, protected by password with video verification (deleted instantly after call ends).
 
@@ -118,7 +118,7 @@ Filter your conversations
 You can filter your conversations using the filter button next to the search field. There are several options for filtering:
 1. **Unread mentions**: view unread private conversations, or group conversations, where you have been mentioned.
 2. **Unread messages**: view unread messages in all conversations you are a part of.
-3. **Event conversations**: view all conversations, created for upcoming or past events.
+3. **Meeting conversations**: view all conversations, created for upcoming or past events.
 
 .. image:: images/filters-menu.png
     :alt: Talk conversation list filter menu
