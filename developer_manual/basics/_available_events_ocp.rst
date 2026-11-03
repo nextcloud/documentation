@@ -207,7 +207,7 @@ scripts during page load
 
 .. versionadded:: 9.1
 
-.. versionchanged:: 28.0.0
+.. versionchanged:: 28
    Dispatched as a typed event
 
 Class CommentsEntityEvent
@@ -838,10 +838,10 @@ them in the OCM provider list and capability
 
 .. versionadded:: 25.0.1
 
-.. versionchanged:: 28.0.0
+.. versionchanged:: 28
    the constructor arguments ``$width``, ``$height``, ``$crop`` and ``$mode`` are no longer nullable.
 
-.. versionchanged:: 31.0.0
+.. versionchanged:: 31
    the constructor arguments ``$mimeType`` was added
 
 Emitted before a file preview is being fetched.
@@ -880,7 +880,7 @@ that it is not possible to use the `disallowXYZ` functions.
 
 .. versionadded:: 18
 
-.. versionchanged:: 31.0.0
+.. versionchanged:: 31
    Provides ``getContext`` to apply different rules per password context, e.g. account or share passwords.
 
 Event to request a secure password to be generated
@@ -890,7 +890,7 @@ Event to request a secure password to be generated
 
 .. versionadded:: 18
 
-.. versionchanged:: 31.0.0
+.. versionchanged:: 31
    Provides ``getContext`` to apply different rules per password context, e.g. account or share passwords.
 
 This event can be emitted to request a validation of a password.
@@ -996,7 +996,7 @@ this share on behalf of a share review?" before deleting anything.
 
 Dispatched by: the app that owns the share, i.e. the
 ``OCP\Share\ShareReview\IShareReviewSource`` implementation, at the
-beginning of its deleteShare() method:
+beginning of its deleteShare() method::
 
   public function deleteShare(string $shareId): bool {
       $event = new ShareReviewAccessCheckEvent('MyApp', $shareId);
@@ -1009,7 +1009,7 @@ beginning of its deleteShare() method:
 
 Listened to by: the share-review app. Its listener decides whether the
 current user is an authorized share-review operator (e.g. the app is
-enabled for the user) and answers with grantAccess() or denyAccess():
+enabled for the user) and answers with grantAccess() or denyAccess()::
 
   public function handle(Event $event): void {
       if (!$event instanceof ShareReviewAccessCheckEvent) {
@@ -1096,7 +1096,7 @@ Class MapperEvent
 
 .. versionadded:: 9.1
 
-.. versionchanged:: 28.0.0
+.. versionchanged:: 28
    Dispatched as a typed event
 
 Class SystemTagsEntityEvent

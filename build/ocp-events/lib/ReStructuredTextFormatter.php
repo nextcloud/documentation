@@ -27,7 +27,7 @@ class ReStructuredTextFormatter {
 						$output .= '   ' . $sinceTag['description'] . PHP_EOL;
 					}
 				} else {
-					$output .= '.. versionchanged:: ' . $sinceTag['version'] . PHP_EOL;
+					$output .= '.. versionchanged:: ' . $this->adjustVersion($sinceTag['version']) . PHP_EOL;
 					if (strlen($sinceTag['description']) > 0) {
 						$output .= '   ' . $sinceTag['description'] . PHP_EOL;
 					}
