@@ -21,7 +21,23 @@ When writing your own tests, please ensure that PHPUnit bootstraps from :file:`t
 
     <phpunit bootstrap="../../tests/bootstrap.php">
 
-PHP classes should be tested by accessing them from the container to ensure that the container is wired up properly. Services that should be mocked can be replaced directly in the container.
+PHP classes can be tested in unit tests without using the dependency injection
+container. If a class only has a few dependencies, these dependencies can be
+mocked or stubbed directly in the test.
+
+For integration tests, or when testing classes with a larger dependency graph,
+the dependency injection container can be used to create the class and resolve
+its dependencies. This also allows the test to use the same dependency
+configuration as the application.
+
+To access the dependency injection container in a test, create an instance of
+your application's ``Application`` class and call ``getContainer()``::
+
+    $app = new \OCA\MyApp\AppInfo\Application();
+    $container = $app->getContainer();
+
+Services that need to be mocked can then be replaced directly in the
+container before retrieving the class under test.
 
 A test for the **AuthorStorage** class in :doc:`storage/filesystem`:
 
