@@ -248,17 +248,35 @@ Class CommentRemovedEvent
 
 Class CommentUpdatedEvent
 
+``OCP\Config\BeforeAppConfigDeletedEvent``
+******************************************
+
+.. versionadded:: 36
+
+Emitted before an admin deletes an app config value via occ or the provisioning API.
+Listeners can refuse the change with setValid(false).
+
+``OCP\Config\BeforeAppConfigSetEvent``
+**************************************
+
+.. versionadded:: 36
+
+Emitted before an admin sets an app config value via occ or the provisioning API.
+Listeners can refuse the change with setValid(false).
+
 ``OCP\Config\BeforePreferenceDeletedEvent``
 *******************************************
 
 .. versionadded:: 25
 
+Dispatched before a user preference is deleted via the preferences API; the deletion is rejected unless a listener marks it valid.
 
 ``OCP\Config\BeforePreferenceSetEvent``
 ***************************************
 
 .. versionadded:: 25
 
+Dispatched before a user preference is set via the preferences API; the change is rejected unless a listener marks it valid.
 
 ``OCP\Console\ConsoleEvent``
 ****************************
@@ -755,7 +773,7 @@ such as:
 This event can be emitted to check if a user is allowed to perform an action, such that the receivers would become aware of the resources.
 If the resources have a distinction between an owner and a initiator, the event must be emitted for each separately.
 Emitters may omit one or multiple properties, if they are not known.
-Emitters must call ``OCP\Interaction\isInteractionRestricted`` instead of dispatching the event manually, to ensure exception handling and audit logging is done correctly.
+Emitters must call ``OCP\Interaction\RestrictInteractionEvent::isInteractionRestricted()`` instead of dispatching the event manually, to ensure exception handling and audit logging is done correctly.
 Listeners may ignore any of the properties and only check the ones that are relevant to them.
 Listeners must throw an ``OCP\Interaction\InteractionRestrictedException``, if they want to restrict the interaction.
 
@@ -862,12 +880,18 @@ that it is not possible to use the `disallowXYZ` functions.
 
 .. versionadded:: 18
 
+.. versionchanged:: 31.0.0
+   Provides ``getContext`` to apply different rules per password context, e.g. account or share passwords.
+
 Event to request a secure password to be generated
 
 ``OCP\Security\Events\ValidatePasswordPolicyEvent``
 ***************************************************
 
 .. versionadded:: 18
+
+.. versionchanged:: 31.0.0
+   Provides ``getContext`` to apply different rules per password context, e.g. account or share passwords.
 
 This event can be emitted to request a validation of a password.
 If a password policy app is installed and the password
@@ -1013,8 +1037,8 @@ Semantics:
 
 .. versionadded:: 34.0.2
 
-Event dispatched by a share-review app to collect share sources from other
-apps. Listeners register the class name of their {@see IShareReviewSource}
+Event dispatched by a share-review app to collect share sources from other apps.
+Listeners register the class name of their ``OCP\Share\ShareReview\IShareReviewSource``
 implementation; the share-review app resolves it from the dependency
 injection container.
 
