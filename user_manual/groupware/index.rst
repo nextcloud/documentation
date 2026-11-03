@@ -15,6 +15,7 @@ You can find out more about Nextcloud Groupware `on our website <https://nextclo
    :maxdepth: 1
 
    contacts
+   teams
    calendar
    mail
    absence
