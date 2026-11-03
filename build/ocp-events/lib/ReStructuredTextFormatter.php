@@ -40,7 +40,7 @@ class ReStructuredTextFormatter {
 			}
 
 			if (strlen($event->description) > 0) {
-				$output .= $event->description . PHP_EOL;
+				$output .= $this->markdownToRst($event->description) . PHP_EOL;
 			}
 
 			$output .= PHP_EOL;
@@ -48,6 +48,13 @@ class ReStructuredTextFormatter {
 		}
 
 		return $output;
+	}
+
+	private function markdownToRst(string $markdown): string {
+		// Indented code block
+		$rst = preg_replace("/:\n\n(?= {4}|\t)/", "::\n\n", $markdown);
+
+		return $rst;
 	}
 
 	private function adjustVersion(string $version): string {
