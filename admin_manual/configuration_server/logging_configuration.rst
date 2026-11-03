@@ -54,9 +54,14 @@ date format in the example below, the date/time format will be written in the fo
 ::
 
     "log_type" => "file",
-    "logfile" => "nextcloud.log",
+    "logfile" => "/var/log/nextcloud/nextcloud.log",
     "loglevel" => 3,
     "logdateformat" => "F d, Y H:i:s",
+
+The **logfile** parameter is optional. If it is omitted, the log is written to **nextcloud.log** in the
+**datadirectory**. When setting it, use an absolute path: a relative path such as ``"nextcloud.log"`` is resolved
+against the working directory of the PHP process (usually the Nextcloud installation directory), and a log file
+placed there makes the updater's check for expected files fail.
 
 Additional file-based logging parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
