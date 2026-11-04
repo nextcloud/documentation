@@ -10,7 +10,26 @@ GitHub Actions
 --------------
 If your application's repository lives on GitHub, as many Nextcloud applications do, GitHub Actions is a great way to automate the release of your app from the git repository into the Nextcloud App Store.
 
-One easy way to get you started is to use https://github.com/R0Wi/nextcloud-appstore-push-action in your repository together with a few other actions. You can automatically build your app and publish it to the App Store. It supports pre-releases and code signing.
+Organization workflow template
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Prefer the Nextcloud organization workflow template. It builds, signs, attaches the tarball to the GitHub release, and publishes to the App Store:
+
+https://github.com/nextcloud/.github/blob/master/workflow-templates/appstore-build-publish.yml
+
+To add it to a repository:
+
+1. Open the repository on GitHub and go to the **Actions** tab.
+2. Click **New workflow**.
+3. Under the organization's workflows, choose **Build, sign and push to the appstore** and click **Configure**.
+4. Review the file, then commit it under ``.github/workflows/``.
+
+You can also copy the template into ``.github/workflows/appstore-build-publish.yml`` manually.
+
+The template expects the ``APP_PRIVATE_KEY`` and ``APPSTORE_TOKEN`` secrets. It downloads the app certificate from the certificate requests repository. By default it only runs for repositories owned by ``nextcloud-releases``; adjust the ``if:`` condition if you reuse it elsewhere.
+
+Alternative: third-party action
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+If the organization template does not fit your repository, you can use https://github.com/R0Wi/nextcloud-appstore-push-action together with a few other actions. You can automatically build your app and publish it to the App Store. It supports pre-releases and code signing.
 To get started you create a new yaml file in the ``.github/workflows`` directory.
 
 .. code-block:: yaml
