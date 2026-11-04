@@ -3,22 +3,59 @@ OpenStack Object Storage
 ========================
 
 OpenStack Object Storage is used to connect to an OpenStack Swift server, or to
-Rackspace. Two authentication mechanisms are available: one is the generic
-OpenStack mechanism, and the other is used exclusively for Rackspace, a provider
-of object storage that uses the OpenStack Swift protocol.
+Rackspace. Nextcloud supports OpenStack Keystone **v2** and **v3** authentication,
+plus a Rackspace-specific mechanism that uses the OpenStack Swift protocol.
 
-The OpenStack authentication mechanism uses the OpenStack Keystone v2
-protocol. Your Nextcloud configuration needs:
+Shared backend fields (all OpenStack/Rackspace mounts)
+------------------------------------------------------
 
 * **Bucket**. This is user-defined; think of it as a subdirectory of your total
   storage. The bucket will be created if it does not exist.
-* **Username** of your account.
+* **Region**. Your region as shown in the OpenStack or Rackspace account.
+* **Service name** (optional). Defaults depend on the provider; Rackspace uses
+  ``cloudFiles``.
+* **Request timeout** (optional), in seconds.
+
+OpenStack Keystone v2
+---------------------
+
+Select the **OpenStack v2** authentication mechanism. Your Nextcloud configuration
+needs:
+
+* **Login** (username) of your account.
 * **Password** of your account.
 * **Tenant name** of your account. (A tenant is similar to a user group.)
-* **Identity Endpoint URL**, the URL to log in to your OpenStack account.
+* **Identity endpoint URL**, typically ending in ``/v2.0``.
 
 .. figure:: images/openstack.png
-   :alt: OpenStack configuration.
+   :alt: OpenStack Keystone v2 configuration.
+
+OpenStack Keystone v3
+---------------------
+
+Select the **OpenStack v3** authentication mechanism when your cloud requires
+Keystone v3 (common on current OpenStack deployments). In addition to the shared
+backend fields above, configure:
+
+* **Login** (username) of your account.
+* **Domain** of the user (often ``Default``).
+* **Password** of your account.
+* **Tenant name** (project name) of your account.
+* **Identity endpoint URL**, typically ending in ``/v3``.
+
+The user domain is required for v3. The tenant/project is scoped using the
+project name together with the identity endpoint; map these from your OpenRC
+file (``OS_USERNAME``, ``OS_USER_DOMAIN_NAME``, ``OS_PASSWORD``,
+``OS_PROJECT_NAME`` / ``OS_TENANT_NAME``, ``OS_AUTH_URL``).
+
+.. note::
+
+   Primary object storage (``config.php`` ``objectstore``) has separate v2/v3
+   examples in :doc:`../primary_storage`. Field names differ slightly from the
+   External Storage GUI described here.
+
+Rackspace
+---------
 
 The Rackspace authentication mechanism requires:
 
