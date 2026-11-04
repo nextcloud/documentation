@@ -8,9 +8,9 @@ Flow provides rule-based automation in Nextcloud. Administrators can define
 system-wide flows, while users can define personal flows (unless disabled
 by the administrator).
 
-Apps can extend the available Flow automation capabilities. This chapter
-covers three common apps: File Access Control, Files Automated Tagging
-and Files Retention.
+Apps can provide additional Flow operations. This chapter covers operations
+provided by File Access Control, Files Automated Tagging, Files Retention
+and the Versions app.
 
 Additional Flow apps can be found in the `Nextcloud app store
 <https://apps.nextcloud.com/>`_.
@@ -18,17 +18,19 @@ Additional Flow apps can be found in the `Nextcloud app store
 General configuration
 ---------------------
 
-The following settings apply to Flow itself rather than to an individual Flow app.
+The following settings apply to Flow itself rather than to an individual Flow app
+/ operation.
 
 .. toctree::
     :maxdepth: 2
 
     configuration
 
-Add-on Flow apps
-----------------
+Operations
+----------
 
-Each Flow app provides its own functionality and configuration:
+Each app provides its own functionality and configuration. The following Flow operations
+are covered here:
 
 .. toctree::
     :maxdepth: 2
@@ -36,3 +38,4 @@ Each Flow app provides its own functionality and configuration:
     access_control
     automated_tagging
     retention
+    versioning
