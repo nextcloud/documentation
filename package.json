@@ -1,0 +1,23 @@
+{
+  "name": "nextcloud-documentation-screenshots",
+  "private": true,
+  "description": "Screenshot automation for Nextcloud documentation",
+  "license": "AGPL-3.0-or-later",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "screenshots": "playwright test",
+    "screenshots:headed": "playwright test --headed",
+    "screenshots:ui": "playwright test --ui",
+    "inventory": "python3 scripts/inventory.py"
+  },
+  "devDependencies": {
+    "@nextcloud/e2e-test-server": "^0.4.0",
+    "@playwright/test": "^1.60.0",
+    "@types/dockerode": "^4.0.1",
+    "@types/node": "^20.0.0",
+    "pngquant-bin": "^9.0.0",
+    "typescript": "^5.0.0"
+  }
+}
