@@ -9,6 +9,13 @@ The base URL for all calls to the share API is: ``<nextcloud_base_url>/ocs/v2.ph
 
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 
+.. note::
+
+   This page documents the **OCS v2** base URL (``/ocs/v2.php/...``). On success the
+   OCS meta ``<statuscode>`` is **200**. The older ``/ocs/v1.php/...`` API used
+   **100** for the same success case. Error codes listed below are OCS meta
+   statuscodes (not always identical to the HTTP status).
+
 Local Shares
 ------------
 
@@ -24,7 +31,7 @@ Get all shares from the user.
 
 Statuscodes:
 
-* 100 - successful
+* 200 - successful
 * 404 - couldn't fetch shares
 
 Get Shares from a specific file or folder
@@ -45,7 +52,7 @@ Get all shares from a given file/folder.
 
 Statuscodes:
 
-* 100 - successful
+* 200 - successful
 * 400 - not a directory (if the 'subfile' argument was used)
 * 404 - file doesn't exist
 
@@ -63,7 +70,7 @@ Get information about a given share.
 
 Statuscodes:
 
-* 100 - successful
+* 200 - successful
 * 404 - share doesn't exist
 
 Create a new Share
@@ -93,7 +100,7 @@ Share a file/folder with a user/group or as public link.
 
 Statuscodes:
 
-* 100 - successful
+* 200 - successful
 * 400 - unknown share type
 * 403 - public upload was disabled by the admin
 * 404 - file couldn't be shared
@@ -110,7 +117,7 @@ Remove the given share.
 
 Statuscodes:
 
-* 100 - successful
+* 200 - successful
 * 404 - file couldn't be deleted
 
 Update Share
@@ -135,7 +142,7 @@ Update a given share.
 
 Statuscodes:
 
-* 100 - successful
+* 200 - successful
 * 400 - wrong or no update parameter given
 * 403 - public upload disabled by the admin
 * 404 - couldn't update share
@@ -247,7 +254,7 @@ Get all federated cloud shares the user has accepted.
 
 Statuscodes:
 
-* 100 - successful
+* 200 - successful
 
 Get information about a known Federated Cloud Share
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -263,7 +270,7 @@ Get information about a given received federated cloud that was sent from a remo
 
 Statuscodes:
 
-* 100 - successful
+* 200 - successful
 * 404 - share doesn't exist
 
 Delete an accepted Federated Cloud Share
@@ -280,7 +287,7 @@ Locally delete a received federated cloud share that was sent from a remote inst
 
 Statuscodes:
 
-* 100 - successful
+* 200 - successful
 * 404 - share doesn't exist
 
 List pending Federated Cloud Shares
@@ -295,7 +302,7 @@ Get all pending federated cloud shares the user has received.
 
 Statuscodes:
 
-* 100 - successful
+* 200 - successful
 
 Accept a pending Federated Cloud Share
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -311,7 +318,7 @@ Locally accept a received federated cloud share that was sent from a remote inst
 
 Statuscodes:
 
-* 100 - successful
+* 200 - successful
 * 404 - share doesn't exist
 
 Decline a pending Federated Cloud Share
@@ -328,5 +335,5 @@ Locally decline a received federated cloud share that was sent from a remote ins
 
 Statuscodes:
 
-* 100 - successful
+* 200 - successful
 * 404 - share doesn't exist
