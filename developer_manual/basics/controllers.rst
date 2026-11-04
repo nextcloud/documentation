@@ -878,6 +878,7 @@ To turn off checks the following *Attributes* can be added before the controller
 * ``#[PublicPage]``: Everyone can access the page without having to log in
 * ``#[NoTwoFactorRequired]``: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
 * ``#[NoCSRFRequired]``: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see :ref:`CSRF in the security section <csrf_introduction>`)
+* ``#[PasswordConfirmationRequired]``: Require a recent password confirmation (or an in-request confirmation when used in strict mode)
 
 .. note::
 
@@ -906,7 +907,7 @@ Additionally, as the user might not have a CSRF checker cookie set yet, the CSRF
     use OCP\AppFramework\Controller;
     use OCP\AppFramework\Http\TemplateResponse;
     use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
-    use OCP\AppFramework\Http\Attribute\PublicPage;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
 
     class PageController extends Controller {
 
@@ -1150,9 +1151,10 @@ The following policy for instance allows images, audio and videos from other dom
         public function index() {
             $response = new TemplateResponse('myapp', 'main');
             $csp = new ContentSecurityPolicy();
-            $csp->addAllowedImageDomain('*');
+            $csp->addAllowedImageDomain('*')
                 ->addAllowedMediaDomain('*');
             $response->setContentSecurityPolicy($csp);
+            return $response;
         }
 
     }
