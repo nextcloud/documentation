@@ -10,7 +10,14 @@ the last step to completing the installation is running the Installation
 Wizard.
 This is just three steps:
 
-#. Point your Web browser to ``http://localhost/nextcloud``
+#. Point your Web browser at your Nextcloud URL. The path depends on the
+   installation type:
+
+   * **Subdirectory** installs (e.g. files under a ``/nextcloud`` Alias):
+     ``http://localhost/nextcloud``
+   * **Web root** installs (including the **Snap** package): ``http://localhost/``
+     or ``http://<hostname>.local/`` — **not** under ``/nextcloud``
+
 #. Enter your desired administration account name and password.
 #. Click **Install**.
 
