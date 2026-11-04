@@ -76,6 +76,26 @@ confusing behavior:
   unnecessary directory scans and case-only renames being rejected, even though
   the server itself would allow them.
 
+Verify ACL access when listing files
+------------------------------------
+
+When **Verify ACL access when listing files** is enabled (backend option
+``check_acl``), Nextcloud asks the SMB server for Windows ACLs while listing a
+directory and **hides entries** that the configured share account cannot read
+or execute.
+
+Use this for shares that rely on NT ACLs beyond share-level permissions, so
+users do not see folders or files they cannot open. Listing is slightly slower
+on large directories because ACL metadata must be fetched for each entry.
+Leave the option off if the SMB server does not expose ACLs (or listing becomes
+too slow).
+
+.. note::
+   ACL checks use the credentials of the mount (the share account). Inheritance
+   is not fully evaluated; Nextcloud hides an entry only when that account's ACL
+   explicitly denies read or execute. If ACL data cannot be read for an entry,
+   the entry is still shown.
+
 SMB update notifications
 ------------------------
 
