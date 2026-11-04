@@ -21,6 +21,7 @@ When a call is already in progress, join it by clicking the green ``Join call`` 
 
 You will see the ``Check devices`` dialog, where you can customise your call experience:
 
+.. TODO: update screenshot to show the notify all participants checkbox next to the Start call button
 .. image:: images/calls/media-settings-initial.png
     :alt: Talk Check devices dialog before joining a call
     :width: 600px
@@ -81,12 +82,28 @@ and whether you have ``Moderator`` permission for the conversation.
 If you are joining and the call is being recorded, you might be required to consent before being allowed to join.
 For more information, see :ref:`Call recording <call-recording>`.
 
+Restricting who can start a call (moderator)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+An administrator can limit who is allowed to start a call server-wide, to one of: everyone, users and moderators,
+moderators only, or nobody (calls disabled). An administrator can additionally restrict starting a call to
+members of specific groups; when such groups are configured, only their members can start a call, and this also
+applies to moderators, while guests and federated users can never be part of a group.
+
+If you are not allowed to start a call, the ``Start call`` button is disabled until somebody else starts the call.
+You can then join the call in progress. For conversations hosted on a federated server, the configuration of that
+server applies instead. Ask your administrator to check the Talk admin settings if you need to start calls yourself.
+
 Start the call
 ^^^^^^^^^^^^^^
 
 Click the ``Start call`` button at the bottom of the ``Check devices`` dialog to notify all conversation participants of the call.
-If you do not want to notify the other participants, start a silent call by opening the three-dot menu to the left of the ``Start call`` button
-and choosing ``Start call silently``.
+If you do not want to notify the other participants, start a silent call: clear the
+``Notify all participants about this call`` checkbox, then click ``Start call silently``.
+In the conversation top bar, open the ``More actions`` menu next to the ``Start call`` button and choose
+``Start call silently``.
+
+.. TODO: screenshots below show the old three-dot menu, replace them with the notify checkbox and the top bar menu
 
 .. image:: images/calls/media-settings-silent-call.png
     :alt: Talk Start call silently option in the Check devices dialog
@@ -173,6 +190,7 @@ Controlling audio and video
 
 Bottom bar of the call view offers media controls, layout settings and other features you can use during a call.
 
+.. TODO: update screenshot to show the new layout menu with multi-speaker view in the bottom bar
 .. image:: images/calls/during-a-call-controls.png
     :alt: Talk active call bottom bar showing media controls and layout settings
     :width: 400px

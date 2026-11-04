@@ -13,6 +13,7 @@ Tags
 Create custom tags to categorize your conversations and keep them organized.
 Tags help you group conversations by project, team, topic, or any other criteria that makes sense for your workflow.
 
+.. TODO: update screenshot to show the last message time next to each conversation
 .. image:: images/conversations-tag-overview.png
     :alt: Talk conversations tag appearance
     :width: 400px
@@ -22,6 +23,13 @@ Tags help you group conversations by project, team, topic, or any other criteria
 3. The conversation will now be tagged and grouped accordingly
 
 You can later manage existing tags by renaming, reordering or deleting them.
+
+When you collapse a tag, Talk can still show its unread conversations. In the Talk settings, choose an option for
+``Show unread conversations under collapsed tags``:
+
+- **Off**: Hide all conversations of a collapsed tag
+- **@-mentions only**: Show conversations with unread mentions
+- **All messages**: Show conversations with any unread message (default)
 
 .. image:: images/conversations-tag-actions.png
     :alt: Talk conversations tag actions
@@ -42,6 +50,10 @@ Similar types can also be grouped together:
 - **Show private ones first**: Show private conversations before groups/public
 - **Show group ones first**: Show groups/public conversations before private
 
+Each conversation in the list shows the time of its last message: the time for today, the weekday for the last
+seven days, and the date for older messages. The time is hidden in the compact view of the conversation list.
+
+.. TODO: update screenshot to show the last message time next to each conversation
 .. image:: images/conversations-sorting.png
     :alt: Talk conversations sorting and grouping options
     :width: 400px
