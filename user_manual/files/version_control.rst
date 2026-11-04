@@ -2,11 +2,14 @@
 Version control
 ===============
 
-Nextcloud supports a simple version control system for files. Versioning creates
-backups of files which are accessible via the Versions tab on the Details
-sidebar. This tab contains the history of the file where you can roll back a
-file to any previous version. A new version is saved only if at least two minutes
-have passed since the last version was created. Versions are stored in ``data/[user]/files_versions``.
+Nextcloud supports a simple version control system for files. Whenever a file
+is changed on the server or uploaded again by a client, Nextcloud keeps the
+previous content as a version so you can restore it later. Versions appear in
+the **Versions** tab on the Details sidebar, where you can restore or download
+any earlier copy. A new version is stored only if at least two minutes have
+passed since the last version was created. Desktop and mobile clients do not
+manage the version list themselves; they upload a new file and the server
+records the version. Versions are stored under ``data/[user]/files_versions``.
 
 .. figure:: ../images/files_versioning.png
    :alt: File version history in the Details sidebar
