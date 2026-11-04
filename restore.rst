@@ -1,0 +1,156 @@
+================
+Restoring backup
+================
+
+To restore a Nextcloud installation there are four main things you need to
+restore:
+
+#. The configuration directory
+#. The data directory
+#. The database
+#. The theme directory
+
+.. note:: You must have the database, data directory, and configuration files.
+   You cannot complete restoration without all three.
+
+Restore folders
+---------------
+
+.. note:: This guide assumes that your previous backup is called
+   "nextcloud-dirbkp"
+
+Simply copy your configuration and data folder (or even your whole Nextcloud
+install and data folder) to your Nextcloud environment. You could use this command::
+
+    rsync -Aax nextcloud-dirbkp/ nextcloud/
+
+Restore database
+----------------
+
+.. warning:: Before restoring a backup you need to make sure to delete all existing database tables.
+
+The easiest way to do this is to drop and recreate the database.
+SQLite does this automatically.
+
+MariaDB
+^^^^^^^
+
+MariaDB is the recommended database engine. To restore MariaDB using the `mariadb <https://mariadb.com/docs/server/clients-and-utilities/mariadb-client/mariadb-command-line-client>`_ client::
+
+   mariadb -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
+   mariadb -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud"
+
+If you use UTF8 with multibyte support (e.g. for emojis in filenames), use::
+
+   mariadb -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
+   mariadb -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci"
+
+MySQL
+^^^^^
+
+To restore MySQL::
+
+   mysql -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
+   mysql -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud"
+
+If you use UTF8 with multibyte support (e.g. for emojis in filenames), use::
+
+   mysql -h [server] -u [username] -p[password] -e "DROP DATABASE nextcloud"
+   mysql -h [server] -u [username] -p[password] -e "CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci"
+
+
+PostgreSQL
+^^^^^^^^^^
+::
+
+     PGPASSWORD="password" psql -h [server] -U [username] -d template1 -c "DROP DATABASE \"nextcloud\";"
+     PGPASSWORD="password" psql -h [server] -U [username] -d template1 -c "CREATE DATABASE \"nextcloud\";"
+
+.. tip::
+
+   Recreate any table-owner roles from the source cluster **before** loading
+   the dump (see the note under **Restoring → PostgreSQL** below). Creating
+   an empty database alone is not enough when the dump reassigns ownership.
+
+Restoring
+---------
+
+.. note:: This guide assumes that your previous backup is called
+   "nextcloud-sqlbkp.bak"
+
+MariaDB
+^^^^^^^
+
+MariaDB is the recommended database engine. To restore MariaDB using the `mariadb <https://mariadb.com/docs/server/clients-and-utilities/mariadb-client/mariadb-command-line-client>`_ client::
+
+    mariadb -h [server] -u [username] -p[password] [db_name] < nextcloud-sqlbkp.bak
+
+MySQL
+^^^^^
+
+To restore MySQL::
+
+    mysql -h [server] -u [username] -p[password] [db_name] < nextcloud-sqlbkp.bak
+
+SQLite
+^^^^^^
+::
+
+    rm data/owncloud.db
+    sqlite3 data/owncloud.db < nextcloud-sqlbkp.bak
+
+PostgreSQL
+^^^^^^^^^^
+::
+
+    PGPASSWORD="password" psql -h [server] -U [username] -d nextcloud -f nextcloud-sqlbkp.bak
+
+.. note::
+
+   A plain ``pg_dump`` of the Nextcloud database often contains
+   ``ALTER ... OWNER TO oc_<user>`` (or similar) statements. Those roles
+   exist only on the source cluster. Before restoring onto a new server,
+   recreate the missing role(s), for example::
+
+       PGPASSWORD="password" psql -h [server] -U [username] -d postgres -c "CREATE ROLE \"oc_example\" WITH LOGIN;"
+
+   Or dump globals from the source and apply them first::
+
+       # on source
+       pg_dumpall -h [server] -U [username] --roles-only -f nextcloud-roles.sql
+       # on target (review/edit the file; it may include unrelated roles)
+       PGPASSWORD="password" psql -h [server] -U [username] -d postgres -f nextcloud-roles.sql
+
+   Without the role(s), restore fails with errors such as
+   ``role "oc_…" does not exist``.
+
+Synchronising with clients after data recovery
+----------------------------------------------
+
+By default the Nextcloud server is considered the authoritative source for the data.
+If the data on the server and the client differs
+clients will default to fetching the data from the server.
+
+If the recovered backup is outdated
+the state of the clients may be more up to date than the state of the server.
+In this case also make sure to run the
+:ref:`maintenance:data-fingerprint <maintenance_commands_label>` command
+afterwards.
+It changes the logic of the synchronisation algorithm
+to try and recover as much data as possible.
+Files missing on the server are therefore recovered from the clients
+and in case of different content the users will be asked.
+
+This can also help in rare scenarios when the database is newer than the data directory.
+The server will restore the data from the clients and preserve the shares.
+Until then the files would be visible but not accessible.
+A :ref:`files:scan <occ_files_scan_label>` is required afterwards to update the database.
+
+.. note:: The usage of `maintenance:data-fingerprint` can cause conflict dialogues
+   and difficulties deleting files on the client.
+   Therefore it's only recommended to prevent dataloss if the backup was outdated.
+   This command does not require the server to be in maintenance mode.
+
+If you are running multiple application servers you will need to make sure
+the config files are synced between them so that the updated `data-fingerprint`
+is applied on all instances.
