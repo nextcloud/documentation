@@ -8,6 +8,14 @@ updates:
     open-pull-requests-limit: 10
     cooldown:
       default-days: 10
+    # One pull request for all minor and patch bumps: siblings touching the
+    # same workflow files can't be merged by the github-actions token once
+    # one of them lands, and lose auto-merge
+    groups:
+      github-actions:
+        update-types:
+          - minor
+          - patch
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
