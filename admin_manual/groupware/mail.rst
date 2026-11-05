@@ -256,7 +256,7 @@ The mail app can optionally provide translations for messages if the :ref:`trans
 User migration
 --------------
 
-.. versionadded:: 5.9
+.. versionadded:: 5.13 Nextcloud 32 or newer
 
 .. important::
    The `User Migration App <https://apps.nextcloud.com/apps/user_migration>`_ must be installed and enabled on both
@@ -272,6 +272,8 @@ The Mail app can migrate the following data:
 - Configured trusted senders
 - S/MIME certificates and private keys
 - General app settings like the order of mail accounts
+
+.. note:: Import/Export of JMAP accounts is not supported at the moment and will be added in a later version.
 
 .. note:: Provisioned mail accounts are not migrated, as they are expected to be re-provisioned on the new instance.
 
