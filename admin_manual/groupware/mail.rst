@@ -188,6 +188,52 @@ Congratulations! You are now able to use hosted Microsoft Outlook accounts in th
 
 .. figure:: images/azure_xoauth2/10.png
 
+Generic OpenID Connect (XOAUTH2) integration
+--------------------------------------------
+
+.. versionadded:: 6.0
+
+In addition to the built-in Google and Microsoft integrations, the Mail app can authenticate
+individual mail accounts over XOAUTH2 against any OpenID Connect provider, for example
+Keycloak, Authentik or Stalwart. An administrator registers one or more providers, each
+matched to accounts by the user's email domain.
+
+**Step 1: Register an OAuth client with your identity provider**
+
+Create a confidential (web) OAuth client with your identity provider and authorize the
+redirect URL shown in the provider form, ``https://<your-nextcloud>/index.php/apps/mail/integration/oidc-auth``.
+Grant it the scopes needed to issue mail and refresh tokens (``openid email offline_access``
+by default), and make sure the access tokens it issues are accepted by your IMAP/SMTP server
+for XOAUTH2.
+
+**Step 2: Configure the provider in Nextcloud**
+
+Open the groupware admin settings and find *OpenID Connect integration*. Click *Add OIDC
+provider* and fill in:
+
+- **Display name** -- a free-text label.
+- **Email domain** -- accounts whose address is in this domain use this provider.
+- **IMAP** and **SMTP** -- host, port and encryption for the mail servers. The two may differ.
+- **Discovery endpoint** -- the provider's ``.well-known/openid-configuration`` URL.
+  Providers that don't publish one can instead have their authorization, token and
+  (optional) introspection endpoints entered manually.
+- **Client ID** / **Client secret** -- the credentials of the OAuth client from step 1. The
+  secret is stored encrypted.
+- **Scopes** -- defaults to ``openid email offline_access``.
+
+.. note:: Matching is by email domain, case-insensitive but otherwise exact. There can only
+   be one provider per domain.
+
+**Step 3: Users add their account**
+
+When a user adds a mail account whose address is in a configured domain, Mail pre-fills the
+mail servers and opens a consent popup at the identity provider instead of asking for a
+password. No password is stored for the account.
+
+Refresh tokens keep the account syncing in the background. If a refresh token is revoked or
+expires without being renewed, the affected account is flagged and the user is asked to
+reconnect through the same consent popup the next time they open Mail.
+
 Mailbox Share
 -------------
 Users can share mailboxes with each other. So far, there is no UI for users to change the ACL in the Mail app, but if you want to use it, you need to enable it on the IMAP sever and configure the shares there.
