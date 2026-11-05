@@ -375,6 +375,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#localstorage-allowsymlinks">localstorage.allowsymlinks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#localstorage-umask">localstorage.umask</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#localstorage-unlink-on-truncate">localstorage.unlink_on_truncate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#localstorage-min-free-space">localstorage.min_free_space</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#quota-include-external-storage">quota_include_external_storage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#external-storage-auth-availability-delay">external_storage.auth_availability_delay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#files-external-allow-create-new-local">files_external_allow_create_new_local</a></li>
@@ -3593,6 +3594,22 @@ implications and may cause issues with the installation.</p>
 <p>Allow storage systems that do not support modifying existing files to overcome
 this limitation by removing files before overwriting.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code></p>
+</section>
+<section id="localstorage-min-free-space">
+<h3>localstorage.min_free_space<a class="headerlink" href="#localstorage-min-free-space" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;localstorage.min_free_space&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Amount of physical disk space (in bytes) to keep available on the data
+directory’s filesystem. The free space reported for local storage is
+reduced by this margin, so uploads are rejected before the disk is
+actually full. This prevents users (in particular those with unlimited
+quota) from filling up all available space, which would starve the
+database, temporary files and logs and can render the instance
+unrecoverable.</p>
+<p>Set this to a value large enough to keep the instance operational, or
+to <code class="docutils literal notranslate"><span class="pre">0</span></code> to report the free space as-is.</p>
+<p>Defaults to 100 MiB</p>
 </section>
 <section id="quota-include-external-storage">
 <h3>quota_include_external_storage<a class="headerlink" href="#quota-include-external-storage" title="Link to this heading"></a></h3>
