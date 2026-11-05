@@ -184,6 +184,73 @@ if your app relies on them please migrate to the replacement event.
      - ``OCA\Files_Versions\Events\VersionRestoredEvent``
    * - ``\OC_User::post_login``
      - ``OCP\User\Events\UserLoggedInEvent`` and ``OCP\User\Events\UserLoggedInWithCookieEvent``
+   * - ``\OC\User::postRememberedLogin``
+     - ``OCP\User\Events\UserLoggedInWithCookieEvent``
+   * - ``\OC\Group::preCreate``
+     - ``OCP\Group\Events\BeforeGroupCreatedEvent``
+   * - ``\OC\Group::postCreate``
+     - ``OCP\Group\Events\GroupCreatedEvent``
+   * - ``\OC\Group::postDelete``
+     - ``OCP\Group\Events\GroupDeletedEvent``
+   * - ``\OC\Group::postAddUser``
+     - ``OCP\Group\Events\UserAddedEvent``
+   * - ``\OC\Group::postRemoveUser``
+     - ``OCP\Group\Events\UserRemovedEvent``
+   * - ``\OCP\Share::pre_shared``
+     - ``OCP\Share\Events\BeforeShareCreatedEvent``
+   * - ``\OCP\Share::post_shared``
+     - ``OCP\Share\Events\ShareCreatedEvent``
+   * - ``\OCP\Share::pre_unshare``
+     - ``OCP\Share\Events\BeforeShareDeletedEvent``
+   * - ``\OCP\Share::post_unshare``
+     - ``OCP\Share\Events\ShareDeletedEvent``
+   * - ``\OCP\Share::post_unshareFromSelf``
+     - ``OCP\Share\Events\ShareDeletedFromSelfEvent``
+   * - ``\OC_Filesystem::update``
+     - ``OCP\Files\Events\Node\BeforeNodeWrittenEvent``
+   * - ``\OC_Filesystem::post_update``
+     - ``OCP\Files\Events\Node\NodeWrittenEvent``
+   * - ``\OC_Filesystem::create_mount``
+     - ``OCP\Files\Events\InvalidateMountCacheEvent`` and ``OCP\Files\Config\Event\UserMountAddedEvent``
+   * - ``\OC_Filesystem::delete_mount``
+     - ``OCP\Files\Events\InvalidateMountCacheEvent`` and ``OCP\Files\Config\Event\UserMountRemovedEvent``
+   * - ``\OC\Files::preWrite``
+     - ``OCP\Files\Events\Node\BeforeNodeWrittenEvent``
+   * - ``\OC\Files::preCreate``
+     - ``OCP\Files\Events\Node\BeforeNodeCreatedEvent``
+   * - ``\OC\Files::postCreate``
+     - ``OCP\Files\Events\Node\NodeCreatedEvent``
+   * - ``\OC\Files::preDelete``
+     - ``OCP\Files\Events\Node\BeforeNodeDeletedEvent``
+   * - ``\OC\Files::postDelete``
+     - ``OCP\Files\Events\Node\NodeDeletedEvent``
+   * - ``\OC\Files::preTouch``
+     - ``OCP\Files\Events\Node\BeforeNodeTouchedEvent``
+   * - ``\OC\Files::postTouch``
+     - ``OCP\Files\Events\Node\NodeTouchedEvent``
+   * - ``\OC\Files::preRename``
+     - ``OCP\Files\Events\Node\BeforeNodeRenamedEvent``
+   * - ``\OC\Files::postRename``
+     - ``OCP\Files\Events\Node\NodeRenamedEvent``
+   * - ``\OC\Files::preCopy``
+     - ``OCP\Files\Events\Node\BeforeNodeCopiedEvent``
+   * - ``\OC\Files::postCopy``
+     - ``OCP\Files\Events\Node\NodeCopiedEvent``
+   * - ``\OC\Files::read``
+     - ``OCP\Files\Events\Node\BeforeNodeReadEvent``
+   * - ``Scanner::addToCache``
+     - ``OCP\Files\Cache\CacheEntryInsertedEvent`` and ``OCP\Files\Cache\CacheEntryUpdatedEvent``
+   * - ``Scanner::removeFromCache``
+     - ``OCP\Files\Cache\CacheEntryRemovedEvent``
+   * - ``\OC\Files\Utils\Scanner::postScanFile``
+     - ``OCP\Files\Events\FileScannedEvent``
+   * - ``\OC\Files\Utils\Scanner::postScanFolder``
+     - ``OCP\Files\Events\FolderScannedEvent``
+
+The ``\OC\Files`` hooks were registered with ``IRootFolder::listen()``, of which only
+``postWrite`` is still emitted. ``NodeWrittenEvent`` and ``BeforeNodeWrittenEvent`` are
+dispatched for new files as well, while the removed ``\OC_Filesystem::update`` hooks only
+fired for files that already existed.
 
 Unified sharing
 ---------------
