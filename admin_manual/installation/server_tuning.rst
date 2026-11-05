@@ -419,7 +419,9 @@ external storages.
 
 .. warning::
 
-   The connection to the ffmpeg-over-ip server is not encrypted. Only use it within a trusted network.
+   ffmpeg-over-ip does not encrypt the connection and does not authenticate the server, so anyone answering on the
+   configured address can read the videos. Only use it within a trusted network, or put a TLS terminating proxy
+   (e.g. stunnel) in front of the server and use a ``tls://`` address.
 
 We recommend running our custom Docker image. You can find the image at
 `<https://ghcr.io/nextcloud-releases/aio-ffmpeg>`_. The server listens on port ``5050`` and requires the
@@ -439,12 +441,27 @@ Ensure the service is only accessible from your internal servers. Then, configur
         // ... the providers you already use ...
         'OC\Preview\MovieRemote',
     ],
-    'preview_ffmpeg_url' => '<host of ffmpeg-over-ip>:5050',
+    'preview_ffmpeg_address' => '<host of ffmpeg-over-ip>:5050',
     'preview_ffmpeg_key' => 'secret',
 
-``preview_ffmpeg_url`` is the address of the server as ``host:port``, without a scheme. ``preview_ffmpeg_key`` must
-match ``FFMPEG_SECRET``, or the ``authSecret`` of the server if you run ffmpeg-over-ip yourself.
+``preview_ffmpeg_address`` is the address of the server as ``host:port``, ``tls://host:port`` or
+``unix:/path/to/socket``. It is not an HTTP URL. ``preview_ffmpeg_key`` must match ``FFMPEG_SECRET``, or the
+``authSecret`` of the server if you run ffmpeg-over-ip yourself.
+
+For ``tls://`` addresses, the certificate of the server is verified against Nextcloud's certificate bundle, like for
+other outgoing connections. Import the certificate of an internal CA with ``occ security:certificates:import``.
+
+Generating a single video preview on the server may take ``120`` seconds in total by default. Change this with:
+
+.. code:: php
+
+    'preview_ffmpeg_timeout' => 300,
 
 .. note::
 
-   Do not enable ``OC\Preview\Movie`` at the same time, otherwise the local provider is tried as well.
+   Like with ``OC\Preview\Movie``, the server can only read up to 20 MB of videos on storages that are not local
+   (e.g. object storage or external storage), and only the first 10 MB of videos on storages that cannot seek (e.g.
+   WebDAV or FTP external storage).
+
+If ``OC\Preview\Movie`` is enabled as well, the ffmpeg-over-ip server is tried first. The local ``ffmpeg`` is then only
+used if the server could not generate a preview.
