@@ -11,4 +11,5 @@ Users & Authentication
    status
    out_of_office
    oidc
+   app_password_scopes
    two-factor-provider
