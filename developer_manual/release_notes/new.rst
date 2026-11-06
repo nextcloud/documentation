@@ -11,6 +11,14 @@ This pages covers new features of the platform.
     Every feature should just have a brief description. Details have to be documented on a dedicated, persistent page.
     After branch-off the contents below will be cleared.
 
+App password scopes
+-------------------
+
+Users can limit an app password to some parts of their account. A limited app password
+can only use your app if the user grants the whole app, or if you open single controller
+methods with ``#[TokenScope]`` (``NCU\AppFramework\Http\Attribute\TokenScope``).
+See :doc:`../digging_deeper/app_password_scopes`.
+
 Email template blocks
 ---------------------
 
