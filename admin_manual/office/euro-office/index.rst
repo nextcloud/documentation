@@ -12,7 +12,8 @@ and many more.
 
 .. note::
     A dedicated Document Server is required for production use. Install the server first, then
-    connect Nextcloud to it using the **Euro-Office** connector app.
+    connect Nextcloud to it using the
+    `Euro-Office connector app <https://apps.nextcloud.com/apps/eurooffice>`_.
 
 .. toctree::
     :maxdepth: 2
