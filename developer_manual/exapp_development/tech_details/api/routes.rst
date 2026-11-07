@@ -37,7 +37,7 @@ where the fields are:
 - ``url``: the route to be registered on the ExApp side, a regex matched from the start of the decoded request path, which begins with ``/`` (e.g. ``^/api/.*``); only HaRP matches it case-sensitively
 - ``verb``: the HTTP verbs that the route accepts, a comma separated list (e.g. ``GET,POST``)
 - ``access_level``: the name of the access level required to access the route, PUBLIC - public access without auth, USER - Nextcloud user auth required, ADMIN - admin user required
-- ``headers_to_exclude``: a JSON-encoded string of an array of strings, the headers that the ExApp wants to be excluded from the request to it
+- ``headers_to_exclude``: a JSON-encoded string of an array of strings, the headers that the ExApp wants to be excluded from the request to it; only the ExApp proxy applies it
 - ``bruteforce_protection``: a JSON-encoded string of an array of numbers, the HTTP status codes that must trigger the bruteforce protection
 
 
@@ -45,8 +45,8 @@ Matching
 ^^^^^^^^
 
 The first route whose ``url`` matches the path and whose ``verb`` lists the method decides the access level; ``HEAD`` is accepted wherever ``GET`` is.
-If routes match the path but none lists the method, the request gets ``405``; the ExApp proxy answers ``404`` instead for ``GET``, ``HEAD``, ``POST``, ``PUT`` and ``DELETE``.
-HaRP and the ExApp proxy also check the path as ExApp web servers may read it (in another letter case, without a trailing slash, without ``;`` parameters, with ``%2F`` kept in its segment), and the route of such a reading can only raise the access level.
+If routes match the path but none lists the method, the request gets ``405``; the ExApp proxy serves only ``GET``, ``HEAD``, ``POST``, ``PUT`` and ``DELETE`` and answers ``404`` instead.
+HaRP and the ExApp proxy also check the path as ExApp web servers may read it (in any letter case, without a trailing slash, without ``;`` parameters, with ``%2F`` kept in its segment), and the route of such a reading can only raise the access level.
 Paths with ``.`` or ``..`` segments and the ``/heartbeat``, ``/init`` and ``/enabled`` endpoints are refused.
 
 For example, with these routes in this order:
