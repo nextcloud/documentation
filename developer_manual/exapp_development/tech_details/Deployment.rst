@@ -84,7 +84,7 @@ Options
     * ``--json-info JSON-INFO`` *[optional]* - ExApp deploy JSON info (json string)
 
 .. warning::
-    After successful deployment (pull, create, and start container), there is a heartbeat check with a 90 second timeout (will be configurable).
+    After successful deployment (pull, create, and start container), there is a heartbeat check with a 10 minute timeout.
 
 Manual install for development
 ******************************
@@ -125,7 +125,7 @@ Application installation scheme
 -------------------------------
 
     1. AppAPI deploys the application and launches it.
-    2. For `N` seconds (default ``90``), AppAPI checks the ``/heartbeat`` endpoint with a ``GET`` request.
+    2. For up to 10 minutes, AppAPI checks the ``/heartbeat`` endpoint with a ``GET`` request.
     3. AppAPI sends a ``POST`` request to the ``/init`` endpoint. If the ExApp does not implement the ``/init`` endpoint and AppAPI receives a 501 or 404 status code, AppAPI enables the application and goes straight to step 5.
     4. The ExApp sends an integer from ``0`` to ``100`` to the OCS endpoint ``apps/app_api/apps/status`` indicating the initialization progress. After sending ``100``, the application is considered initialized.
     5. AppAPI sends a ``PUT`` request to the ``/enabled`` endpoint.
