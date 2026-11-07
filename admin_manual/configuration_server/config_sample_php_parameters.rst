@@ -3998,6 +3998,27 @@ this limitation by removing files before overwriting.
 
 Defaults to ``false``
 
+localstorage.min_free_space
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'localstorage.min_free_space' => 100 * 1024 * 1024,
+
+Amount of physical disk space (in bytes) to keep available on the data
+directory's filesystem. The free space reported for local storage is
+reduced by this margin, so uploads are rejected before the disk is
+actually full. This prevents users (in particular those with unlimited
+quota) from filling up all available space, which would starve the
+database, temporary files and logs and can render the instance
+unrecoverable.
+
+Set this to a value large enough to keep the instance operational, or
+to ``0`` to report the free space as-is.
+
+Defaults to 100 MiB
+
 quota_include_external_storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4712,18 +4733,6 @@ reference_opengraph
 Enable fetching Open Graph metadata from remote URLs.
 
 Defaults to ``true``
-
-unified_search.enabled
-^^^^^^^^^^^^^^^^^^^^^^
-
-
-::
-
-    'unified_search.enabled' => false,
-
-Enable the legacy unified search.
-
-Defaults to ``false``
 
 enable_non-accessible_features
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
