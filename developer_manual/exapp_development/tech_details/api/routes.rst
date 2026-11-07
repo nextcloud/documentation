@@ -45,9 +45,25 @@ Matching
 ^^^^^^^^
 
 The first route whose ``url`` matches the path and whose ``verb`` lists the method decides the access level; ``HEAD`` is accepted wherever ``GET`` is.
-Other methods get ``405``, except ``404`` from the ExApp proxy for the ones it serves: ``GET``, ``HEAD``, ``POST``, ``PUT``, ``DELETE``.
-HaRP applies the highest access level among the readings of a path (letter case, a trailing slash, ``;`` parameters, an escaped ``/``), so write a route for a directory as ``^/img(/.*)?$``.
+If routes match the path but none lists the method, the request gets ``405``; the ExApp proxy answers ``404`` instead for ``GET``, ``HEAD``, ``POST``, ``PUT`` and ``DELETE``.
+HaRP and the ExApp proxy also check the path as ExApp web servers may read it (in another letter case, without a trailing slash, without ``;`` parameters, with ``%2F`` kept in its segment), and the route of such a reading can only raise the access level.
 Paths with ``.`` or ``..`` segments and the ``/heartbeat``, ``/init`` and ``/enabled`` endpoints are refused.
+
+For example, with these routes in this order:
+
+================  ============  ================
+``url``           ``verb``      ``access_level``
+================  ============  ================
+``^/img(/.*)?$``  ``GET``       ``PUBLIC``
+``^/api/.*``      ``GET,POST``  ``USER``
+``.*``            ``GET``       ``ADMIN``
+================  ============  ================
+
+- ``GET /img/logo.png`` and ``HEAD /img/logo.png`` are public.
+- ``GET /api/items`` needs a user: the ``USER`` route comes before ``.*``.
+- ``DELETE /api/items`` gets ``405`` from HaRP and ``404`` from the ExApp proxy; ``PATCH /api/items`` gets ``405`` from both.
+- ``GET /IMG/logo.png`` needs an admin: in this letter case only ``.*`` matches it.
+- With ``^/img/.*`` as the first route, ``GET /img/`` would need an admin: without the trailing slash only ``.*`` matches it, so write a route for a directory as ``^/img(/.*)?$``.
 
 
 Unregister
