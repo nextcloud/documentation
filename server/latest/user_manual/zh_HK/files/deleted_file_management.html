@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deleted files &mdash; Nextcloud 36 User Manual</title>
+  <title>已刪除的檔案 &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -20,8 +20,8 @@
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../_static/documentation_options.js?v=05269ba6"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../_static/translations.js?v=11dc2623"></script>
@@ -75,14 +75,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 用戶手冊介紹</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">使用「動態」應用程式</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI 助理</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">檔案與同步</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">存取您的檔案</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">管理您的檔案</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Deleted files</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">已刪除的檔案</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#quotas">配額</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#what-happens-when-shared-files-are-deleted">刪除共享檔案時會發生什麼事情</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">How the Deleted Files app manages storage space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">「已刪除的檔案」應用程式如何管理儲存空間</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="version_control.html">版本控制</a></li>
@@ -120,7 +120,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">檔案與同步</a></li>
           <li class="breadcrumb-item"><a href="managing.html">管理您的檔案</a></li>
-      <li class="breadcrumb-item active">Deleted files</li>
+      <li class="breadcrumb-item active">已刪除的檔案</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/deleted_file_management.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -131,113 +131,66 @@
            <div itemprop="articleBody">
              
   <section id="deleted-files">
-<h1>Deleted files<a class="headerlink" href="#deleted-files" title="Link to this heading"></a></h1>
-<p>When you delete a file or folder in Nextcloud, it is normally moved to the
-trash bin instead of being deleted immediately. This allows you to restore it
-later.</p>
-<p>Items in the trash bin are permanently deleted when one of the following
-occurs:</p>
+<h1>已刪除的檔案<a class="headerlink" href="#deleted-files" title="Link to this heading"></a></h1>
+<p>當你在 Nextcloud 刪除檔案或資料夾時，該項目通常會移至資源回收筒，而不會立即刪除，讓你日後可以還原。</p>
+<p>當發生以下任何一種情況時，資源回收筒內的項目將被永久刪除：</p>
 <ul class="simple">
-<li><p>You manually select <em>Delete permanently</em>.</p></li>
-<li><p>The Deleted Files app removes the item according to the configured retention
-policy.</p></li>
-<li><p>The effective trash-bin size limit is exceeded and the item is eligible for
-removal to free space.</p></li>
+<li><p>你手動選擇 <em>永久刪除</em>。</p></li>
+<li><p>「已刪除的檔案」應用程式根據設定的保留政策移除項目。</p></li>
+<li><p>資源回收筒的實際容量上限已超出，而項目符合移除條件，需要騰出空間。</p></li>
 </ul>
-<p>Find your deleted files by selecting <strong>Deleted files</strong> in the Files area of the
-Nextcloud Web interface. From there, you can restore items, download them to
-your device, or delete them permanently.</p>
-<p>When you restore an item, Nextcloud normally attempts to return it to its
-original location. If that location no longer exists or is not writable, the
-item is restored to the root of your Files area. If an item with the same name
-already exists, Nextcloud gives the restored item a unique name.</p>
+<p>在 Nextcloud 網頁介面的「檔案」區域選擇 <strong>已刪除的檔案</strong>，即可尋找已刪除的檔案。你可以在該處還原項目、下載至裝置，或永久刪除。</p>
+<p>還原項目時，Nextcloud 通常會嘗試將其放回原來的位置。如果原來的位置已不存在或無法寫入，項目會還原至「檔案」區域的根目錄。如果已有同名項目，Nextcloud 會為還原的項目指定一個獨一無二的名稱。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If the Versions app is enabled, versions associated with a deleted
-file are moved to the trash bin and are restored when the file is restored.</p>
+<p>如果已啟用「版本」應用程式，已刪除檔案的相關版本也會移至資源回收筒，並在還原檔案時一併還原。</p>
 </div>
 <section id="quotas">
 <h2>配額<a class="headerlink" href="#quotas" title="Link to this heading"></a></h2>
-<p>Files and folders in your trash bin do not count against your normal storage
-quota.</p>
-<p>See <a class="reference internal" href="quota.html"><span class="doc">存儲配額</span></a> for more information about how storage quotas are calculated.</p>
+<p>資源回收筒內的檔案及資料夾不會計入你的正常儲存空間配額。</p>
+<p>如需了解儲存空間配額的計算方式，請參閱 <a class="reference internal" href="quota.html"><span class="doc">存儲配額</span></a>。</p>
 </section>
 <section id="what-happens-when-shared-files-are-deleted">
 <h2>刪除共享檔案時會發生什麼事情<a class="headerlink" href="#what-happens-when-shared-files-are-deleted" title="Link to this heading"></a></h2>
-<p>The behavior of deleted shared files depends on who deletes the item and who
-owns it.</p>
-<p>For example, User1 shares a folder named <code class="docutils literal notranslate"><span class="pre">TheProject/</span></code> with User2 and User3:</p>
+<p>刪除共用檔案後的處理方式，取決於刪除者及項目擁有者的身分。</p>
+<p>例如，用戶 User1 與 User2 及 User3 共用名為 <code class="docutils literal notranslate"><span class="pre">TheProject/</span></code> 的資料夾：</p>
 <ol class="arabic">
-<li><p>User2, a share recipient (sharee), deletes a folder or file named
-<code class="docutils literal notranslate"><span class="pre">Phase2</span></code> inside <code class="docutils literal notranslate"><span class="pre">TheProject/</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">TheProject/Phase2</span></code> is moved to the trash bin of User1, the owner, and a
-copy is placed in User2's trash bin when possible. The item is removed from
-the shared folder for User3, but User3 does not receive a copy in their
-trash bin.</p>
+<li><p>User2（共用項目的接收者）刪除 <code class="docutils literal notranslate"><span class="pre">TheProject/</span></code> 內名為 <code class="docutils literal notranslate"><span class="pre">Phase2</span></code> 的資料夾或檔案。</p>
+<p><code class="docutils literal notranslate"><span class="pre">TheProject/Phase2</span></code> 會移至擁有者 User1 的資源回收筒；如情況允許，User2 的資源回收筒亦會存放一份副本。該項目會從 User3 的共用資料夾中移除，但 User3 的資源回收筒不會收到副本。</p>
 </li>
-<li><p>User1, the owner, deletes <code class="docutils literal notranslate"><span class="pre">TheProject/Phase2</span></code>.</p>
-<p>The item is moved to User1's trash bin and removed from the shared folder for
-User2 and User3. It is not placed in their trash bins.</p>
+<li><p>擁有者 User1 刪除 <code class="docutils literal notranslate"><span class="pre">TheProject/Phase2</span></code>。</p>
+<p>該項目會移至 User1 的資源回收筒，並從 User2 及 User3 的共用資料夾中移除，不會放入他們的資源回收筒。</p>
 </li>
 </ol>
-<p>The exact behavior can depend on the type of share and the permissions granted
-by the share. Depending on those permissions, other users may be able to copy,
-rename, move, or re-share shared files. These operations can affect which
-account owns the resulting files and which trash bin receives a deleted item.</p>
+<p>實際處理方式可能因共用類型及授予的權限而異。視乎權限，其他用戶可能可以複製、重新命名、移動或再次共用檔案。這些操作可能影響產生的檔案由哪個帳戶擁有，以及刪除後會進入哪個資源回收筒。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When a sharee deletes an item owned by another user, Nextcloud moves the item
-to the owner's trash bin. A copy in the deleting user's trash bin is also
-created (in most cases; the copy is on a best-effort basis and is not
-guaranteed).</p>
+<p>當共用項目的接收者刪除其他用戶擁有的項目時，Nextcloud 會將該項目移至擁有者的資源回收筒。系統通常亦會在刪除者的資源回收筒建立副本，但只會盡力處理，並不保證成功。</p>
 </div>
 </section>
 <section id="how-the-deleted-files-app-manages-storage-space">
-<h2>How the Deleted Files app manages storage space<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Link to this heading"></a></h2>
-<p>The Deleted Files app manages trash-bin contents using two related rules:</p>
+<h2>「已刪除的檔案」應用程式如何管理儲存空間<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Link to this heading"></a></h2>
+<p>「已刪除的檔案」應用程式透過兩項相關規則管理資源回收筒的內容：</p>
 <ul class="simple">
-<li><p>A storage limit determines how much space the trash bin may use.</p></li>
-<li><p>A retention policy determines when deleted items become eligible for
-permanent deletion.</p></li>
+<li><p>儲存空間上限決定資源回收筒可以使用多少空間。</p></li>
+<li><p>保留政策決定已刪除的項目何時符合永久刪除條件。</p></li>
 </ul>
 <section id="trash-bin-storage-limit">
-<h3>Trash-bin storage limit<a class="headerlink" href="#trash-bin-storage-limit" title="Link to this heading"></a></h3>
-<p>For accounts with a storage quota, the default trash-bin limit is up to 50% of
-the account's remaining quota space. This is calculated after the account's
-active files have been taken into account; it is not 50% of the account's total
-quota.</p>
-<p>For example, if your quota is 10 GB and your active files use 8 GB, the default
-trash-bin allowance is calculated from the remaining 2 GB.</p>
-<p>For accounts without a storage quota, the default limit is calculated using
-available filesystem space instead. Your administrator can override either
-default by configuring a global or per-account trash-bin size.</p>
-<p>When the effective trash-bin limit is exceeded, Nextcloud removes eligible
-deleted items, starting with the oldest items, until the limit is satisfied
-again.</p>
+<h3>資源回收筒的儲存空間上限<a class="headerlink" href="#trash-bin-storage-limit" title="Link to this heading"></a></h3>
+<p>對設有儲存空間配額的帳戶，資源回收筒的默認上限為帳戶剩餘配額空間的最多 50%。計算時會先扣除帳戶現有檔案佔用的空間，因此並非總配額的 50%。</p>
+<p>例如，如果你的配額為 10 GB，而現有檔案佔用 8 GB，資源回收筒的默認可用空間便會根據剩餘的 2 GB 計算。</p>
+<p>對沒有儲存空間配額的帳戶，默認上限會改為根據檔案系統的可用空間計算。管理員可以設定全域或個別帳戶的資源回收筒容量，以覆蓋上述默認值。</p>
+<p>當資源回收筒超出實際容量上限時，Nextcloud 會從最舊的項目開始移除符合刪除條件的項目，直至使用量重新降至上限以內。</p>
 </section>
 <section id="retention-and-permanent-deletion">
-<h3>Retention and permanent deletion<a class="headerlink" href="#retention-and-permanent-deletion" title="Link to this heading"></a></h3>
-<p>By default, deleted files are retained for at least 30 days. After that,
-eligible items may be permanently deleted when space is needed; they are not
-necessarily deleted immediately after 30 days.</p>
-<p>Your administrator can configure different minimum and maximum retention
-periods. Depending on the configuration, items may be permanently deleted
-after a maximum age even when storage space is not currently needed. Automatic
-expiration can also be disabled.</p>
-<p>For policies with a configured minimum retention period, an item is eligible
-for space-based cleanup only after that period has elapsed. Policies without a
-minimum retention period may allow space-based cleanup regardless of the
-item's age. Items that have exceeded a configured maximum retention period can
-be permanently deleted regardless of whether space is currently needed.</p>
-<p>The relevant configuration setting is
-<code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code>. For details about the available values and
-their interaction with quotas and trash-bin sizes, see the
-<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">Deleted Files section of the Administrator Manual</a>.</p>
+<h3>保留期限與永久刪除<a class="headerlink" href="#retention-and-permanent-deletion" title="Link to this heading"></a></h3>
+<p>默認情況下，已刪除的檔案會保留至少 30 天。之後，如有需要騰出空間，符合條件的項目可能會被永久刪除；它們不一定會在 30 天後立即刪除。</p>
+<p>管理員可以設定不同的最短及最長保留期限。視乎設定，即使目前不需要騰出儲存空間，超過最長保留期限的項目仍可能被永久刪除。亦可以停用自動到期刪除功能。</p>
+<p>對設有最短保留期限的政策，項目必須在該期限屆滿後，才符合因空間不足而清理的條件。沒有設定最短保留期限的政策，則可能容許不論項目已刪除多久，都因空間需要而清理。超過已設定最長保留期限的項目，無論是否需要騰出空間，都可以被永久刪除。</p>
+<p>相關設定為 <code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code>。如需了解可用的設定值，以及它們與配額和資源回收筒容量的相互影響，請參閱 <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">管理員手冊的「已刪除的檔案」章節</a>。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Deleted Files app may permanently delete an item before its maximum
-retention period when the effective trash-bin limit is exceeded and the
-item's minimum retention period has elapsed.</p>
+<p>當資源回收筒超出實際容量上限，而且項目已達到最短保留期限時，「已刪除的檔案」應用程式可能會在最長保留期限屆滿前永久刪除該項目。</p>
 </div>
 </section>
 </section>

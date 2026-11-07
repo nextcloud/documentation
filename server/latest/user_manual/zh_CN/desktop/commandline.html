@@ -20,11 +20,11 @@
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../_static/documentation_options.js?v=aa7869e8"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
-      <script src="../../_static/translations.js?v=beaddf03"></script>
+      <script src="../../_static/translations.js?v=540d3cec"></script>
       <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
       <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -134,12 +134,12 @@
            <div itemprop="articleBody">
              
   <section id="command-line-client">
-<span id="using-the-command-line-client"></span><h1>Command-line client<a class="headerlink" href="#command-line-client" title="Link to this heading"></a></h1>
+<span id="using-the-command-line-client"></span><h1>Command-line client<a class="headerlink" href="#command-line-client" title="链接到此标题。"></a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> synchronizes a local directory with a Nextcloud server, then exits. It can perform follow-up syncs
 when needed, but it does not continuously monitor local files or poll for server changes like the desktop app.
 For options passed to the desktop app's <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> command, see <a class="reference internal" href="advanced_configuration.html#desktop-command-line-options"><span class="std std-ref">Command-line options</span></a>.</p>
 <section id="installation">
-<span id="install"></span><h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<span id="install"></span><h2>Installation<a class="headerlink" href="#installation" title="链接到此标题。"></a></h2>
 <p>Install a package that provides <code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code>. Availability depends on your operating system and package:</p>
 <table class="configuration-table docutils align-default">
 <colgroup>
@@ -174,7 +174,7 @@ For options passed to the desktop app's <code class="docutils literal notranslat
 </table>
 </section>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<h2>Usage<a class="headerlink" href="#usage" title="链接到此标题。"></a></h2>
 <p>Use an existing local directory and the base URL of the Nextcloud server:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nextcloudcmd [options] local_directory server_url</span>
 </pre></div>
@@ -189,7 +189,7 @@ Do not append a WebDAV endpoint to the server URL; use <code class="docutils lit
 Options with values accept both <code class="docutils literal notranslate"><span class="pre">--option</span> <span class="pre">value</span></code> and <code class="docutils literal notranslate"><span class="pre">--option=value</span></code>.</p>
 </section>
 <section id="options">
-<h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<h2>Options<a class="headerlink" href="#options" title="链接到此标题。"></a></h2>
 <table class="configuration-table docutils align-default">
 <colgroup>
 <col style="width: 32.0%" />
@@ -285,7 +285,7 @@ for every failed request.</p></td>
 </table>
 </section>
 <section id="desktop-command-line-credentials">
-<span id="credential-handling"></span><span id="id1"></span><h2>Credential handling<a class="headerlink" href="#desktop-command-line-credentials" title="Link to this heading"></a></h2>
+<span id="credential-handling"></span><span id="id1"></span><h2>Credential handling<a class="headerlink" href="#desktop-command-line-credentials" title="链接到此标题。"></a></h2>
 <p>Credentials are read in this order:</p>
 <ol class="arabic simple">
 <li><p>Username and password in the server URL, if supplied.</p></li>
@@ -325,7 +325,7 @@ For transfer overrides shared with the desktop sync engine, see <a class="refere
 overridden by those variables. It does not read the desktop app's chunk-size settings from <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code>.</p>
 </section>
 <section id="exclude-lists">
-<span id="desktop-command-line-excludes"></span><span id="exclude-list"></span><h2>Exclude lists<a class="headerlink" href="#exclude-lists" title="Link to this heading"></a></h2>
+<span id="desktop-command-line-excludes"></span><span id="exclude-list"></span><h2>Exclude lists<a class="headerlink" href="#exclude-lists" title="链接到此标题。"></a></h2>
 <p>The client loads the system exclude list when available. You can add your own list with <code class="docutils literal notranslate"><span class="pre">--exclude</span></code> or
 <code class="docutils literal notranslate"><span class="pre">--exclude-anchored</span></code>. A missing explicitly supplied file is an error.</p>
 <p>With <code class="docutils literal notranslate"><span class="pre">--exclude</span></code>, a file named <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code> uses the sync root for pattern matching. Other filenames can use
@@ -339,7 +339,7 @@ Thumbs.db
 </div>
 </section>
 <section id="account-setup">
-<h2>Account setup<a class="headerlink" href="#account-setup" title="Link to this heading"></a></h2>
+<h2>Account setup<a class="headerlink" href="#account-setup" title="链接到此标题。"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">nextcloudcmd</span></code> can also save an account for use by the desktop app. The presence of <code class="docutils literal notranslate"><span class="pre">--userid</span></code> selects this mode;
 omit the positional local directory and server URL used for a one-run sync. The command exits after setup completes.</p>
 <table class="configuration-table docutils align-default">
