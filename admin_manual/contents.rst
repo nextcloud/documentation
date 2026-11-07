@@ -35,7 +35,6 @@ Table of contents
     :caption: Files
 
     configuration_files/index
-    file_workflows/index
     configuration_mimetypes/index
 
 .. toctree::
@@ -56,6 +55,7 @@ Table of contents
     :caption: automation
 
     automation_overview/index
+    file_workflows/index
     webhook_listeners/index
     webhook_listeners/budibase_workflows
     windmill_workflows/index
