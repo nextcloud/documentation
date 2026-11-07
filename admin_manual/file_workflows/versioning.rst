@@ -2,6 +2,8 @@
 Block file versioning
 =====================
 
+.. versionadded:: 34
+
 The Versions app (``files_versions``) provides the **Block file versioning**
 Flow operation. Administrators can use it to prevent new file versions from
 being created when a file matches specified rules. The operation is available
