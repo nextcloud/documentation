@@ -37,8 +37,8 @@ You can define any custom container startup logic here if needed.
 Heartbeat
 *********
 
-AppAPI calls ``GET /heartbeat`` after installing, updating or enabling the ExApp, until it answers,
-to check that its web server is running.
+AppAPI calls ``GET /heartbeat`` periodically when it installs, updates or enables the ExApp, until it answers,
+to check that its web server is up and running.
 
 URL: ``GET http://localhost:2345/heartbeat``
 
