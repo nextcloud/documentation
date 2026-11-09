@@ -209,7 +209,7 @@ This can be done by the <code class="docutils literal notranslate"><span class="
 </div></blockquote>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>After successful deployment (pull, create, and start container), there is a heartbeat check with a 90 second timeout (will be configurable).</p>
+<p>After successful deployment (pull, create, and start container), there is a heartbeat check with a 10 minute timeout.</p>
 </div>
 </section>
 <section id="manual-install-for-development">
@@ -251,7 +251,7 @@ The following variables are required and built automatically:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>AppAPI deploys the application and launches it.</p></li>
-<li><p>For <cite>N</cite> seconds (default <code class="docutils literal notranslate"><span class="pre">90</span></code>), AppAPI checks the <code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code> endpoint with a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request.</p></li>
+<li><p>For up to 10 minutes, AppAPI checks the <code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code> endpoint with a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request.</p></li>
 <li><p>AppAPI sends a <code class="docutils literal notranslate"><span class="pre">POST</span></code> request to the <code class="docutils literal notranslate"><span class="pre">/init</span></code> endpoint. If the ExApp does not implement the <code class="docutils literal notranslate"><span class="pre">/init</span></code> endpoint and AppAPI receives a 501 or 404 status code, AppAPI enables the application and goes straight to step 5.</p></li>
 <li><p>The ExApp sends an integer from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">100</span></code> to the OCS endpoint <code class="docutils literal notranslate"><span class="pre">apps/app_api/apps/status</span></code> indicating the initialization progress. After sending <code class="docutils literal notranslate"><span class="pre">100</span></code>, the application is considered initialized.</p></li>
 <li><p>AppAPI sends a <code class="docutils literal notranslate"><span class="pre">PUT</span></code> request to the <code class="docutils literal notranslate"><span class="pre">/enabled</span></code> endpoint.</p></li>
@@ -289,7 +289,7 @@ It has the same structure as other Nextcloud appinfo/info.xml files, but with so
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Nov 09, 2026.
       </span></p>
   </div>
 

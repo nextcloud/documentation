@@ -20,8 +20,8 @@
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=a49d5d77"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../_static/copybutton.js?v=f281be69"></script>
       <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
@@ -110,6 +110,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#deployment">Deployment</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#place-data-directory-outside-of-the-web-root">Place data directory outside of the web root</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#place-config-directory-outside-of-the-web-root">Place config directory outside of the web root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-strong-file-permissions">Set strong file permissions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#disable-preview-image-generation">Disable preview image generation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#disable-debug-mode">Disable Debug Mode</a></li>
 </ul>
@@ -431,6 +432,85 @@ Verify with <code class="docutils literal notranslate"><span class="pre">occ</sp
 <p><a class="reference internal" href="../configuration_server/config_sample_php_parameters.html"><span class="doc">Configuration Parameters</span></a> for full details on
 <code class="docutils literal notranslate"><span class="pre">NEXTCLOUD_CONFIG_DIR</span></code> and other configuration loading behaviour.</p>
 </div>
+</section>
+<section id="set-strong-file-permissions">
+<h3>Set strong file permissions<a class="headerlink" href="#set-strong-file-permissions" title="Link to this heading"></a></h3>
+<p>Strong file system permissions limit what an attacker can read or change after
+gaining access to the server. As a baseline, give the web server user ownership
+of the Nextcloud files and remove all access for other users:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>www-data:www-data<span class="w"> </span>/var/www/nextcloud/
+sudo<span class="w"> </span>find<span class="w"> </span>/var/www/nextcloud/<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span><span class="m">750</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+sudo<span class="w"> </span>find<span class="w"> </span>/var/www/nextcloud/<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span><span class="m">640</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</pre></div>
+</div>
+<p>Apply the same to the data directory if it is outside the installation directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>www-data:www-data<span class="w"> </span>/path/to/nextcloud-data/
+sudo<span class="w"> </span>find<span class="w"> </span>/path/to/nextcloud-data/<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span><span class="m">750</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+sudo<span class="w"> </span>find<span class="w"> </span>/path/to/nextcloud-data/<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span><span class="m">640</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</pre></div>
+</div>
+<p>With these permissions the web updater, the command-line updater and the App
+Store keep working, as they run as the web server user.</p>
+<section id="read-only-installation-directory">
+<h4>Read-only installation directory<a class="headerlink" href="#read-only-installation-directory" title="Link to this heading"></a></h4>
+<p>You can go further and stop the web server from changing the Nextcloud code. A
+compromised web server process then cannot modify PHP files. Only these
+locations must stay writable by the web server user:</p>
+<ul class="simple">
+<li><p>the data directory</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">config/</span></code> directory, which <code class="docutils literal notranslate"><span class="pre">occ</span></code> and the web interface write to</p></li>
+<li><p>the apps directory where the App Store installs apps, see below</p></li>
+<li><p>on Apache, the <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> file at the root of the installation, which
+<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> rewrites</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>root:www-data<span class="w"> </span>/var/www/nextcloud/
+sudo<span class="w"> </span>find<span class="w"> </span>/var/www/nextcloud/<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span><span class="m">750</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+sudo<span class="w"> </span>find<span class="w"> </span>/var/www/nextcloud/<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span><span class="m">640</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+
+sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>www-data:www-data<span class="w"> </span>/var/www/nextcloud/config/
+sudo<span class="w"> </span>chown<span class="w"> </span>www-data:www-data<span class="w"> </span>/var/www/nextcloud/.htaccess
+</pre></div>
+</div>
+<p>To keep installing apps from the App Store, add a separate writable apps
+directory with <code class="docutils literal notranslate"><span class="pre">apps_paths</span></code> in <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code> and leave the bundled
+<code class="docutils literal notranslate"><span class="pre">apps/</span></code> directory read-only:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">'apps_paths' =&gt; [</span>
+<span class="x">    [</span>
+<span class="x">        'path' =&gt; '/var/www/nextcloud/apps',</span>
+<span class="x">        'url' =&gt; '/apps',</span>
+<span class="x">        'writable' =&gt; false,</span>
+<span class="x">    ],</span>
+<span class="x">    [</span>
+<span class="x">        'path' =&gt; '/var/www/nextcloud/apps-extra',</span>
+<span class="x">        'url' =&gt; '/apps-extra',</span>
+<span class="x">        'writable' =&gt; true,</span>
+<span class="x">    ],</span>
+<span class="x">],</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>/var/www/nextcloud/apps-extra
+sudo<span class="w"> </span>chown<span class="w"> </span>www-data:www-data<span class="w"> </span>/var/www/nextcloud/apps-extra
+</pre></div>
+</div>
+<p>Otherwise, disable the App Store with <code class="docutils literal notranslate"><span class="pre">'appstoreenabled'</span> <span class="pre">=&gt;</span> <span class="pre">false,</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The web updater and the command-line updater (<code class="docutils literal notranslate"><span class="pre">updater.phar</span></code>) replace the
+Nextcloud files as the web server user, so both fail on a read-only
+installation directory. Disable the web updater:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">'upgrade.disable-web' =&gt; true,</span>
+</pre></div>
+</div>
+<p>Update by replacing the files as <code class="docutils literal notranslate"><span class="pre">root</span></code> and running <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> as the
+web server user, as described in <a class="reference internal" href="../maintenance/manual_upgrade.html"><span class="doc">Upgrade manually</span></a>. Then
+apply the permissions above again.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../configuration_server/config_sample_php_parameters.html"><span class="doc">Configuration Parameters</span></a> for
+<code class="docutils literal notranslate"><span class="pre">apps_paths</span></code>, <code class="docutils literal notranslate"><span class="pre">appstoreenabled</span></code> and <code class="docutils literal notranslate"><span class="pre">upgrade.disable-web</span></code>.</p>
+</div>
+</section>
 </section>
 <section id="disable-preview-image-generation">
 <h3>Disable preview image generation<a class="headerlink" href="#disable-preview-image-generation" title="Link to this heading"></a></h3>

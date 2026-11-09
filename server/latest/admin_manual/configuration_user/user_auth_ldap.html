@@ -20,8 +20,8 @@
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=a49d5d77"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../_static/copybutton.js?v=f281be69"></script>
       <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
@@ -595,6 +595,30 @@ taken into account, unless you specify it as well.</p>
 </li>
 </ul>
 </dd>
+</dl>
+<p>By default, user and group searches only match values that start with the
+search term. For example, searching for <code class="docutils literal notranslate"><span class="pre">ann</span></code> finds <em>Anna</em> but not
+<em>Joanna</em>. For a user with the display name <em>Anna Maria Smith</em>, searching for
+<code class="docutils literal notranslate"><span class="pre">Anna</span></code> finds the user, but searching for <code class="docutils literal notranslate"><span class="pre">Maria</span></code> or <code class="docutils literal notranslate"><span class="pre">Smith</span></code> does not.</p>
+<p>To also match the search term in the middle of a value, enable the
+<code class="docutils literal notranslate"><span class="pre">partial_search_with_prefix_wildcard</span></code> option with the <code class="docutils literal notranslate"><span class="pre">occ</span></code> command, like
+this example on Ubuntu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">user_ldap</span> <span class="n">partial_search_with_prefix_wildcard</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">boolean</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+<p>With this option enabled, searching for <code class="docutils literal notranslate"><span class="pre">Anna</span></code>, <code class="docutils literal notranslate"><span class="pre">Maria</span></code> or <code class="docutils literal notranslate"><span class="pre">Smith</span></code> finds
+<em>Anna Maria Smith</em>.</p>
+<p>This option only takes effect when username autocompletion in the share dialog
+is allowed (<code class="docutils literal notranslate"><span class="pre">shareapi_allow_share_dialog_user_enumeration</span></code>). It applies to
+all configured user and group search attributes.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Searches with a leading wildcard (e.g. <code class="docutils literal notranslate"><span class="pre">(cn=*ann*)</span></code>) are more
+expensive for the LDAP server than prefix searches. On large directories,
+make sure that substring indexes exist for all user and group search
+attributes, otherwise every search may scan the whole directory.</p>
+</div>
+<dl>
 <dt>Group Member association:</dt><dd><p>The attribute that is used to indicate group memberships, i.e. the attribute
 used by LDAP groups to refer to their users.</p>
 <p>Nextcloud detects the value automatically. You should only change it if you
@@ -603,6 +627,23 @@ have a very valid reason and know what you are doing.</p>
 <li><p>Example: <em>uniquemember</em></p></li>
 </ul>
 </dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Matching a user’s <code class="docutils literal notranslate"><span class="pre">gidNumber</span></code> to a group’s <code class="docutils literal notranslate"><span class="pre">gidNumber</span></code> also makes
+Nextcloud treat that user as a member of the group. This is the POSIX
+primary-group mechanism. It applies <strong>in addition to</strong> (and independently
+of) whatever you configure here — for example <code class="docutils literal notranslate"><span class="pre">member</span></code>, <code class="docutils literal notranslate"><span class="pre">memberUid</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">uniqueMember</span></code>.</p>
+<p>So after you remove a user from an LDAP group via the usual membership
+attribute, they may still appear as a member in the web UI and in
+<code class="docutils literal notranslate"><span class="pre">occ</span></code> output while their <code class="docutils literal notranslate"><span class="pre">gidNumber</span></code> still matches the group’s. The
+same idea applies to Active Directory <code class="docutils literal notranslate"><span class="pre">primaryGroupID</span></code>. The attribute
+name used for the user-side value is configurable as <code class="docutils literal notranslate"><span class="pre">ldapGidNumber</span></code>
+(default <code class="docutils literal notranslate"><span class="pre">gidNumber</span></code>) via the LDAP configuration API / <code class="docutils literal notranslate"><span class="pre">occ</span></code>, but it
+is not exposed in the admin UI.</p>
+</div>
+<dl>
 <dt>Nested groups:</dt><dd><p>Enable group member retrieval from sub groups.</p>
 <p>To allow user listing and login from nested groups, please see <strong>User listing
 and login per nested groups</strong> in the section <strong>Troubleshooting, Tips and
