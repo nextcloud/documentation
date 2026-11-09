@@ -52,7 +52,7 @@ Image tags
 
 Pin to a specific version in production::
 
-    ghcr.io/euro-office/documentserver:9.3.1
+    ghcr.io/euro-office/documentserver:v9.3.1
 
 Persistent data
 ---------------
