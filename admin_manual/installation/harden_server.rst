@@ -227,6 +227,95 @@ Also set it for CLI work (``occ``, cron):
 .. seealso:: :doc:`../configuration_server/config_sample_php_parameters` for full details on
    ``NEXTCLOUD_CONFIG_DIR`` and other configuration loading behaviour.
 
+Set strong file permissions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Strong file system permissions limit what an attacker can read or change after
+gaining access to the server. As a baseline, give the web server user ownership
+of the Nextcloud files and remove all access for other users:
+
+.. code-block:: bash
+
+   sudo chown -R www-data:www-data /var/www/nextcloud/
+   sudo find /var/www/nextcloud/ -type d -exec chmod 750 {} \;
+   sudo find /var/www/nextcloud/ -type f -exec chmod 640 {} \;
+
+Apply the same to the data directory if it is outside the installation directory:
+
+.. code-block:: bash
+
+   sudo chown -R www-data:www-data /path/to/nextcloud-data/
+   sudo find /path/to/nextcloud-data/ -type d -exec chmod 750 {} \;
+   sudo find /path/to/nextcloud-data/ -type f -exec chmod 640 {} \;
+
+With these permissions the web updater, the command-line updater and the App
+Store keep working, as they run as the web server user.
+
+Read-only installation directory
+""""""""""""""""""""""""""""""""
+
+You can go further and stop the web server from changing the Nextcloud code. A
+compromised web server process then cannot modify PHP files. Only these
+locations must stay writable by the web server user:
+
+* the data directory
+* the ``config/`` directory, which ``occ`` and the web interface write to
+* the apps directory where the App Store installs apps, see below
+* on Apache, the ``.htaccess`` file at the root of the installation, which
+  ``occ upgrade`` rewrites
+
+.. code-block:: bash
+
+   sudo chown -R root:www-data /var/www/nextcloud/
+   sudo find /var/www/nextcloud/ -type d -exec chmod 750 {} \;
+   sudo find /var/www/nextcloud/ -type f -exec chmod 640 {} \;
+
+   sudo chown -R www-data:www-data /var/www/nextcloud/config/
+   sudo chown www-data:www-data /var/www/nextcloud/.htaccess
+
+To keep installing apps from the App Store, add a separate writable apps
+directory with ``apps_paths`` in ``config/config.php`` and leave the bundled
+``apps/`` directory read-only:
+
+.. code-block:: php
+
+   'apps_paths' => [
+       [
+           'path' => '/var/www/nextcloud/apps',
+           'url' => '/apps',
+           'writable' => false,
+       ],
+       [
+           'path' => '/var/www/nextcloud/apps-extra',
+           'url' => '/apps-extra',
+           'writable' => true,
+       ],
+   ],
+
+.. code-block:: bash
+
+   sudo mkdir /var/www/nextcloud/apps-extra
+   sudo chown www-data:www-data /var/www/nextcloud/apps-extra
+
+Otherwise, disable the App Store with ``'appstoreenabled' => false,``.
+
+.. warning::
+
+   The web updater and the command-line updater (``updater.phar``) replace the
+   Nextcloud files as the web server user, so both fail on a read-only
+   installation directory. Disable the web updater:
+
+   .. code-block:: php
+
+      'upgrade.disable-web' => true,
+
+   Update by replacing the files as ``root`` and running ``occ upgrade`` as the
+   web server user, as described in :doc:`../maintenance/manual_upgrade`. Then
+   apply the permissions above again.
+
+.. seealso:: :doc:`../configuration_server/config_sample_php_parameters` for
+   ``apps_paths``, ``appstoreenabled`` and ``upgrade.disable-web``.
+
 Disable preview image generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
