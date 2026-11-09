@@ -9,8 +9,8 @@ system-wide flows, while users can define personal flows (unless disabled
 by the administrator).
 
 Apps can provide additional Flow operations. This chapter covers operations
-provided by File Access Control, Files Automated Tagging, Files Retention
-and the Versions app.
+provided by the File Access Control, Files Automated Tagging, Files Retention, 
+Flow Notifications, and Files Versions apps.
 
 Additional Flow apps can be found in the `Nextcloud app store
 <https://apps.nextcloud.com/>`_.
@@ -39,3 +39,4 @@ are covered here:
     automated_tagging
     retention
     versioning
+    notifications
