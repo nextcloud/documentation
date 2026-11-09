@@ -52,7 +52,7 @@ Table of contents
     desktop/index
 
 .. toctree::
-    :caption: automation
+    :caption: Automation
 
     automation_overview/index
     file_workflows/index
