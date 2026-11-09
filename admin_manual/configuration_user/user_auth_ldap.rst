@@ -383,6 +383,29 @@ Group Search Attributes:
     | *cn*
     | *description*
 
+By default, user and group searches only match values that start with the
+search term. For example, searching for ``ann`` finds *Anna* but not
+*Joanna*. For a user with the display name *Anna Maria Smith*, searching for
+``Anna`` finds the user, but searching for ``Maria`` or ``Smith`` does not.
+
+To also match the search term in the middle of a value, enable the
+``partial_search_with_prefix_wildcard`` option with the ``occ`` command, like
+this example on Ubuntu::
+
+  sudo -E -u www-data php occ config:app:set user_ldap partial_search_with_prefix_wildcard --type=boolean --value=true
+
+With this option enabled, searching for ``Anna``, ``Maria`` or ``Smith`` finds
+*Anna Maria Smith*.
+
+This option only takes effect when username autocompletion in the share dialog
+is allowed (``shareapi_allow_share_dialog_user_enumeration``). It applies to
+all configured user and group search attributes.
+
+.. warning:: Searches with a leading wildcard (e.g. ``(cn=*ann*)``) are more
+   expensive for the LDAP server than prefix searches. On large directories,
+   make sure that substring indexes exist for all user and group search
+   attributes, otherwise every search may scan the whole directory.
+
 Group Member association:
   The attribute that is used to indicate group memberships, i.e. the attribute
   used by LDAP groups to refer to their users.
