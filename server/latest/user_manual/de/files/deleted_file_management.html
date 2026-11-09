@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deleted files &mdash; Nextcloud 36 User Manual</title>
+  <title>Gelöschte Dateien &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -20,8 +20,8 @@
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../_static/documentation_options.js?v=d9e2867d"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../_static/translations.js?v=9bf55d28"></script>
@@ -75,19 +75,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 - Einführung in die Benutzeranleitung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Verwendung der Aktivitäts-App</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">KI-Assistent</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Dateien &amp; Synchronisation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Zugriff auf Ihre Dateien</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="managing.html">Verwalten Sie Ihre Dateien</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Deleted files</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Gelöschte Dateien</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#quotas">Speicherkontingente</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#what-happens-when-shared-files-are-deleted">Was passiert, wenn freigegebene Dateien gelöscht werden</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">How the Deleted Files app manages storage space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">So verwaltet die App „Gelöschte Dateien“ den Speicherplatz</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="version_control.html">Versionskontrolle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="quota.html">Speicherkontingent</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tagging.html">System tags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tagging.html">System-Schlagworte</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="collaboration.html">Teilen &amp; Zusammenarbeit</a></li>
@@ -120,7 +120,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Dateien &amp; Synchronisation</a></li>
           <li class="breadcrumb-item"><a href="managing.html">Verwalten Sie Ihre Dateien</a></li>
-      <li class="breadcrumb-item active">Deleted files</li>
+      <li class="breadcrumb-item active">Gelöschte Dateien</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/deleted_file_management.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
       </li>
@@ -131,113 +131,66 @@
            <div itemprop="articleBody">
              
   <section id="deleted-files">
-<h1>Deleted files<a class="headerlink" href="#deleted-files" title="Link to this heading"></a></h1>
-<p>When you delete a file or folder in Nextcloud, it is normally moved to the
-trash bin instead of being deleted immediately. This allows you to restore it
-later.</p>
-<p>Items in the trash bin are permanently deleted when one of the following
-occurs:</p>
+<h1>Gelöschte Dateien<a class="headerlink" href="#deleted-files" title="Link to this heading"></a></h1>
+<p>Wenn Sie eine Datei oder einen Ordner in Nextcloud löschen, wird diese normalerweise in den Papierkorb verschoben, anstatt sofort gelöscht zu werden. So kann der Löschvorgang rückgängig gemacht werden.</p>
+<p>Elemente im Papierkorb werden dauerhaft gelöscht, wenn einer der folgenden Fälle eintritt:</p>
 <ul class="simple">
-<li><p>You manually select <em>Delete permanently</em>.</p></li>
-<li><p>The Deleted Files app removes the item according to the configured retention
-policy.</p></li>
-<li><p>The effective trash-bin size limit is exceeded and the item is eligible for
-removal to free space.</p></li>
+<li><p>Sie wählen manuell <em>Dauerhaft löschen</em> aus.</p></li>
+<li><p>Die App „Gelöschte Dateien“ entfernt Elemente entsprechend der eingerichteten Aufbewahrungsrichtlinie.</p></li>
+<li><p>Die effektive Papierkorbgrößenbeschränkung wird überschritten und das Element wird entfernt werden, um freien Platz zu schaffen.</p></li>
 </ul>
-<p>Find your deleted files by selecting <strong>Deleted files</strong> in the Files area of the
-Nextcloud Web interface. From there, you can restore items, download them to
-your device, or delete them permanently.</p>
-<p>When you restore an item, Nextcloud normally attempts to return it to its
-original location. If that location no longer exists or is not writable, the
-item is restored to the root of your Files area. If an item with the same name
-already exists, Nextcloud gives the restored item a unique name.</p>
+<p>Sie finden ihre gelöschten Dateien indem Sie <strong>Gelöschte Dateien</strong> im Datei-Bereich der Nextcloud-Weboberfläche auswählen. Dort können Sie gelöschte Elemente wiederherstellen, sie auf Ihr Gerät herunterladen oder sie permanent löschen.</p>
+<p>Wenn Sie ein Element wiederherstellen, versucht Nextcloud normalerwiese, es am ursprünglichen Speicherort abzulegen. Falls der Speicherort nicht mehr existiert oder dort keine Schreibrechte besthene, wird das Element im Hauptverzeichnis des Datei-Bereichs wiederhergestellt. Falls dort bereits ein Element mit demselben Namen existiert, gibt Nextcloud dem wiederhergestellten Element einen eindeutigen Namen.</p>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>If the Versions app is enabled, versions associated with a deleted
-file are moved to the trash bin and are restored when the file is restored.</p>
+<p>Wenn die App „Versionen“ aktiviert ist, werden die mit einer gelöschten Datei verknüpften Versionen in den Papierkorb verschoben und bei der Wiederherstellung der Datei ebenfalls wiederhergestellt.</p>
 </div>
 <section id="quotas">
 <h2>Speicherkontingente<a class="headerlink" href="#quotas" title="Link to this heading"></a></h2>
-<p>Files and folders in your trash bin do not count against your normal storage
-quota.</p>
-<p>See <a class="reference internal" href="quota.html"><span class="doc">Speicherkontingent</span></a> for more information about how storage quotas are calculated.</p>
+<p>Dateien und Ordner in Ihrem Papierkorb werden nicht auf Ihr normales Speicherkontingent angerechnet.</p>
+<p>Weitere Informationen zur Berechnung von Speicherquoten finden Sie unter <a class="reference internal" href="quota.html"><span class="doc">Speicherkontingent</span></a>.</p>
 </section>
 <section id="what-happens-when-shared-files-are-deleted">
 <h2>Was passiert, wenn freigegebene Dateien gelöscht werden<a class="headerlink" href="#what-happens-when-shared-files-are-deleted" title="Link to this heading"></a></h2>
-<p>The behavior of deleted shared files depends on who deletes the item and who
-owns it.</p>
-<p>For example, User1 shares a folder named <code class="docutils literal notranslate"><span class="pre">TheProject/</span></code> with User2 and User3:</p>
+<p>Das Verhalten von gelöschten, geteilten Dateien hängt davon ab, wer das Element löscht und wem es gehört.</p>
+<p>Beispielsweise gibt Benutzer1 einen Ordner namens <code class="docutils literal notranslate"><span class="pre">DasProjekt/</span></code> für Benutzer2 und Benutzer3 frei:</p>
 <ol class="arabic">
-<li><p>User2, a share recipient (sharee), deletes a folder or file named
-<code class="docutils literal notranslate"><span class="pre">Phase2</span></code> inside <code class="docutils literal notranslate"><span class="pre">TheProject/</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">TheProject/Phase2</span></code> is moved to the trash bin of User1, the owner, and a
-copy is placed in User2’s trash bin when possible. The item is removed from
-the shared folder for User3, but User3 does not receive a copy in their
-trash bin.</p>
+<li><p>User2, ein Empfänger einer Freigabe (Share-Empfänger), löscht einen Ordner oder eine Datei namens <code class="docutils literal notranslate"><span class="pre">Phase2</span></code> innerhalb von <code class="docutils literal notranslate"><span class="pre">DasProjekt/</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DasProjekt/Phase2</span></code> wird in den Papierkorb von User1 (dem Eigentümer) verschoben; zudem wird – sofern möglich – eine Kopie in den Papierkorb von User2 gelegt. Für User3 wird das Element aus dem freigegebenen Ordner entfernt, wobei User3 jedoch keine Kopie in seinem Papierkorb erhält.</p>
 </li>
-<li><p>User1, the owner, deletes <code class="docutils literal notranslate"><span class="pre">TheProject/Phase2</span></code>.</p>
-<p>The item is moved to User1’s trash bin and removed from the shared folder for
-User2 and User3. It is not placed in their trash bins.</p>
+<li><p>Benutzer1, der Besitzer, löscht „DasProjekt/Phase2“.</p>
+<p>Das Element wird in den Papierkorb von Benutzer1 verschoben und aus dem freigegebenen Ordner für Benutzer2 und Benutzer3 entfernt. Es wird nicht in deren Papierkörbe gelegt.</p>
 </li>
 </ol>
-<p>The exact behavior can depend on the type of share and the permissions granted
-by the share. Depending on those permissions, other users may be able to copy,
-rename, move, or re-share shared files. These operations can affect which
-account owns the resulting files and which trash bin receives a deleted item.</p>
+<p>Das genaue Verhalten kann von der Art der Freigabe sowie den für diese Freigabe erteilten Berechtigungen abhängen. Je nach Berechtigung können andere Nutzer freigegebene Dateien kopieren, umbenennen, verschieben oder erneut freigeben. Diese Vorgänge können sich darauf auswirken, welches Konto als Eigentümer der resultierenden Dateien fungiert und in welchem ​​Papierkorb ein gelöschtes Element landet.</p>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>When a sharee deletes an item owned by another user, Nextcloud moves the item
-to the owner’s trash bin. A copy in the deleting user’s trash bin is also
-created (in most cases; the copy is on a best-effort basis and is not
-guaranteed).</p>
+<p>Wenn eine Person, für die ein Element freigegeben wurde, dieses löscht, verschiebt Nextcloud das Element in den Papierkorb des Eigentümers. Zudem wird (in den meisten Fällen) eine Kopie im Papierkorb der Person erstellt, die das Element gelöscht hat – dies erfolgt jedoch nach dem Prinzip des bestmöglichen Bemühens (best-effort) und wird nicht garantiert.</p>
 </div>
 </section>
 <section id="how-the-deleted-files-app-manages-storage-space">
-<h2>How the Deleted Files app manages storage space<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Link to this heading"></a></h2>
-<p>The Deleted Files app manages trash-bin contents using two related rules:</p>
+<h2>So verwaltet die App „Gelöschte Dateien“ den Speicherplatz<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Link to this heading"></a></h2>
+<p>Die Gelöschte-Dateien-App verwaltet den Inhalt des Papierkorbs nach zwei abhängigen Regeln:</p>
 <ul class="simple">
-<li><p>A storage limit determines how much space the trash bin may use.</p></li>
-<li><p>A retention policy determines when deleted items become eligible for
-permanent deletion.</p></li>
+<li><p>Ein Speicherplatz-Limit legt fest, wie viel Speicher der Papierkorb nutzen darf.</p></li>
+<li><p>Eine Aufbewahrungsrichtlinie legt fest, ab wann gelöschte Elemente für die dauerhafte Löschung infrage kommen.</p></li>
 </ul>
 <section id="trash-bin-storage-limit">
-<h3>Trash-bin storage limit<a class="headerlink" href="#trash-bin-storage-limit" title="Link to this heading"></a></h3>
-<p>For accounts with a storage quota, the default trash-bin limit is up to 50% of
-the account’s remaining quota space. This is calculated after the account’s
-active files have been taken into account; it is not 50% of the account’s total
-quota.</p>
-<p>For example, if your quota is 10 GB and your active files use 8 GB, the default
-trash-bin allowance is calculated from the remaining 2 GB.</p>
-<p>For accounts without a storage quota, the default limit is calculated using
-available filesystem space instead. Your administrator can override either
-default by configuring a global or per-account trash-bin size.</p>
-<p>When the effective trash-bin limit is exceeded, Nextcloud removes eligible
-deleted items, starting with the oldest items, until the limit is satisfied
-again.</p>
+<h3>Papierkorb Speichergrenze<a class="headerlink" href="#trash-bin-storage-limit" title="Link to this heading"></a></h3>
+<p>Für Konten mit einem Speicherkontingent liegt das standarmäßige Speicherlimit des Papierkorbs bei 50% des verbleibenden Kontingents. Dieses wird berechnet, nachdem die aktiven Dateien des Kontos berücksichtigt wurden; es liegt nicht bei 50% des SPeicherkontigents des Kontos.</p>
+<p>Wenn Ihr Kontingent beispielsweise 10 GB beträgt und Ihre aktiven Dateien 8 GB beanspruchen, wird der standardmäßige Speicherplatz für den Papierkorb auf Basis der verbleibenden 2 GB berechnet.</p>
+<p>Bei Konten ohne Speicherkontingent wird das Standardlimit stattdessen auf Basis des verfügbaren Speicherplatzes im Dateisystem berechnet. Ihr Administrator kann diese Standardwerte jeweils anpassen, indem er eine globale oder kontospezifische Größe für den Papierkorb festlegt.</p>
+<p>Wenn das effektive Limit für den Papierkorb überschritten wird, entfernt Nextcloud entsprechende gelöschte Elemente – beginnend mit den ältesten –, bis das Limit wieder eingehalten wird.</p>
 </section>
 <section id="retention-and-permanent-deletion">
-<h3>Retention and permanent deletion<a class="headerlink" href="#retention-and-permanent-deletion" title="Link to this heading"></a></h3>
-<p>By default, deleted files are retained for at least 30 days. After that,
-eligible items may be permanently deleted when space is needed; they are not
-necessarily deleted immediately after 30 days.</p>
-<p>Your administrator can configure different minimum and maximum retention
-periods. Depending on the configuration, items may be permanently deleted
-after a maximum age even when storage space is not currently needed. Automatic
-expiration can also be disabled.</p>
-<p>For policies with a configured minimum retention period, an item is eligible
-for space-based cleanup only after that period has elapsed. Policies without a
-minimum retention period may allow space-based cleanup regardless of the
-item’s age. Items that have exceeded a configured maximum retention period can
-be permanently deleted regardless of whether space is currently needed.</p>
-<p>The relevant configuration setting is
-<code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code>. For details about the available values and
-their interaction with quotas and trash-bin sizes, see the
-<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">Deleted Files section of the Administrator Manual</a>.</p>
+<h3>Aufbewahrung und dauerhafte Löschung<a class="headerlink" href="#retention-and-permanent-deletion" title="Link to this heading"></a></h3>
+<p>Standardmäßig werden gelöschte Dateien mindestens 30 Tage lang aufbewahrt. Danach können entsprechende Elemente dauerhaft gelöscht werden, wenn Speicherplatz benötigt wird; sie werden also nicht zwangsläufig unmittelbar nach Ablauf der 30 Tage gelöscht.</p>
+<p>Ihr Administrator kann unterschiedliche Mindest- und Höchstaufbewahrungsfristen konfigurieren. Je nach Konfiguration können Elemente nach Erreichen eines maximalen Alters dauerhaft gelöscht werden – auch dann, wenn aktuell kein Speicherplatz benötigt wird. Die automatische Löschung kann zudem deaktiviert werden.</p>
+<p>Bei Richtlinien mit einer festgelegten Mindestaufbewahrungsfrist kann ein Element erst nach Ablauf dieser Frist im Rahmen einer speicherplatzbasierten Bereinigung entfernt werden. Richtlinien ohne Mindestaufbewahrungsfrist können eine speicherplatzbasierte Bereinigung unabhängig vom Alter des Elements zulassen. Elemente, deren festgelegte maximale Aufbewahrungsfrist überschritten wurde, können dauerhaft gelöscht werden – unabhängig davon, ob aktuell Speicherplatz benötigt wird.</p>
+<p>Die entsprechende Konfigurationseinstellung lautet <code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code>. Einzelheiten zu den verfügbaren Werten sowie deren Zusammenspiel mit Quotas und der Größe des Papierkorbs finden Sie im Abschnitt <cite>Gelöschte Dateien</cite> des Administrator-Handbuchs: <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/trashbin_configuration.html">Deleted Files section of the Administrator Manual</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>The Deleted Files app may permanently delete an item before its maximum
-retention period when the effective trash-bin limit is exceeded and the
-item’s minimum retention period has elapsed.</p>
+<p>Die App Gelöschte Dateien kann ein Element unter Umständen bereits vor Ablauf seiner maximalen Aufbewahrungsfrist endgültig löschen – nämlich dann, wenn das effektive Limit für den Papierkorb überschritten ist und die minimale Aufbewahrungsfrist für das Element abgelaufen ist.</p>
 </div>
 </section>
 </section>

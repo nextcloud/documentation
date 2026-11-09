@@ -514,10 +514,10 @@ You can define any custom container startup logic here if needed.</p>
 </section>
 <section id="heartbeat">
 <h3>Heartbeat<a class="headerlink" href="#heartbeat" title="Link to this heading"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/heartbeat</span></code> method is called periodically by Nextcloud to check the ExApp health status,
-i.e. if its webserver is running and receiving requests.</p>
+<p>AppAPI calls <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/heartbeat</span></code> periodically when it installs, updates or enables the ExApp, until it answers,
+to check that its web server is up and running.</p>
 <p>URL: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">http://localhost:2345/heartbeat</span></code></p>
-<p>AppAPI expects a response with HTTP status 200.
+<p>AppAPI expects HTTP status 200 with <code class="docutils literal notranslate"><span class="pre">{&quot;status&quot;:</span> <span class="pre">&quot;ok&quot;}</span></code>.
 This step fails if the ExApp does not respond within 10 minutes.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -622,7 +622,7 @@ who made the request to the ExApp.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Jul 07, 2026.
+      <span class="lastupdated">Last updated on Nov 09, 2026.
       </span></p>
   </div>
 

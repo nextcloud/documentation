@@ -144,7 +144,7 @@
              
   <section id="routes">
 <span id="ex-app-routes"></span><h1>Routes<a class="headerlink" href="#routes" title="Link to this heading"></a></h1>
-<p>All ExApps must declare the routes that are allowed to be accessed via the AppAPI ExApp proxy (<code class="docutils literal notranslate"><span class="pre">/apps/app_api/proxy/*</span></code>).</p>
+<p>All ExApps must declare the routes that users and clients may access, through the AppAPI ExApp proxy (<code class="docutils literal notranslate"><span class="pre">/apps/app_api/proxy/*</span></code>) or, with HaRP, directly (<code class="docutils literal notranslate"><span class="pre">/exapps/&lt;appid&gt;/*</span></code>).</p>
 <section id="register">
 <h2>Register<a class="headerlink" href="#register" title="Link to this heading"></a></h2>
 <p>During ExApp installation, the ExApp routes are registered automatically.
@@ -168,13 +168,50 @@ The routes must be declared in the <code class="docutils literal notranslate"><s
 </div>
 <p>where the fields are:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code>: the route to be registered on the ExApp side, can be a regex</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">verb</span></code>: the HTTP verb that the route will accept, can be a comma separated list of verbs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code>: the route to be registered on the ExApp side, a regex matched from the start of the decoded request path, which begins with <code class="docutils literal notranslate"><span class="pre">/</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">^/api/.*</span></code>); only HaRP matches it case-sensitively</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">verb</span></code>: the HTTP verbs that the route accepts, a comma separated list (e.g. <code class="docutils literal notranslate"><span class="pre">GET,POST</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">access_level</span></code>: the name of the access level required to access the route, PUBLIC - public access without auth, USER - Nextcloud user auth required, ADMIN - admin user required</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">headers_to_exclude</span></code>: a JSON-encoded string of an array of strings, the headers that the ExApp wants to be excluded from the request to it</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">headers_to_exclude</span></code>: a JSON-encoded string of an array of strings, the headers that the ExApp wants to be excluded from the request to it; only the ExApp proxy applies it</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bruteforce_protection</span></code>: a JSON-encoded string of an array of numbers, the HTTP status codes that must trigger the bruteforce protection</p></li>
 </ul>
 </section>
+</section>
+<section id="matching">
+<h2>Matching<a class="headerlink" href="#matching" title="Link to this heading"></a></h2>
+<p>The first route whose <code class="docutils literal notranslate"><span class="pre">url</span></code> matches the path and whose <code class="docutils literal notranslate"><span class="pre">verb</span></code> lists the method decides the access level; <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> is accepted wherever <code class="docutils literal notranslate"><span class="pre">GET</span></code> is.
+If routes match the path but none lists the method, the request gets <code class="docutils literal notranslate"><span class="pre">405</span></code>; the ExApp proxy serves only <code class="docutils literal notranslate"><span class="pre">GET</span></code>, <code class="docutils literal notranslate"><span class="pre">HEAD</span></code>, <code class="docutils literal notranslate"><span class="pre">POST</span></code>, <code class="docutils literal notranslate"><span class="pre">PUT</span></code> and <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> and answers <code class="docutils literal notranslate"><span class="pre">404</span></code> instead.
+HaRP and the ExApp proxy also check the path as ExApp web servers may read it (in any letter case, without a trailing slash, without <code class="docutils literal notranslate"><span class="pre">;</span></code> parameters, with <code class="docutils literal notranslate"><span class="pre">%2F</span></code> kept in its segment), and the route of such a reading can only raise the access level.
+Paths with <code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">..</span></code> segments and the <code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code>, <code class="docutils literal notranslate"><span class="pre">/init</span></code> and <code class="docutils literal notranslate"><span class="pre">/enabled</span></code> endpoints are refused.</p>
+<p>For example, with these routes in this order:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">url</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">verb</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">access_level</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">^/img(/.*)?$</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GET</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">^/api/.*</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GET,POST</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">USER</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.*</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GET</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADMIN</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/img/logo.png</span></code> and <code class="docutils literal notranslate"><span class="pre">HEAD</span> <span class="pre">/img/logo.png</span></code> are public.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/items</span></code> needs a user: the <code class="docutils literal notranslate"><span class="pre">USER</span></code> route comes before <code class="docutils literal notranslate"><span class="pre">.*</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">/api/items</span></code> gets <code class="docutils literal notranslate"><span class="pre">405</span></code> from HaRP and <code class="docutils literal notranslate"><span class="pre">404</span></code> from the ExApp proxy; <code class="docutils literal notranslate"><span class="pre">PATCH</span> <span class="pre">/api/items</span></code> gets <code class="docutils literal notranslate"><span class="pre">405</span></code> from both.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/IMG/logo.png</span></code> needs an admin: in this letter case only <code class="docutils literal notranslate"><span class="pre">.*</span></code> matches it.</p></li>
+<li><p>With <code class="docutils literal notranslate"><span class="pre">^/img/.*</span></code> as the first route, <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/img/</span></code> would need an admin: without the trailing slash only <code class="docutils literal notranslate"><span class="pre">.*</span></code> matches it, so write a route for a directory as <code class="docutils literal notranslate"><span class="pre">^/img(/.*)?$</span></code>.</p></li>
+</ul>
 </section>
 <section id="unregister">
 <h2>Unregister<a class="headerlink" href="#unregister" title="Link to this heading"></a></h2>
@@ -195,7 +232,7 @@ and new routes are re-registered when the ExApp is updated.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Sep 27, 2026.
+      <span class="lastupdated">Last updated on Nov 09, 2026.
       </span></p>
   </div>
 

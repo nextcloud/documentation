@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using external storage &mdash; Nextcloud 36 User Manual</title>
+  <title>Externen Speicher verwenden &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -20,8 +20,8 @@
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../_static/documentation_options.js?v=d9e2867d"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../_static/translations.js?v=9bf55d28"></script>
@@ -75,19 +75,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 - Einführung in die Benutzeranleitung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Verwendung der Aktivitäts-App</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">KI-Assistent</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Dateien &amp; Synchronisation</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="accessing.html">Zugriff auf Ihre Dateien</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="access_webgui.html">Accessing your files using the Nextcloud web interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="access_webgui.html">Zugriff auf Ihre Dateien über die Nextcloud-Weboberfläche</a></li>
 <li class="toctree-l3"><a class="reference internal" href="access_webdav.html">Zugriff auf Nextcloud-Dateien über WebDAV</a></li>
 <li class="toctree-l3"><a class="reference internal" href="desktop_mobile_sync.html">Synchronisierung für Mobilgeräte und Desktops</a></li>
 <li class="toctree-l3"><a class="reference internal" href="large_file_upload.html">Große Dateien hochladen</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using external storage</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-external-storage">Accessing external storage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sharing-files-from-external-storage">Sharing files from external storage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-your-own-external-storage">Adding your own external storage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#supported-backends">Supported backends</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#file-change-detection">File change detection</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Externen Speicher verwenden</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-external-storage">Auf externen Speicher zugreifen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-files-from-external-storage">Teilen von Dateien aus externem Speicher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-your-own-external-storage">Teilen von Dateien aus externem Speicher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#supported-backends">Unterstützte Backends</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-change-detection">Dateiänderungserkennung</a></li>
 </ul>
 </li>
 </ul>
@@ -123,7 +123,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Dateien &amp; Synchronisation</a></li>
           <li class="breadcrumb-item"><a href="accessing.html">Zugriff auf Ihre Dateien</a></li>
-      <li class="breadcrumb-item active">Using external storage</li>
+      <li class="breadcrumb-item active">Externen Speicher verwenden</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/external_storage.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
       </li>
@@ -134,91 +134,69 @@
            <div itemprop="articleBody">
              
   <section id="using-external-storage">
-<span id="external-storage-user-label"></span><h1>Using external storage<a class="headerlink" href="#using-external-storage" title="Link to this heading"></a></h1>
-<p>The External Storage application lets your Nextcloud server connect to remote file
-systems — such as Amazon S3, SFTP servers, SMB/CIFS shares, or WebDAV servers — and
-present them as folders inside your Files view. Your administration team configures
-which backends are available and which mounts are shared with you.</p>
-<p>If your administrator has enabled user-managed external storage, you can also add
-your own connections under Personal Settings.</p>
+<span id="external-storage-user-label"></span><h1>Externen Speicher verwenden<a class="headerlink" href="#using-external-storage" title="Link to this heading"></a></h1>
+<p>Mit der App „Externer Speicher“ kann Ihr Nextcloud-Server Verbindungen zu entfernten Dateisystemen herstellen – etwa Amazon S3, SFTP-Server, SMB/CIFS-Freigaben oder WebDAV-Server – und diese als Ordner in Ihrer Dateiansicht darstellen. Ihre Administration legt fest, welche Backends verfügbar sind und welche Einbindungen für Sie freigegeben werden.</p>
+<p>Wenn Ihre Administration benutzerverwalteten externen Speicher aktiviert hat, können Sie unter „Persönliche Einstellungen“ auch eigene Verbindungen hinzufügen.</p>
 <section id="accessing-external-storage">
-<h2>Accessing external storage<a class="headerlink" href="#accessing-external-storage" title="Link to this heading"></a></h2>
-<p>External storage mounts appear as regular folders in your Files view. You can
-browse, upload, download, and delete files in them just as you would any other
-folder. Whether sharing is available depends on whether your administrator has
-enabled it for each individual mount.</p>
-<p>A colored indicator next to the folder name shows the connection status:</p>
+<h2>Auf externen Speicher zugreifen<a class="headerlink" href="#accessing-external-storage" title="Link to this heading"></a></h2>
+<p>Einbindungen externer Speicher erscheinen in Ihrer Dateiansicht als normale Ordner. Sie können darin Dateien durchsuchen, hochladen, herunterladen und löschen, genau wie in jedem anderen Ordner. Ob Teilen möglich ist, hängt davon ab, ob Ihre Administration es für die jeweilige Einbindung aktiviert hat.</p>
+<p>Eine farbige Anzeige neben dem Ordnernamen zeigt den Verbindungsstatus:</p>
 <ul class="simple">
-<li><p>Green — the storage is connected and ready to use.</p></li>
-<li><p>Yellow — the storage could not be reached; Nextcloud will retry automatically.</p></li>
-<li><p>Red — the storage is unavailable. Contact your administrator if this persists.</p></li>
+<li><p>Grün – der Speicher ist verbunden und einsatzbereit.</p></li>
+<li><p>Gelb – der Speicher konnte nicht erreicht werden; Nextcloud versucht es automatisch erneut.</p></li>
+<li><p>Rot – der Speicher ist nicht verfügbar. Wenden Sie sich an Ihre Administration, wenn dies anhält.</p></li>
 </ul>
-<p>When a mount is unavailable, Nextcloud marks it as offline for ten minutes before
-retrying. You can trigger a manual recheck by clicking the status indicator.</p>
+<p>Wenn eine Einbindung nicht verfügbar ist, markiert Nextcloud sie für zehn Minuten als offline, bevor ein erneuter Versuch erfolgt. Durch Klicken auf die Statusanzeige können Sie eine manuelle Prüfung auslösen.</p>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>Some external storage mounts may be read-only. You will not be able to upload
-or delete files on a read-only mount.</p>
+<p>Einige Einbindungen externer Speicher sind möglicherweise schreibgeschützt. Auf einer schreibgeschützten Einbindung können Sie keine Dateien hochladen oder löschen.</p>
 </div>
 </section>
 <section id="sharing-files-from-external-storage">
-<h2>Sharing files from external storage<a class="headerlink" href="#sharing-files-from-external-storage" title="Link to this heading"></a></h2>
-<p>Sharing from an external storage mount works the same as sharing any other file or
-folder — use the share icon in the Files view. Sharing must be explicitly enabled on
-each mount by your administrator, so the share icon may not be available on all
-mounts.</p>
+<h2>Teilen von Dateien aus externem Speicher<a class="headerlink" href="#sharing-files-from-external-storage" title="Link to this heading"></a></h2>
+<p>Das Teilen aus einer Einbindung externen Speichers funktioniert genauso wie das Teilen jeder anderen Datei oder jedes anderen Ordners – verwenden Sie das Teilen-Symbol in der Dateiansicht. Das Teilen muss von Ihrer Administration für jede Einbindung ausdrücklich aktiviert werden, daher ist das Teilen-Symbol möglicherweise nicht bei allen Einbindungen verfügbar.</p>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>Server-side encryption is not available for external mounts pointing to other
-Nextcloud instances.</p>
+<p>Serverseitige Verschlüsselung ist für externe Einbindungen, die auf andere Nextcloud-Instanzen verweisen, nicht verfügbar.</p>
 </div>
 </section>
 <section id="adding-your-own-external-storage">
-<h2>Adding your own external storage<a class="headerlink" href="#adding-your-own-external-storage" title="Link to this heading"></a></h2>
-<p>If your administrator has enabled user-managed external storage, you can connect
-your own storage services under <strong>Personal Settings → External Storage</strong>.</p>
-<p>To add a new mount:</p>
+<h2>Teilen von Dateien aus externem Speicher<a class="headerlink" href="#adding-your-own-external-storage" title="Link to this heading"></a></h2>
+<p>Wenn Ihre Administration benutzerverwalteten externen Speicher aktiviert hat, können Sie unter <strong>Persönliche Einstellungen → Externer Speicher</strong> Ihre eigenen Speicherdienste verbinden.</p>
+<p>So fügen Sie einen neuen Einhängepunkt hinzu:</p>
 <ol class="arabic simple">
-<li><p>Click your profile icon and select <strong>Personal Settings</strong>.</p></li>
-<li><p>Select <strong>External Storage</strong> from the left sidebar.</p></li>
-<li><p>Choose a backend from the <strong>Add storage</strong> dropdown.</p></li>
-<li><p>Fill in the required fields for the backend (server address, path, credentials, etc.).</p></li>
-<li><p>Select an authentication method from the <strong>Authentication</strong> dropdown.</p></li>
+<li><p>Klicken Sie auf Ihr Profilsymbol und wählen Sie <strong>Persönliche Einstellungen</strong>.</p></li>
+<li><p><strong>Externer Speicher</strong> aus der linken Seitenleiste auswählen.</p></li>
+<li><p>Wählen Sie im Auswahlfeld <strong>Speicher hinzufügen</strong> ein Backend aus.</p></li>
+<li><p>Füllen Sie die für das Backend erforderlichen Felder aus (Serveradresse, Pfad, Zugangsdaten usw.).</p></li>
+<li><p>Wählen Sie im Auswahlfeld <strong>Authentifizierung</strong> eine Authentifizierungsmethode aus.</p></li>
 </ol>
-<p>Required fields are marked with a red border. Once all required fields are filled,
-the mount is saved automatically.</p>
-<p>A green dot next to the mount confirms a successful connection. A red or yellow icon
-means Nextcloud could not connect — check your credentials and network settings.</p>
-<p>To remove a mount, open the three-dot overflow menu next to it and select <strong>Delete</strong>.</p>
+<p>Pflichtfelder sind mit einem roten Rahmen gekennzeichnet. Sobald alle Pflichtfelder ausgefüllt sind, wird die Einbindung automatisch gespeichert.</p>
+<p>Ein grüner Punkt neben der Einbindung bestätigt eine erfolgreiche Verbindung. Ein rotes oder gelbes Symbol bedeutet, dass Nextcloud keine Verbindung herstellen konnte – überprüfen Sie Ihre Zugangsdaten und Netzwerkeinstellungen.</p>
+<p>Um eine Einbindung zu entfernen, öffnen Sie das Drei-Punkte-Menü daneben und wählen Sie <strong>Löschen</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>Mounts you add under Personal Settings are visible only to your account.</p>
+<p>Einbindungen, die Sie unter „Persönliche Einstellungen“ hinzufügen, sind nur für Ihr Konto sichtbar.</p>
 </div>
 </section>
 <section id="supported-backends">
-<h2>Supported backends<a class="headerlink" href="#supported-backends" title="Link to this heading"></a></h2>
-<p>The following backends may be available, depending on what your administrator has
-enabled:</p>
+<h2>Unterstützte Backends<a class="headerlink" href="#supported-backends" title="Link to this heading"></a></h2>
+<p>Je nachdem, was Ihre Administration aktiviert hat, können die folgenden Backends verfügbar sein:</p>
 <ul class="simple">
-<li><p><strong>Amazon S3</strong> — Amazon Simple Storage Service buckets and S3-compatible storage.</p></li>
-<li><p><strong>FTP</strong> — FTP and FTPS servers.</p></li>
-<li><p><strong>Nextcloud / ownCloud</strong> — Another Nextcloud or ownCloud instance over WebDAV.</p></li>
-<li><p><strong>OpenStack Object Storage</strong> — OpenStack Swift buckets.</p></li>
-<li><p><strong>SFTP</strong> — SSH File Transfer Protocol servers.</p></li>
-<li><p><strong>SMB / CIFS</strong> — Windows file shares and Samba servers.</p></li>
-<li><p><strong>WebDAV</strong> — Any WebDAV-compatible server.</p></li>
+<li><p><strong>Amazon S3</strong> – Buckets von Amazon Simple Storage Service und S3-kompatibler Speicher.</p></li>
+<li><p><strong>FTP</strong> — FTP- und FTPS-Server.</p></li>
+<li><p><strong>Nextcloud / ownCloud</strong> – Eine andere Nextcloud- oder ownCloud-Instanz über WebDAV.</p></li>
+<li><p><strong>OpenStack-Objektspeicher</strong> — OpenStack Swift-Buckets.</p></li>
+<li><p><strong>SFTP</strong> — SSH-Dateiübertragungsprotokollserver.</p></li>
+<li><p><strong>SMB / CIFS</strong> – Windows-Dateifreigaben und Samba-Server.</p></li>
+<li><p><strong>WebDAV</strong> — Jeder WebDAV-kompatible Server.</p></li>
 </ul>
-<p>For backend-specific configuration details, see
-<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/external_storage_configuration_gui.html">Configuring External Storage (GUI)</a>
-in the Administrator’s manual.</p>
+<p>Einzelheiten zur Konfiguration der einzelnen Backends finden Sie unter <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/external_storage_configuration_gui.html">Configuring External Storage (GUI)</a> im Administrationshandbuch.</p>
 </section>
 <section id="file-change-detection">
-<h2>File change detection<a class="headerlink" href="#file-change-detection" title="Link to this heading"></a></h2>
-<p>Files you add or change through Nextcloud are reflected immediately. Files added
-or changed directly on the external storage — without going through Nextcloud — may
-not appear until the next background scan.</p>
-<p>If externally added files are not appearing, ask your administrator to run
-<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">files:scan</span></code> or to configure a periodic background scan for the mount.</p>
+<h2>Dateiänderungserkennung<a class="headerlink" href="#file-change-detection" title="Link to this heading"></a></h2>
+<p>Dateien, die Sie über Nextcloud hinzufügen oder ändern, werden sofort übernommen. Dateien, die direkt auf dem externen Speicher hinzugefügt oder geändert werden – ohne den Weg über Nextcloud –, erscheinen möglicherweise erst nach dem nächsten Hintergrund-Scan.</p>
+<p>Wenn extern hinzugefügte Dateien nicht angezeigt werden, bitten Sie Ihre Administration, <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">files:scan</span></code> auszuführen oder einen regelmäßigen Hintergrund-Scan für die Einbindung einzurichten.</p>
 </section>
 </section>
 

@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using the macOS File Provider &mdash; Nextcloud 36 User Manual</title>
+  <title>使用 macOS 檔案供應器 &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -20,8 +20,8 @@
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../_static/documentation_options.js?v=05269ba6"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../_static/translations.js?v=11dc2623"></script>
@@ -75,7 +75,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 36 用戶手冊介紹</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud web interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">使用「動態」應用程式</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_assistant.html">AI 助理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">檔案與同步</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
@@ -83,36 +83,36 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">安裝</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">使用桌面客戶端</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the macOS File Provider</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#supported-features">Supported features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#finder-integration">Finder integration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sync-status-indicators">Sync status indicators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#context-menu-actions">Context menu actions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#keep-downloaded">Keep Downloaded</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#locking">Locking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sharing">Sharing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#file-actions">File actions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">使用 macOS 檔案供應器</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#supported-features">支援的功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">設定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finder-integration">Finder 整合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sync-status-indicators">同步狀態圖示</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#context-menu-actions">快捷選單操作</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#keep-downloaded">保留已下載項目</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#locking">鎖定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing">共用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-actions">檔案操作</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known issues</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#macos-extensions-conflict">macOS Extensions conflict</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#alias-files">Alias files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#edit-locally">Edit locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">已知問題</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#macos-extensions-conflict">macOS 延伸功能衝突</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#alias-files">替身檔案</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-locally">在本機編輯</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#debug-level-logging">Debug-level Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">疑難排解</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#debug-level-logging">除錯級別記錄</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="client_features.html">Client features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="advanced_configuration.html">Advanced configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_configuration.html">進階設定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">自動更新器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">更新頻道</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">衝突</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commandline.html">Command-line client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">命令列用戶端</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">解除安裝</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">常見問題</a></li>
 </ul>
@@ -138,7 +138,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
-      <li class="breadcrumb-item active">Using the macOS File Provider</li>
+      <li class="breadcrumb-item active">使用 macOS 檔案供應器</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/macosfileprovider.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -149,170 +149,107 @@
            <div itemprop="articleBody">
              
   <section id="using-the-macos-file-provider">
-<h1>Using the macOS File Provider<a class="headerlink" href="#using-the-macos-file-provider" title="Link to this heading"></a></h1>
-<p>On macOS, our client can also seamlessly integrate Nextcloud files into macOS
-as a File Provider extension. Any newly configured Nextcloud account will have
-the integration enabled by default.</p>
+<h1>使用 macOS 檔案供應器<a class="headerlink" href="#using-the-macos-file-provider" title="Link to this heading"></a></h1>
+<p>在 macOS 上，Nextcloud 客戶端也可以透過檔案供應器延伸功能，將 Nextcloud 檔案直接整合到系統中。新設定的 Nextcloud 帳戶均會默認啟用這項整合功能。</p>
 <section id="supported-features">
-<h2>Supported features<a class="headerlink" href="#supported-features" title="Link to this heading"></a></h2>
+<h2>支援的功能<a class="headerlink" href="#supported-features" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Keeping files or whole folders available offline</p></li>
-<li><p>Freeing up local disk space by evicting local copies without deleting items</p></li>
-<li><p>Intelligent and automatic local data eviction</p></li>
-<li><p>File previews within Finder for files which are not downloaded yet</p></li>
-<li><p>Support for Apple-specific formats, for example Pages, Numbers or Keynote bundles</p></li>
-<li><p>Support for server-side file locking (if supported by the connected server)</p></li>
-<li><p>“Edit locally” support</p></li>
-<li><p>Sharing with other users</p></li>
-<li><p>Server-side actions integrated directly in Finder's context menu</p></li>
-<li><p>Automatic discovery of server-side changes</p></li>
+<li><p>保留檔案或整個資料夾供離線使用</p></li>
+<li><p>移除本機副本以釋放本機磁碟空間，同時保留原有項目</p></li>
+<li><p>智能自動移除本機資料副本</p></li>
+<li><p>在 Finder 預覽尚未下載的檔案</p></li>
+<li><p>支援 Apple 專用格式，例如 Pages、Numbers 或 Keynote 的套件檔案</p></li>
+<li><p>支援伺服器端檔案鎖定（須由所連接的伺服器支援）</p></li>
+<li><p>支援「在本機編輯」</p></li>
+<li><p>與其他用戶共用</p></li>
+<li><p>直接在 Finder 的快捷選單執行伺服器端操作</p></li>
+<li><p>自動偵測伺服器端的變更</p></li>
 </ul>
 </section>
 <section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
-<p>Settings related to the File Provider extension can be adjusted on a
-per-account basis via the Nextcloud desktop client's settings window.</p>
-<a class="reference internal image-reference" href="../../_images/macosfileprovider-settings.jpg"><img alt="Nextcloud desktop client settings showing the macOS File Provider extension toggle" class="align-center" src="../../_images/macosfileprovider-settings.jpg" style="width: 50%;" />
+<h2>設定<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>你可以在 Nextcloud 桌面客戶端的設定視窗中，分別為各個帳戶調整檔案供應器延伸功能的設定。</p>
+<a class="reference internal image-reference" href="../../_images/macosfileprovider-settings.jpg"><img alt="Nextcloud 桌面客戶端的設定畫面，顯示 macOS 檔案供應器延伸功能的開關" class="align-center" src="../../_images/macosfileprovider-settings.jpg" style="width: 50%;" />
 </a>
-<p>Here the integration into Finder can be enabled or disabled.</p>
-<p>When disabling the File Provider extension while still having unsynchronized
-changes, macOS will save the unsynchronized items in a folder that is
-automatically revealed after the integration is disabled.</p>
+<p>你可以在這裏啟用或停用 Finder 整合功能。</p>
+<p>如果停用檔案供應器延伸功能時仍有尚未同步的變更，macOS 會將尚未同步的項目儲存到一個資料夾，並在整合功能停用後自動顯示該資料夾。</p>
 </section>
 <section id="finder-integration">
-<h2>Finder integration<a class="headerlink" href="#finder-integration" title="Link to this heading"></a></h2>
-<p>On macOS, remote storage like a Nextcloud files account appears like a
-dedicated location in the Finder sidebar. The actual location of the
-content on disk is defined by macOS.</p>
-<a class="reference internal image-reference" href="../../_images/macosfileprovider-finder-sidebar.jpg"><img alt="Finder sidebar showing a Nextcloud File Provider domain" class="align-center" src="../../_images/macosfileprovider-finder-sidebar.jpg" style="width: 50%;" />
+<h2>Finder 整合<a class="headerlink" href="#finder-integration" title="Link to this heading"></a></h2>
+<p>在 macOS 上，Nextcloud 檔案帳戶等遠端儲存空間會在 Finder 側邊欄中顯示為獨立的位置。內容在磁碟上的實際位置由 macOS 決定。</p>
+<a class="reference internal image-reference" href="../../_images/macosfileprovider-finder-sidebar.jpg"><img alt="Finder 側邊欄顯示一個 Nextcloud 檔案供應器網域" class="align-center" src="../../_images/macosfileprovider-finder-sidebar.jpg" style="width: 50%;" />
 </a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To accelerate server-side change detection, we recommend enabling the
-<code class="docutils literal notranslate"><span class="pre">notify_push</span></code> app on your Nextcloud server. This app will notify
-the desktop client of changes on the server as soon as they happen,
-reducing the time it takes for changes to appear in Finder.
-Otherwise the client needs to poll the server which will result in an
-increased delay between a change on the server and its local visibility.</p>
+<p>要加快偵測伺服器端的變更，建議在 Nextcloud 伺服器上啟用 <code class="docutils literal notranslate"><span class="pre">notify_push</span></code> 應用程式。伺服器一有變更，這個應用程式便會通知桌面客戶端，縮短變更在 Finder 顯示所需的時間。否則，客戶端須定期查詢伺服器，變更便要等更久才會在本機顯示。</p>
 </div>
 </section>
 <section id="sync-status-indicators">
-<h2>Sync status indicators<a class="headerlink" href="#sync-status-indicators" title="Link to this heading"></a></h2>
-<p>Similar to classic synchronization folders, Finder displays status
-indicators next to items. Unlike the custom indicators in classic
-synchronization folders, these standardized indicators are provided by macOS to
-ensure a consistent appearance across all cloud storage apps which a user may
-use on their system.</p>
+<h2>同步狀態圖示<a class="headerlink" href="#sync-status-indicators" title="Link to this heading"></a></h2>
+<p>與傳統同步資料夾一樣，Finder 會在項目旁顯示狀態圖示。傳統同步資料夾使用自訂圖示，而這裏的標準圖示由 macOS 提供，讓用戶在同一部 Mac 上使用不同的雲端儲存應用程式時，都能看到一致的圖示。</p>
 <ul class="simple">
-<li><p><em>Cloud with downward arrow</em>: The item and its descendants are not downloaded
-yet. They can be downloaded, assuming a network connection is available.</p></li>
-<li><p><em>Outlined cloud</em>: The item is not fully uploaded yet in its current local
-state.</p></li>
-<li><p><em>Strikethrough cloud</em>: The item is excluded from synchronization.</p></li>
-<li><p><em>Pie chart</em>: The item is currently being uploaded or downloaded, and the progress
-is visualized.</p></li>
-<li><p><em>Filled circle with a pin</em>: The item is available offline and will
-be kept locally.</p></li>
-<li><p><em>No icon</em>: The item is available offline and up to date.</p></li>
+<li><p><em>帶向下箭嘴的雲朵</em> 表示項目及其下所有項目尚未下載。有網絡連線時即可下載。</p></li>
+<li><p><em>只有輪廓的雲朵</em> 表示項目的本機版本尚未完全上載。</p></li>
+<li><p><em>帶刪除線的雲朵</em> 表示該項目已排除在同步範圍之外。</p></li>
+<li><p><em>圓形進度圖</em> 表示項目正在上載或下載，圖示會顯示傳輸進度。</p></li>
+<li><p><em>內有圖釘的實心圓形</em> 表示項目可離線使用，並會保留在本機。</p></li>
+<li><p><em>沒有圖示</em> 表示項目可離線使用，並已更新至最新版本。</p></li>
 </ul>
 </section>
 <section id="context-menu-actions">
-<h2>Context menu actions<a class="headerlink" href="#context-menu-actions" title="Link to this heading"></a></h2>
-<a class="reference internal image-reference" href="../../_images/macosfileprovider-context-menu.jpg"><img alt="macOS Finder context menu on a Nextcloud file showing Keep Downloaded, Lock, and Share options" class="align-center" src="../../_images/macosfileprovider-context-menu.jpg" style="width: 50%;" />
+<h2>快捷選單操作<a class="headerlink" href="#context-menu-actions" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/macosfileprovider-context-menu.jpg"><img alt="macOS 的 Finder 中，Nextcloud 檔案的快捷選單顯示「保留已下載項目」、「鎖定」和「共用」選項" class="align-center" src="../../_images/macosfileprovider-context-menu.jpg" style="width: 50%;" />
 </a>
-<p>The File Provider extension also provides special Nextcloud features through
-the context menu in Finder.</p>
+<p>檔案供應器延伸功能也會在 Finder 的快捷選單中提供 Nextcloud 專有功能。</p>
 <section id="keep-downloaded">
-<h3>Keep Downloaded<a class="headerlink" href="#keep-downloaded" title="Link to this heading"></a></h3>
-<p>Files and folders can be marked to be kept downloaded and available offline
-permanently. If this is chosen on folders, it will also apply to all their
-contents. This is especially useful for users with limited or no network
-access, as it ensures that they can always access their important files without
-needing to worry about connectivity. macOS will <strong>not</strong> free up local disk
-space by evicting items which are marked to be kept downloaded, even if they
-have not been accessed for a long time.</p>
-<p>This can be undone by selecting &quot;Allow automatic freeing up space&quot; on the same
-items.</p>
-<p>To always keep everything in an account available locally, you can select
-&quot;Always keep downloaded&quot; on the location root in the Finder sidebar.</p>
+<h3>保留已下載項目<a class="headerlink" href="#keep-downloaded" title="Link to this heading"></a></h3>
+<p>你可以將檔案和資料夾標記為保留已下載項目，讓它們長期可供離線使用。對資料夾使用此選項時，設定也會套用至資料夾內的所有項目。對於網絡連線受限或無法連線的用戶，這可確保他們隨時存取重要檔案。即使這些項目長時間未被存取，macOS 也 <strong>不會</strong> 為了釋放本機磁碟空間而移除其本機副本。</p>
+<p>要取消這項設定，請在同一批項目上選擇「允許自動釋放空間」。</p>
+<p>若要讓帳戶內的所有項目一律可在本機使用，可在 Finder 側邊欄對該帳戶的根位置選擇「一律保留已下載項目」。</p>
 </section>
 <section id="locking">
-<h3>Locking<a class="headerlink" href="#locking" title="Link to this heading"></a></h3>
-<a class="reference internal image-reference" href="../../_images/macosfileprovider-file-locking.jpg"><img alt="macOS Finder showing a Nextcloud file with a lock indicator after locking" class="align-center" src="../../_images/macosfileprovider-file-locking.jpg" style="width: 50%;" />
+<h3>鎖定<a class="headerlink" href="#locking" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/macosfileprovider-file-locking.jpg"><img alt="macOS 的 Finder 顯示已鎖定的 Nextcloud 檔案及其鎖定圖示" class="align-center" src="../../_images/macosfileprovider-file-locking.jpg" style="width: 50%;" />
 </a>
-<p>If the server supports file locking, the client will offer manual locking and
-unlocking of files in Finder.</p>
+<p>如果伺服器支援檔案鎖定，客戶端便會在 Finder 提供手動鎖定和解鎖檔案的選項。</p>
 </section>
 <section id="sharing">
-<h3>Sharing<a class="headerlink" href="#sharing" title="Link to this heading"></a></h3>
-<a class="reference internal image-reference" href="../../_images/macosfileprovider-file-sharing.jpg"><img alt="macOS Finder share management panel for a Nextcloud file showing existing shares" class="align-center" src="../../_images/macosfileprovider-file-sharing.jpg" style="width: 50%;" />
+<h3>共用<a class="headerlink" href="#sharing" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/macosfileprovider-file-sharing.jpg"><img alt="macOS 的 Finder 中，Nextcloud 檔案的共用管理面板顯示現有共用設定" class="align-center" src="../../_images/macosfileprovider-file-sharing.jpg" style="width: 50%;" />
 </a>
-<p>When the server supports sharing and the item is allowed to be shared,
-then you can create new shares or manage existing shares for an item directly
-from the context menu in Finder, as in the Nextcloud web interface.</p>
+<p>如果伺服器支援共用，而且該項目可供共用，你便可像在 Nextcloud 網頁介面一樣，直接在 Finder 的快捷選單中為項目新增共用設定，或管理現有設定。</p>
 </section>
 <section id="file-actions">
-<h3>File actions<a class="headerlink" href="#file-actions" title="Link to this heading"></a></h3>
-<p>If the server has apps installed which provide file actions for the selected
-file types, these actions will also be available in the context menu in Finder.
-This allows you to use server-side features of your Nextcloud instance directly
-from the Finder.</p>
+<h3>檔案操作<a class="headerlink" href="#file-actions" title="Link to this heading"></a></h3>
+<p>如果伺服器已安裝為所選檔案類型提供操作的應用程式，這些操作也會出現在 Finder 的快捷選單中。這樣，你便可以直接從 Finder 使用你的 Nextcloud 伺服器所提供的功能。</p>
 </section>
 </section>
 <section id="known-issues">
-<h2>Known issues<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<h2>已知問題<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
 <section id="macos-extensions-conflict">
-<h3>macOS Extensions conflict<a class="headerlink" href="#macos-extensions-conflict" title="Link to this heading"></a></h3>
-<p>Due to technical limitations in macOS which are imposed by Apple,
-it is not possible to have the Finder integration for classic sync folders
-running in parallel to an enabled File Provider extension.
-This means that item decorations and context menu options will be
-unavailable for classic sync folders while the File Provider extension is
-enabled.</p>
+<h3>macOS 延伸功能衝突<a class="headerlink" href="#macos-extensions-conflict" title="Link to this heading"></a></h3>
+<p>受 Apple 對 macOS 的技術限制所限，啟用檔案供應器延伸功能時，傳統同步資料夾的 Finder 整合功能無法同時運作。在此期間，傳統同步資料夾中的項目將無法使用附加圖示和快捷選單選項。</p>
 </section>
 <section id="alias-files">
-<h3>Alias files<a class="headerlink" href="#alias-files" title="Link to this heading"></a></h3>
-<p>When opening a macOS alias file stored on Nextcloud for the first time on a
-device where it has not yet been downloaded, the file may open as a binary
-document in a text editor instead of jumping to its target. This happens
-because macOS decides how to open a file before downloading it, and alias files
-carry no recognisable file extension or type information on the server — the
-only way to identify them is by reading their content. Once the file has been
-opened or downloaded once, Nextcloud Desktop learns that it is an alias and
-stores that information locally, so all subsequent opens will work correctly.
-To avoid the issue entirely, right-click the alias file in Finder and choose
-<strong>Keep Downloaded</strong> before opening it for the first time.</p>
+<h3>替身檔案<a class="headerlink" href="#alias-files" title="Link to this heading"></a></h3>
+<p>如果你在尚未下載某個 macOS 替身檔案的裝置上，首次開啟儲存在 Nextcloud 的該檔案，系統可能會在文字編輯器中將它當作二進位檔案開啟，而無法跳轉至它指向的項目。這是因為 macOS 會在下載前決定如何開啟檔案，而伺服器上的替身檔案缺乏可供辨識的副檔名或類型資料，必須讀取檔案內容才能辨識。檔案首次開啟或下載後，Nextcloud 桌面客戶端便會辨識出這是替身，並將相關資料儲存在本機，其後即可正常開啟。要避免這個問題，請在首次開啟前，在 Finder 中以滑鼠右鍵按一下替身檔案，然後選擇 <strong>保留已下載項目</strong>。</p>
 </section>
 <section id="edit-locally">
-<h3>Edit locally<a class="headerlink" href="#edit-locally" title="Link to this heading"></a></h3>
-<p>The <span class="guilabel">Edit locally</span> action offered by the Nextcloud web interface
-cannot open files that are managed by the File Provider extension.
-It can only reveal them in Finder.</p>
-<p>This is a restriction of macOS itself, not a fault in the client. For your
-protection, macOS only lets specific apps open a given file, and it does not
-allow an app to grant itself that permission. The part of the client that is
-allowed to manage these files is not permitted to launch other apps, and the
-part that could launch your editor is not permitted to open the file.</p>
-<p>Granting Full Disk Access does not help, because a different part of the
-macOS security system is responsible for this.</p>
+<h3>在本機編輯<a class="headerlink" href="#edit-locally" title="Link to this heading"></a></h3>
+<p>Nextcloud 網頁介面的 <span class="guilabel">在本機編輯</span> 操作只可在 Finder 顯示由檔案供應器延伸功能管理的檔案。</p>
+<p>這項限制源於 macOS 本身，即使客戶端正常運作也會遇到。為保障你的安全，macOS 只允許特定應用程式開啟個別檔案，並禁止應用程式自行授予這項權限。客戶端中獲准管理這些檔案的部分無權啟動其他應用程式，而能啟動編輯器的部分則無權開啟該檔案。</p>
+<p>授予「完整磁碟存取權」也無法解除這項限制，因為它由 macOS 保安系統的另一部分管理。</p>
 </section>
 </section>
 <section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<h2>疑難排解<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
 <section id="debug-level-logging">
-<h3>Debug-level Logging<a class="headerlink" href="#debug-level-logging" title="Link to this heading"></a></h3>
-<p>Debug-level log entries for the File Provider extension are disabled by
-default.
-If you want to report an issue with the File Provider, it can be helpful to
-enable them to get more detailed information about what is happening under the
-hood. To enable them, you have to issue the following command in Terminal:</p>
+<h3>除錯級別記錄<a class="headerlink" href="#debug-level-logging" title="Link to this heading"></a></h3>
+<p>檔案供應器延伸功能的除錯級別記錄默認停用。如果你想回報檔案供應器的問題，可以啟用這些記錄，以取得更詳盡的運作資料。要啟用記錄，請在「終端機」執行以下指令。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>defaults<span class="w"> </span>write<span class="w"> </span>com.nextcloud.desktopclient.FileProviderExt<span class="w"> </span>debugLoggingEnabled<span class="w"> </span>-bool<span class="w"> </span>YES
 </pre></div>
 </div>
-<p>The change takes effect within a couple of seconds; no restart of the extension
-or the Mac is required. It is recommended to restore the default value by
-deleting the explicit value after you have resolved the problem you were
-investigating:</p>
+<p>變更會在幾秒內生效，毋須重新啟動延伸功能或 Mac。調查的問題解決後，建議按以下方式刪除明確設定的值，以恢復默認值。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>defaults<span class="w"> </span>delete<span class="w"> </span>com.nextcloud.desktopclient.FileProviderExt<span class="w"> </span>debugLoggingEnabled
 </pre></div>
 </div>
