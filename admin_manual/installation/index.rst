@@ -6,6 +6,7 @@ Installation and server configuration
    :maxdepth: 2
 
    system_requirements
+   deployment_comparison
    deployment_recommendations
    php_configuration
    source_installation
