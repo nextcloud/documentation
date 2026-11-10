@@ -100,30 +100,17 @@ Please refer to the `page in the MySQL manual <https://mariadb.com/kb/en/library
 
 * That you have installed and enabled the pdo_mysql extension in PHP
 
-* That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as Nextcloud).
-
-.. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.
-
-The PHP configuration in :file:`/etc/php7/conf.d/mysql.ini` could look like this:
+* That the **pdo_mysql.default_socket** points to the correct socket (if the database runs on the same server as Nextcloud).
+  This is usually correct without any adjustments. But if PHP fails to find the socket, it can be defined in the PHP configuration in :file:`/etc/php/**/pdo_mysql.ini` like this:
 
 ::
 
-  # configuration for PHP MySQL module
+  ; configuration for PHP MySQL module
   extension=pdo_mysql.so
 
-  [mysql]
-  mysql.allow_local_infile=On
-  mysql.allow_persistent=On
-  mysql.cache_size=2000
-  mysql.max_persistent=-1
-  mysql.max_links=-1
-  mysql.default_port=
-  mysql.default_socket=/var/lib/mysql/mysql.sock  # Debian squeeze: /var/run/mysqld/mysqld.sock
-  mysql.default_host=
-  mysql.default_user=
-  mysql.default_password=
-  mysql.connect_timeout=60
-  mysql.trace_mode=Off
+  pdo_mysql.default_socket=/run/mysqld/mysqld.sock
+
+.. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.
 
 Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by Nextcloud
