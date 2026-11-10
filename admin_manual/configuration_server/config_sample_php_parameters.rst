@@ -2599,6 +2599,63 @@ preview_imaginary_key
 
 If you want to set an API key for Imaginary.
 
+preview_ffmpeg_address
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'preview_ffmpeg_address' => 'ffmpeg-over-ip:5050',
+
+Set the address of an ffmpeg-over-ip server to generate video previews on,
+as ``host:port``, ``tls://host:port`` or ``unix:/path/to/socket``. This is
+not an HTTP URL. Also requires the ``OC\Preview\MovieRemote`` provider to
+be enabled in the ``enabledPreviewProviders`` array. Neither ffmpeg nor the
+ffmpeg-over-ip client is needed on the Nextcloud server in that case.
+
+The server reads the videos from Nextcloud over the same connection, so
+it needs no access to the data directory. ffmpeg-over-ip itself does not
+encrypt the connection and does not authenticate the server, so anyone
+answering on this address can read the videos. Either only use it within
+a trusted network, or put a TLS terminating proxy (e.g. stunnel) in front
+of the server and use a ``tls://`` address. Like for other outgoing
+connections of Nextcloud, its certificate is verified against Nextcloud's
+certificate bundle, so a certificate of an internal CA has to be imported
+with ``occ security:certificates:import``.
+
+Like with ``OC\Preview\Movie``, the server can only read up to 20 MB of
+videos on storages that are not local (e.g. S3 or external storage), and
+only the first 10 MB of videos on storages that cannot seek (e.g. WebDAV
+or FTP external storage).
+
+If ``OC\Preview\Movie`` is enabled as well, the server is tried first and
+the local ffmpeg is only used if the server could not generate a preview.
+
+See https://github.com/steelbrain/ffmpeg-over-ip
+
+preview_ffmpeg_key
+^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'preview_ffmpeg_key' => 'secret',
+
+The ``authSecret`` configured on the ffmpeg-over-ip server.
+
+preview_ffmpeg_timeout
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'preview_ffmpeg_timeout' => 120,
+
+Seconds generating a single video preview on the ffmpeg-over-ip server
+may take in total. Values below 1 use the default.
+
+Defaults to ``120``
+
 enabledPreviewProviders
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -2631,6 +2688,7 @@ concerns:
  - ``OC\Preview\Illustrator``
  - ``OC\Preview\JP2``
  - ``OC\Preview\Movie``
+ - ``OC\Preview\MovieRemote``
  - ``OC\Preview\MP3``
  - ``OC\Preview\MSOffice2003``
  - ``OC\Preview\MSOffice2007``
