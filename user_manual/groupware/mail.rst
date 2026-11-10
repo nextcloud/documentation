@@ -57,6 +57,10 @@ Add a new mail account
 
 .. figure:: images/new-mail-account.png
 
+.. note:: If your administrator has configured single sign-on for your email domain, the
+   mail servers are pre-filled automatically and you sign in through a consent popup at
+   your identity provider instead of entering a password.
+
 Change sort order
 ~~~~~~~~~~~~~~~~~
 
