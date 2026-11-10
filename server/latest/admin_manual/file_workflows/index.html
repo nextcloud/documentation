@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Flow configuration" href="configuration.html" />
-    <link rel="prev" title="Windows compatible filenames" href="../configuration_files/windows_compatible_filenames.html" />
+    <link rel="prev" title="Automation in Nextcloud" href="../automation_overview/index.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -93,15 +93,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Files</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Flow</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html">Flow configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="access_control.html">Files access control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="automated_tagging.html">Automated tagging of files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="retention.html">Retention of files</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
@@ -117,8 +110,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">automation</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../automation_overview/index.html">Automation in Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Flow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-configuration">General configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">Flow configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#operations">Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="access_control.html">Files access control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="automated_tagging.html">Automated tagging of files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="retention.html">Retention of files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="versioning.html">Block file versioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/budibase_workflows.html">Budibase Workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
@@ -182,9 +189,29 @@
              
   <section id="flow">
 <span id="file-workflows"></span><h1>Flow<a class="headerlink" href="#flow" title="Link to this heading"></a></h1>
+<p>Flow provides rule-based automation in Nextcloud. Administrators can define
+system-wide flows, while users can define personal flows (unless disabled
+by the administrator).</p>
+<p>Apps can provide additional Flow operations. This chapter covers operations
+provided by File Access Control, Files Automated Tagging, Files Retention
+and the Versions app.</p>
+<p>Additional Flow apps can be found in the <a class="reference external" href="https://apps.nextcloud.com/">Nextcloud app store</a>.</p>
+<section id="general-configuration">
+<h2>General configuration<a class="headerlink" href="#general-configuration" title="Link to this heading"></a></h2>
+<p>The following settings apply to Flow itself rather than to an individual Flow app
+/ operation.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Flow configuration</a></li>
+</ul>
+</div>
+</section>
+<section id="operations">
+<h2>Operations<a class="headerlink" href="#operations" title="Link to this heading"></a></h2>
+<p>Each app provides its own functionality and configuration. The following Flow operations
+are covered here:</p>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="access_control.html">Files access control</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="access_control.html#denied-access">Denied access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_control.html#examples">Examples</a></li>
@@ -207,15 +234,21 @@
 <li class="toctree-l2"><a class="reference internal" href="retention.html#common-misconfigurations">Common misconfigurations</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="versioning.html">Block file versioning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="versioning.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="versioning.html#effects">Effects</a></li>
+</ul>
+</li>
 </ul>
 </div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../configuration_files/windows_compatible_filenames.html" class="btn btn-neutral float-left" title="Windows compatible filenames" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../automation_overview/index.html" class="btn btn-neutral float-left" title="Automation in Nextcloud" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="configuration.html" class="btn btn-neutral float-right" title="Flow configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

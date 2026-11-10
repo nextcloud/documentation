@@ -276,6 +276,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#preview-ffprobe-path">preview_ffprobe_path</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#preview-imaginary-url">preview_imaginary_url</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#preview-imaginary-key">preview_imaginary_key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preview-ffmpeg-address">preview_ffmpeg_address</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preview-ffmpeg-key">preview_ffmpeg_key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preview-ffmpeg-timeout">preview_ffmpeg_timeout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#enabledpreviewproviders">enabledPreviewProviders</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#metadata-max-filesize">metadata_max_filesize</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#max-file-conversion-filesize">max_file_conversion_filesize</a></li>
@@ -464,7 +467,6 @@
 <p class="caption" role="heading"><span class="caption-text">Files</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
@@ -482,6 +484,7 @@
 <p class="caption" role="heading"><span class="caption-text">automation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../automation_overview/index.html">Automation in Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/budibase_workflows.html">Budibase Workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
@@ -2586,6 +2589,49 @@ have to add the <code class="docutils literal notranslate"><span class="pre">OC\
 </div>
 <p>If you want to set an API key for Imaginary.</p>
 </section>
+<section id="preview-ffmpeg-address">
+<h3>preview_ffmpeg_address<a class="headerlink" href="#preview-ffmpeg-address" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'preview_ffmpeg_address'</span> <span class="o">=&gt;</span> <span class="s1">'ffmpeg-over-ip:5050'</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Set the address of an ffmpeg-over-ip server to generate video previews on,
+as <code class="docutils literal notranslate"><span class="pre">host:port</span></code>, <code class="docutils literal notranslate"><span class="pre">tls://host:port</span></code> or <code class="docutils literal notranslate"><span class="pre">unix:/path/to/socket</span></code>. This is
+not an HTTP URL. Also requires the <code class="docutils literal notranslate"><span class="pre">OC\Preview\MovieRemote</span></code> provider to
+be enabled in the <code class="docutils literal notranslate"><span class="pre">enabledPreviewProviders</span></code> array. Neither ffmpeg nor the
+ffmpeg-over-ip client is needed on the Nextcloud server in that case.</p>
+<p>The server reads the videos from Nextcloud over the same connection, so
+it needs no access to the data directory. ffmpeg-over-ip itself does not
+encrypt the connection and does not authenticate the server, so anyone
+answering on this address can read the videos. Either only use it within
+a trusted network, or put a TLS terminating proxy (e.g. stunnel) in front
+of the server and use a <code class="docutils literal notranslate"><span class="pre">tls://</span></code> address. Like for other outgoing
+connections of Nextcloud, its certificate is verified against Nextcloud’s
+certificate bundle, so a certificate of an internal CA has to be imported
+with <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">security:certificates:import</span></code>.</p>
+<p>Like with <code class="docutils literal notranslate"><span class="pre">OC\Preview\Movie</span></code>, the server can only read up to 20 MB of
+videos on storages that are not local (e.g. S3 or external storage), and
+only the first 10 MB of videos on storages that cannot seek (e.g. WebDAV
+or FTP external storage).</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">OC\Preview\Movie</span></code> is enabled as well, the server is tried first and
+the local ffmpeg is only used if the server could not generate a preview.</p>
+<p>See <a class="reference external" href="https://github.com/steelbrain/ffmpeg-over-ip">https://github.com/steelbrain/ffmpeg-over-ip</a></p>
+</section>
+<section id="preview-ffmpeg-key">
+<h3>preview_ffmpeg_key<a class="headerlink" href="#preview-ffmpeg-key" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'preview_ffmpeg_key'</span> <span class="o">=&gt;</span> <span class="s1">'secret'</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">authSecret</span></code> configured on the ffmpeg-over-ip server.</p>
+</section>
+<section id="preview-ffmpeg-timeout">
+<h3>preview_ffmpeg_timeout<a class="headerlink" href="#preview-ffmpeg-timeout" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'preview_ffmpeg_timeout'</span> <span class="o">=&gt;</span> <span class="mi">120</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Seconds generating a single video preview on the ffmpeg-over-ip server
+may take in total. Values below 1 use the default.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">120</span></code></p>
+</section>
 <section id="enabledpreviewproviders">
 <h3>enabledPreviewProviders<a class="headerlink" href="#enabledpreviewproviders" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'enabledPreviewProviders'</span> <span class="o">=&gt;</span> <span class="p">[</span>
@@ -2615,6 +2661,7 @@ concerns:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\Illustrator</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\JP2</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\Movie</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\MovieRemote</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\MP3</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\MSOffice2003</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OC\Preview\MSOffice2007</span></code></p></li>
