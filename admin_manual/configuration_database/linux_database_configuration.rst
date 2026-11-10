@@ -51,7 +51,7 @@ If you decide to use a MySQL or MariaDB database, ensure the following:
 
   Verify the **transaction_isolation** and **binlog_format**:
 
-::
+.. code-block:: ini
 
   [mysqld]
   ...
@@ -61,7 +61,7 @@ If you decide to use a MySQL or MariaDB database, ensure the following:
 
 Your :file:`/etc/mysql/my.cnf` could look like this:
 
-::
+.. code-block:: ini
 
   [server]
   skip_name_resolve = 1
@@ -103,7 +103,7 @@ Please refer to the `page in the MySQL manual <https://mariadb.com/kb/en/library
 * That the **pdo_mysql.default_socket** points to the correct socket (if the database runs on the same server as Nextcloud).
   This is usually correct without any adjustments. But if PHP fails to find the socket, it can be defined in the PHP configuration in :file:`/etc/php/**/pdo_mysql.ini` like this:
 
-::
+.. code-block:: ini
 
   ; configuration for PHP MySQL module
   extension=pdo_mysql.so
@@ -126,7 +126,7 @@ When using MariaDB use::
 
 Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
-::
+.. code-block:: sql
 
   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
   CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
@@ -142,7 +142,7 @@ name of the database. The :file:`config/config.php` as created by the
 :doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
-::
+.. code-block:: php
 
   <?php
 
@@ -164,7 +164,7 @@ Enabling SSL is only necessary if your database does not reside on the same serv
 If you do not connect over localhost and need to allow remote connections then you should enable SSL.
 This just covers the SSL database configuration on the Nextcloud server. First you need to configure your database server accordingly.
 
-::
+.. code-block:: php
 
   'dbdriveroptions' => [
     \PDO::MYSQL_ATTR_SSL_KEY => '/../ssl-key.pem',
@@ -193,12 +193,12 @@ For further services and users, we recommend to create a separate
 database or PostgreSQL instance.
 
 If you decide to use a PostgreSQL database make sure that you have installed
-and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php7/conf.d/pgsql.ini` could look
+and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php/**/pgsql.ini` could look
 like this:
 
-::
+.. code-block:: ini
 
-  # configuration for PHP PostgreSQL module
+  ; configuration for PHP PostgreSQL module
   extension=pdo_pgsql.so
   extension=pgsql.so
 
@@ -217,7 +217,7 @@ To start the postgres command line mode use::
 
 Then a **template1=#** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
-::
+.. code-block:: sql
 
   CREATE USER username CREATEDB;
   CREATE DATABASE nextcloud OWNER username TEMPLATE template0 ENCODING 'UTF8';
@@ -233,7 +233,7 @@ and an empty password to access it, and the name of the database. The :file:`con
 created by the :doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
-::
+.. code-block:: php
 
   <?php
 
@@ -257,7 +257,7 @@ To start the postgres command line mode use::
 
 Then a **postgres=#** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
-::
+.. code-block:: sql
 
   CREATE USER username WITH PASSWORD 'password' CREATEDB;
   CREATE DATABASE nextcloud TEMPLATE template0 ENCODING 'UTF8';
@@ -275,7 +275,7 @@ the name of the database. The :file:`config/config.php` as created by the
 :doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
-::
+.. code-block:: php
 
   <?php
 
@@ -293,7 +293,7 @@ As with MySQL, enabling SSL is only necessary if your database does not reside o
 Nextcloud instance. First configure your database server accordingly, then add the ``pgsql_ssl``
 configuration to your :file:`config/config.php`.
 
-::
+.. code-block:: php
 
   'pgsql_ssl' => [
     'mode' => 'verify-full',
