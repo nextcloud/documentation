@@ -135,6 +135,20 @@ The user agent is supplied by the client and can be changed or spoofed.
 Do not treat a user-agent condition as proof that a request comes from a
 particular trusted application.
 
+For example, to block file access from the Nextcloud desktop client:
+
+1. In :menuselection:`Settings --> Administration --> Flow`, add a new
+   ``Block access to a file`` flow.
+2. Add a ``Request user agent`` rule, select ``is``, and choose
+   ``Desktop client``.
+3. Save the flow.
+
+With this rule as the only condition, requests matching the desktop client's
+user agent are denied access to files. To limit the rule to particular users
+or files, add conditions to the same group; all conditions must match.
+Because user agents can be spoofed, a user can bypass this rule by changing
+the user agent sent by the client.
+
 IP-based rules depend on the remote address Nextcloud resolves for the
 request. If you use a reverse proxy, configure
 :doc:`trusted proxies and forwarded headers <../configuration_server/reverse_proxy_configuration>`
