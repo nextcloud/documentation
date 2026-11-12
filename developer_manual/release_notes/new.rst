@@ -36,3 +36,12 @@ Moreover ``\OCP\Files\IUserFolder::getUserQuota`` was added to read the used, fr
 As the new interface extends ``\OCP\Files\Folder`` this is not a breaking change for consumers.
 
 See :doc:`../basics/storage/filesystem` for details.
+
+Actor API
+---------
+
+The new ``\OCP\Actor`` namespace describes who performs an operation, also when that is not a logged-in user:
+a local or federated user, an anonymous user such as a public share visitor, a bot, or a system component.
+An ``\OCP\Actor\Actor`` holds the principal whose authority is claimed, and optionally a delegate acting on its behalf.
+
+See :ref:`actor_api` for details.
