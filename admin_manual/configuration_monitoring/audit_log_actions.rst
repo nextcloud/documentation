@@ -742,6 +742,79 @@ Integrations
      - ``workflowengine.rule.deleted``
      - A Flow rule was deleted.
 
+External Apps
+-------------
+
+These entries never contain secrets of ExApps or deploy daemons.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 35 40
+   :class: configuration-table
+
+   * - Friendly name
+     - Event name
+     - Description
+   * - Request ExApp installation
+     - ``app_api.ex_app.install_requested``
+     - The installation of an ExApp was started in the web interface. The names of its environment variables and its
+       mounts are recorded, not the values.
+   * - Register ExApp
+     - ``app_api.ex_app.registered``
+     - An ExApp was registered and received its secret, before its deployment.
+   * - Request ExApp update
+     - ``app_api.ex_app.update_requested``
+     - The update of an ExApp was started in the web interface.
+   * - Update ExApp
+     - ``app_api.ex_app.updated``
+     - The version of an ExApp changed, at an update before the deployment of that version, or when the ExApp reported a
+       newer one. The old and the new version are recorded.
+   * - Enable ExApp
+     - ``app_api.ex_app.enabled``
+     - An ExApp was started and enabled.
+   * - Disable ExApp
+     - ``app_api.ex_app.disabled``
+     - An ExApp was disabled.
+   * - Request test deploy removal
+     - ``app_api.ex_app.uninstall_requested``
+     - The removal of the test deploy ExApp was started in the deploy daemon settings.
+   * - Unregister ExApp
+     - ``app_api.ex_app.unregistered``
+     - An ExApp was removed from Nextcloud.
+   * - Delete ExApp data
+     - ``app_api.ex_app_data.deleted``
+     - The deploy daemon confirmed that the data volume of an ExApp is removed.
+   * - Failed ExApp authentication
+     - ``app_api.ex_app_auth.failed``
+     - A request with AppAPI authentication was rejected for an unknown ExApp or a wrong secret. The user the request
+       claims to act for is recorded.
+   * - Failed HaRP authentication
+     - ``app_api.harp_auth.failed``
+     - A request made as HaRP was rejected for a missing or wrong shared key. The entry carries the user whose request
+       HaRP forwarded, if any.
+   * - Failed Talk bot authentication
+     - ``app_api.talk_bot_auth.failed``
+     - A message for the Talk bot of an ExApp was rejected for a wrong signature.
+   * - Register deploy daemon
+     - ``app_api.daemon.registered``
+     - A deploy daemon was registered.
+   * - Change deploy daemon
+     - ``app_api.daemon.updated``
+     - The configuration of a deploy daemon was changed. Only the names of the changed settings are recorded.
+   * - Unregister deploy daemon
+     - ``app_api.daemon.unregistered``
+     - A deploy daemon was removed.
+   * - Add registry mapping
+     - ``app_api.daemon_registry.added``
+     - A Docker registry mapping was added to a deploy daemon.
+   * - Remove registry mapping
+     - ``app_api.daemon_registry.removed``
+     - A Docker registry mapping was removed from a deploy daemon.
+   * - Change AppAPI setting
+     - ``app_api.admin_config.updated``
+     - An AppAPI admin setting, for example the default deploy daemon, was changed or removed. The value is only
+       recorded for the known AppAPI settings, other keys by name.
+
 System tags
 -----------
 
