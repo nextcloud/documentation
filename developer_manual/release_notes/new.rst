@@ -45,3 +45,15 @@ a local or federated user, an anonymous user such as a public share visitor, a b
 An ``\OCP\Actor\Actor`` holds the principal whose authority is claimed, and optionally a delegate acting on its behalf.
 
 See :ref:`actor_api` for details.
+
+Resource permissions API
+------------------------
+
+The new experimental ``\NCU\Resource`` namespace lets an app restrict what another app allows on its resources,
+without code specific to that app. Apps that own resources declare their resource types and permissions,
+ask ``\NCU\Resource\Permission\IPermissionManager`` which permissions are left for an ``\OCP\Actor\Actor``,
+and enforce the result.
+Apps that restrict permissions, for example based on a label or a team role,
+implement ``\NCU\Resource\Permission\IRestrictionProvider``.
+
+See :ref:`resource_permissions` for details.
