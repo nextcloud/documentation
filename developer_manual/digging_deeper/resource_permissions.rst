@@ -29,6 +29,27 @@ Three kinds of apps take part:
 The API only restricts. Whether an actor has access to a resource at all, as
 owner or through a share, is decided by the owning app.
 
+A check involves all three:
+
+.. mermaid::
+
+    sequenceDiagram
+        participant O as Owning app
+        participant S as Server
+        participant A as Restricting app A
+        participant B as Restricting app B
+
+        O->>S: check(actor, resource, access entries)
+        activate S
+        S->>A: getRestrictions(actor, accesses)
+        A-->>S: restricted permission IDs
+        S->>B: getRestrictions(actor, accesses)
+        B-->>S: restricted permission IDs
+        S->>S: combine the answers
+        S-->>O: EffectivePermissions
+        deactivate S
+        O->>O: enforce the result
+
 Concepts
 --------
 
@@ -73,6 +94,22 @@ and with it, for example, a ``mail:forward`` permission of the Mail app.
 The server also ships ``core:download`` (``CorePermission::DOWNLOAD``), which
 is a kind of ``core:read``. Restricting download does not restrict read, but
 restricting read restricts download.
+
+The following diagram shows the permissions shipped by the server together
+with two permissions registered by apps. Restricting a permission also
+restricts every permission pointing to it.
+
+.. mermaid::
+
+    flowchart BT
+        read["core:read"]
+        update["core:update"]
+        create["core:create"]
+        delete["core:delete"]
+        share["core:share"]
+        download["core:download"] -- kind of --> read
+        export["tables:export"] -- kind of --> share
+        forward["mail:forward"] -- kind of --> share
 
 Prefer the core permissions. Register an own permission only if your app has
 an action whose meaning is not covered by them.
@@ -467,6 +504,28 @@ For every resource the server
 
 A permission restricted by one restricting app is restricted, no matter what
 other restricting apps say.
+
+In the following example a resource is shared with the actor directly and
+with a team the actor is a member of. One restricting app restricts what the
+actor can do through the team, another one restricts sharing the resource.
+
+.. mermaid::
+
+    flowchart TD
+        type["Permissions of the resource type<br>read, update, delete, share"]
+        type --> user
+        type --> team
+
+        subgraph entries [Access entries]
+            user["Recipient: user<br>grants read, update, share"]
+            team["Recipient: team<br>grants read, update, delete"]
+            user -- "no restriction for this recipient" --> userLeft["read, update, share"]
+            team -- "restricted for this recipient:<br>update, delete, share" --> teamLeft["read"]
+        end
+
+        userLeft --> merged["Merged<br>read, update, share"]
+        teamLeft --> merged
+        merged -- "restricted for the resource:<br>share" --> result["Result<br>read, update"]
 
 If a restricting app is disabled, its restrictions no longer apply. If a
 restriction provider throws an exception during a check or cannot be loaded,
