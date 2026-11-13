@@ -386,12 +386,12 @@ it restricts.
 
     declare(strict_types=1);
 
-    namespace OCA\Governance\Resource;
+    namespace OCA\MyApp\Resource;
 
     use NCU\Resource\Permission\CorePermission;
     use NCU\Resource\Permission\IRestrictionProvider;
     use NCU\Resource\Permission\Restriction;
-    use OCA\Governance\Service\LabelService;
+    use OCA\MyApp\Service\LabelService;
     use OCP\Actor\Actor;
 
     class LabelRestrictionProvider implements IRestrictionProvider {
