@@ -40,7 +40,7 @@ Possible errors:
 - Image not found (e.g. not public, no image found for your hardware architecture)
 - Image pull failed (e.g., due to network issues)
 - Image pull timeout
-- Your Docker Socket Proxy/HaRP is not configured correctly and blocks access to this Docker Engine API
+- HaRP is not configured correctly and blocks access to this Docker Engine API
 
 See ``journalctl -f -u docker.service`` for more details in systemd based systems.
 
@@ -68,9 +68,7 @@ Possible errors:
 
 - ExApp failed to start a web server, e.g., if the port is already in use (this should be visible in the container logs)
 - ExApp heartbeat_count keeps increasing, this may indicate that the ExApp couldn't start properly
-- Nextcloud can not reach the ExApp container, e.g.,
-    * due to a network issue or a firewall (this should be visible in the server logs or the firewall logs)
-    * due to a "http" protocol deploy daemon. In this case, the ExApp's container listens on localhost (127.0.0.1 or ::1) which might not be reachable from the Nextcloud server and you might want to listen on a different IP address. See ``OVERRIDE_APP_HOST`` in :ref:`Additional options <additional_options_list>` in the Deploy Daemon form. This issue can be identified using this command: ``lsof -i -P -n | grep LISTEN``
+- Nextcloud can not reach the ExApp container, e.g., due to a network issue or a firewall (this should be visible in the server logs or the firewall logs)
 - For HaRP, the main Nextcloud proxy might not be configured to redirect requests to the HaRP container correctly. See the `Configuring Your Reverse Proxy <https://github.com/nextcloud/harp?tab=readme-ov-file#configuring-your-reverse-proxy>`_ section in the HaRP readme.
 
 Init

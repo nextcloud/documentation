@@ -17,8 +17,7 @@ HaRP is a reverse proxy system designed to simplify the deployment workflow
 for Nextcloud 32’s AppAPI.
 
 It enables direct communication between clients and ExApps, bypassing
-the Nextcloud instance to improve performance and reduce the complexity
-traditionally associated with `DockerSocketProxy` setups.
+the Nextcloud instance to improve performance.
 
 HaRP provides an `FRP-based <https://github.com/fatedier/frp>`_
 transport for ExApps and recommends copying
@@ -28,12 +27,7 @@ The script installs or starts the FRP client and executes your app process.
 
 .. warning::
 
-   We strongly recommend starting support for HaRP in ExApps from the start
-   of Nextcloud 32, as the old `DSP <https://github.com/nextcloud/docker-socket-proxy>`_
-   way will be deprecated and marked for removal in Nextcloud 35.
-
-   Adding HaRP support is fully compatible with the existing DSP system,
-   so you won’t need to maintain two separate release types of your ExApp.
+   AppAPI deploys ExApps to Docker only through HaRP, so your ExApp needs HaRP support.
 
 Key integration considerations
 ------------------------------

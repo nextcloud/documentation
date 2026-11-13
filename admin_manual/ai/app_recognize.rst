@@ -97,7 +97,7 @@ recognize_backend ExApp
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 * Nextcloud v35 or later, and at least *recognize* v13
-* The `AppAPI <https://apps.nextcloud.com/apps/app_api>`_ app with a configured deploy daemon (Docker socket proxy or Harp proxy)
+* The `AppAPI <https://apps.nextcloud.com/apps/app_api>`_ app with a configured HaRP deploy daemon
 * x86-64 host for the deploy daemon; the published container image is built for ``linux/amd64``
 * Outbound HTTPS access from the container to ``huggingface.co``, since the models are downloaded on first use
 * Using GPU processing is supported, but not required; expect slow performance on CPU, especially for video

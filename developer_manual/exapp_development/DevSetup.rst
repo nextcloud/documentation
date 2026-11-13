@@ -51,46 +51,15 @@ There are two types of Deploy daemons that can be used for development and testi
 
 1. ``manual_install``: This type of Deploy daemon is running manually in the host machine.
    This is useful for ExApp development as you can run your ExApp directly on the host.
-2. ``docker_install``: This type of Deploy daemon is running in a Docker container.
+2. ``docker_install``: This type of Deploy daemon deploys ExApps as Docker containers through HaRP.
 
 You can register (create) these daemons in the AppAPI admin settings.
 For the equivalent ``occ`` command or an explanation of the Deploy daemon parameters,
 see :ref:`occ_daemon_config_registration`.
 
-Docker Socket Proxy
-*******************
+HaRP
+****
 
-For development and testing locally,
-the simplest way is to use the `Nextcloud AppAPI DSP HTTP <https://github.com/nextcloud/docker-socket-proxy?tab=readme-ov-file#httplocal>`_.
-
-In Place of a Conclusion
-""""""""""""""""""""""""
-
-There are several make commands available to ease frequent development actions.
-
-To see the complete list, execute ``make help``.
-
-Docker remote API
-*****************
-
-The Docker Engine remote API can be easily configured via ``make dock2port`` command.
-The command will create a docker container to provide remote Docker Engine API.
-
-Afterward, register DaemonConfigs in Nextcloud using ``make dock-port`` command.
-
-Docker by socket
-****************
-
-For Docker via socket, use the command ``make dock-sock``.
-This registers DaemonConfigs in Nextcloud for the default socket connection (``/var/run/docker.sock``).
-
-Make sure that socket has enough permissions for Nextcloud and webserver user to access it
-and actually forwarded to the container:
-
-.. code-block::
-
-    ...
-    volumes:
-        ...
-        - /var/run/docker.sock:/var/run/docker.sock
-        ...
+For development and testing in Docker, register a ``docker-install`` deploy daemon with
+`HaRP <https://github.com/nextcloud/HaRP>`_, see
+`Setup deploy daemon <https://docs.nextcloud.com/server/latest/admin_manual/exapps_management/AppAPIAndExternalApps.html#setup-deploy-daemon>`_.

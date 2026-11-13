@@ -26,7 +26,7 @@ Setup deploy daemon
 A Deploy Daemon is the way for Nextcloud to install, communicate with, and control ExApps.
 
 .. note::
-    If you are using Nextcloud AIO with the "HaRP" or "Docker Socket Proxy" container enabled, a Deploy Daemon will be automatically created and configured to work out-of-the-box.
+    If you are using Nextcloud AIO with the "HaRP" container enabled, a Deploy Daemon will be automatically created and configured to work out-of-the-box.
     Otherwise, follow the steps below to set up a Deploy Daemon from the AppAPI admin settings.
 
 .. tip::
@@ -39,8 +39,7 @@ A Deploy Daemon is the way for Nextcloud to install, communicate with, and contr
 HaRP
 ~~~~
 
-| This is the newer and the **recommended** way to install ExApps.
-| It requires changes in the proxy of your Nextcloud instance. If you don't have access to the proxy, you can use the usual method :ref:`described below <ai-app_api_dsp>`.
+HaRP is the deploy daemon for ExApps in Docker. It requires changes in the proxy of your Nextcloud instance.
 
 1. Setup a Docker container called `HaRP <https://github.com/nextcloud/HaRP?tab=readme-ov-file#how-to-install-it>`_ that proxies access to Docker and to the ExApps for your Nextcloud instance. Be mindful of changing the values of ``HP_SHARED_KEY`` and ``NC_INSTANCE_URL``, and :ref:`generate your own shared key <ai-app_api_harp-shared-key>` instead of using the example value.
 2. Go to AppAPI admin settings.
@@ -58,40 +57,36 @@ This is suitable for local setups where the Nextcloud server and the ExApps are 
 The ExApps in this configuration or the ExApp server need not expose any ExApp related port (23000-23999) necessarily to the host, nor do they need to be reachable from the host. They should be able to reach the HaRP container at the FRP port and the Nextcloud instance.
 For different/remote setups, see deployment configuration examples :doc:`here <./DeployConfigurations>`.
 
-.. note::
-    The existing ExApps can be migrated to use the new HaRP proxy following `this guide <https://github.com/nextcloud/harp?tab=readme-ov-file#nextcloud-32-migrating-existing-exapps-from-dsp-to-harp>`_.
-
 .. _ai-app_api_dsp:
 
-Docker Socket Proxy
-~~~~~~~~~~~~~~~~~~~~
+Moving ExApps from Docker Socket Proxy to HaRP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Setup a Docker container called `docker-socket-proxy <https://github.com/nextcloud/docker-socket-proxy#readme>`_ that proxies access to Docker for your Nextcloud instance.
-2. Go to the AppAPI admin settings.
-3. Click on the "Register Daemon" button.
-4. Fill in the required fields:
-    - ``Name``: unique name of the Deploy daemon
-    - ``Display name``: the name that will be displayed in the UI
-    - ``Deployment method``: by default, you will need to choose ``docker_install`` (``manual_install`` is for development or custom use case of manual ExApp installation)
-    - ``Daemon Host``: hostname/IP address + port of the Deploy daemon
-    - ``Nextcloud URL``: autofilled with current domain, you might need to change the protocol to http/https depending on your setup
-    - ``Set as default daemon``: check if you want set new Deploy daemon as default
-    - ``Enable https``: check if your Deploy daemon (Docker Socket Proxy) is configured with TLS
-    - Deploy Config:
-        - ``Network``: Docker network name, depends on your networking setup, enforces to "host" if "Enable https" is checked
-        - ``HaProxy password``: password for Docker Socket Proxy, if it is configured with TLS
-        - ``Compute Device``: CPU, CUDA or ROCm, depending on your hardware config on Deploy daemon host machine
-        - ``Add additional option`` (see :ref:`additional_options_list`): setup additional KEY + VALUE deploy config options
-5. Click "Check connection" to verify that the configuration is correct.
-6. Click "Register" to save the Deploy Daemon configuration.
+AppAPI no longer supports ``docker-install`` deploy daemons without HaRP: Docker Socket Proxy (DSP) daemons and
+daemons on a local Docker socket. Registering one is refused. Existing ones stay registered and Nextcloud still reaches
+their ExApps, but AppAPI no longer manages these ExApps:
 
-.. note::
-    For remote DSP setup, it should expose the ports on the host.
+* Installing or updating an ExApp, "Test deploy" and downloading logs fail with a "no longer supported" error.
+* Enabling an ExApp only checks its heartbeat and does not start its container.
+* Disabling an ExApp leaves its container running.
+* Removing an ExApp keeps its container and data volume.
+* These daemons can only be deleted: editing them and their Docker registry mappings is refused.
 
-.. image:: ./img/app_api_3.png
-   :alt: AppAPI admin settings showing Deploy Daemon configuration form with Check connection button
+The **AppAPI Docker Socket Proxy daemons** setup check lists these daemons, and the **AppAPI deploy daemon** setup check
+reports a default daemon without HaRP.
 
-Deployment configuration examples can be found :doc:`here <./DeployConfigurations>`.
+To move the ExApps of such a daemon to HaRP:
+
+1. Install :ref:`HaRP <ai-app_api_harp>` on the Docker host of the old daemon and register a HaRP deploy daemon.
+2. Check it with "Test deploy" in the 3-dots menu of the HaRP daemon.
+3. Set the HaRP daemon as the default.
+4. Remove each ExApp of the old daemon and keep its data: run ``occ app_api:app:unregister <appid>`` without
+   ``--rm-data``.
+5. Install the ExApps again. They are installed on the HaRP daemon, which replaces the ``nc_app_<appid>`` container and
+   reuses the ``nc_app_<appid>_data`` volume.
+6. Delete the old daemon in the AppAPI admin settings, then remove its DSP container, if any.
+
+An ExApp that you do not install again keeps its old container running. Remove that container by hand.
 
 Installing ExApps
 -----------------
@@ -119,40 +114,15 @@ FAQ
    * No, each ExApp container can only be used for one Nextcloud instance at a time. You would need to run separate containers and even separate docker hosts for each Nextcloud instance.
 
 
-Docker Socket Proxy vs HaRP
----------------------------
+How HaRP works
+--------------
 
-| HaRP can be seen as Docker Socket Proxy version 2.0. It does all what Docker Socket Proxy does, but also addresses the main pain point of ExApps not being reachable by the Nextcloud server (or AppAPI).
 | `FRP <https://github.com/fatedier/frp>`_ is used to create a tunnel between the ExApp and the HaRP container so there is no need for the ExApp containers to expose any ports to the host or to be reachable from the Nextcloud server.
 | The Nextcloud server can reach the ExApp containers through the HaRP container.
 
-HaRP has an additional benefit of being able to proxy requests coming from the Web interface or an API to the ExApp container without being proxied through the Nextcloud server, saving resources, improving performance and supporting additional protocols like WebSockets.
+HaRP proxies requests coming from the Web interface or an API to the ExApp container without going through the Nextcloud server, saving resources, improving performance and supporting additional protocols like WebSockets.
 
-HaRP is the recommended way to run ExApps, but if you are not able to use it, Docker Socket Proxy is still supported.
-
-Frontend requests in case of Docker Socket Proxy:
-
-.. mermaid::
-
-    graph LR;
-        subgraph Browser
-            A[Frontend]
-        end
-
-        B[Proxy]
-
-        subgraph Services behind the proxy
-            C[Docker Socket Proxy]
-            D[ExApp]
-            E[Nextcloud Server / AppAPI]
-        end
-
-        A --> B
-        B -->|Request to an ExApp| E --Converted to ExApp auth--> D
-        B -->|All other usual requests| E
-
-
-Frontend requests in case of HaRP:
+Frontend requests:
 
 .. mermaid::
 
