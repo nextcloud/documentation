@@ -109,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">automation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Automation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../automation_overview/index.html">Automation in Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
@@ -151,6 +151,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#administration-settings">Administration settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ldap">LDAP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#integrations">Integrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-apps">External Apps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-tags">System tags</a></li>
 </ul>
 </li>
@@ -1204,6 +1205,102 @@ to the system address book are not recorded.</p>
 <tr class="row-even"><td><p>Delete Flow rule</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">workflowengine.rule.deleted</span></code></p></td>
 <td><p>A Flow rule was deleted.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="external-apps">
+<h2>External Apps<a class="headerlink" href="#external-apps" title="Link to this heading"></a></h2>
+<p>These entries never contain secrets of ExApps or deploy daemons.</p>
+<table class="configuration-table docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Friendly name</p></th>
+<th class="head"><p>Event name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Request ExApp installation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.ex_app.install_requested</span></code></p></td>
+<td><p>The installation of an ExApp was started in the web interface. The names of its environment variables and its
+mounts are recorded, not the values.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Register ExApp</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.ex_app.registered</span></code></p></td>
+<td><p>An ExApp was registered and received its secret, before its deployment.</p></td>
+</tr>
+<tr class="row-even"><td><p>Request ExApp update</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.ex_app.update_requested</span></code></p></td>
+<td><p>The update of an ExApp was started in the web interface.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Update ExApp</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.ex_app.updated</span></code></p></td>
+<td><p>The version of an ExApp changed, at an update before the deployment of that version, or when the ExApp reported a
+newer one. The old and the new version are recorded.</p></td>
+</tr>
+<tr class="row-even"><td><p>Enable ExApp</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.ex_app.enabled</span></code></p></td>
+<td><p>An ExApp was started and enabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Disable ExApp</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.ex_app.disabled</span></code></p></td>
+<td><p>An ExApp was disabled.</p></td>
+</tr>
+<tr class="row-even"><td><p>Request test deploy removal</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.ex_app.uninstall_requested</span></code></p></td>
+<td><p>The removal of the test deploy ExApp was started in the deploy daemon settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unregister ExApp</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.ex_app.unregistered</span></code></p></td>
+<td><p>An ExApp was removed from Nextcloud.</p></td>
+</tr>
+<tr class="row-even"><td><p>Delete ExApp data</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.ex_app_data.deleted</span></code></p></td>
+<td><p>The deploy daemon confirmed that the data volume of an ExApp is removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Failed ExApp authentication</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.ex_app_auth.failed</span></code></p></td>
+<td><p>A request with AppAPI authentication was rejected for an unknown ExApp or a wrong secret. The user the request
+claims to act for is recorded.</p></td>
+</tr>
+<tr class="row-even"><td><p>Failed HaRP authentication</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.harp_auth.failed</span></code></p></td>
+<td><p>A request made as HaRP was rejected for a missing or wrong shared key. The entry carries the user whose request
+HaRP forwarded, if any.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Failed Talk bot authentication</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.talk_bot_auth.failed</span></code></p></td>
+<td><p>A message for the Talk bot of an ExApp was rejected for a wrong signature.</p></td>
+</tr>
+<tr class="row-even"><td><p>Register deploy daemon</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.daemon.registered</span></code></p></td>
+<td><p>A deploy daemon was registered.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change deploy daemon</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.daemon.updated</span></code></p></td>
+<td><p>The configuration of a deploy daemon was changed. Only the names of the changed settings are recorded.</p></td>
+</tr>
+<tr class="row-even"><td><p>Unregister deploy daemon</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.daemon.unregistered</span></code></p></td>
+<td><p>A deploy daemon was removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Add registry mapping</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.daemon_registry.added</span></code></p></td>
+<td><p>A Docker registry mapping was added to a deploy daemon.</p></td>
+</tr>
+<tr class="row-even"><td><p>Remove registry mapping</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.daemon_registry.removed</span></code></p></td>
+<td><p>A Docker registry mapping was removed from a deploy daemon.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change AppAPI setting</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_api.admin_config.updated</span></code></p></td>
+<td><p>An AppAPI admin setting, for example the default deploy daemon, was changed or removed. The value is only
+recorded for the known AppAPI settings, other keys by name.</p></td>
 </tr>
 </tbody>
 </table>
