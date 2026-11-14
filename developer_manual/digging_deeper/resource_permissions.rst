@@ -18,16 +18,18 @@ its resources, without knowing what those resources or permissions are.
 Three kinds of apps take part:
 
 * The **owning app** owns resources, for example tables or mails. It declares
-  its resource types and permissions, asks which permissions are left for an
-  actor, and enforces the answer.
+  its resource types and permissions, tells which access an actor has to its
+  resources, asks which permissions are left for an actor, and enforces the
+  answer.
 * A **restricting app** restricts permissions, for example based on a label
   attached to a resource or on the role a user has in a team. It never needs
   code specific to the owning app.
-* The **server** holds the declarations, asks every restricting app and
-  combines the answers.
+* The **server** holds the declarations, asks the owning app for the access
+  of the actor, asks every restricting app and combines the answers.
 
 The API only restricts. Whether an actor has access to a resource at all, as
-owner or through a share, is decided by the owning app.
+owner or through a share, is decided by the owning app. Its resource type
+tells the server, so any app can check a resource, not only the app owning it.
 
 A check involves all three:
 
@@ -39,8 +41,10 @@ A check involves all three:
         participant A as Restricting app A
         participant B as Restricting app B
 
-        O->>S: check(actor, resource, access entries)
+        O->>S: check(actor, resource)
         activate S
+        S->>O: getAccess(actor, resources)
+        O-->>S: access entries
         S->>A: getRestrictions(actor, accesses)
         A-->>S: restricted permission IDs
         S->>B: getRestrictions(actor, accesses)
@@ -122,7 +126,8 @@ resource type (``appid:type``), the ID of the resource within that type and,
 optionally, its owner as an ``\OCP\Actor\Principal``. Only the owning app knows
 what the ID refers to.
 
-A resource type lists the permissions that apply to its resources. An app can
+A resource type lists the permissions that apply to its resources and tells
+which access an actor has to them. An app can
 register several types, for example one for tables and one for rows. There is
 no hierarchy between resources: a restriction on a table does not apply to its
 rows unless the restricting app returns it for the rows as well.
@@ -150,10 +155,11 @@ Some restrictions only apply to access gained in a certain way. A user who is
 a visitor in a team should only be able to read what is shared with that team,
 but keeps full access to a resource that is also shared with them directly.
 
-To make this possible, the owning app can pass the shares that give the actor
-access, as it stores them. Each ``\NCU\Resource\Permission\AccessEntry`` names
-the recipient of the share and the permissions it grants. The recipient is a
-kind and an ID:
+To make this possible, the owning app describes every way the actor has
+access to a resource as an ``\NCU\Resource\Permission\AccessEntry``, as it
+stores it. An entry names the recipient of the access, for example of a share,
+and the permissions it grants. Without an entry the actor has no access. The
+recipient is a kind and an ID:
 
 .. list-table::
    :header-rows: 1
@@ -170,8 +176,10 @@ kind and an ID:
    * - ``appid:kind``
      - Defined by your app, for example a link token
 
-You do not need to resolve group or team memberships or roles. Pass the entry
-as it is stored; the restricting app knows what to do with it.
+You do not need to resolve group or team memberships or roles. Return the entry
+as it is stored; the restricting app knows what to do with it. The owner of a
+resource gets an entry as well, with the user as recipient and all permissions
+of the resource.
 
 For owning apps
 ---------------
@@ -221,7 +229,8 @@ Registering resource types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Implement ``\NCU\Resource\IResourceType`` for every type of resource your app
-owns and list the permissions that apply to it.
+owns. List the permissions that apply to it and return the access an actor has
+to resources of the type.
 
 .. code-block:: php
 
@@ -232,7 +241,12 @@ owns and list the permissions that apply to it.
     namespace OCA\Tables\Resource;
 
     use NCU\Resource\IResourceType;
+    use NCU\Resource\Permission\AccessEntry;
     use NCU\Resource\Permission\CorePermission;
+    use OCA\Tables\Db\ShareMapper;
+    use OCA\Tables\Db\TableMapper;
+    use OCP\Actor\Actor;
+    use OCP\Actor\PrincipalType;
     use OCP\IL10N;
 
     class TableResourceType implements IResourceType {
@@ -240,6 +254,8 @@ owns and list the permissions that apply to it.
 
         public function __construct(
             private IL10N $l10n,
+            private ShareMapper $shareMapper,
+            private TableMapper $tableMapper,
         ) {
         }
 
@@ -260,7 +276,60 @@ owns and list the permissions that apply to it.
                 ExportPermission::ID,
             ];
         }
+
+        public function getAccess(Actor $actor, array $resources): array {
+            if ($actor->principal->type !== PrincipalType::User) {
+                return [];
+            }
+
+            $userId = $actor->principal->id;
+            $tableIds = array_map(static fn ($resource) => $resource->id, $resources);
+
+            $access = [];
+            // One query for all tables
+            foreach ($this->tableMapper->findOwnedBy($tableIds, $userId) as $table) {
+                $key = self::ID . '/' . $table->getId();
+                $access[$key][] = new AccessEntry(
+                    AccessEntry::RECIPIENT_USER,
+                    $userId,
+                    $this->getPermissionIds(),
+                );
+            }
+
+            foreach ($this->shareMapper->findSharesFor($tableIds, $userId) as $share) {
+                $key = self::ID . '/' . $share->getTableId();
+                $access[$key][] = new AccessEntry(
+                    $share->getReceiverType() === 'circle'
+                        ? AccessEntry::RECIPIENT_TEAM
+                        : AccessEntry::RECIPIENT_USER,
+                    $share->getReceiver(),
+                    $this->toPermissionIds($share),
+                );
+            }
+
+            return $access;
+        }
     }
+
+``getAccess`` receives all resources of your type that are part of one check.
+Return the entries keyed by ``ResourceReference::key()`` and leave out the
+resources the actor has no access to. Things to know:
+
+* Return an entry for every way the actor has access, including ownership.
+  Restrictions that only apply to one recipient, such as a team role, can only
+  take effect on the entry of that recipient.
+* Look the owner up in your own storage. ``ResourceReference::$owner`` is
+  filled in by the caller, which can be another app.
+* Load your data for the whole batch at once where possible, a listing can
+  contain hundreds of resources.
+* Permissions in an entry that do not apply to the resource type are ignored
+  and logged.
+* If the method throws an exception, the actor is treated as having no access
+  to any of the resources and the error is logged.
+* The entries are remembered while the process runs. Call
+  ``IPermissionManager::clearCache()`` whenever the access to a resource
+  changes, for example when a share is created or removed, so that later
+  checks in the same process see the change.
 
 Register both in the ``register`` method of your ``Application`` class:
 
@@ -278,7 +347,8 @@ Checking a resource
 ^^^^^^^^^^^^^^^^^^^
 
 Ask ``\NCU\Resource\Permission\IPermissionManager`` which permissions are left
-for the actor. The simplest form passes only the resource:
+for the actor. Pass only the resource and the server asks your resource type
+for the access of the actor:
 
 .. code-block:: php
 
@@ -295,39 +365,36 @@ for the actor. The simplest form passes only the resource:
 
     $permissions = $this->permissionManager->check($actor, $resource);
     if (!$permissions->isAllowed(CorePermission::Update)) {
-        // Not allowed by another app
+        // No access, not granted or not allowed by another app
     }
 
-Without access entries the result starts from all permissions that apply to
-the resource type. It tells you what other apps restrict, not what the actor
-may do: intersect it with the access your app grants.
+The result is what is left of the permissions granted by the access entries,
+so it can be used directly. If the actor has no access to the resource, no
+permission is allowed.
 
-With access entries the result is what is left of the permissions granted by
-the entries, so it can be used directly:
+If your app has already loaded the access, for example the shares of the
+tables it is about to list, pass the entries as third argument. The resource
+type is then not asked:
 
 .. code-block:: php
 
-    use NCU\Resource\Permission\AccessEntry;
-
-    $entries = [];
-    foreach ($this->shareMapper->findSharesFor($table, $userId) as $share) {
-        $entries[] = new AccessEntry(
-            $share->getReceiverType() === 'circle'
-                ? AccessEntry::RECIPIENT_TEAM
-                : AccessEntry::RECIPIENT_USER,
-            $share->getReceiver(),
-            $this->toPermissionIds($share),
-        );
-    }
-
     $permissions = $this->permissionManager->check($actor, $resource, $entries);
 
-Pass an entry for every way the actor has access, including ownership if your
-app treats the owner like a recipient. Restrictions that only apply to one
-recipient, such as a team role, can only take effect if you pass entries.
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
 
-Permissions in an entry that do not apply to the resource type are ignored
-and logged.
+   * - Entries
+     - Result
+   * - Not passed or ``null``
+     - The resource type is asked for the access of the actor
+   * - A list of entries
+     - The entries are used as they are
+   * - An empty list
+     - The actor has no access, no permission is allowed
+
+Entries you pass have to match what your resource type returns. Other apps
+checking the same resource get the answer of the resource type.
 
 Checking many resources
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -353,6 +420,10 @@ actor is the same for all of them. The result is keyed by
             ->isAllowed(CorePermission::Delete);
     }
 
+A ``ResourceAccess`` takes the access entries as optional second argument,
+with the same meaning as for ``check``. Every resource type is asked once for
+all its resources that were passed without entries.
+
 ``check`` and ``checkAll`` throw an ``InvalidArgumentException`` if a resource
 type is not registered. ``checkAll`` also throws if the same resource is
 passed more than once.
@@ -367,11 +438,50 @@ The server does not enforce anything for you. Use the result in both places:
 * when an action happens, to refuse it on the server side.
 
 Results are remembered while the process runs, so checking again when the
-action happens is cheap.
+action happens is cheap. Call ``IPermissionManager::clearCache()`` whenever the
+access to a resource changes.
 
 Rules that depend on who receives something, such as "must not be shared with
 external recipients", are not covered by this API. They are handled by the
 ``\OCP\Interaction\RestrictInteractionEvent``.
+
+For other apps
+--------------
+
+An app can check resources it does not own, for example to only act on what
+the actor may do. Build the reference from the ID of the resource type and the
+ID of the resource and call ``check`` or ``checkAll`` without access entries:
+
+.. code-block:: php
+
+    $resource = new ResourceReference('tables:table', $tableId);
+    if (!$this->permissionManager->check($actor, $resource)->isAllowed(CorePermission::Read)) {
+        // The actor has no access to the table or reading is restricted
+    }
+
+``IPermissionManager`` tells what is left after all restrictions. To get the
+access the actor was given, before any restriction, ask
+``\NCU\Resource\Permission\IAccessManager``:
+
+.. code-block:: php
+
+    $access = $this->accessManager->getAccess($actor, [$resource]);
+    $entries = $access[$resource->key()] ?? [];
+
+The result is keyed by ``ResourceReference::key()``, resources the actor has no
+access to are left out. A restricting app needs this for its own rules, such as
+who may change a restriction: a rule based on the permissions that are left
+could prevent lifting the restriction that removed them.
+
+Always ask the access manager, not the resource type directly. The resource
+type is not the only source of access.
+
+.. mermaid::
+
+    flowchart LR
+        types["Resource types<br>getAccess()"] --> access["IAccessManager<br>what was granted"]
+        access --> permissions["IPermissionManager<br>what is left"]
+        providers["Restriction providers<br>getRestrictions()"] --> permissions
 
 For restricting apps
 --------------------
@@ -425,6 +535,8 @@ Things to know:
 
 * The provider is called for resources of every type. Return nothing for
   resources you have no rules for.
+* The provider is only called for resources the actor has access to. The
+  access entries of every ``ResourceAccess`` are set.
 * A restriction is a list of permission IDs. Restricting a core permission
   also restricts every permission that is a kind of it. Unknown IDs are
   ignored.
@@ -444,7 +556,7 @@ Restricting one recipient
 
 ``Restriction::forResource`` restricts permissions however the actor has
 access. ``Restriction::forRecipient`` restricts only the access the actor has
-through one recipient, which the owning app passed as an access entry:
+through one recipient, that is through one of the access entries:
 
 .. code-block:: php
 
@@ -496,10 +608,11 @@ How results are combined
 
 For every resource the server
 
-#. takes the permissions that apply to the resource type,
-#. without access entries starts from all of them; with access entries takes,
-   for each entry, the granted permissions without those restricted for the
-   recipient of the entry, and merges the entries,
+#. takes the access entries that were passed, or asks the resource type for
+   them; without entries no permission is allowed,
+#. takes, for each entry, the granted permissions that apply to the resource
+   type without those restricted for the recipient of the entry, and merges
+   the entries,
 #. removes the permissions restricted for the resource as a whole.
 
 A permission restricted by one restricting app is restricted, no matter what
@@ -530,4 +643,5 @@ actor can do through the team, another one restricts sharing the resource.
 If a restricting app is disabled, its restrictions no longer apply. If a
 restriction provider throws an exception during a check or cannot be loaded,
 every permission on all resources of that check is restricted and the error
-is logged.
+is logged. If a resource type throws an exception when asked for the access,
+no permission is allowed on its resources of that check.
