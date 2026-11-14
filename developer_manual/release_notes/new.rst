@@ -51,6 +51,7 @@ Resource permissions API
 
 The new experimental ``\NCU\Resource`` namespace lets an app restrict what another app allows on its resources,
 without code specific to that app. Apps that own resources declare their resource types and permissions,
+tell which access an actor has to their resources,
 ask ``\NCU\Resource\Permission\IPermissionManager`` which permissions are left for an ``\OCP\Actor\Actor``,
 and enforce the result.
 Apps that restrict permissions, for example based on a label or a team role,
