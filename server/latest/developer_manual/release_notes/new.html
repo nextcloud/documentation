@@ -77,6 +77,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">New in this release</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#email-template-blocks">Email template blocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-ocp-files-iuserfolder-api">New <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#actor-api">Actor API</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="deprecations.html">Deprecations</a></li>
@@ -146,6 +147,13 @@ This interface represents the user root folder similar to <code class="docutils 
 As the new interface extends <code class="docutils literal notranslate"><span class="pre">\OCP\Files\Folder</span></code> this is not a breaking change for consumers.</p>
 <p>See <a class="reference internal" href="../basics/storage/filesystem.html"><span class="doc">Nextcloud filesystem API</span></a> for details.</p>
 </section>
+<section id="actor-api">
+<h2>Actor API<a class="headerlink" href="#actor-api" title="Link to this heading"></a></h2>
+<p>The new <code class="docutils literal notranslate"><span class="pre">\OCP\Actor</span></code> namespace describes who performs an operation, also when that is not a logged-in user:
+a local or federated user, an anonymous user such as a public share visitor, a bot, or a system component.
+An <code class="docutils literal notranslate"><span class="pre">\OCP\Actor\Actor</span></code> holds the principal whose authority is claimed, and optionally a delegate acting on its behalf.</p>
+<p>See <a class="reference internal" href="../digging_deeper/actor.html#actor-api"><span class="std std-ref">Actor API</span></a> for details.</p>
+</section>
 </section>
 
 
@@ -160,7 +168,7 @@ As the new interface extends <code class="docutils literal notranslate"><span cl
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Nov 09, 2026.
+      <span class="lastupdated">Last updated on Nov 14, 2026.
       </span></p>
   </div>
 
