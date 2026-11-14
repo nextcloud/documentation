@@ -6,6 +6,7 @@ APIs & Integration
    :maxdepth: 2
 
    api
+   actor
    rest_apis
    http_client
    javascript-apis
