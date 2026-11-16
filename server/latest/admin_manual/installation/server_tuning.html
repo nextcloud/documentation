@@ -372,10 +372,10 @@ queue up; a full queue produces 502/504 errors.</p>
 </pre></div>
 </div>
 <p>Measure the average RSS of a running pool:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">headers</span> <span class="o">-</span><span class="n">o</span> <span class="n">rss</span> <span class="o">-</span><span class="n">C</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">'{sum+=$1; count++} END {if (count&gt;0) print sum/count/1024 " MB"; else print "No php-fpm processes found"}'</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">headers</span> <span class="o">-</span><span class="n">o</span> <span class="n">rss</span> <span class="o">-</span><span class="n">C</span> <span class="n">php</span><span class="o">-</span><span class="n">fpm</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">'{sum+=$1; count++} END {if (count&gt;0) print sum/count/1024 " MiB"; else print "No php-fpm processes found"}'</span>
 </pre></div>
 </div>
-<p>A typical Nextcloud worker uses <strong>50–100 MB</strong> (more if Imagick or LDAP is loaded).
+<p>A typical Nextcloud worker uses <strong>50–100 MiB</strong> (more if Imagick or LDAP is loaded).
 Leave headroom for the OS, web server, database, and cache. Setting <code class="docutils literal notranslate"><span class="pre">pm.max_children</span></code>
 too high causes swapping, which is worse than queuing.</p>
 </dd>
