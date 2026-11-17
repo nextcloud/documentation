@@ -180,7 +180,7 @@ Place the following in ``config/mimetypemapping.json``::
     "amr": ["audio/amr"]
   }
 
-.. tip:: If the ``config/mimetypemapping.json`` file already exists, an app or 
+.. tip:: If the ``config/mimetypemapping.json`` file already exists, an app or
          another administrator may have added a custom MIME type mapping. If so,
          add the ``"amr"`` entry to its existing JSON object (the part between
          the ``{ ... }``) instead of replacing the entire contents of the file.
