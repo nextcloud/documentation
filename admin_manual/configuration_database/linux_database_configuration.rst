@@ -66,14 +66,10 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
   [server]
   skip_name_resolve = 1
   innodb_buffer_pool_size = 128M
-  innodb_buffer_pool_instances = 1
+  # innodb_buffer_pool_instances = 1  # MySQL only; removed in MariaDB 10.6.
   innodb_flush_log_at_trx_commit = 2
   innodb_log_buffer_size = 32M
   innodb_max_dirty_pages_pct = 90
-  query_cache_type = 1
-  query_cache_limit = 2M
-  query_cache_min_res_unit = 2k
-  query_cache_size = 64M
   tmp_table_size= 64M
   max_heap_table_size= 64M
   slow_query_log = 1
@@ -92,11 +88,9 @@ Your :file:`/etc/mysql/my.cnf` could look like this:
   collation_server = utf8mb4_bin
   transaction_isolation = READ-COMMITTED
   binlog_format = ROW
-  innodb_large_prefix=on
-  innodb_file_format=barracuda
   innodb_file_per_table=1
 
-Please refer to the `page in the MySQL manual <https://mariadb.com/kb/en/library/set-transaction/#read-committed>`_.
+Please refer to the `page in the MariaDB manual <https://mariadb.com/kb/en/library/set-transaction/#read-committed>`_.
 
 * That you have installed and enabled the pdo_mysql extension in PHP
 
@@ -110,7 +104,11 @@ Please refer to the `page in the MySQL manual <https://mariadb.com/kb/en/library
 
   pdo_mysql.default_socket=/run/mysqld/mysqld.sock
 
-.. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.
+.. note::
+
+   MySQL and MariaDB share many configuration options, but some options are specific to one engine or version.
+   Check your database server's documentation before applying configuration changes. The include directories
+   in the example above are specific to Debian-based MariaDB installations; adjust them for your installation.
 
 Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by Nextcloud
