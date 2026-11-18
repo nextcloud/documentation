@@ -15,8 +15,9 @@ This is just three steps:
 
    * **Subdirectory** installs (e.g. files under a ``/nextcloud`` Alias):
      ``http://localhost/nextcloud``
-   * **Web root** installs (including the **Snap** package): ``http://localhost/``
-     or ``http://<hostname>.local/`` — **not** under ``/nextcloud``
+   * **Web root** installs (including the :ref:`Snap package <snaps_label>`):
+     ``http://localhost/`` or your server's hostname or IP address, **not**
+     under ``/nextcloud``
 
 #. Enter your desired administration account name and password.
 #. Click **Install**.
