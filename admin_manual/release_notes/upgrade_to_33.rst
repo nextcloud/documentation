@@ -23,7 +23,7 @@ Snowflake IDs
 -------------
 
 This version of Nextcloud ships with `Snowflake IDs <https://en.wikipedia.org/wiki/Snowflake_ID>`_. Those IDs include the creation time of object, a sequence ID and a server ID.
-The server ID should now be configured in your config.php file or using environment variables. See :doc:`../configuration_server/config_sample_php_parameters#serverid` for more information.
+The server ID should now be configured in your config.php file or using environment variables. See `serverid in the configuration parameters <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#serverid>`_ for more information.
 
 OpenMetrics endpoint
 --------------------
