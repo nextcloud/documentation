@@ -222,7 +222,7 @@ Show which migrations have been executed and which are pending for an app::
 Adding indices
 --------------
 
-Adding indices to existing tables can take long time, especially on large tables. Therefore it is recommended to not add the indices in the migration itself, but to indicate the index requirement to the server by adding a listener for the ``AddMissingIndicesEvent``. This way the migration can be executed in a separate step and do not block the upgrade process. For new installations the index should still be added to the migration that creates the table.
+Adding an index to an existing table can take a long time on large tables, and the migration runs during the upgrade while the instance is in maintenance mode. To keep the index off the upgrade path, do not add it in the migration. Register it with a listener for the ``AddMissingIndicesEvent`` instead, so it is created separately through ``occ db:add-missing-indices``.
 
 .. code-block:: php
 
@@ -235,6 +235,13 @@ Adding indices to existing tables can take long time, especially on large tables
          $event->addMissingIndex('my_table', 'my_index', ['column_a', 'column_b']);
       }
    }
+
+New installations still need the index from the start. Add it to the migration that creates the table, or, if the index needs a column from a later migration, to the migration that adds that column. This edits an already released migration, so add a comment that the index was added later. Existing installations have already run that migration and get the index from the ``AddMissingIndicesEvent`` instead.
+
+.. code-block:: php
+
+   // my_index was added later and may not exist until optional indices are created
+   $table->addIndex(['column_a', 'column_b'], 'my_index');
 
 Replacing indices
 -----------------
