@@ -384,7 +384,7 @@ For Nextcloud-AIO you should use this command on the host server.
 
 .. code-block::
 
-   set -e; while true; do docker exec -it nextcloud-aio-nextcloud sudo -E -u www-data php occ taskprocessing:worker -v -t 60; done
+   set -e; while true; do docker exec --user www-data nextcloud-aio-nextcloud php occ taskprocessing:worker -v -t 60; done
 
 You may want to adjust the number of workers and the timeout (in seconds) to your needs.
 The logs of the worker can be checked by attaching to the screen or tmux session.
