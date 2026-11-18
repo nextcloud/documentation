@@ -6,10 +6,9 @@ Nextcloud supports a simple version control system for files. Whenever a file
 is changed on the server or uploaded again by a client, Nextcloud keeps the
 previous content as a version so you can restore it later. Versions appear in
 the **Versions** tab on the Details sidebar, where you can restore or download
-any earlier copy. A new version is stored only if at least two minutes have
-passed since the last version was created. Desktop and mobile clients do not
-manage the version list themselves; they upload a new file and the server
-records the version. Versions are stored under ``data/[user]/files_versions``.
+any earlier copy. Desktop and mobile clients do not manage the version list
+themselves; they upload a new file and the server records the version.
+Versions are stored under ``data/[user]/files_versions``.
 
 .. figure:: ../images/files_versioning.png
    :alt: File version history in the Details sidebar
