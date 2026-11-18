@@ -879,6 +879,8 @@ To turn off checks the following *Attributes* can be added before the controller
 * ``#[NoTwoFactorRequired]``: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
 * ``#[NoCSRFRequired]``: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see :ref:`CSRF in the security section <csrf_introduction>`)
 
+App passwords that a user limited to some parts of their account can't call any method by default, unless the user granted the whole app. To open single methods to them, see :doc:`../digging_deeper/app_password_scopes`.
+
 .. note::
 
     The attributes are only available in Nextcloud 27 or later. In older versions annotations with the same names exist:
