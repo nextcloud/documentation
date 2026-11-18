@@ -11,45 +11,53 @@ encode {
 
 	minimum_length 256
 
+	# The trailing `*` also matches values with parameters,
+	# e.g. `application/json; charset=utf-8`
 	match {
-		header Content-Type application/atom+xml
-		header Content-Type application/javascript
-		header Content-Type application/json
-		header Content-Type application/ld+json
-		header Content-Type application/manifest+json
-		header Content-Type application/rss+xml
-		header Content-Type application/vnd.geo+json
-		header Content-Type application/vnd.ms-fontobject
-		header Content-Type application/wasm
-		header Content-Type application/x-font-ttf
-		header Content-Type application/x-web-app-manifest+json
-		header Content-Type application/xhtml+xml
-		header Content-Type application/xml
-		header Content-Type font/opentype
-		header Content-Type image/bmp
-		header Content-Type image/svg+xml
-		header Content-Type image/x-icon
-		header Content-Type text/cache-manifest
-		header Content-Type text/css
-		header Content-Type text/plain
-		header Content-Type text/vcard
-		header Content-Type text/vnd.rim.location.xloc
-		header Content-Type text/vtt
-		header Content-Type text/x-component
-		header Content-Type text/x-cross-domain-policy
+		header Content-Type application/atom+xml*
+		header Content-Type application/javascript*
+		header Content-Type application/json*
+		header Content-Type application/ld+json*
+		header Content-Type application/manifest+json*
+		header Content-Type application/rss+xml*
+		header Content-Type application/vnd.geo+json*
+		header Content-Type application/vnd.ms-fontobject*
+		header Content-Type application/wasm*
+		header Content-Type application/x-font-ttf*
+		header Content-Type application/x-web-app-manifest+json*
+		header Content-Type application/xhtml+xml*
+		header Content-Type application/xml*
+		header Content-Type font/opentype*
+		header Content-Type image/bmp*
+		header Content-Type image/svg+xml*
+		header Content-Type image/x-icon*
+		header Content-Type text/cache-manifest*
+		header Content-Type text/css*
+		header Content-Type text/javascript*
+		header Content-Type text/plain*
+		header Content-Type text/vcard*
+		header Content-Type text/vnd.rim.location.xloc*
+		header Content-Type text/vtt*
+		header Content-Type text/x-component*
+		header Content-Type text/x-cross-domain-policy*
 	}
 }
 
 # Add security-related headers
 header {
+	# HSTS settings
+	# WARNING: Only add the preload option once you read about
+	# the consequences in https://hstspreload.org/. This option
+	# will add the domain to a hardcoded list that is shipped
+	# in all major browsers and getting removed from this list
+	# could take several months.
+	#Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
 	Referrer-Policy no-referrer
-	Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;"
 	X-Content-Type-Options nosniff
-	X-Download-Options noopen
 	X-Frame-Options SAMEORIGIN
 	X-Permitted-Cross-Domain-Policies none
 	X-Robots-Tag "noindex, nofollow"
-	X-XSS-Protection "1; mode=block"
 	# Remove X-Powered-By header (already removed by default in newer Caddy)
 	-X-Powered-By
 }
@@ -107,18 +115,27 @@ route {
 		/console*
 	error @internal 404
 
+	# Only if requested file exists on disk, otherwise /index.php will handle it
 	@assets {
-		path *.css *.js *.svg *.gif *.png *.jpg *.jpeg *.ico *.wasm *.tflite *.map *.wasm2
-		file {path}  # Only if requested file exists on disk, otherwise /index.php will handle it
+		path *.css *.js *.mjs *.svg *.gif *.ico *.jpg *.jpeg *.png *.webp *.wasm *.tflite *.map *.ogg *.flac *.mp4 *.webm
+		file {path}
 	}
 	route @assets {
-		header Cache-Control "max-age=15552000"    # Cache-Control policy borrowed from `.htaccess`
-		# Note: to give .woff2 files a shorter TTL, add a nested route for *.woff2
-		# with `header Cache-Control "max-age=604800"` before this one.
-		skip_log                                    # Optional: Don't log access to assets
+		header Cache-Control "public, max-age=15778463"  # Cache-Control policy borrowed from the NGINX sample
+		skip_log                                          # Optional: Don't log access to assets
 		file_server {
 			precompressed gzip
 		}
+	}
+
+	@fonts {
+		path *.otf *.woff *.woff2
+		file {path}
+	}
+	route @fonts {
+		header Cache-Control "public, max-age=604800"
+		skip_log
+		file_server
 	}
 
 	# Rule borrowed from `.htaccess`

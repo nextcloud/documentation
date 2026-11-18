@@ -45,60 +45,21 @@ webroot of your Caddy installation. In this example it is
 .. literalinclude:: Caddyfile.sample
    :language: none
 
-Nextcloud in a subdir of the Caddy webroot
-------------------------------------------
-
-Serving Nextcloud from a subdirectory (e.g. ``https://cloud.example.com/nextcloud/``)
-requires extra steps with Caddy compared to NGINX, due to the way Caddy's
-``handle_path`` strips the prefix from ``PATH_INFO`` but not from ``REQUEST_URI``,
-while Nextcloud relies on ``REQUEST_URI``.
-
-The recommended approach is:
-
-1. Set ``'overwritewebroot' => '/nextcloud'`` in your Nextcloud ``config/config.php``.
-2. Wrap the main Caddyfile configuration in a ``handle_path /nextcloud/* { … }`` block,
-   or use ``uri strip_prefix /nextcloud``.
-3. Capture the rewritten URI before the PHP handler and pass it as ``REQUEST_URI``:
-
-.. code-block:: none
-
-    handle_path /nextcloud/* {
-        # … (place the route block contents here) …
-
-        vars rewritten_uri {uri}
-
-        # Let everything else be handled by the PHP-FPM component
-        php_fastcgi app:9000 {
-            env modHeadersAvailable true
-            env front_controller_active true
-            env REQUEST_URI {vars.rewritten_uri}
-        }
-    }
-
-.. note::
-    With FrankenPHP's ``php_server`` directive and the
-    ``htaccess.IgnoreFrontController`` option, subdirectory support is handled
-    automatically without these workarounds.
-
 Tips and tricks
 ---------------
 
 Suppressing log messages
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you're seeing meaningless messages in your logfile, for example ``client
-denied by server configuration: /var/www/data/htaccesstest.txt``, add this
-section to your Caddy configuration to suppress them:
+Nextcloud's setup checks request ``/data/htaccesstest.txt`` to make sure the
+data directory cannot be reached from the web. The sample configuration answers
+these requests with a 404. To keep them out of your access log, add this line at
+the top of the ``route`` block:
 
 .. code-block:: none
 
         route {
-          # …
-
-          route /data/htaccesstest.txt {
-            skip_log  # Silences logging for the matched path
-            file_server
-          }
+          skip_log /data/htaccesstest.txt
 
           # …
         }
