@@ -88,9 +88,6 @@ Share a file/folder with a user/group or as public link.
   shares. This argument expects a well formatted date string, e.g. 'YYYY-MM-DD'
 * POST Arguments: note - (string) Adds a note for the share recipient.
 * POST Arguments: label - (string) Adds a label for the share recipient.
-* POST Arguments: hideDownload - (string) ``true`` / ``false`` - hide the download
-  button for public link and email shares (UI only). Distinct from the
-  ``permissions`` / ``download`` share attribute; see :ref:`Share attributes`.
 * POST Arguments: attributes - (string) URI-encoded serialized JSON string for :ref:`share attributes<Share attributes>`
 * POST Arguments: sendMail - (string) send an email to the recipient after creation (true/false)
 * Mandatory fields: shareType, path and shareWith for shareType 0 or 1.
@@ -182,7 +179,7 @@ which itself will present the file in a way that downloading will not be allowed
 
 By default when unset, the "download" attribute will be true and so the download permission will be granted.
 
-This attribute is separate from the ``hideDownload`` create/update argument,
+This attribute is separate from the ``hideDownload`` update argument,
 which only hides the download button in the UI for public link and email shares.
 
 File request
