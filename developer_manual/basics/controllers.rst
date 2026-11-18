@@ -878,7 +878,8 @@ To turn off checks the following *Attributes* can be added before the controller
 * ``#[PublicPage]``: Everyone can access the page without having to log in
 * ``#[NoTwoFactorRequired]``: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
 * ``#[NoCSRFRequired]``: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see :ref:`CSRF in the security section <csrf_introduction>`)
-* ``#[PasswordConfirmationRequired]``: Require a recent password confirmation (or an in-request confirmation when used in strict mode)
+
+The ``#[PasswordConfirmationRequired]`` attribute adds a check instead: it requires a recent password confirmation (or an in-request confirmation when used in strict mode).
 
 .. note::
 
@@ -888,6 +889,7 @@ To turn off checks the following *Attributes* can be added before the controller
     * ``@PublicPage``` instead of ``#[PublicPage]``
     * ``@NoTwoFactorRequired``` instead of ``#[NoTwoFactorRequired]``
     * ``@NoCSRFRequired``` instead of ``#[NoCSRFRequired]``
+    * ``@PasswordConfirmationRequired`` instead of ``#[PasswordConfirmationRequired]``
 
 In the following some examples of configurations are given.
 
