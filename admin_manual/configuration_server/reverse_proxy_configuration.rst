@@ -28,10 +28,10 @@ provides protection against client spoofing, and you should secure those
 servers as you would your Nextcloud server.
 
 .. note:: Hostnames are **not** resolved. Entries such as a Docker Compose
-   service name (for example ``nginx``) will not match. Use the proxy's IP
-   address or a CIDR range that covers the Docker / private network instead
-   (for example ``172.16.0.0/12`` or ``10.0.0.0/8``). Pair this with
-   ``overwritehost`` / ``overwriteprotocol`` when automatic detection fails.
+   service name (for example ``nginx``) will not match. Trust only the
+   proxy's IP address, or the subnet of the specific Docker network it runs
+   on (find it with ``docker network inspect <network>``). Any host in a
+   trusted range can spoof ``X-Forwarded-For``.
 
 A reverse proxy can define HTTP headers with the original client IP address,
 and Nextcloud can use those headers to retrieve that IP address. Nextcloud uses
