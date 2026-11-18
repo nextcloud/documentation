@@ -119,6 +119,14 @@ Collectives tools (require `Collectives <https://apps.nextcloud.com/apps/collect
 
   * Example prompt: *"List my collectives."*
 
+* Create a new collective (this also creates a team of the same name for its members)
+
+  * Example prompt: *"Create a collective called 'Project X' with the 📚 emoji."*
+
+* Move a collective to the Collectives trash (only admins of the collective's team can do this)
+
+  * Example prompt: *"Move my 'Project X' collective to the trash."*
+
 * List the pages in a collective
 
   * Example prompt: *"List the pages in my Engineering collective."*
