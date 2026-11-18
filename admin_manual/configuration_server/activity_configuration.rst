@@ -106,13 +106,6 @@ normal shares when set to ``true``.
 
   'activity_use_cached_mountpoints' => true,
 
-.. note::
-
-   Team Folder advanced permissions (ACLs) are respected for activity
-   generation. Earlier releases could leak activity for inaccessible
-   paths; that was fixed in the Team folders app (see
-   `groupfolders#1057 <https://github.com/nextcloud/groupfolders/issues/1057>`_).
-
 .. warning::
 
    Users who previously had access to a team folder, share, or external
