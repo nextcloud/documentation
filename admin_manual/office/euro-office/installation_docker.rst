@@ -2,7 +2,8 @@
 Installing via Docker
 =====================
 
-The quickest way to run Euro-Office Document Server is via the official Docker image.
+The quickest way to run the Document Server is the Docker image of the upstream Euro-Office project,
+``ghcr.io/euro-office/documentserver``.
 
 Prerequisites
 -------------

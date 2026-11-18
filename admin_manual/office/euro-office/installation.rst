@@ -2,7 +2,7 @@
 Installation
 ============
 
-Nextcloud Office requires a running Euro-Office Document Server that Nextcloud can reach
+Nextcloud Office requires a running Nextcloud Office Document Server that Nextcloud can reach
 over the network. Choose the installation method that fits your infrastructure:
 
 .. list-table::

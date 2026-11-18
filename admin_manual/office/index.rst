@@ -4,10 +4,10 @@ Office
 
 Nextcloud supports two office solutions for collaborative document editing:
 
-**Nextcloud Office** (powered by Euro-Office, see :doc:`euro-office/index`)
+**Nextcloud Office** (see :doc:`euro-office/index`)
     The default office solution built into Nextcloud. Enables real-time collaborative
     editing of text documents, spreadsheets, and presentations with high-fidelity rendering.
-    Requires a Euro-Office Document Server.
+    Requires a Nextcloud Office Document Server, built from Euro-Office.
 
 **Collabora Online** (see :doc:`collabora_online`)
     A fully supported alternative based on the Collabora Online Development Edition (CODE).
