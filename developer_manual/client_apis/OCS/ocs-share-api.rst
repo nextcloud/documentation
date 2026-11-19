@@ -27,6 +27,9 @@ Get all shares from the user.
 * Syntax: /shares
 * Method: GET
 
+* URL Arguments: shared_with_me - (boolean) when ``true``, return only shares
+  received by the current user (not shares they created). Default ``false``.
+
 * Result: XML with all shares
 
 Statuscodes:
@@ -137,6 +140,9 @@ Update a given share.
 * PUT Arguments: expireDate - (string) set a expire date for public link
   shares. This argument expects a well formatted date string, e.g. 'YYYY-MM-DD'
 * PUT Arguments: note - (string) Adds a note for the share recipient.
+* PUT Arguments: hideDownload - (string) ``true`` / ``false`` - hide the download
+  button for public link and email shares (UI only). Distinct from the
+  ``permissions`` / ``download`` share attribute; see :ref:`Share attributes`.
 * PUT Arguments: attributes - (string) serialized JSON string for :ref:`share attributes<Share attributes>`
 * PUT Arguments: sendMail - (string) send an email to the recipient. This will not send an email on its own. You will have to use the :ref:`send-email<Send email>` endpoint to send the email. (true/false)
 
@@ -179,6 +185,9 @@ For specific file types like office files, it will still be possible to view the
 which itself will present the file in a way that downloading will not be allowed.
 
 By default when unset, the "download" attribute will be true and so the download permission will be granted.
+
+This attribute is separate from the ``hideDownload`` update argument,
+which only hides the download button in the UI for public link and email shares.
 
 File request
 """"""""""""
