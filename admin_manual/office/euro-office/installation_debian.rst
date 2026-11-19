@@ -16,14 +16,19 @@ Step 1 — Enable the contrib component
 --------------------------------------
 
 The ``ttf-mscorefonts-installer`` package required by the Document Server lives in Debian's
-``contrib`` component, which is not enabled by default. Edit ``/etc/apt/sources.list``
-and add ``contrib`` to each line:
+``contrib`` component, which is not enabled by default. Edit ``/etc/apt/sources.list`` and add ``contrib``
+after ``main`` on each line. Keep the other components, such as ``non-free-firmware``. On a default installation,
+the result looks like this:
 
 .. code-block:: text
 
-    deb http://deb.debian.org/debian bookworm main contrib
-    deb http://deb.debian.org/debian bookworm-updates main contrib
-    deb http://deb.debian.org/debian-security/ bookworm-security main contrib
+    deb http://deb.debian.org/debian/ bookworm main contrib non-free-firmware
+    deb http://security.debian.org/debian-security bookworm-security main contrib non-free-firmware
+    deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free-firmware
+
+.. note::
+    Some images, such as Docker and cloud images, use ``/etc/apt/sources.list.d/debian.sources`` instead. In that
+    case, add ``contrib`` to the ``Components:`` line in that file and leave ``/etc/apt/sources.list`` untouched.
 
 Then update the package index:
 
@@ -38,7 +43,7 @@ All prerequisites are available in the default Debian 12 repositories:
 
 .. code-block:: bash
 
-    sudo apt-get install -y postgresql redis-server rabbitmq-server nginx supervisor
+    sudo apt-get install -y postgresql rabbitmq-server nginx
 
 Step 3 — Create the database
 -----------------------------
@@ -76,6 +81,10 @@ Add the signing key and the package repository so that updates arrive with regul
 
 Step 6 — Install the package
 -----------------------------
+
+.. warning::
+    The package configures Nginx to serve the Document Server on port 80 and disables the default site in
+    ``/etc/nginx/sites-enabled``. Install it on a dedicated host, or review your existing Nginx sites first.
 
 .. code-block:: bash
 
@@ -133,7 +142,17 @@ Uninstalling
 
 .. code-block:: bash
 
-    sudo apt-get remove --purge nextcloud-office-documentserver
+    sudo apt-get remove -y --purge nextcloud-office-documentserver
+    sudo apt-get autoremove -y
     sudo -u postgres psql -c "DROP DATABASE ds;"
     sudo -u postgres psql -c "DROP USER ds;"
     sudo rm /etc/apt/sources.list.d/nextcloud-office.list /etc/apt/keyrings/nextcloud-office.asc
+
+Removing the package keeps its configuration, data, and the ``ds`` system user. The configuration contains the
+database password, the JWT secret, and the WOPI keys, which a later installation reuses. To remove them as well:
+
+.. code-block:: bash
+
+    sudo rm -rf /etc/nextcloud-office /var/www/nextcloud-office /var/lib/nextcloud-office /var/log/nextcloud-office
+    sudo rm -f /etc/nginx/includes/ds-cache.conf
+    sudo deluser ds

@@ -15,13 +15,12 @@ System requirements
 Step 1 — Install prerequisites
 -------------------------------
 
-The Document Server requires PostgreSQL, Redis, RabbitMQ, Nginx, and Supervisor. Install them
-before the package:
+The Document Server requires PostgreSQL, RabbitMQ, and Nginx. Install them before the package:
 
 .. code-block:: bash
 
     sudo apt-get update
-    sudo apt-get install -y postgresql redis-server rabbitmq-server nginx supervisor
+    sudo apt-get install -y postgresql rabbitmq-server nginx
 
 Step 2 — Create the database
 -----------------------------
@@ -62,6 +61,10 @@ Add the signing key and the package repository so that updates arrive with regul
 
 Step 5 — Install the package
 -----------------------------
+
+.. warning::
+    The package configures Nginx to serve the Document Server on port 80 and disables the default site in
+    ``/etc/nginx/sites-enabled``. Install it on a dedicated host, or review your existing Nginx sites first.
 
 .. code-block:: bash
 
@@ -119,7 +122,17 @@ Uninstalling
 
 .. code-block:: bash
 
-    sudo apt-get remove --purge nextcloud-office-documentserver
+    sudo apt-get remove -y --purge nextcloud-office-documentserver
+    sudo apt-get autoremove -y
     sudo -u postgres psql -c "DROP DATABASE ds;"
     sudo -u postgres psql -c "DROP USER ds;"
     sudo rm /etc/apt/sources.list.d/nextcloud-office.list /etc/apt/keyrings/nextcloud-office.asc
+
+Removing the package keeps its configuration, data, and the ``ds`` system user. The configuration contains the
+database password, the JWT secret, and the WOPI keys, which a later installation reuses. To remove them as well:
+
+.. code-block:: bash
+
+    sudo rm -rf /etc/nextcloud-office /var/www/nextcloud-office /var/lib/nextcloud-office /var/log/nextcloud-office
+    sudo rm -f /etc/nginx/includes/ds-cache.conf
+    sudo deluser ds
