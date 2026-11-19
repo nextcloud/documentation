@@ -132,6 +132,11 @@ Key Management Modes
 - Admins cannot (readily) decrypt files without the user's password, unless a recovery key is defined.
 - If a user forgets their password and no recovery key exists, their files are lost.
 - This mode does not work with all authentication methods (e.g., app passwords, single sign-on) and is only recommended for compatibility with older setups.
+- Group shares can have a performance impact. When a file is shared with a group, the file key is
+  encrypted with the public key of every group member. Large groups can make sharing noticeably slower.
+- Users added to a group later may not be able to decrypt existing group shares. The file key is only
+  encrypted for the members present at share time, so new members see the share but cannot open it.
+  The keys are updated on the next change to the file, or by sharing it again.
 
 **How to choose:**
 
