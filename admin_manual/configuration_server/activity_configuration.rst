@@ -106,15 +106,6 @@ normal shares when set to ``true``.
 
   'activity_use_cached_mountpoints' => true,
 
-.. danger::
-
-   If "Advanced Permissions" (ACLs) are enabled in a team folder,
-   activities do not respect those permissions. As a result, users may
-   see activity entries for files and directories they cannot access.
-   **This can leak sensitive information.** See
-   `this issue <https://github.com/nextcloud/groupfolders/issues/1057>`_
-   for more information.
-
 .. warning::
 
    Users who previously had access to a team folder, share, or external
