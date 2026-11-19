@@ -182,8 +182,8 @@ depends on your browser and the video codec. See
 `MDN: Supported media formats <https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility>`_
 for a compatibility reference.
 
-Connecting to a Federation Share
----------------------------------
+Connecting to a Federated Share
+-------------------------------
 
 Federated Cloud Sharing lets you mount file shares from remote Nextcloud
 servers and manage them just like local shares. See

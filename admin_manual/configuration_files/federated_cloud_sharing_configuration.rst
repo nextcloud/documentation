@@ -10,10 +10,10 @@ creating a cloud of Nextclouds.
 
 .. _label-direct-share-link:
 
-Creating a new Federation Share
--------------------------------
+Creating a new Federated Share
+------------------------------
 
-Follow these steps to create a new Federation share between two Nextcloud
+Follow these steps to create a new Federated share between two Nextcloud
 servers. This requires no action by the user on the remote server; all it takes
 is a few steps on the originating server.
 
@@ -69,12 +69,12 @@ the cron frequency.
 
 .. _label-public-link-share:
 
-Creating Federation Shares via public Link Share
-------------------------------------------------
+Creating Federated Shares via public Link Share
+-----------------------------------------------
 
 Check the ``Share link`` entry to expose more sharing options (which are
 described more fully in :doc:`file_sharing_configuration`). You may create a
-Federation share by allowing Nextcloud to create a public link for you, and then
+Federated share by allowing Nextcloud to create a public link for you, and then
 email it to the person you want to create the share with.
 
 .. figure:: images/create_public_share-6.png
