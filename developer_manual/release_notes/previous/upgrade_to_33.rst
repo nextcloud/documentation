@@ -180,7 +180,8 @@ The API related to these tables are now using a string instead of a int. See Cha
 Added Events
 ^^^^^^^^^^^^
 
-- TBD
+- New ``OCP\OCM\Events\LocalOCMDiscoveryEvent`` event emitted before the API returns a local OCM provider.
+- New ``OCP\OCM\Events\OCMEndpointRequestEvent`` event emitted on incoming OCM endpoint requests.
 
 Added APIs
 ^^^^^^^^^^
