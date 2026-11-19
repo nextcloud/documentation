@@ -60,10 +60,10 @@ The configuration has the following structure:
 	],
 
 .. note:: You are NOT supposed to disable file locking and this is now considered potentially
-	dangerous. Locking is handled separately from the underlying storage, in the database by
-	default or in Redis if configured (recommended for performance, see
-	:doc:`files_locking_transactional`). If you have disabled file locking already it is highly
-	encouraged for you to re-enable it.
+   dangerous. Locking is handled separately from the underlying storage, in the database by
+   default or in Redis if configured (recommended for performance, see
+   :doc:`files_locking_transactional`). If you have disabled file locking already it is highly
+   encouraged for you to re-enable it.
 
 ~~~~~~~~~~~~~~~
 OpenStack Swift
