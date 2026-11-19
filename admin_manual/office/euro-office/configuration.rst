@@ -2,16 +2,16 @@
 Configuration
 ==========================
 
-After installing the Euro-Office Document Server, install the Nextcloud connector app
+After installing the Nextcloud Office Document Server, install the Nextcloud Office app
 and connect it to the server.
 
 Installing the connector app
 -----------------------------
 
-Install the **Euro-Office** app from the Nextcloud App Store:
+Install the `Nextcloud Office app <https://apps.nextcloud.com/apps/eurooffice>`_ from the Nextcloud App Store:
 
 1. Open :menuselection:`Settings --> Apps` in your Nextcloud admin interface.
-2. Search for **Euro-Office**.
+2. Search for **Nextcloud Office**. Do not confuse it with **Nextcloud Office (Collabora)**.
 3. Click **Download and enable**.
 
 Alternatively, install the app using the :command:`occ` command:
@@ -23,10 +23,10 @@ Alternatively, install the app using the :command:`occ` command:
 Server settings
 ---------------
 
-Open :menuselection:`Settings --> Administration --> Euro-Office` to configure the connection.
+Open :menuselection:`Settings --> Administration --> Nextcloud Office` to configure the connection.
 
 **Nextcloud Office address**
-    The URL of the Euro-Office Document Server, accessible from both the Nextcloud server
+    The URL of the Nextcloud Office Document Server, accessible from both the Nextcloud server
     and end-user browsers:
 
     .. code-block:: text
@@ -39,7 +39,7 @@ Open :menuselection:`Settings --> Administration --> Euro-Office` to configure t
 **Secret key (leave blank to disable)**
     The JWT shared secret. Must match the value configured on the Document Server:
 
-    - **deb/rpm install:** ``/etc/euro-office/documentserver/local.json`` →
+    - **deb/rpm install:** ``/etc/nextcloud-office/documentserver/local.json`` →
       ``services.CoAuthoring.secret.browser.string``
     - **Docker install:** the ``JWT_SECRET`` environment variable
 
@@ -65,7 +65,7 @@ reachable from your Nextcloud host (for example, behind a NAT or split-horizon D
 .. tip::
     **Docker Compose example**
 
-    When Nextcloud and Euro-Office run as services in the same Docker Compose network,
+    When Nextcloud and the Document Server run as services in the same Docker Compose network,
     containers can reach each other by service name. Given a ``compose.yml`` with services
     named ``nextcloud`` and ``eurooffice``:
 
