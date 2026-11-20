@@ -17,6 +17,7 @@ Table of contents
     collectives/index
     desktop/index
     office_desktop_editors
+    mobile/index
     userpreferences
     universal_access
     user_2fa
