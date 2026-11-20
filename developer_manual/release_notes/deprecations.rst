@@ -18,7 +18,13 @@ New deprecations
     Also deprecate the feature at their dedicated documentation page.
     After branch-off the contents below will be cleared and moved to the "Older deprecations" section.
 
-.. .. todo:: This page needs a section for every new deprecation.
+Icon filter CSS variables
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ``--background-invert-if-dark``, ``--background-invert-if-bright``, ``--primary-invert-if-dark``,
+``--primary-invert-if-bright`` and ``--background-image-invert-if-bright`` variables are deprecated.
+They only existed to recolor legacy image icons with a filter. Use inline SVG icons filled with ``currentColor``
+instead, and do not use these variables to detect the dark theme, see :ref:`csscolorscheme`.
 
 
 Older deprecations

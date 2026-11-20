@@ -11,6 +11,13 @@ This pages covers new features of the platform.
     Every feature should just have a brief description. Details have to be documented on a dedicated, persistent page.
     After branch-off the contents below will be cleared.
 
+Native color scheme
+-------------------
+
+Each color theme now sets the native ``color-scheme`` property to ``light`` or ``dark``.
+Form controls and scrollbars follow the theme the user picked, ``light-dark()`` can be used in CSS,
+and ``isDarkTheme`` from ``@nextcloud/vue`` reads it. See :ref:`csscolorscheme` for details.
+
 Email template blocks
 ---------------------
 
