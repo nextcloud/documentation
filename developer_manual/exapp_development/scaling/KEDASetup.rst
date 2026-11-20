@@ -107,9 +107,9 @@ In order to create multiple pods that share a single GPU,
 
 .. note::
 
-	All ExApps registered on the same Deploy daemon will share the same GPU resources.
-	For ExApps that require heavy use of GPUs,
-	it is recommended to have a separate Deploy daemon (host) for each of them.
+   All ExApps registered on the same Deploy daemon will share the same GPU resources.
+   For ExApps that require heavy use of GPUs,
+   it is recommended to have a separate Deploy daemon (host) for each of them.
 
 First create a ConfigMap with the number of replicas (virtual GPUs):
 

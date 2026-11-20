@@ -15,8 +15,8 @@ The rest of this section will explain how to setup and use Kubernetes for automa
 Additional instructions are also provided if you have a GPU device for GPU scaling.
 
 .. toctree::
-	:maxdepth: 2
+   :maxdepth: 2
 
-	KubernetesSetup
-	KEDASetup
-	AppAPIEmulation
+   KubernetesSetup
+   KEDASetup
+   AppAPIEmulation
