@@ -31,7 +31,7 @@ Setup
    need to store the private key as a secret.
 
 2. In ``.github/workflows/appstore-build-publish.yml``, set ``APP_NAME`` to your app id. It must match
-   ``<id>`` in ``appinfo/info.xml`` and the certificate folder name in ``app-certificate-requests``
+   ``<id>`` in ``appinfo/info.xml`` and the certificate folder name in ``app-certificate-requests``::
 
       env:
         APP_NAME: your_app_id
