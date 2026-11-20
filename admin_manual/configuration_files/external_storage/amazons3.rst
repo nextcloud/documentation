@@ -20,6 +20,21 @@ In the **Authentication** field select **Access key**.
 
 In the **Bucket** field enter your *S3 bucket name*. [Note: Even if non-Amazon hosted, bucket names must meet AWS S3 naming requirements regardless of what your S3 provider/platform considers acceptable - i.e. no underscores]
 
+The optional **Object key prefix** field scopes the mount to a sub-path within the bucket rather
+than using the entire bucket. For example, setting the prefix to ``nextcloud/`` will store all
+files under the ``nextcloud/`` key namespace inside the bucket, leaving the rest of the bucket
+untouched. This is useful when a bucket is shared between multiple services or Nextcloud instances.
+
+.. note::
+   The prefix is automatically normalized: leading slashes are stripped and a trailing slash is
+   always added. ``myapp``, ``myapp/``, and ``/myapp/`` are all equivalent.
+
+.. tip::
+   The ``$user`` placeholder is supported in the prefix field and is substituted with the
+   Nextcloud username at mount time. For example, setting the prefix to ``nextcloud/$user/``
+   will store each user's files under their own namespace (e.g. ``nextcloud/alice/`` for user
+   ``alice``). This is particularly useful for global mounts shared across all users.
+
 In the **Access key** field enter your *S3 access key ID*.
 
 In the **Secret key** field enter your *S3 access key*.
