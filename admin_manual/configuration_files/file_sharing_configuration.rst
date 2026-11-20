@@ -85,6 +85,11 @@ Configure your sharing policy on your Admin page in the Sharing section.
 
 * Check ``Allow autocompletion when entering the full name or email address (ignoring missing phonebook match and being in the same group)``
   to show despite of the previous restrictions a user suggestion, when the complete display name or user id was typed.
+* Uncheck ``Show email addresses of other accounts in the contacts menu and in account name autocompletion``
+  to hide the email addresses of accounts in the contacts menu and in the account name autocompletion, which
+  then shows the user ID instead. It is checked by default. The addresses stay in the system address book synced
+  with CardDAV, and accounts can still be found by their complete email address while
+  ``Also allow autocompletion on full match of the user email`` is checked.
 * Check ``Show disclaimer text on the public link upload page`` to set and show
   a disclaimer text on public links with hidden file lists. If you enable this feature a text input will be shown to input the disclaimer text.
 
