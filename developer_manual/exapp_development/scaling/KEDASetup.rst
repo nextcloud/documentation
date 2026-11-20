@@ -226,67 +226,11 @@ Verify:
 .. code:: bash
 
    kubectl get pods -n keda
-   # All pods should be Running
 
-2. DNS setup (kind only)
-------------------------
+All pods should now be running and resolved to ``nextcloud.local``
+(set by HaRP automatically, but can be changed by setting ``HP_K8S_HOST_ALIASES`` to a different value).
 
-KEDA pods need to resolve ``nextcloud.local``. **HaRP does this
-automatically now** — when ``HP_K8S_HOST_ALIASES`` is set, HaRP patches
-the CoreDNS ``ConfigMap`` on startup and restarts CoreDNS so that every
-pod in the cluster (including KEDA) can resolve the configured
-hostnames.
-
-If you need to do it manually (or verify), the commands are:
-
-.. code:: bash
-
-   # Get the nginx proxy IP
-   PROXY_IP=$(docker inspect master-proxy-1 \
-     --format '{{(index .NetworkSettings.Networks "master_default").IPAddress}}')
-   echo "Proxy IP: $PROXY_IP"
-
-   # Write the Corefile with the correct IP
-   cat > /tmp/Corefile << EOF
-   .:53 {
-       errors
-       health {
-          lameduck 5s
-       }
-       ready
-       kubernetes cluster.local in-addr.arpa ip6.arpa {
-          pods insecure
-          fallthrough in-addr.arpa ip6.arpa
-          ttl 30
-       }
-       prometheus :9153
-       hosts {
-              ${PROXY_IP} nextcloud.local
-              fallthrough
-           }
-           forward . /etc/resolv.conf {
-          max_concurrent 1000
-       }
-       cache 30
-       loop
-       reload
-       loadbalance
-   }
-   EOF
-
-   kubectl create configmap coredns -n kube-system \
-     --from-file=Corefile=/tmp/Corefile \
-     --dry-run=client -o yaml | kubectl apply -f -
-
-   kubectl rollout restart deployment coredns -n kube-system
-
-Verify:
-
-.. code:: bash
-
-   kubectl run dns-test --rm -i --restart=Never --image=busybox -- nslookup nextcloud.local
-
-3. Create a Nextcloud App Password
+2. Create a Nextcloud App Password
 ----------------------------------
 
 KEDA needs credentials to poll the ``queue_stats`` endpoint. The
@@ -319,7 +263,7 @@ Expected:
 
    {"ocs":{"meta":{"status":"ok","statuscode":200,"message":"OK"},"data":{"scheduled_count":0,"running_count":0}}}
 
-4. Create k8s secret
+3. Create k8s secret
 --------------------
 
 .. code:: bash
@@ -329,7 +273,7 @@ Expected:
      --from-literal=username="${NC_USER}" \
      --from-literal=password="${NC_APP_PASSWORD}"
 
-5. Create KEDA TriggerAuthentication
+4. Create KEDA TriggerAuthentication
 ------------------------------------
 
 .. code:: bash
@@ -350,7 +294,7 @@ Expected:
          key: password
    EOF
 
-6. Create KEDA ScaledObject
+5. Create KEDA ScaledObject
 ---------------------------
 
 .. note::
@@ -417,7 +361,7 @@ Scheduled tasks targetValue=5 Result
 50              ceil(50/5)=10 4 (capped at max)
 =============== ============= ===================
 
-7. Verify and Monitor
+6. Verify and Monitor
 ---------------------
 
 Quick status
