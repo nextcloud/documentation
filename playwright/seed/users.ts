@@ -1,0 +1,112 @@
+// SPDX-FileCopyrightText: 2026 Nextcloud GmbH and Nextcloud contributors
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+import { tryOcc, uploadAvatar, ocsRequest, SCREENSHOT_PORT } from '../helpers'
+import * as path from 'path'
+
+const AVATARS = path.join(__dirname, '..', 'fixtures', 'avatars')
+
+/** Set a profile field (org, role, phone, etc.) as the user themselves. */
+async function setProfileField(userId: string, key: string, value: string): Promise<void> {
+	await ocsRequest('PUT', `/ocs/v2.php/cloud/users/${userId}`, userId, userId, { key, value })
+}
+
+/** Set email via admin — users cannot change their own email through the OCS API. */
+async function setEmail(userId: string, email: string): Promise<void> {
+	await ocsRequest('PUT', `/ocs/v2.php/cloud/users/${userId}`, 'admin', 'admin', { key: 'email', value: email })
+}
+
+export async function seedUsers(): Promise<void> {
+	await tryOcc('user:add --password-from-env --display-name="Christine Schott" christine', { OC_PASS: 'christine' })
+	await uploadAvatar(`${AVATARS}/christine/avatar.png`, 'christine', 'christine')
+	await setEmail('christine', 'c.schott@example.org')
+	await setProfileField('christine', 'organisation', 'Charity Events Foundation')
+	await setProfileField('christine', 'role', 'Event Manager')
+	await setProfileField('christine', 'phone', '+44 20 7946 0001')
+
+	await tryOcc('user:add --password-from-env --display-name="Amara Winterbourne" amara_w', { OC_PASS: 'amara_w' })
+	await uploadAvatar(`${AVATARS}/amara_w/avatar.png`, 'amara_w', 'amara_w')
+	await setEmail('amara_w', 'amara@example.org')
+	await setProfileField('amara_w', 'organisation', 'Development Committee')
+	await setProfileField('amara_w', 'role', 'Event Coordinator')
+	await setProfileField('amara_w', 'phone', '+44 20 7946 0100')
+
+	await tryOcc('user:add --password-from-env --display-name="Lila Hawthorne" lila_h', { OC_PASS: 'lila_h' })
+	await uploadAvatar(`${AVATARS}/lila_h/avatar.png`, 'lila_h', 'lila_h')
+	await setEmail('lila_h', 'lila@example.org')
+	await setProfileField('lila_h', 'organisation', 'Greenleaf Catering Co.')
+	await setProfileField('lila_h', 'role', 'Account Manager')
+
+	await tryOcc('user:add --password-from-env --display-name="Malik Santiago" malik_s', { OC_PASS: 'malik_s' })
+	await uploadAvatar(`${AVATARS}/malik_s/avatar.png`, 'malik_s', 'malik_s')
+	await setEmail('malik_s', 'malik@example.org')
+	await setProfileField('malik_s', 'organisation', 'AV Solutions Ltd')
+	await setProfileField('malik_s', 'role', 'Senior Technician')
+
+	await tryOcc('user:add --password-from-env --display-name="Kieran Patel" kieran_p', { OC_PASS: 'kieran_p' })
+	await uploadAvatar(`${AVATARS}/kieran_p/avatar.png`, 'kieran_p', 'kieran_p')
+	await setEmail('kieran_p', 'kieran@example.org')
+	await setProfileField('kieran_p', 'organisation', 'Charity Events Foundation')
+	await setProfileField('kieran_p', 'role', 'Graphic Designer')
+
+	await tryOcc('user:add --password-from-env --display-name="Seraphina Delgado" seraphina_d', { OC_PASS: 'seraphina_d' })
+	await uploadAvatar(`${AVATARS}/seraphina_d/avatar.png`, 'seraphina_d', 'seraphina_d')
+	await setEmail('seraphina_d', 'seraphina@example.org')
+	await setProfileField('seraphina_d', 'organisation', 'Charity Events Foundation')
+	await setProfileField('seraphina_d', 'role', 'Volunteer Coordinator')
+
+	await tryOcc('user:add --password-from-env --display-name="Adrian Lelievre" adrian_l', { OC_PASS: 'adrian_l' })
+	await uploadAvatar(`${AVATARS}/adrian_l/avatar.png`, 'adrian_l', 'adrian_l')
+	await setEmail('adrian_l', 'adrian@example.org')
+	await setProfileField('adrian_l', 'organisation', 'Riverside Pavilion')
+	await setProfileField('adrian_l', 'role', 'Venue Decorator')
+
+	await tryOcc('user:add --password-from-env --display-name="Charlotte McGraw" charlotte_m', { OC_PASS: 'charlotte_m' })
+	await uploadAvatar(`${AVATARS}/charlotte_m/avatar.png`, 'charlotte_m', 'charlotte_m')
+	await setEmail('charlotte_m', 'charlotte@example.org')
+	await setProfileField('charlotte_m', 'organisation', 'Charity Events Foundation')
+	await setProfileField('charlotte_m', 'role', 'Finance Officer')
+
+	await tryOcc('user:add --password-from-env --display-name="Orion Gallagher" orion_g', { OC_PASS: 'orion_g' })
+	await uploadAvatar(`${AVATARS}/orion_g/avatar.png`, 'orion_g', 'orion_g')
+	await setEmail('orion_g', 'orion@example.org')
+	await setProfileField('orion_g', 'organisation', 'Charity Events Foundation')
+	await setProfileField('orion_g', 'role', 'Ticketing Lead')
+
+	await tryOcc('user:add --password-from-env --display-name="Analise Laviss" analise_l', { OC_PASS: 'analise_l' })
+	await uploadAvatar(`${AVATARS}/analise_l/avatar.png`, 'analise_l', 'analise_l')
+	await setEmail('analise_l', 'analise@example.org')
+	await setProfileField('analise_l', 'organisation', 'Charity Events Foundation')
+	await setProfileField('analise_l', 'role', 'Board Secretary')
+
+	// Christine's user status — shown in profile screenshots and dashboard
+	await ocsRequest('PUT', '/ocs/v2.php/apps/user_status/api/v1/user_status/status', 'christine', 'christine', { statusType: 'online' })
+	await ocsRequest('PUT', '/ocs/v2.php/apps/user_status/api/v1/user_status/message/custom', 'christine', 'christine', {
+		message: 'Working on Q3 event planning',
+		statusIcon: '',
+	})
+
+	// Christine's dashboard layout — matches the Notes seeding done for webinterface screenshots
+	await tryOcc('user:setting christine dashboard layout files-favorites,calendar,deck,notes')
+	await tryOcc('user:setting christine dashboard firstRun 0')
+
+	// Seed Notes content for Christine's dashboard widget
+	const auth = 'Basic ' + Buffer.from('christine:christine').toString('base64')
+	const base = `http://localhost:${SCREENSHOT_PORT}`
+	const existingNotes = await fetch(`${base}/apps/notes/api/v1/notes`, {
+		headers: { Authorization: auth, Accept: 'application/json' },
+	}).then(r => r.json()).catch(() => [])
+	if (!Array.isArray(existingNotes) || existingNotes.length === 0) {
+		for (const [title, content] of [
+			['Autumn Gala ideas', '- Jazz quartet for the reception\n- Photobooth with charity frame\n- Silent auction: local artwork\n- Ask Riverside if they can do late bar'],
+			['Sponsor call — follow-up', 'Spoke to Hartley & Co. on 12 May.\nThey can commit £5k at Supporting level.\nSend contract by end of week.'],
+			['Q3 action items', '1. Confirm venue by 2 June\n2. Send sponsor packs by 15 June\n3. Book catering walkthrough\n4. Brief comms team on social plan'],
+		] as [string, string][]) {
+			await fetch(`${base}/apps/notes/api/v1/notes`, {
+				method: 'POST',
+				headers: { Authorization: auth, 'Content-Type': 'application/json' },
+				body: JSON.stringify({ title, content }),
+			}).catch(() => {})
+		}
+	}
+}
