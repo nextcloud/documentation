@@ -16,7 +16,6 @@ User management
     user_password_policy
     authentication
     two_factor-auth
-    reset_user_password
     reset_admin_password
 
 .. toctree::
@@ -27,6 +26,7 @@ User management
     user_auth_ldap_cleanup
     user_auth_ldap_api
     user_auth_oidc
+    reset_user_password
 
 .. toctree::
     :caption: Provisioning
