@@ -17,36 +17,38 @@ DaemonConfig registration
 -------------------------
 
 The first step is to register the DaemonConfig, where your ExApps will be deployed.
-Before that, you will need to configure your Docker socket to be accessible by the Nextcloud instance and webserver user.
-If you use the remote Docker Engine API, you will need to expose it so that it is accessible by the Nextcloud instance and import certificates.
+Before that, you will need to set up `HaRP <https://github.com/nextcloud/HaRP>`_ with access to the Docker Engine.
 
 .. note::
-    For now, only the Docker daemon ``accepts-deploy-id: docker-install`` is supported.
+    The Docker daemon ``accepts-deploy-id: docker-install`` requires HaRP (``--harp``).
     For development and manually deployed apps in Docker, there is ``accepts-deploy-id: manual-install``.
 
 This can be done by the ``occ`` **app_api:daemon:register** command:
 
 .. code-block:: bash
 
-    app_api:daemon:register <name> <display-name> <accepts-deploy-id> <protocol> <host> <nextcloud_url> [--net NET] [--haproxy_password PASSWORD] [--compute_device DEVICE] [--set-default] [--]
+    app_api:daemon:register <name> <display-name> <accepts-deploy-id> <protocol> <host> <nextcloud_url> [--net NET] [--compute_device DEVICE] [--set-default] [--harp] [--harp_frp_address ADDRESS] [--harp_shared_key KEY] [--]
 
 Arguments
 *********
 
-    * ``name`` - unique name of the daemon (e.g. ``docker_local_sock``)
+    * ``name`` - unique name of the daemon (e.g. ``harp_proxy_host``)
     * ``display-name`` - name of the daemon (e.g. ``My Local Docker``, will be displayed in the UI)
     * ``accepts-deploy-id`` - type of deployment (``docker-install`` or ``manual-install``)
     * ``protocol`` - protocol used to connect to the daemon (``http`` or ``https``)
-    * ``host`` - host of the daemon (e.g. ``/var/run/docker.sock`` or ``host:port``)
+    * ``host`` - host and port of HaRP (e.g. ``appapi-harp:8780``), or the ExApp host for ``manual-install``
+      without HaRP
     * ``nextcloud_url`` - Nextcloud URL, Daemon config required option (e.g. ``https://nextcloud.local``)
 
 Options
 *******
 
     * ``--net [network-name]``  - ``[required]`` network name to bind docker container to (default: ``host``)
-    * ``--haproxy_password PASSWORD`` - ``[optional]`` password for HAProxy Basic auth if ``AppAPI Docker Socket Proxy`` is used
     * ``--compute_device DEVICE`` - ``[optional]`` GPU device to expose to the daemon (defaults to ``cpu``, but ``cuda`` and ``rocm`` are also supported)
     * ``--set-default`` - ``[optional]`` sets the newly created daemon as the default
+    * ``--harp`` - ``[optional]`` use HaRP for all Docker and ExApp communication, required for ``docker-install``
+    * ``--harp_frp_address ADDRESS`` - ``[optional]`` ``host:port`` of the HaRP FRP server
+    * ``--harp_shared_key KEY`` - ``[optional]`` HaRP shared key, must match ``HP_SHARED_KEY`` of the HaRP container
 
 .. note::
     Common configurations are tested by the CI in our repository, see `workflows on GitHub <https://github.com/nextcloud/app_api/blob/main/.github/workflows/tests-deploy.yml>`_.
@@ -58,7 +60,7 @@ Example of ``occ`` **app_api:daemon:register** command:
 
 .. code-block:: bash
 
-    sudo -E -u www-data php occ app_api:daemon:register docker_local_sock "My Local Docker" docker-install http /var/run/docker.sock "https://nextcloud.local" --net nextcloud
+    sudo -E -u www-data php occ app_api:daemon:register harp_proxy_host "Harp Proxy (Host)" docker-install http localhost:8780 "https://nextcloud.local" --harp --harp_frp_address localhost:8782 --harp_shared_key "some_very_secure_password"
 
 
 ExApp registration
@@ -75,7 +77,7 @@ Arguments
 *********
 
     * ``appid`` - unique name of the ExApp (e.g. ``app_python_skeleton``, must be the same as in deployed container)
-    * ``daemon-config-name`` - unique name of the daemon (e.g. ``docker_local_sock``)
+    * ``daemon-config-name`` - unique name of the daemon (e.g. ``harp_proxy_host``)
 
 Options
 *******

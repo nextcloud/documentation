@@ -24,7 +24,7 @@ Arguments
 *********
 
     * ``appid`` - unique name of the ExApp (e.g. ``app_python_skeleton``, must be the same as in deployed container)
-    * ``daemon-config-name`` - unique name of the daemon (e.g. ``docker_local_sock``)
+    * ``daemon-config-name`` - unique name of the daemon (e.g. ``harp_proxy_host``)
 
 Options
 *******

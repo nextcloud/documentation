@@ -120,4 +120,4 @@ It's the same as for the regular Nextcloud app, but with the requirement of :ref
 It is important to ensure that your ExApp works as expected.
 We recommend having different types of dev setup configurations to test all of them.
 While the main development is done locally via ``manual_install``, you must also ensure that
-the ExApp works correctly in a Docker container with Docker Socket Proxy (HTTP and HTTPS).
+the ExApp works correctly in a Docker container with HaRP.

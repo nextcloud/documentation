@@ -20,15 +20,15 @@ Register
 
 Register Deploy Daemon (DaemonConfig).
 
-Command: ``app_api:daemon:register [--net NET] [--haproxy_password HAPROXY_PASSWORD] [--compute_device COMPUTE_DEVICE] [--set-default] [--harp] [--harp_frp_address HARP_FRP_ADDRESS] [--harp_shared_key HARP_SHARED_KEY] [--harp_docker_socket_port HARP_DOCKER_SOCKET_PORT] [--harp_exapp_direct] [--] <name> <display-name> <accepts-deploy-id> <protocol> <host> <nextcloud_url>``
+Command: ``app_api:daemon:register [--net NET] [--compute_device COMPUTE_DEVICE] [--set-default] [--harp] [--harp_frp_address HARP_FRP_ADDRESS] [--harp_shared_key HARP_SHARED_KEY] [--harp_docker_socket_port HARP_DOCKER_SOCKET_PORT] [--harp_exapp_direct] [--] <name> <display-name> <accepts-deploy-id> <protocol> <host> <nextcloud_url>``
 
 Arguments
 *********
 
-* ``name`` - unique name of the daemon (e.g. ``docker_local_sock``)
+* ``name`` - unique name of the daemon (e.g. ``harp_proxy_host``)
 * ``display-name`` - name of the daemon (e.g. ``My Local Docker``, will be displayed in the UI)
-* ``accepts-deploy-id`` - type of deployment (``docker-install`` or ``manual-install``)
-* ``host`` - **path to docker-socket**  or the Docker Socket Proxy: ``address:port``
+* ``accepts-deploy-id`` - type of deployment (``docker-install`` or ``manual-install``), ``docker-install`` requires ``--harp``
+* ``host`` - ``address:port`` of HaRP, or the host of the ExApps for ``manual-install`` without HaRP
 * ``protocol`` - protocol used to communicate with the Daemon/ExApps (``http`` or ``https``)
 * ``nextcloud_url`` - Nextcloud URL, Daemon config required option (e.g. ``https://nextcloud.local``)
 
@@ -36,10 +36,9 @@ Options
 *******
 
 * ``--net [network-name]``  - ``[required]`` network name to bind docker container to (default: ``host``)
-* ``--haproxy_password HAPROXY_PASSWORD`` - ``[optional]`` password for AppAPI Docker Socket Proxy
 * ``--compute_device GPU`` - ``[optional]`` GPU device to expose to the daemon (e.g. ``cpu|cuda|rocm``, default: ``cpu``)
 * ``--set-default`` - ``[optional]`` set created daemon as default for ExApps installation
-* ``--harp`` - ``[optional]`` Flag to set daemon to use HaRP for all docker and exapp communication
+* ``--harp`` - ``[optional]`` Flag to set daemon to use HaRP for all docker and exapp communication, required for ``docker-install``
 * ``--harp_frp_address`` - ``[optional]`` [host]:[port] of the HaRP FRP server, default host is same as HaRP host and port is 8782
 * ``--harp_shared_key`` - ``[optional]`` HaRP shared key for secure communication between HaRP and AppAPI. It must
   match ``HP_SHARED_KEY`` of the HaRP container. The ``some_very_secure_password`` value in the examples below is only
@@ -72,29 +71,11 @@ Usage Examples
 
         app_api:daemon:register manual_install_harp "Harp Manual Install" "manual-install" "http" "appapi-harp:8780" "http://nextcloud.local" --net nextcloud --harp --harp_frp_address "appapi-harp:8782" --harp_shared_key "some_very_secure_password"
 
-* Register a Docker Socket Proxy deploy daemon with the ``nextcloud-appapi-dsp:2375`` as the host and the ``nextcloud`` docker network. This can be paired with a Docker Socket Proxy container running in the same network with the default port ``2375``.
-
-    .. code-block:: bash
-
-        app_api:daemon:register docker_install "Docker Socket Proxy" "docker-install" "http" "nextcloud-appapi-dsp:2375" "http://nextcloud.local" --net=nextcloud --set-default --compute_device=cuda
-
 * Register a manual deploy daemon with ``host.docker.internal`` as the host used to connect to the ExApps.
 
     .. code-block:: bash
 
         app_api:daemon:register manual_install "Manual Install" "manual-install" "http" null "http://nextcloud.local"
-
-* Register a local docker deploy daemon with the ``/var/run/docker.sock`` as the socket and the host, and the ``nextcloud`` docker network. This does not need a Docker Socket Proxy container. The compute device used by this daemon is ``CPU``.
-
-    .. code-block:: bash
-
-        app_api:daemon:register local_docker "Docker Local" "docker-install" "http" "/var/run/docker.sock" "http://nextcloud.local" --net=nextcloud
-
-* Register a local docker deploy daemon with the ``/var/run/docker.sock`` as the socket and the host, and the ``nextcloud`` docker network. This does not need a Docker Socket Proxy container. The compute device used by this daemon is ``CUDA`` (NVIDIA).
-
-    .. code-block:: bash
-
-        app_api:daemon:register local_docker "Docker Local" "docker-install" "http" "/var/run/docker.sock" "http://nextcloud.local" --net=nextcloud --set-default --compute_device=cuda
 
 
 .. _deploy_config:
@@ -134,7 +115,7 @@ DeployConfig options
 
     * ``net`` **[required]** - network name to bind docker container to (default: ``host``)
     * ``nextcloud_url`` **[required]** - Nextcloud URL (e.g. ``https://nextcloud.local``)
-    * ``haproxy_password`` *[optional]* - password for AppAPI Docker Socket Proxy
+    * ``haproxy_password`` *[optional]* - HaRP shared key, required for HaRP daemons
     * ``computeDevice`` *[optional]* - Compute device to attach to the daemon (e.g. ``{ "id": "cuda", "label": "CUDA (NVIDIA)" }``)
     * ``harp`` *[optional]* - HaRP options, can be ``null`` in case of non-HaRP setups
         * ``frp_address`` *[optional]* - [host]:[port] of the HaRP FRP server, default host is same as HaRP host and port is 8782
@@ -295,7 +276,7 @@ Add a Docker registry mapping to a Deploy Daemon.
 
 Command: ``app_api:daemon:registry:add [--registry-from REGISTRY-FROM] [--registry-to REGISTRY-TO] [--] <name>``
 
-* ``name`` - name of the Deploy Daemon the mapping is added to (e.g. ``docker_install``)
+* ``name`` - name of the Deploy Daemon the mapping is added to (e.g. ``harp_proxy_host``)
 * ``--registry-from`` - ``[required]`` registry declared by the ExApp (e.g. ``ghcr.io``)
 * ``--registry-to`` - ``[required]`` registry to use instead, or ``local`` to skip the image pull
 
@@ -306,13 +287,13 @@ if both registries are the same.
 
     .. code-block:: bash
 
-        sudo -E -u www-data php occ app_api:daemon:registry:add docker_install --registry-from "ghcr.io" --registry-to "registry.example.com"
+        sudo -E -u www-data php occ app_api:daemon:registry:add harp_proxy_host --registry-from "ghcr.io" --registry-to "registry.example.com"
 
 * Use images that are already present on the Docker host instead of pulling them from ``ghcr.io``:
 
     .. code-block:: bash
 
-        sudo -E -u www-data php occ app_api:daemon:registry:add docker_install --registry-from "ghcr.io" --registry-to "local"
+        sudo -E -u www-data php occ app_api:daemon:registry:add harp_proxy_host --registry-from "ghcr.io" --registry-to "local"
 
 Remove a registry mapping
 -------------------------
@@ -322,13 +303,13 @@ pair is removed.
 
 Command: ``app_api:daemon:registry:remove [--registry-from REGISTRY-FROM] [--registry-to REGISTRY-TO] [--] <name>``
 
-* ``name`` - name of the Deploy Daemon the mapping is removed from (e.g. ``docker_install``)
+* ``name`` - name of the Deploy Daemon the mapping is removed from (e.g. ``harp_proxy_host``)
 * ``--registry-from`` - ``[required]`` source registry of the mapping to remove
 * ``--registry-to`` - ``[required]`` target registry of the mapping to remove
 
 .. code-block:: bash
 
-    sudo -E -u www-data php occ app_api:daemon:registry:remove docker_install --registry-from "ghcr.io" --registry-to "registry.example.com"
+    sudo -E -u www-data php occ app_api:daemon:registry:remove harp_proxy_host --registry-from "ghcr.io" --registry-to "registry.example.com"
 
 List registry mappings
 ----------------------
@@ -337,17 +318,17 @@ List the Docker registry mappings configured for a Deploy Daemon.
 
 Command: ``app_api:daemon:registry:list <name>``
 
-* ``name`` - name of the Deploy Daemon to list the mappings of (e.g. ``docker_install``)
+* ``name`` - name of the Deploy Daemon to list the mappings of (e.g. ``harp_proxy_host``)
 
 .. code-block:: bash
 
-    sudo -E -u www-data php occ app_api:daemon:registry:list docker_install
+    sudo -E -u www-data php occ app_api:daemon:registry:list harp_proxy_host
 
 The mappings are printed as ``from -> to`` pairs:
 
 .. code-block:: text
 
-    Configured registries for daemon "docker_install":
+    Configured registries for daemon "harp_proxy_host":
      - ghcr.io -> registry.example.com
      - docker.io -> local
 

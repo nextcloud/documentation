@@ -33,7 +33,7 @@ Generally speaking, there are three steps to find the proper error message to un
 1. Check Nextcloud logs
 2. Check ExApp container logs (available only if ExApp container is created and/or running)
 3. Check Deploy daemon host logs (``journalctl -u docker.service``)
-4. Check Docker Socket Proxy logs (if used, and if needed, e.g. for SSL or 401 errors check)
+4. Check HaRP container logs (``docker logs appapi-harp``)
 
 
 Failed to create volume
