@@ -85,14 +85,17 @@ npm run lint (optional)
 -----------------------
 
 Nextcloud apps that use linting tools for consistent code formatting typically add a ``lint`` script to their
-``package.json`` and install the appropriate `eslint config <https://www.npmjs.com/package/@nextcloud/eslint-config>`_:
+``package.json`` and install the appropriate `eslint config <https://www.npmjs.com/package/@nextcloud/eslint-config>`_
+(see the ESLint section in :doc:`../getting_started/coding_standards/javascript` for a copyable ``eslint.config.js``).
+
+With the flat config format, file extensions are declared in ``eslint.config.js``, so pass directories instead of ``--ext``:
 
 .. code-block:: json
 
   {
     "scripts": {
-      "lint": "eslint --ext .js,.vue src",
-      "lint:fix": "eslint --ext .js,.vue src --fix"
+      "lint": "eslint src",
+      "lint:fix": "eslint src --fix"
     }
   }
 
