@@ -47,6 +47,45 @@ Inside your database layer class you can now start running queries like:
     }
 
 
+Allowlisting user-supplied columns and sort orders
+--------------------------------------------------
+
+``createNamedParameter()`` (as in the example above) is the right way to bind
+**values** that come from the user or from outside your code. Prepared
+parameters cannot bind SQL identifiers: column names passed to ``select()`` /
+``orderBy()``, and sort directions (``ASC`` / ``DESC``), are interpolated into
+the query string.
+
+If a column name or sort order comes from the user, check it against an
+allowlist before calling ``orderBy()`` or ``select()``. A ``match`` on the
+allowed values is a clear way to do that:
+
+.. code-block:: php
+
+    <?php
+
+    // $userSort and $userDirection come from the request
+    $sortColumn = match ($userSort) {
+        'name' => 'name',
+        'stars' => 'stars',
+        default => 'id',
+    };
+    $sortDirection = match ($userDirection) {
+        'desc' => 'DESC',
+        default => 'ASC',
+    };
+
+    $qb->select('*')
+       ->from('myapp_authors')
+       ->orderBy($sortColumn, $sortDirection);
+
+The same rule applies when you pass a dynamic column into ``select()``, or when
+you build the ``orderBy`` array for ``Repository::findBy()``: only map from an
+allowlist; never concatenate or forward a raw user string as a column or
+direction.
+
+
+
 Transactions
 ------------
 
