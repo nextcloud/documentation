@@ -10,6 +10,7 @@ Digging deeper
    auth
    direct_editing
    groupware_workflows
+   teams
    discovery
    devtools
    internals
