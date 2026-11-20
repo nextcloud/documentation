@@ -101,6 +101,8 @@ Admin page (see :doc:`../configuration_server/email_configuration`).
 If you check the **Send email to new user** checkbox, you can leave the **Password**
 field empty. The user will receive an activation email to set their own password.
 
+.. _reset-user-password:
+
 Reset a user's password
 -----------------------
 
@@ -111,8 +113,12 @@ You cannot recover a user's password, but you can set a new one:
 * Enter the user's new password in the password field, and remember to provide
   the user with their password
 
-If you have encryption enabled, there are special considerations for user
-password resets. Please see
+If passwords resets from Nextcloud are disabled or not supported by the in-use
+user backend, see :doc:`reset_user_password` for configuring an external reset
+link.
+
+If you have server-side encryption enabled, there are special considerations for
+user password resets. Please see
 :doc:`../configuration_files/encryption_configuration`.
 
 Renaming a user
