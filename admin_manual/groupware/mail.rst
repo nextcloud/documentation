@@ -50,6 +50,23 @@ Configure how often Mail keeps users' mailboxes updated in the background in sec
 
     'app.mail.background-sync-interval' => 7200,
 
+Preview enhancement interval
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Configure how often the preview-enhancement background job runs in seconds. Defaults to 3600, minimum 60.
+
+This job populates the ``imip_message`` flag on incoming messages. The iMIP background job, which turns calendar
+invitations into actual events, only picks up messages once that flag is set, so this interval is the upper bound
+on how long an inbound invitation can take to appear in the user's calendar. Smaller setups that want invitations
+to feel live can lower this to the 60–300 second range; larger installations should keep the default to avoid
+extra database load.
+
+::
+
+    occ config:app:set mail preview_enhancement_interval --value=300 --type=integer
+
+The new value takes effect on the next scheduler tick — no service restart required.
+
 Disable TLS verification for IMAP/SMTP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
