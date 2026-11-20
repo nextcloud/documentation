@@ -7,6 +7,7 @@ Creating an open conversation
 
 You can create an open conversation that any registered user on this server can discover and join.
 
+.. TODO: update screenshot to show the Conversation type field in the new conversation dialog
 .. image:: images/creating-open-conversation.png
     :alt: Talk new conversation setup dialog for name, description, and access type
     :width: 500px
