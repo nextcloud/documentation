@@ -1,6 +1,6 @@
-=====================
-User provisioning API
-=====================
+===============================
+User and group provisioning API
+===============================
 
 The Provisioning API application enables a set of APIs that external systems can use to create,
 edit, delete and query user attributes, query, set and remove groups, set quota
