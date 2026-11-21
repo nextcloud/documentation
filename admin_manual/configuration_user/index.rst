@@ -2,15 +2,19 @@
 User management
 ===============
 
+Accounts and profiles
+---------------------
+
 .. toctree::
-    :caption: Accounts and profiles
     :maxdepth: 2
 
     user_configuration
     profile_configuration
 
+Authentication and passwords
+----------------------------
+
 .. toctree::
-    :caption: Authentication and passwords
     :maxdepth: 2
 
     user_password_policy
@@ -18,8 +22,10 @@ User management
     two_factor-auth
     reset_admin_password
 
+SSO, directory, and identity integrations
+-----------------------------------------
+
 .. toctree::
-    :caption: SSO, directory, and identity integrations
     :maxdepth: 2
 
     user_auth_ldap
@@ -28,8 +34,10 @@ User management
     user_auth_oidc
     reset_user_password
 
+Provisioning
+------------
+
 .. toctree::
-    :caption: Provisioning
     :maxdepth: 2
 
     user_provisioning_api
