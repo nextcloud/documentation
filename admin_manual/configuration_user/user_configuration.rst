@@ -162,9 +162,9 @@ Managing groups
 ---------------
 
 You can assign new accounts to groups when you create them and create new groups
-when you create new accounts. 
+when you create new accounts.
 
-You may also adjust group membership by editing an account and adjusting the contents 
+You may also adjust group membership by editing an account and adjusting the contents
 of the "Member of the following groups" field. To add new groups, click the plus sign
 in the left pane (adjacent to the **Groups** section under Accounts).
 
@@ -200,7 +200,7 @@ then change the default ``false`` to ``true`` in ``config.php``::
 .. note:: If an external storage is defined as root, the quota will not
    be calculable and will be **ignored**.
 
-Metadata 
+Metadata
 ^^^^^^^^
 
 Metadata (such as thumbnails, temporary files, and encryption keys) is not counted
