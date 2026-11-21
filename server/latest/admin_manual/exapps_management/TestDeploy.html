@@ -95,7 +95,7 @@
 <p class="caption" role="heading"><span class="caption-text">Files</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul class="current">
@@ -143,7 +143,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/collabora_online.html">Collabora Online</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
 <ul>
@@ -223,7 +225,7 @@ The Docker images are also not removed from the Daemon; you can clean up unused 
 <li><p>Image not found (e.g. not public, no image found for your hardware architecture)</p></li>
 <li><p>Image pull failed (e.g., due to network issues)</p></li>
 <li><p>Image pull timeout</p></li>
-<li><p>Your Docker Socket Proxy/HaRP is not configured correctly and blocks access to this Docker Engine API</p></li>
+<li><p>HaRP is not configured correctly and blocks access to this Docker Engine API</p></li>
 </ul>
 <p>See <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-f</span> <span class="pre">-u</span> <span class="pre">docker.service</span></code> for more details in systemd based systems.</p>
 </section>
@@ -252,14 +254,7 @@ The ExApp might have additional pre-configuration logic during this step.</p>
 <ul class="simple">
 <li><p>ExApp failed to start a web server, e.g., if the port is already in use (this should be visible in the container logs)</p></li>
 <li><p>ExApp heartbeat_count keeps increasing, this may indicate that the ExApp couldn’t start properly</p></li>
-<li><dl class="simple">
-<dt>Nextcloud can not reach the ExApp container, e.g.,</dt><dd><ul>
-<li><p>due to a network issue or a firewall (this should be visible in the server logs or the firewall logs)</p></li>
-<li><p>due to a “http” protocol deploy daemon. In this case, the ExApp’s container listens on localhost (127.0.0.1 or ::1) which might not be reachable from the Nextcloud server and you might want to listen on a different IP address. See <code class="docutils literal notranslate"><span class="pre">OVERRIDE_APP_HOST</span></code> in <a class="reference internal" href="ManagingDeployDaemons.html#additional-options-list"><span class="std std-ref">Additional options</span></a> in the Deploy Daemon form. This issue can be identified using this command: <code class="docutils literal notranslate"><span class="pre">lsof</span> <span class="pre">-i</span> <span class="pre">-P</span> <span class="pre">-n</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">LISTEN</span></code></p></li>
-</ul>
-</dd>
-</dl>
-</li>
+<li><p>Nextcloud can not reach the ExApp container, e.g., due to a network issue or a firewall (this should be visible in the server logs or the firewall logs)</p></li>
 <li><p>For HaRP, the main Nextcloud proxy might not be configured to redirect requests to the HaRP container correctly. See the <a class="reference external" href="https://github.com/nextcloud/harp?tab=readme-ov-file#configuring-your-reverse-proxy">Configuring Your Reverse Proxy</a> section in the HaRP readme.</p></li>
 </ul>
 </section>

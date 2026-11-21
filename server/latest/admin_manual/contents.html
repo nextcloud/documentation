@@ -94,7 +94,7 @@
 <p class="caption" role="heading"><span class="caption-text">Files</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="configuration_files/index.html">File sharing and management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul>
@@ -122,7 +122,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="office/collabora_online.html">Collabora Online</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
 <ul>
@@ -421,6 +423,7 @@
 <li class="toctree-l3"><a class="reference internal" href="installation/installation_wizard.html#quick-start">Quick start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/installation_wizard.html#data-directory-location">Data directory location</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/installation_wizard.html#database-choice">Database choice</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="installation/installation_wizard.html#encrypted-database-connection">Encrypted database connection</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation/installation_wizard.html#automatic-database-user-creation">Automatic database user creation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation/installation_wizard.html#autoconfig">Autoconfig</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation/installation_wizard.html#completing-installation">Completing Installation</a></li>
@@ -474,6 +477,14 @@
 <li class="toctree-l4"><a class="reference internal" href="installation/nginx.html#login-loop-without-any-clue-in-access-log-error-log-nor-nextcloud-log">Login loop without any clue in access.log, error.log, nor nextcloud.log</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation/nginx.html#trusted-proxy-not-detected-when-using-a-unix-domain-socket">Trusted proxy not detected when using a Unix domain socket</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation/nginx.html#access-through-untrusted-domain-error-with-http-3">“Access through untrusted domain” error with HTTP/3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation/caddy.html">Caddy configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation/caddy.html#nextcloud-in-the-webroot-of-caddy">Nextcloud in the webroot of Caddy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/caddy.html#tips-and-tricks">Tips and tricks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="installation/caddy.html#suppressing-log-messages">Suppressing log messages</a></li>
 </ul>
 </li>
 </ul>
@@ -1678,9 +1689,9 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_files/federated_cloud_sharing_configuration.html">Configuring Federation Sharing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="configuration_files/federated_cloud_sharing_configuration.html#creating-a-new-federation-share">Creating a new Federation Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/federated_cloud_sharing_configuration.html#creating-a-new-federated-share">Creating a new Federated Share</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/federated_cloud_sharing_configuration.html#configuring-trusted-nextcloud-servers">Configuring trusted Nextcloud servers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_files/federated_cloud_sharing_configuration.html#creating-federation-shares-via-public-link-share">Creating Federation Shares via public Link Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/federated_cloud_sharing_configuration.html#creating-federated-shares-via-public-link-share">Creating Federated Shares via public Link Share</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/federated_cloud_sharing_configuration.html#configuration-tips">Configuration tips</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/federated_cloud_sharing_configuration.html#changing-the-display-of-federated-shares">Changing the display of federated shares</a></li>
 </ul>
@@ -1740,6 +1751,7 @@
 <li class="toctree-l4"><a class="reference internal" href="configuration_files/external_storage/sftp.html">SFTP</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_files/external_storage/smb.html">SMB/CIFS</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="configuration_files/external_storage/smb.html#case-sensitive-file-system">Case sensitive file system</a></li>
+<li class="toctree-l5"><a class="reference internal" href="configuration_files/external_storage/smb.html#verify-acl-access-when-listing-files">Verify ACL access when listing files</a></li>
 <li class="toctree-l5"><a class="reference internal" href="configuration_files/external_storage/smb.html#smb-update-notifications">SMB update notifications</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="configuration_files/external_storage/smb.html#smb-authentication">SMB authentication</a></li>
 <li class="toctree-l6"><a class="reference internal" href="configuration_files/external_storage/smb.html#decrease-sync-delay">Decrease sync delay</a></li>
@@ -1930,10 +1942,12 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="configuration_mimetypes/index.html">Mimetypes management</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configuration_mimetypes/index.html#mimetype-aliases">Mimetype aliases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration_mimetypes/index.html#mimetype-mapping">Mimetype mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration_mimetypes/index.html#mime-type-mapping">MIME type mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_mimetypes/index.html#mime-type-aliases">MIME type aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_mimetypes/index.html#mime-type-names">MIME type names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_mimetypes/index.html#icon-retrieval">Icon retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_mimetypes/index.html#example-amr-audio-audio-amr">Example: AMR audio (<code class="docutils literal notranslate"><span class="pre">audio/amr</span></code>)</a></li>
 </ul>
 </li>
 </ul>
@@ -1982,12 +1996,12 @@
 <li class="toctree-l3"><a class="reference internal" href="exapps_management/AppAPIAndExternalApps.html#installing-appapi">Installing AppAPI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="exapps_management/AppAPIAndExternalApps.html#setup-deploy-daemon">Setup deploy daemon</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="exapps_management/AppAPIAndExternalApps.html#harp">HaRP</a></li>
-<li class="toctree-l4"><a class="reference internal" href="exapps_management/AppAPIAndExternalApps.html#docker-socket-proxy">Docker Socket Proxy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="exapps_management/AppAPIAndExternalApps.html#moving-exapps-from-docker-socket-proxy-to-harp">Moving ExApps from Docker Socket Proxy to HaRP</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="exapps_management/AppAPIAndExternalApps.html#installing-exapps">Installing ExApps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="exapps_management/AppAPIAndExternalApps.html#faq">FAQ</a></li>
-<li class="toctree-l3"><a class="reference internal" href="exapps_management/AppAPIAndExternalApps.html#docker-socket-proxy-vs-harp">Docker Socket Proxy vs HaRP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exapps_management/AppAPIAndExternalApps.html#how-harp-works">How HaRP works</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="exapps_management/DeployConfigurations.html">Deployment configurations</a><ul>
@@ -1997,15 +2011,8 @@
 <li class="toctree-l4"><a class="reference internal" href="exapps_management/DeployConfigurations.html#nextcloud-and-docker-on-the-same-host-with-nextcloud-in-docker">Nextcloud and Docker on the same host - with Nextcloud in Docker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="exapps_management/DeployConfigurations.html#docker-on-a-remote-host-with-harp-container-on-the-local-host">Docker on a remote host - with HaRP container on the local host</a></li>
 <li class="toctree-l4"><a class="reference internal" href="exapps_management/DeployConfigurations.html#docker-reverse-proxy-nextcloud-on-3-independent-hosts-with-harp-container">Docker / Reverse Proxy / Nextcloud on 3 independent hosts - with HaRP container</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="exapps_management/DeployConfigurations.html#docker-deploy-daemon-docker-socket-proxy">Docker Deploy Daemon (Docker Socket Proxy)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="exapps_management/DeployConfigurations.html#nc-docker-on-the-same-host">NC &amp; Docker on the Same-Host</a></li>
-<li class="toctree-l4"><a class="reference internal" href="exapps_management/DeployConfigurations.html#docker-on-a-remote-host">Docker on a remote host</a></li>
-<li class="toctree-l4"><a class="reference internal" href="exapps_management/DeployConfigurations.html#nc-exapps-in-the-same-docker">NC &amp; ExApps in the same Docker</a></li>
 <li class="toctree-l4"><a class="reference internal" href="exapps_management/DeployConfigurations.html#nextcloud-in-docker-aio-all-in-one">Nextcloud in Docker AIO (all-in-one)</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="exapps_management/DeployConfigurations.html#default-aio-deploy-daemon-docker-socket-proxy">Default AIO Deploy Daemon (Docker Socket Proxy)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="exapps_management/DeployConfigurations.html#docker-socket-proxy-security">Docker Socket Proxy security</a></li>
+<li class="toctree-l5"><a class="reference internal" href="exapps_management/DeployConfigurations.html#default-aio-deploy-daemon-harp">Default AIO Deploy Daemon (HaRP)</a></li>
 </ul>
 </li>
 </ul>
@@ -2777,11 +2784,13 @@
 <li class="toctree-l4"><a class="reference internal" href="file_workflows/access_control.html#available-rules">Available rules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="file_workflows/automated_tagging.html">Automated tagging of files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="file_workflows/automated_tagging.html">Automated file tagging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="file_workflows/automated_tagging.html#how-it-works">How it works</a></li>
+<li class="toctree-l4"><a class="reference internal" href="file_workflows/automated_tagging.html#configuration">Configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="file_workflows/automated_tagging.html#assigning-restricted-and-invisible-tags">Assigning restricted and invisible tags</a></li>
 <li class="toctree-l4"><a class="reference internal" href="file_workflows/automated_tagging.html#example">Example</a></li>
 <li class="toctree-l4"><a class="reference internal" href="file_workflows/automated_tagging.html#available-rules">Available rules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="file_workflows/automated_tagging.html#executing-actions">Executing actions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="file_workflows/automated_tagging.html#using-tags-with-other-actions">Using tags with other actions</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="file_workflows/retention.html">Retention of files</a><ul>
@@ -2941,6 +2950,7 @@
 <li class="toctree-l3"><a class="reference internal" href="groupware/mail.html#account-delegation">Account delegation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="groupware/mail.html#snooze-and-scheduled-sending">Snooze and scheduled sending</a></li>
 <li class="toctree-l3"><a class="reference internal" href="groupware/mail.html#xoauth2-authentication-with-microsoft-azure-ad">XOAUTH2 Authentication with Microsoft Azure AD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/mail.html#generic-openid-connect-xoauth2-integration">Generic OpenID Connect (XOAUTH2) integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="groupware/mail.html#mailbox-share">Mailbox Share</a></li>
 <li class="toctree-l3"><a class="reference internal" href="groupware/mail.html#user-interface-preference-defaults">User Interface Preference Defaults</a></li>
 <li class="toctree-l3"><a class="reference internal" href="groupware/mail.html#llm-processing">LLM Processing</a></li>
@@ -2984,114 +2994,112 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="office/index.html">Office</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="office/euro-office/index.html">Nextcloud Office</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="office/euro-office/installation.html">Installation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_ubuntu.html">Installing on Ubuntu 24.04 LTS</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#system-requirements">System requirements</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-1-install-prerequisites">Step 1 — Install prerequisites</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-2-create-the-database">Step 2 — Create the database</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-3-pre-seed-the-installer-answers">Step 3 — Pre-seed the installer answers</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-4-download-the-package">Step 4 — Download the package</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-5-install-the-package">Step 5 — Install the package</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-6-verify">Step 6 — Verify</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#updating">Updating</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#uninstalling">Uninstalling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="office/euro-office/index.html">Nextcloud Office</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="office/euro-office/installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/installation_ubuntu.html">Installing on Ubuntu 24.04 LTS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#system-requirements">System requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-1-install-prerequisites">Step 1 — Install prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-2-create-the-database">Step 2 — Create the database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-3-pre-seed-the-installer-answers">Step 3 — Pre-seed the installer answers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-4-add-the-nextcloud-office-repository">Step 4 — Add the Nextcloud Office repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-5-install-the-package">Step 5 — Install the package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#step-6-verify">Step 6 — Verify</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#updating">Updating</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_ubuntu.html#uninstalling">Uninstalling</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_debian.html">Installing on Debian 12</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#system-requirements">System requirements</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-1-enable-the-contrib-component">Step 1 — Enable the contrib component</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-2-install-prerequisites">Step 2 — Install prerequisites</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-3-create-the-database">Step 3 — Create the database</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-4-pre-seed-the-installer-answers">Step 4 — Pre-seed the installer answers</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-5-download-the-package">Step 5 — Download the package</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-6-install-the-package">Step 6 — Install the package</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#step-7-verify">Step 7 — Verify</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#updating">Updating</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_debian.html#uninstalling">Uninstalling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/installation_debian.html">Installing on Debian 12</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_debian.html#system-requirements">System requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_debian.html#step-1-enable-the-contrib-component">Step 1 — Enable the contrib component</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_debian.html#step-2-install-prerequisites">Step 2 — Install prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_debian.html#step-3-create-the-database">Step 3 — Create the database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_debian.html#step-4-pre-seed-the-installer-answers">Step 4 — Pre-seed the installer answers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_debian.html#step-5-add-the-nextcloud-office-repository">Step 5 — Add the Nextcloud Office repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_debian.html#step-6-install-the-package">Step 6 — Install the package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_debian.html#step-7-verify">Step 7 — Verify</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_debian.html#updating">Updating</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_debian.html#uninstalling">Uninstalling</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_docker.html">Installing via Docker</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#quick-start">Quick start</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#image-tags">Image tags</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#persistent-data">Persistent data</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#environment-variables">Environment variables</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#authentication">Authentication</a></li>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#database">Database</a></li>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#redis">Redis</a></li>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#rabbitmq">RabbitMQ</a></li>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#wopi">WOPI</a></li>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#outbound-requests">Outbound requests</a></li>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#https-and-tls-termination">HTTPS and TLS termination</a></li>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#nginx">Nginx</a></li>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#metrics">Metrics</a></li>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#logging-and-optional-services">Logging and optional services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/installation_docker.html">Installing via Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_docker.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_docker.html#quick-start">Quick start</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_docker.html#image-tags">Image tags</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_docker.html#persistent-data">Persistent data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_docker.html#environment-variables">Environment variables</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#authentication">Authentication</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#database">Database</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#redis">Redis</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#rabbitmq">RabbitMQ</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#wopi">WOPI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#outbound-requests">Outbound requests</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#https-and-tls-termination">HTTPS and TLS termination</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#nginx">Nginx</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#metrics">Metrics</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#logging-and-optional-services">Logging and optional services</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#size-limits">Size limits</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#documents-the-server-downloads">Documents the server downloads</a></li>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#files-posted-to-the-server">Files posted to the server</a></li>
-<li class="toctree-l6"><a class="reference internal" href="office/euro-office/installation_docker.html#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_docker.html#size-limits">Size limits</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#documents-the-server-downloads">Documents the server downloads</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#files-posted-to-the-server">Files posted to the server</a></li>
+<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#updating">Updating</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/installation_docker.html#uninstalling">Uninstalling</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="office/euro-office/configuration.html">Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#installing-the-connector-app">Installing the connector app</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#server-settings">Server settings</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/configuration.html#advanced-server-settings">Advanced server settings</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#common-settings">Common settings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#editor-customization-settings">Editor customization settings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#common-templates">Common templates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#security">Security</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="office/euro-office/configuration.html#watermarks">Watermarks</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#occ-commands">occ commands</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#config-php">config.php</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_docker.html#updating">Updating</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/installation_docker.html#uninstalling">Uninstalling</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="office/collabora_online.html">Collabora Online</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="office/installation.html">Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="office/configuration.html">Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#nextcloud-office-app-settings">Nextcloud Office App Settings</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#collabora-online-server">Collabora Online Server</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#restrict-usage-to-specific-groups">Restrict usage to specific groups</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#restrict-edit-to-specific-groups">Restrict edit to specific groups</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#use-ooxml-by-default-for-new-files">Use OOXML by default for new files</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#enable-access-for-external-apps">Enable access for external apps</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#canonical-webroot">Canonical webroot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="office/euro-office/configuration.html">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/configuration.html#installing-the-connector-app">Installing the connector app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/configuration.html#server-settings">Server settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#advanced-server-settings">Advanced server settings</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#additional-configuration-options">Additional configuration options</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#previews">Previews</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#custom-fonts">Custom fonts</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#secure-view-settings">Secure view settings</a></li>
-<li class="toctree-l5"><a class="reference internal" href="office/configuration.html#id1">Wopi configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/configuration.html#common-settings">Common settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/configuration.html#editor-customization-settings">Editor customization settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/configuration.html#common-templates">Common templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/configuration.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="office/euro-office/configuration.html#watermarks">Watermarks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/configuration.html#occ-commands">occ commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/euro-office/configuration.html#config-php">config.php</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="office/migration.html">Migration from Collabora Online</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="office/migration.html#update-the-reverse-proxy-configuration">Update the reverse proxy configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/migration.html#upgrade-distribution-packages">Upgrade distribution packages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="office/migration.html#upgrade-the-docker-image">Upgrade the docker image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="office/collabora_online.html">Collabora Online</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="office/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="office/configuration.html">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="office/configuration.html#nextcloud-office-app-settings">Nextcloud Office App Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#collabora-online-server">Collabora Online Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#restrict-usage-to-specific-groups">Restrict usage to specific groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#restrict-edit-to-specific-groups">Restrict edit to specific groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#use-ooxml-by-default-for-new-files">Use OOXML by default for new files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#enable-access-for-external-apps">Enable access for external apps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#canonical-webroot">Canonical webroot</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="office/troubleshooting.html">Troubleshooting</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="office/troubleshooting.html#frequently-asked-questions">Frequently asked questions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/configuration.html#additional-configuration-options">Additional configuration options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#previews">Previews</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#custom-fonts">Custom fonts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#secure-view-settings">Secure view settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="office/configuration.html#id1">Wopi configuration</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="office/migration.html">Migration from Collabora Online</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="office/migration.html#update-the-reverse-proxy-configuration">Update the reverse proxy configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/migration.html#upgrade-distribution-packages">Upgrade distribution packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="office/migration.html#upgrade-the-docker-image">Upgrade the docker image</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="office/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="office/troubleshooting.html#frequently-asked-questions">Frequently asked questions</a></li>
 </ul>
 </li>
 </ul>

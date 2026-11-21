@@ -97,6 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Colective</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Clientul pentru desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office_desktop_editors.html">Nextcloud Office Desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setarea preferințelor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Accesibilitate universală</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Folosirea autentificării în doi pași</a></li>
@@ -131,7 +132,13 @@
              
   <section id="version-control">
 <h1>Controlul versiunilor<a class="headerlink" href="#version-control" title="Link to this heading"></a></h1>
-<p>Nextcloud are un sistem simplu de control al versiunilor pentru fișiere. Versionarea creează copii de rezervă ale fișierelor, accesibile din fila Versiuni a barei laterale de detalii. Această filă conține istoricul fișierului, din care îl poți readuce la orice versiune anterioară. O versiune nouă este salvată doar dacă au trecut cel puțin două minute de la crearea ultimei versiuni. Versiunile sunt stocate în <code class="docutils literal notranslate"><span class="pre">data/[user]/files_versions</span></code>.</p>
+<p>Nextcloud supports a simple version control system for files. Whenever a file
+is changed on the server or uploaded again by a client, Nextcloud keeps the
+previous content as a version so you can restore it later. Versions appear in
+the <strong>Versions</strong> tab on the Details sidebar, where you can restore or download
+any earlier copy. Desktop and mobile clients do not manage the version list
+themselves; they upload a new file and the server records the version.
+Versions are stored under <code class="docutils literal notranslate"><span class="pre">data/[user]/files_versions</span></code>.</p>
 <figure class="align-default">
 <img alt="Istoricul versiunilor fișierului în bara laterală de detalii" src="../../_images/files_versioning.png" />
 </figure>

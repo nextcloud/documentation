@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Использование федеративного общего доступа &mdash; Nextcloud 36 User Manual</title>
+  <title>Использование федеративных общих ресурсов &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -83,8 +83,8 @@
 <li class="toctree-l3"><a class="reference internal" href="sharing.html">Общий доступ к файлам</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Федеративный общий доступ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Анонимная загрузка файлов</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Использование федеративного общего доступа</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Создание нового федеративного общего ресурса</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Использование федеративных общих ресурсов</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-share">Создание нового федеративного общего ресурса</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Создание нового общего ресурса федеративного облака по эл. почте</a></li>
 </ul>
 </li>
@@ -98,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">«Конференции»</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Коллективы</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Клиент для ПК</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office_desktop_editors.html">Офис Nextcloud для ПК</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Настройка личных параметров</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Специальные возможности</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Использование двухфакторной аутентификации</a></li>
@@ -120,7 +121,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Файлы и синхронизация</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Общий доступ и совместная работа</a></li>
-      <li class="breadcrumb-item active">Использование федеративного общего доступа</li>
+      <li class="breadcrumb-item active">Использование федеративных общих ресурсов</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/federated_cloud_sharing.rst" class="fa fa-github"> Редактировать на GitHub</a>
       </li>
@@ -130,12 +131,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-federation-shares">
-<h1>Использование федеративного общего доступа<a class="headerlink" href="#using-federation-shares" title="Ссылка на этот заголовок"></a></h1>
-<p>Федеративный общий доступ позволяет подключать общие ресурсы с удалённых серверов Nextcloud, по сути создавая собственное облако из серверов Nextcloud. Прямые ссылки на общие ресурсы можно создавать для пользователей на других серверах Nextcloud.</p>
-<section id="creating-a-new-federation-share">
-<h2>Создание нового федеративного общего ресурса<a class="headerlink" href="#creating-a-new-federation-share" title="Ссылка на этот заголовок"></a></h2>
-<p>В новых и обновлённых установках Nextcloud федеративный общий доступ включён по умолчанию. Чтобы создать новый общий ресурс с другими серверами Nextcloud или ownCloud 9+, выполните следующие действия:</p>
+  <section id="using-federated-shares">
+<h1>Использование федеративных общих ресурсов<a class="headerlink" href="#using-federated-shares" title="Ссылка на этот заголовок"></a></h1>
+<p>Федеративный общий доступ позволяет подключать общие ресурсы с удалённых серверов Nextcloud, фактически создавая собственное облако из серверов Nextcloud. Прямыми ссылками можно делиться с пользователями на других серверах Nextcloud.</p>
+<section id="creating-a-new-federated-share">
+<h2>Создание нового федеративного общего ресурса<a class="headerlink" href="#creating-a-new-federated-share" title="Ссылка на этот заголовок"></a></h2>
+<p>На новых и обновлённых установках Nextcloud федеративный общий доступ включён по умолчанию. Чтобы создать общий ресурс для пользователей других серверов Nextcloud или ownCloud 9+, выполните следующие действия:</p>
 <ol class="arabic">
 <li><p>Перейдите на страницу <code class="docutils literal notranslate"><span class="pre">Файлы</span></code> и нажмите значок <strong>Поделиться</strong> у файла или папки, которыми хотите поделиться. На боковой панели введите имя пользователя и URL удалённого пользователя в таком виде: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;oc-server-url&gt;</span></code>. Форма автоматически проверит введённый адрес и пометит его как «удалённый». Нажмите на эту метку.</p>
 <figure class="align-default">
