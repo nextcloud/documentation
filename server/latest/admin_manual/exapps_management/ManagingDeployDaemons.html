@@ -95,7 +95,7 @@
 <p class="caption" role="heading"><span class="caption-text">Files</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul class="current">
@@ -150,7 +150,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/collabora_online.html">Collabora Online</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
 <ul>
@@ -220,14 +222,14 @@
 <section id="register">
 <h3>Register<a class="headerlink" href="#register" title="Link to this heading"></a></h3>
 <p>Register Deploy Daemon (DaemonConfig).</p>
-<p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:daemon:register</span> <span class="pre">[--net</span> <span class="pre">NET]</span> <span class="pre">[--haproxy_password</span> <span class="pre">HAPROXY_PASSWORD]</span> <span class="pre">[--compute_device</span> <span class="pre">COMPUTE_DEVICE]</span> <span class="pre">[--set-default]</span> <span class="pre">[--harp]</span> <span class="pre">[--harp_frp_address</span> <span class="pre">HARP_FRP_ADDRESS]</span> <span class="pre">[--harp_shared_key</span> <span class="pre">HARP_SHARED_KEY]</span> <span class="pre">[--harp_docker_socket_port</span> <span class="pre">HARP_DOCKER_SOCKET_PORT]</span> <span class="pre">[--harp_exapp_direct]</span> <span class="pre">[--]</span> <span class="pre">&lt;name&gt;</span> <span class="pre">&lt;display-name&gt;</span> <span class="pre">&lt;accepts-deploy-id&gt;</span> <span class="pre">&lt;protocol&gt;</span> <span class="pre">&lt;host&gt;</span> <span class="pre">&lt;nextcloud_url&gt;</span></code></p>
+<p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:daemon:register</span> <span class="pre">[--net</span> <span class="pre">NET]</span> <span class="pre">[--compute_device</span> <span class="pre">COMPUTE_DEVICE]</span> <span class="pre">[--set-default]</span> <span class="pre">[--harp]</span> <span class="pre">[--harp_frp_address</span> <span class="pre">HARP_FRP_ADDRESS]</span> <span class="pre">[--harp_shared_key</span> <span class="pre">HARP_SHARED_KEY]</span> <span class="pre">[--harp_docker_socket_port</span> <span class="pre">HARP_DOCKER_SOCKET_PORT]</span> <span class="pre">[--harp_exapp_direct]</span> <span class="pre">[--]</span> <span class="pre">&lt;name&gt;</span> <span class="pre">&lt;display-name&gt;</span> <span class="pre">&lt;accepts-deploy-id&gt;</span> <span class="pre">&lt;protocol&gt;</span> <span class="pre">&lt;host&gt;</span> <span class="pre">&lt;nextcloud_url&gt;</span></code></p>
 <section id="arguments">
 <h4>Arguments<a class="headerlink" href="#arguments" title="Link to this heading"></a></h4>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - unique name of the daemon (e.g. <code class="docutils literal notranslate"><span class="pre">docker_local_sock</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - unique name of the daemon (e.g. <code class="docutils literal notranslate"><span class="pre">harp_proxy_host</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">display-name</span></code> - name of the daemon (e.g. <code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">Local</span> <span class="pre">Docker</span></code>, will be displayed in the UI)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">accepts-deploy-id</span></code> - type of deployment (<code class="docutils literal notranslate"><span class="pre">docker-install</span></code> or <code class="docutils literal notranslate"><span class="pre">manual-install</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">host</span></code> - <strong>path to docker-socket</strong>  or the Docker Socket Proxy: <code class="docutils literal notranslate"><span class="pre">address:port</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">accepts-deploy-id</span></code> - type of deployment (<code class="docutils literal notranslate"><span class="pre">docker-install</span></code> or <code class="docutils literal notranslate"><span class="pre">manual-install</span></code>), <code class="docutils literal notranslate"><span class="pre">docker-install</span></code> requires <code class="docutils literal notranslate"><span class="pre">--harp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">host</span></code> - <code class="docutils literal notranslate"><span class="pre">address:port</span></code> of HaRP, or the host of the ExApps for <code class="docutils literal notranslate"><span class="pre">manual-install</span></code> without HaRP</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">protocol</span></code> - protocol used to communicate with the Daemon/ExApps (<code class="docutils literal notranslate"><span class="pre">http</span></code> or <code class="docutils literal notranslate"><span class="pre">https</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">nextcloud_url</span></code> - Nextcloud URL, Daemon config required option (e.g. <code class="docutils literal notranslate"><span class="pre">https://nextcloud.local</span></code>)</p></li>
 </ul>
@@ -236,10 +238,9 @@
 <h4>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--net</span> <span class="pre">[network-name]</span></code>  - <code class="docutils literal notranslate"><span class="pre">[required]</span></code> network name to bind docker container to (default: <code class="docutils literal notranslate"><span class="pre">host</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--haproxy_password</span> <span class="pre">HAPROXY_PASSWORD</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> password for AppAPI Docker Socket Proxy</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--compute_device</span> <span class="pre">GPU</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> GPU device to expose to the daemon (e.g. <code class="docutils literal notranslate"><span class="pre">cpu|cuda|rocm</span></code>, default: <code class="docutils literal notranslate"><span class="pre">cpu</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--set-default</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> set created daemon as default for ExApps installation</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--harp</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> Flag to set daemon to use HaRP for all docker and exapp communication</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--harp</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> Flag to set daemon to use HaRP for all docker and exapp communication, required for <code class="docutils literal notranslate"><span class="pre">docker-install</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--harp_frp_address</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> [host]:[port] of the HaRP FRP server, default host is same as HaRP host and port is 8782</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--harp_shared_key</span></code> - <code class="docutils literal notranslate"><span class="pre">[optional]</span></code> HaRP shared key for secure communication between HaRP and AppAPI. It must
 match <code class="docutils literal notranslate"><span class="pre">HP_SHARED_KEY</span></code> of the HaRP container. The <code class="docutils literal notranslate"><span class="pre">some_very_secure_password</span></code> value in the examples below is only
@@ -279,30 +280,9 @@ a placeholder, see <a class="reference internal" href="DeployConfigurations.html
 </div>
 </div></blockquote>
 </li>
-<li><p>Register a Docker Socket Proxy deploy daemon with the <code class="docutils literal notranslate"><span class="pre">nextcloud-appapi-dsp:2375</span></code> as the host and the <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> docker network. This can be paired with a Docker Socket Proxy container running in the same network with the default port <code class="docutils literal notranslate"><span class="pre">2375</span></code>.</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>app_api:daemon:register<span class="w"> </span>docker_install<span class="w"> </span><span class="s2">"Docker Socket Proxy"</span><span class="w"> </span><span class="s2">"docker-install"</span><span class="w"> </span><span class="s2">"http"</span><span class="w"> </span><span class="s2">"nextcloud-appapi-dsp:2375"</span><span class="w"> </span><span class="s2">"http://nextcloud.local"</span><span class="w"> </span>--net<span class="o">=</span>nextcloud<span class="w"> </span>--set-default<span class="w"> </span>--compute_device<span class="o">=</span>cuda
-</pre></div>
-</div>
-</div></blockquote>
-</li>
 <li><p>Register a manual deploy daemon with <code class="docutils literal notranslate"><span class="pre">host.docker.internal</span></code> as the host used to connect to the ExApps.</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>app_api:daemon:register<span class="w"> </span>manual_install<span class="w"> </span><span class="s2">"Manual Install"</span><span class="w"> </span><span class="s2">"manual-install"</span><span class="w"> </span><span class="s2">"http"</span><span class="w"> </span>null<span class="w"> </span><span class="s2">"http://nextcloud.local"</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Register a local docker deploy daemon with the <code class="docutils literal notranslate"><span class="pre">/var/run/docker.sock</span></code> as the socket and the host, and the <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> docker network. This does not need a Docker Socket Proxy container. The compute device used by this daemon is <code class="docutils literal notranslate"><span class="pre">CPU</span></code>.</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>app_api:daemon:register<span class="w"> </span>local_docker<span class="w"> </span><span class="s2">"Docker Local"</span><span class="w"> </span><span class="s2">"docker-install"</span><span class="w"> </span><span class="s2">"http"</span><span class="w"> </span><span class="s2">"/var/run/docker.sock"</span><span class="w"> </span><span class="s2">"http://nextcloud.local"</span><span class="w"> </span>--net<span class="o">=</span>nextcloud
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>Register a local docker deploy daemon with the <code class="docutils literal notranslate"><span class="pre">/var/run/docker.sock</span></code> as the socket and the host, and the <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> docker network. This does not need a Docker Socket Proxy container. The compute device used by this daemon is <code class="docutils literal notranslate"><span class="pre">CUDA</span></code> (NVIDIA).</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>app_api:daemon:register<span class="w"> </span>local_docker<span class="w"> </span><span class="s2">"Docker Local"</span><span class="w"> </span><span class="s2">"docker-install"</span><span class="w"> </span><span class="s2">"http"</span><span class="w"> </span><span class="s2">"/var/run/docker.sock"</span><span class="w"> </span><span class="s2">"http://nextcloud.local"</span><span class="w"> </span>--net<span class="o">=</span>nextcloud<span class="w"> </span>--set-default<span class="w"> </span>--compute_device<span class="o">=</span>cuda
 </pre></div>
 </div>
 </div></blockquote>
@@ -343,7 +323,7 @@ ExApp container.</p>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">net</span></code> <strong>[required]</strong> - network name to bind docker container to (default: <code class="docutils literal notranslate"><span class="pre">host</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">nextcloud_url</span></code> <strong>[required]</strong> - Nextcloud URL (e.g. <code class="docutils literal notranslate"><span class="pre">https://nextcloud.local</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">haproxy_password</span></code> <em>[optional]</em> - password for AppAPI Docker Socket Proxy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">haproxy_password</span></code> <em>[optional]</em> - HaRP shared key, required for HaRP daemons</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">computeDevice</span></code> <em>[optional]</em> - Compute device to attach to the daemon (e.g. <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;id&quot;:</span> <span class="pre">&quot;cuda&quot;,</span> <span class="pre">&quot;label&quot;:</span> <span class="pre">&quot;CUDA</span> <span class="pre">(NVIDIA)&quot;</span> <span class="pre">}</span></code>)</p></li>
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">harp</span></code> <em>[optional]</em> - HaRP options, can be <code class="docutils literal notranslate"><span class="pre">null</span></code> in case of non-HaRP setups</dt><dd><ul>
@@ -494,7 +474,7 @@ respective list entry:</p>
 <p>Add a Docker registry mapping to a Deploy Daemon.</p>
 <p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:daemon:registry:add</span> <span class="pre">[--registry-from</span> <span class="pre">REGISTRY-FROM]</span> <span class="pre">[--registry-to</span> <span class="pre">REGISTRY-TO]</span> <span class="pre">[--]</span> <span class="pre">&lt;name&gt;</span></code></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - name of the Deploy Daemon the mapping is added to (e.g. <code class="docutils literal notranslate"><span class="pre">docker_install</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - name of the Deploy Daemon the mapping is added to (e.g. <code class="docutils literal notranslate"><span class="pre">harp_proxy_host</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--registry-from</span></code> - <code class="docutils literal notranslate"><span class="pre">[required]</span></code> registry declared by the ExApp (e.g. <code class="docutils literal notranslate"><span class="pre">ghcr.io</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--registry-to</span></code> - <code class="docutils literal notranslate"><span class="pre">[required]</span></code> registry to use instead, or <code class="docutils literal notranslate"><span class="pre">local</span></code> to skip the image pull</p></li>
 </ul>
@@ -503,14 +483,14 @@ if both registries are the same.</p>
 <ul>
 <li><p>Pull images that ExApps declare on <code class="docutils literal notranslate"><span class="pre">ghcr.io</span></code> from a private registry instead:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:registry:add<span class="w"> </span>docker_install<span class="w"> </span>--registry-from<span class="w"> </span><span class="s2">"ghcr.io"</span><span class="w"> </span>--registry-to<span class="w"> </span><span class="s2">"registry.example.com"</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:registry:add<span class="w"> </span>harp_proxy_host<span class="w"> </span>--registry-from<span class="w"> </span><span class="s2">"ghcr.io"</span><span class="w"> </span>--registry-to<span class="w"> </span><span class="s2">"registry.example.com"</span>
 </pre></div>
 </div>
 </div></blockquote>
 </li>
 <li><p>Use images that are already present on the Docker host instead of pulling them from <code class="docutils literal notranslate"><span class="pre">ghcr.io</span></code>:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:registry:add<span class="w"> </span>docker_install<span class="w"> </span>--registry-from<span class="w"> </span><span class="s2">"ghcr.io"</span><span class="w"> </span>--registry-to<span class="w"> </span><span class="s2">"local"</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:registry:add<span class="w"> </span>harp_proxy_host<span class="w"> </span>--registry-from<span class="w"> </span><span class="s2">"ghcr.io"</span><span class="w"> </span>--registry-to<span class="w"> </span><span class="s2">"local"</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -523,11 +503,11 @@ if both registries are the same.</p>
 pair is removed.</p>
 <p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:daemon:registry:remove</span> <span class="pre">[--registry-from</span> <span class="pre">REGISTRY-FROM]</span> <span class="pre">[--registry-to</span> <span class="pre">REGISTRY-TO]</span> <span class="pre">[--]</span> <span class="pre">&lt;name&gt;</span></code></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - name of the Deploy Daemon the mapping is removed from (e.g. <code class="docutils literal notranslate"><span class="pre">docker_install</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - name of the Deploy Daemon the mapping is removed from (e.g. <code class="docutils literal notranslate"><span class="pre">harp_proxy_host</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--registry-from</span></code> - <code class="docutils literal notranslate"><span class="pre">[required]</span></code> source registry of the mapping to remove</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--registry-to</span></code> - <code class="docutils literal notranslate"><span class="pre">[required]</span></code> target registry of the mapping to remove</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:registry:remove<span class="w"> </span>docker_install<span class="w"> </span>--registry-from<span class="w"> </span><span class="s2">"ghcr.io"</span><span class="w"> </span>--registry-to<span class="w"> </span><span class="s2">"registry.example.com"</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:registry:remove<span class="w"> </span>harp_proxy_host<span class="w"> </span>--registry-from<span class="w"> </span><span class="s2">"ghcr.io"</span><span class="w"> </span>--registry-to<span class="w"> </span><span class="s2">"registry.example.com"</span>
 </pre></div>
 </div>
 </section>
@@ -536,13 +516,13 @@ pair is removed.</p>
 <p>List the Docker registry mappings configured for a Deploy Daemon.</p>
 <p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:daemon:registry:list</span> <span class="pre">&lt;name&gt;</span></code></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - name of the Deploy Daemon to list the mappings of (e.g. <code class="docutils literal notranslate"><span class="pre">docker_install</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - name of the Deploy Daemon to list the mappings of (e.g. <code class="docutils literal notranslate"><span class="pre">harp_proxy_host</span></code>)</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:registry:list<span class="w"> </span>docker_install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:daemon:registry:list<span class="w"> </span>harp_proxy_host
 </pre></div>
 </div>
 <p>The mappings are printed as <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">-&gt;</span> <span class="pre">to</span></code> pairs:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Configured registries for daemon "docker_install":
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Configured registries for daemon "harp_proxy_host":
  - ghcr.io -&gt; registry.example.com
  - docker.io -&gt; local
 </pre></div>

@@ -78,6 +78,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#email-template-blocks">Email template blocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#new-ocp-files-iuserfolder-api">New <code class="docutils literal notranslate"><span class="pre">\OCP\Files\IUserFolder</span></code> API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#actor-api">Actor API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resource-permissions-api">Resource permissions API</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="deprecations.html">Deprecations</a></li>
@@ -154,6 +155,16 @@ a local or federated user, an anonymous user such as a public share visitor, a b
 An <code class="docutils literal notranslate"><span class="pre">\OCP\Actor\Actor</span></code> holds the principal whose authority is claimed, and optionally a delegate acting on its behalf.</p>
 <p>See <a class="reference internal" href="../digging_deeper/actor.html#actor-api"><span class="std std-ref">Actor API</span></a> for details.</p>
 </section>
+<section id="resource-permissions-api">
+<h2>Resource permissions API<a class="headerlink" href="#resource-permissions-api" title="Link to this heading"></a></h2>
+<p>The new experimental <code class="docutils literal notranslate"><span class="pre">\NCU\Resource</span></code> namespace lets an app restrict what another app allows on its resources,
+without code specific to that app. Apps that own resources declare their resource types and permissions,
+ask <code class="docutils literal notranslate"><span class="pre">\NCU\Resource\Permission\IPermissionManager</span></code> which permissions are left for an <code class="docutils literal notranslate"><span class="pre">\OCP\Actor\Actor</span></code>,
+and enforce the result.
+Apps that restrict permissions, for example based on a label or a team role,
+implement <code class="docutils literal notranslate"><span class="pre">\NCU\Resource\Permission\IRestrictionProvider</span></code>.</p>
+<p>See <a class="reference internal" href="../digging_deeper/resource_permissions.html#resource-permissions"><span class="std std-ref">Resource permissions</span></a> for details.</p>
+</section>
 </section>
 
 
@@ -168,7 +179,7 @@ An <code class="docutils literal notranslate"><span class="pre">\OCP\Actor\Actor
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Nov 15, 2026.
+      <span class="lastupdated">Last updated on Nov 21, 2026.
       </span></p>
   </div>
 

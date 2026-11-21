@@ -95,7 +95,7 @@
 <p class="caption" role="heading"><span class="caption-text">Files</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul class="current">
@@ -170,7 +170,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/collabora_online.html">Collabora Online</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
 <ul>
@@ -1034,7 +1036,7 @@ It would be best to run one command per screen session or per tmux window/pane t
 </pre></div>
 </div>
 <p>For Nextcloud-AIO you should use this command on the host server.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="o">-</span><span class="n">e</span><span class="p">;</span> <span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">aio</span><span class="o">-</span><span class="n">nextcloud</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span><span class="p">;</span> <span class="n">done</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="o">-</span><span class="n">e</span><span class="p">;</span> <span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">--</span><span class="n">user</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">aio</span><span class="o">-</span><span class="n">nextcloud</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span><span class="p">;</span> <span class="n">done</span>
 </pre></div>
 </div>
 <p>You may want to adjust the number of workers and the timeout (in seconds) to your needs.
@@ -1047,29 +1049,25 @@ The logs of the worker can be checked by attaching to the screen or tmux session
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
 <span class="n">Description</span><span class="o">=</span><span class="n">Nextcloud</span> <span class="n">AI</span> <span class="n">worker</span> <span class="o">%</span><span class="n">i</span>
-<span class="n">After</span><span class="o">=</span><span class="n">network</span><span class="o">.</span><span class="n">target</span>
+<span class="n">After</span><span class="o">=</span><span class="n">network</span><span class="o">-</span><span class="n">online</span><span class="o">.</span><span class="n">target</span>
+<span class="n">Wants</span><span class="o">=</span><span class="n">network</span><span class="o">-</span><span class="n">online</span><span class="o">.</span><span class="n">target</span>
+<span class="n">StartLimitIntervalSec</span><span class="o">=</span><span class="mi">60</span>
+<span class="n">StartLimitBurst</span><span class="o">=</span><span class="mi">10</span>
 
 <span class="p">[</span><span class="n">Service</span><span class="p">]</span>
-<span class="n">ExecStart</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">worker</span><span class="o">/</span><span class="n">taskprocessing</span><span class="o">.</span><span class="n">sh</span> <span class="o">%</span><span class="n">i</span>
+<span class="n">User</span><span class="o">=</span><span class="n">www</span><span class="o">-</span><span class="n">data</span>
+<span class="n">Group</span><span class="o">=</span><span class="n">www</span><span class="o">-</span><span class="n">data</span>
+<span class="n">WorkingDirectory</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">nextcloud</span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span>
 <span class="n">Restart</span><span class="o">=</span><span class="n">always</span>
-<span class="n">StartLimitInterval</span><span class="o">=</span><span class="mi">60</span>
-<span class="n">StartLimitBurst</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">RestartSec</span><span class="o">=</span><span class="mi">2</span>
 
 <span class="p">[</span><span class="n">Install</span><span class="p">]</span>
 <span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
 </pre></div>
 </div>
+<p>You may want to adjust the timeout (-t 60) to your needs (in seconds).</p>
 <ol class="arabic simple" start="2">
-<li><p>Create a shell script in <code class="docutils literal notranslate"><span class="pre">/opt/nextcloud-ai-worker/taskprocessing.sh</span></code> with the following content and make sure to make it executable:</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
-<span class="n">echo</span> <span class="s2">"Starting Nextcloud AI Worker $1"</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">nextcloud</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span>
-</pre></div>
-</div>
-<p>You may want to adjust the timeout to your needs (in seconds).</p>
-<ol class="arabic simple" start="3">
 <li><p>Enable and start the service 4 or more times:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for i in {1..4}; do systemctl enable --now nextcloud-ai-worker@$i.service; done

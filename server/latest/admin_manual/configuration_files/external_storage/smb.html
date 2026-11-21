@@ -136,7 +136,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../windows_compatible_filenames.html">Windows compatible filenames</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul>
@@ -164,7 +164,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../office/collabora_online.html">Collabora Online</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
 <ul>
@@ -290,6 +292,25 @@ same file.</p></li>
 unnecessary directory scans and case-only renames being rejected, even though
 the server itself would allow them.</p></li>
 </ul>
+</section>
+<section id="verify-acl-access-when-listing-files">
+<h2>Verify ACL access when listing files<a class="headerlink" href="#verify-acl-access-when-listing-files" title="Link to this heading"></a></h2>
+<p>When <strong>Verify ACL access when listing files</strong> is enabled (backend option
+<code class="docutils literal notranslate"><span class="pre">check_acl</span></code>), Nextcloud asks the SMB server for Windows ACLs while listing a
+directory and <strong>hides entries</strong> that the configured share account cannot read
+or execute.</p>
+<p>Use this for shares that rely on NT ACLs beyond share-level permissions, so
+users do not see folders or files they cannot open. Listing is slightly slower
+on large directories because ACL metadata must be fetched for each entry.
+Leave the option off if the SMB server does not expose ACLs (or listing becomes
+too slow).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ACL checks use the credentials of the mount (the share account). Inheritance
+is not fully evaluated; Nextcloud hides an entry only when that account’s ACL
+explicitly denies read or execute. If ACL data cannot be read for an entry,
+the entry is still shown.</p>
+</div>
 </section>
 <section id="smb-update-notifications">
 <h2>SMB update notifications<a class="headerlink" href="#smb-update-notifications" title="Link to this heading"></a></h2>

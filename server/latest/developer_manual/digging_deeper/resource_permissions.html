@@ -1,0 +1,1093 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resource permissions &mdash; Nextcloud 36 Developer Manual</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=850d043c" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/digging_deeper/resource_permissions.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = "pre.mermaid {\n    /* Same as .mermaid-container > pre */\n    display: block;\n    width: 100%;\n}\n\npre.mermaid > svg {\n    /* Same as .mermaid-container > pre > svg */\n    height: 500px;\n    width: 100%;\n    max-width: 100% !important;\n}";
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = ".mermaid-container {\n    position: relative;\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n}\n\n.mermaid-container > pre {\n    display: block;\n    width: 100%;\n}\n\n.mermaid-container > pre > svg {\n    height: 500px;\n    width: 100%;\n    max-width: 100% !important;\n}\n\n.mermaid-fullscreen-btn {\n    position: absolute;\n    width: 28px;\n    height: 28px;\n    background: rgba(255, 255, 255, 0.95);\n    border: 1px solid rgba(0, 0, 0, 0.3);\n    border-radius: 4px;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    transition: all 0.2s;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n    font-size: 14px;\n    line-height: 1;\n    padding: 0;\n    color: #333;\n}\n\n.mermaid-fullscreen-btn:hover {\n    opacity: 100% !important;\n    background: rgba(255, 255, 255, 1);\n    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n    transform: scale(1.1);\n}\n\n.mermaid-fullscreen-btn.dark-theme {\n    background: rgba(50, 50, 50, 0.95);\n    border: 1px solid rgba(255, 255, 255, 0.3);\n    color: #e0e0e0;\n}\n\n.mermaid-fullscreen-btn.dark-theme:hover {\n    background: rgba(60, 60, 60, 1);\n    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);\n}\n\n.mermaid-fullscreen-modal {\n    display: none;\n    position: fixed !important;\n    top: 0 !important;\n    left: 0 !important;\n    width: 95vw;\n    height: 100vh;\n    background: rgba(255, 255, 255, 0.98);\n    z-index: 9999;\n    padding: 20px;\n    overflow: auto;\n}\n\n.mermaid-fullscreen-modal.dark-theme {\n    background: rgba(0, 0, 0, 0.98);\n}\n\n.mermaid-fullscreen-modal.active {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.mermaid-container-fullscreen {\n    position: relative;\n    width: 95vw;\n    height: 90vh;\n    max-width: 95vw;\n    max-height: 90vh;\n    background: white;\n    border-radius: 8px;\n    padding: 20px;\n    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);\n    overflow: auto;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.mermaid-container-fullscreen.dark-theme {\n    background: #1a1a1a;\n    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);\n}\n\n.mermaid-container-fullscreen pre.mermaid {\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.mermaid-container-fullscreen .mermaid svg {\n    height: 100% !important;\n    width: 100% !important;\n    cursor: grab;\n}\n\n.mermaid-fullscreen-close {\n    position: fixed !important;\n    top: 20px !important;\n    right: 20px !important;\n    width: 40px;\n    height: 40px;\n    background: rgba(255, 255, 255, 0.95);\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    border-radius: 50%;\n    cursor: pointer;\n    z-index: 10000;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);\n    transition: all 0.2s;\n    font-size: 24px;\n    line-height: 1;\n    color: #333;\n}\n\n.mermaid-fullscreen-close:hover {\n    background: white;\n    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);\n    transform: scale(1.1);\n}\n\n.mermaid-fullscreen-close.dark-theme {\n    background: rgba(50, 50, 50, 0.95);\n    border: 1px solid rgba(255, 255, 255, 0.2);\n    color: #e0e0e0;\n}\n\n.mermaid-fullscreen-close.dark-theme:hover {\n    background: rgba(60, 60, 60, 1);\n    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);\n}\n\n.mermaid-fullscreen-modal .mermaid-fullscreen-btn {\n    display: none !important;\n}";
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+let _lazyObserver = null;
+let _renderQueue = Promise.resolve();
+let closeModal = () => {};
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('active')) {
+        closeModal();
+    }
+});
+
+// Apply d3 zoom to each SVG. Idempotent: an SVG already wrapped is skipped,
+// so this is safe to call both for the initial batch and for diagrams that
+// render lazily once they become visible.
+const addZoomToSvgs = (svgs) => {
+    svgs.each(function() {
+        if (this.getAttribute('data-zoom-applied') === 'true') return;
+        var svg = d3.select(this);
+        svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+        var inner = svg.select("g");
+        var zoom = d3.zoom().on("zoom", function(event) {
+            inner.attr("transform", event.transform);
+        });
+        svg.call(zoom);
+        this.setAttribute('data-zoom-applied', 'true');
+    });
+};
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        // Disconnect any previous lazy rendering observer
+        if (_lazyObserver) {
+            _lazyObserver.disconnect();
+            _lazyObserver = null;
+        }
+
+        all_mermaids.forEach((el) => {
+            el.removeAttribute('data-mermaid-deferred');
+            el.removeAttribute('data-mermaid-render-failed');
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+
+        // Separate visible and hidden elements. Mermaid's layout engine measures
+        // text dimensions via the DOM, which fails for elements hidden by a parent
+        // (e.g., Reveal.js non-active slides, sphinx-design unopened tabs),
+        // producing broken SVGs. Render visible elements now, defer hidden ones.
+        const visible = [];
+        const hidden = [];
+        all_mermaids.forEach((el) => {
+            // offsetParent is null for display:none ancestors.
+            // getClientRects().length > 0 catches position:fixed elements
+            // (which also have null offsetParent but are still visible).
+            if (el.offsetParent !== null || el.getClientRects().length > 0) {
+                visible.push(el);
+            } else {
+                hidden.push(el);
+                el.setAttribute('data-mermaid-deferred', 'true');
+            }
+        });
+
+        if (visible.length > 0) {
+            try {
+                await mermaid.run({ nodes: visible });
+            } catch (e) {
+                console.error("Mermaid rendering failed:", e);
+            }
+        }
+
+        // Lazily render hidden elements when they become visible.
+        // Uses a promise chain (_renderQueue) to serialize rendering,
+        // since IntersectionObserver may report multiple entries at once
+        // and mermaid.run() is not safe to call concurrently.
+        if (hidden.length > 0) {
+            if (typeof IntersectionObserver === 'undefined') {
+                console.warn("IntersectionObserver not available; hidden mermaid diagrams will not render.");
+            } else {
+                _renderQueue = Promise.resolve();
+                _lazyObserver = new IntersectionObserver((entries) => {
+                    for (const entry of entries) {
+                        if (entry.isIntersecting && entry.target.getAttribute("data-processed") !== "true") {
+                            _lazyObserver.unobserve(entry.target);
+                            const el = entry.target;
+                            _renderQueue = _renderQueue.then(async () => {
+                                try {
+                                    await mermaid.run({ nodes: [el] });
+                                    el.removeAttribute('data-mermaid-deferred');
+                                    // Apply zoom to the now-rendered diagram, matching
+                                    // the decoration visible diagrams receive.
+                                    if (false) {
+                                        addZoomToSvgs(d3.selectAll("").select(function() {
+                                            return this.querySelector("svg");
+                                        }));
+                                    }
+                                } catch (e) {
+                                    console.error("Mermaid deferred rendering failed:", e);
+                                    el.removeAttribute('data-mermaid-deferred');
+                                    el.setAttribute('data-mermaid-render-failed', 'true');
+                                }
+                            });
+                        }
+                    }
+                });
+                hidden.forEach((el) => _lazyObserver.observe(el));
+            }
+        }
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    // Exclude deferred (hidden) and render-failed elements from completion checks
+    const mermaids_active = document.querySelectorAll(".mermaid:not([data-mermaid-deferred]):not([data-mermaid-render-failed])");
+    const mermaids_processed = document.querySelectorAll(".mermaid:not([data-mermaid-deferred]):not([data-mermaid-render-failed])[data-processed='true']");
+
+    if (false) {
+        const mermaids_to_add_zoom = 0 === -1 ? mermaids_active.length : 0;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("").select(function() {
+                return this.querySelector("svg");
+            });
+            // Wait until every active (visible) diagram has rendered. Deferred
+            // diagrams are excluded, so a fixed d3_node_count that counts a
+            // hidden diagram no longer loops forever waiting for its SVG.
+            if(mermaids_active.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            }
+            addZoomToSvgs(svgs);
+        }
+    } else if(mermaids_active.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if (!true) return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = "\u26f6";
+        fullscreenBtn.style.opacity = "50%";
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scrollX, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.display = 'block';
+
+                if (false) {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+
+
+const load = async () => {
+    initStyles();
+
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...{"startOnLoad": false},
+                ...{ darkMode: darkTheme, theme: darkTheme ? "dark" : "default" },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...{"startOnLoad": false},
+    ...{ darkMode: darkTheme, theme: darkTheme ? "dark" : "default" },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Talk Integration" href="talk.html" />
+    <link rel="prev" title="Public Pages" href="publicpage.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ai.html">AI &amp; Machine Learning</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="apis.html">APIs &amp; Integration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actor.html">Actor API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Resource permissions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#concepts">Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-owning-apps">For owning apps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-restricting-apps">For restricting apps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-results-are-combined">How results are combined</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="auth.html">Users &amp; Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="direct_editing.html">Direct editing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware_workflows.html">Groupware &amp; Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="discovery.html">Search &amp; Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devtools.html">Development Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internals.html">Server Internals</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 36 Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+          <li class="breadcrumb-item"><a href="apis.html">APIs &amp; Integration</a></li>
+      <li class="breadcrumb-item active">Resource permissions</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/resource_permissions.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="resource-permissions">
+<span id="id1"></span><h1>Resource permissions<a class="headerlink" href="#resource-permissions" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 36.</span></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This API is experimental. It lives in the <code class="docutils literal notranslate"><span class="pre">NCU</span></code> namespace and its PHP
+signatures may still change. Permission IDs and resource type IDs are stable:
+once released they never change.</p>
+</div>
+<p>The resource permission API lets one app restrict what another app allows on
+its resources, without knowing what those resources or permissions are.</p>
+<p>Three kinds of apps take part:</p>
+<ul class="simple">
+<li><p>The <strong>owning app</strong> owns resources, for example tables or mails. It declares
+its resource types and permissions, asks which permissions are left for an
+actor, and enforces the answer.</p></li>
+<li><p>A <strong>restricting app</strong> restricts permissions, for example based on a label
+attached to a resource or on the role a user has in a team. It never needs
+code specific to the owning app.</p></li>
+<li><p>The <strong>server</strong> holds the declarations, asks every restricting app and
+combines the answers.</p></li>
+</ul>
+<p>The API only restricts. Whether an actor has access to a resource at all, as
+owner or through a share, is decided by the owning app.</p>
+<p>A check involves all three:</p>
+<pre  class="mermaid">
+        sequenceDiagram
+    participant O as Owning app
+    participant S as Server
+    participant A as Restricting app A
+    participant B as Restricting app B
+
+    O-&gt;&gt;S: check(actor, resource, access entries)
+    activate S
+    S-&gt;&gt;A: getRestrictions(actor, accesses)
+    A--&gt;&gt;S: restricted permission IDs
+    S-&gt;&gt;B: getRestrictions(actor, accesses)
+    B--&gt;&gt;S: restricted permission IDs
+    S-&gt;&gt;S: combine the answers
+    S--&gt;&gt;O: EffectivePermissions
+    deactivate S
+    O-&gt;&gt;O: enforce the result
+    </pre><section id="concepts">
+<h2>Concepts<a class="headerlink" href="#concepts" title="Link to this heading"></a></h2>
+<section id="permissions">
+<h3>Permissions<a class="headerlink" href="#permissions" title="Link to this heading"></a></h3>
+<p>A permission is something that is either allowed or restricted on a resource.
+It has a stable ID in the format <code class="docutils literal notranslate"><span class="pre">appid:name</span></code>, a translated display name and
+an optional hint. A permission has the same meaning wherever it is used.</p>
+<p>The server ships five core permissions, available as cases of
+<code class="docutils literal notranslate"><span class="pre">\NCU\Resource\Permission\CorePermission</span></code>:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Enum case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">core:read</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CorePermission::Read</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">core:update</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CorePermission::Update</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">core:create</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CorePermission::Create</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">core:delete</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CorePermission::Delete</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">core:share</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CorePermission::Share</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>The core permissions are independent of each other. A file drop, for example,
+allows to create without allowing to read. If your resources need a
+dependency, such as “nothing works without read”, apply it yourself when you
+enforce the result.</p>
+<p>Every other permission is a <strong>kind of</strong> exactly one core permission. Whenever a
+core permission is restricted, all permissions that are a kind of it are
+restricted as well. This is how a restricting app can restrict permissions it
+has never heard of: a role that only allows reading restricts <code class="docutils literal notranslate"><span class="pre">core:share</span></code>
+and with it, for example, a <code class="docutils literal notranslate"><span class="pre">mail:forward</span></code> permission of the Mail app.</p>
+<p>The server also ships <code class="docutils literal notranslate"><span class="pre">core:download</span></code> (<code class="docutils literal notranslate"><span class="pre">CorePermission::DOWNLOAD</span></code>), which
+is a kind of <code class="docutils literal notranslate"><span class="pre">core:read</span></code>. Restricting download does not restrict read, but
+restricting read restricts download.</p>
+<p>The following diagram shows the permissions shipped by the server together
+with two permissions registered by apps. Restricting a permission also
+restricts every permission pointing to it.</p>
+<pre  class="mermaid">
+        flowchart BT
+    read[&quot;core:read&quot;]
+    update[&quot;core:update&quot;]
+    create[&quot;core:create&quot;]
+    delete[&quot;core:delete&quot;]
+    share[&quot;core:share&quot;]
+    download[&quot;core:download&quot;] -- kind of --&gt; read
+    export[&quot;tables:export&quot;] -- kind of --&gt; share
+    forward[&quot;mail:forward&quot;] -- kind of --&gt; share
+    </pre><p>Prefer the core permissions. Register an own permission only if your app has
+an action whose meaning is not covered by them.</p>
+</section>
+<section id="resources">
+<h3>Resources<a class="headerlink" href="#resources" title="Link to this heading"></a></h3>
+<p>A resource is identified by a <code class="docutils literal notranslate"><span class="pre">\NCU\Resource\ResourceReference</span></code>: the ID of its
+resource type (<code class="docutils literal notranslate"><span class="pre">appid:type</span></code>), the ID of the resource within that type and,
+optionally, its owner as an <code class="docutils literal notranslate"><span class="pre">\OCP\Actor\Principal</span></code>. Only the owning app knows
+what the ID refers to.</p>
+<p>A resource type lists the permissions that apply to its resources. An app can
+register several types, for example one for tables and one for rows. There is
+no hierarchy between resources: a restriction on a table does not apply to its
+rows unless the restricting app returns it for the rows as well.</p>
+</section>
+<section id="actors">
+<h3>Actors<a class="headerlink" href="#actors" title="Link to this heading"></a></h3>
+<p>Every check is made for an <code class="docutils literal notranslate"><span class="pre">\OCP\Actor\Actor</span></code>, see <a class="reference internal" href="actor.html#actor-api"><span class="std std-ref">Actor API</span></a>.
+For a logged-in user:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\Actor\Actor</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Actor\Principal</span><span class="p">;</span>
+
+<span class="nv">$actor</span> <span class="o">=</span> <span class="nx">Actor</span><span class="o">::</span><span class="na">of</span><span class="p">(</span><span class="nx">Principal</span><span class="o">::</span><span class="na">user</span><span class="p">(</span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getUID</span><span class="p">()));</span>
+</pre></div>
+</div>
+<p>For a visitor without an account, build an anonymous principal from your own
+token, for example the token of a public link.</p>
+</section>
+<section id="access-entries">
+<h3>Access entries<a class="headerlink" href="#access-entries" title="Link to this heading"></a></h3>
+<p>Some restrictions only apply to access gained in a certain way. A user who is
+a visitor in a team should only be able to read what is shared with that team,
+but keeps full access to a resource that is also shared with them directly.</p>
+<p>To make this possible, the owning app can pass the shares that give the actor
+access, as it stores them. Each <code class="docutils literal notranslate"><span class="pre">\NCU\Resource\Permission\AccessEntry</span></code> names
+the recipient of the share and the permissions it grants. The recipient is a
+kind and an ID:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Kind</p></th>
+<th class="head"><p>ID</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AccessEntry::RECIPIENT_USER</span></code></p></td>
+<td><p>The user ID</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">AccessEntry::RECIPIENT_GROUP</span></code></p></td>
+<td><p>The group ID</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AccessEntry::RECIPIENT_TEAM</span></code></p></td>
+<td><p>The team ID</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">appid:kind</span></code></p></td>
+<td><p>Defined by your app, for example a link token</p></td>
+</tr>
+</tbody>
+</table>
+<p>You do not need to resolve group or team memberships or roles. Pass the entry
+as it is stored; the restricting app knows what to do with it.</p>
+</section>
+</section>
+<section id="for-owning-apps">
+<h2>For owning apps<a class="headerlink" href="#for-owning-apps" title="Link to this heading"></a></h2>
+<section id="registering-permissions">
+<h3>Registering permissions<a class="headerlink" href="#registering-permissions" title="Link to this heading"></a></h3>
+<p>If the core permissions are not enough, extend
+<code class="docutils literal notranslate"><span class="pre">\NCU\Resource\Permission\APermission</span></code>. The ID has to start with the ID of
+your app.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\Tables\Resource</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">NCU\Resource\Permission\APermission</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">NCU\Resource\Permission\CorePermission</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ExportPermission</span> <span class="k">extends</span> <span class="nx">APermission</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">ID</span> <span class="o">=</span> <span class="s1">'tables:export'</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IL10N</span> <span class="nv">$l10n</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">ID</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDisplayName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Export'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getKindOf</span><span class="p">()</span><span class="o">:</span> <span class="nx">CorePermission</span> <span class="p">{</span>
+        <span class="c1">// Exporting hands the data to someone else</span>
+        <span class="k">return</span> <span class="nx">CorePermission</span><span class="o">::</span><span class="na">Share</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="registering-resource-types">
+<h3>Registering resource types<a class="headerlink" href="#registering-resource-types" title="Link to this heading"></a></h3>
+<p>Implement <code class="docutils literal notranslate"><span class="pre">\NCU\Resource\IResourceType</span></code> for every type of resource your app
+owns and list the permissions that apply to it.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\Tables\Resource</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">NCU\Resource\IResourceType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">NCU\Resource\Permission\CorePermission</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">TableResourceType</span> <span class="k">implements</span> <span class="nx">IResourceType</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">ID</span> <span class="o">=</span> <span class="s1">'tables:table'</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IL10N</span> <span class="nv">$l10n</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">ID</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDisplayName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'Table'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPermissionIds</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="nx">CorePermission</span><span class="o">::</span><span class="na">Read</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">,</span>
+            <span class="nx">CorePermission</span><span class="o">::</span><span class="na">Update</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">,</span>
+            <span class="nx">CorePermission</span><span class="o">::</span><span class="na">Delete</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">,</span>
+            <span class="nx">CorePermission</span><span class="o">::</span><span class="na">Share</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">,</span>
+            <span class="nx">ExportPermission</span><span class="o">::</span><span class="na">ID</span><span class="p">,</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Register both in the <code class="docutils literal notranslate"><span class="pre">register</span></code> method of your <code class="docutils literal notranslate"><span class="pre">Application</span></code> class:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+    <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerResourcePermission</span><span class="p">(</span><span class="nx">ExportPermission</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerResourceType</span><span class="p">(</span><span class="nx">TableResourceType</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Registrations with an invalid ID, an ID that is already taken or an ID that
+does not start with the ID of your app are logged and skipped.</p>
+</section>
+<section id="checking-a-resource">
+<h3>Checking a resource<a class="headerlink" href="#checking-a-resource" title="Link to this heading"></a></h3>
+<p>Ask <code class="docutils literal notranslate"><span class="pre">\NCU\Resource\Permission\IPermissionManager</span></code> which permissions are left
+for the actor. The simplest form passes only the resource:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">NCU\Resource\Permission\CorePermission</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">NCU\Resource\Permission\IPermissionManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">NCU\Resource\ResourceReference</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Actor\Principal</span><span class="p">;</span>
+
+<span class="nv">$resource</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ResourceReference</span><span class="p">(</span>
+    <span class="nx">TableResourceType</span><span class="o">::</span><span class="na">ID</span><span class="p">,</span>
+    <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$table</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span>
+    <span class="nx">Principal</span><span class="o">::</span><span class="na">user</span><span class="p">(</span><span class="nv">$table</span><span class="o">-&gt;</span><span class="na">getOwnership</span><span class="p">()),</span>
+<span class="p">);</span>
+
+<span class="nv">$permissions</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">permissionManager</span><span class="o">-&gt;</span><span class="na">check</span><span class="p">(</span><span class="nv">$actor</span><span class="p">,</span> <span class="nv">$resource</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$permissions</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="nx">CorePermission</span><span class="o">::</span><span class="na">Update</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// Not allowed by another app</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Without access entries the result starts from all permissions that apply to
+the resource type. It tells you what other apps restrict, not what the actor
+may do: intersect it with the access your app grants.</p>
+<p>With access entries the result is what is left of the permissions granted by
+the entries, so it can be used directly:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">NCU\Resource\Permission\AccessEntry</span><span class="p">;</span>
+
+<span class="nv">$entries</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shareMapper</span><span class="o">-&gt;</span><span class="na">findSharesFor</span><span class="p">(</span><span class="nv">$table</span><span class="p">,</span> <span class="nv">$userId</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$share</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$entries</span><span class="p">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AccessEntry</span><span class="p">(</span>
+        <span class="nv">$share</span><span class="o">-&gt;</span><span class="na">getReceiverType</span><span class="p">()</span> <span class="o">===</span> <span class="s1">'circle'</span>
+            <span class="o">?</span> <span class="nx">AccessEntry</span><span class="o">::</span><span class="na">RECIPIENT_TEAM</span>
+            <span class="o">:</span> <span class="nx">AccessEntry</span><span class="o">::</span><span class="na">RECIPIENT_USER</span><span class="p">,</span>
+        <span class="nv">$share</span><span class="o">-&gt;</span><span class="na">getReceiver</span><span class="p">(),</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">toPermissionIds</span><span class="p">(</span><span class="nv">$share</span><span class="p">),</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$permissions</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">permissionManager</span><span class="o">-&gt;</span><span class="na">check</span><span class="p">(</span><span class="nv">$actor</span><span class="p">,</span> <span class="nv">$resource</span><span class="p">,</span> <span class="nv">$entries</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Pass an entry for every way the actor has access, including ownership if your
+app treats the owner like a recipient. Restrictions that only apply to one
+recipient, such as a team role, can only take effect if you pass entries.</p>
+<p>Permissions in an entry that do not apply to the resource type are ignored
+and logged.</p>
+</section>
+<section id="checking-many-resources">
+<h3>Checking many resources<a class="headerlink" href="#checking-many-resources" title="Link to this heading"></a></h3>
+<p>For listings use <code class="docutils literal notranslate"><span class="pre">checkAll</span></code>. The resources can be of different types, the
+actor is the same for all of them. The result is keyed by
+<code class="docutils literal notranslate"><span class="pre">ResourceReference::key()</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">NCU\Resource\Permission\ResourceAccess</span><span class="p">;</span>
+
+<span class="nv">$accesses</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$rows</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$accesses</span><span class="p">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ResourceAccess</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nx">ResourceReference</span><span class="p">(</span><span class="nx">RowResourceType</span><span class="o">::</span><span class="na">ID</span><span class="p">,</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$row</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()),</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$results</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">permissionManager</span><span class="o">-&gt;</span><span class="na">checkAll</span><span class="p">(</span><span class="nv">$actor</span><span class="p">,</span> <span class="nv">$accesses</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$accesses</span> <span class="k">as</span> <span class="nv">$access</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$canDelete</span> <span class="o">=</span> <span class="nv">$results</span><span class="p">[</span><span class="nv">$access</span><span class="o">-&gt;</span><span class="na">resource</span><span class="o">-&gt;</span><span class="na">key</span><span class="p">()]</span>
+        <span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="nx">CorePermission</span><span class="o">::</span><span class="na">Delete</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">check</span></code> and <code class="docutils literal notranslate"><span class="pre">checkAll</span></code> throw an <code class="docutils literal notranslate"><span class="pre">InvalidArgumentException</span></code> if a resource
+type is not registered. <code class="docutils literal notranslate"><span class="pre">checkAll</span></code> also throws if the same resource is
+passed more than once.</p>
+</section>
+<section id="enforcing-the-result">
+<h3>Enforcing the result<a class="headerlink" href="#enforcing-the-result" title="Link to this heading"></a></h3>
+<p>The server does not enforce anything for you. Use the result in both places:</p>
+<ul class="simple">
+<li><p>when you show a resource, to hide or disable what is not allowed, and to
+include the effective permissions in your API responses;</p></li>
+<li><p>when an action happens, to refuse it on the server side.</p></li>
+</ul>
+<p>Results are remembered while the process runs, so checking again when the
+action happens is cheap.</p>
+<p>Rules that depend on who receives something, such as “must not be shared with
+external recipients”, are not covered by this API. They are handled by the
+<code class="docutils literal notranslate"><span class="pre">\OCP\Interaction\RestrictInteractionEvent</span></code>.</p>
+</section>
+</section>
+<section id="for-restricting-apps">
+<h2>For restricting apps<a class="headerlink" href="#for-restricting-apps" title="Link to this heading"></a></h2>
+<p>Implement <code class="docutils literal notranslate"><span class="pre">\NCU\Resource\Permission\IRestrictionProvider</span></code>. The provider
+receives the actor and all resources of one check, and returns the permissions
+it restricts.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Resource</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">NCU\Resource\Permission\CorePermission</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">NCU\Resource\Permission\IRestrictionProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">NCU\Resource\Permission\Restriction</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\MyApp\Service\LabelService</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Actor\Actor</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">LabelRestrictionProvider</span> <span class="k">implements</span> <span class="nx">IRestrictionProvider</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">LabelService</span> <span class="nv">$labelService</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getRestrictions</span><span class="p">(</span><span class="nx">Actor</span> <span class="nv">$actor</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$accesses</span><span class="p">)</span><span class="o">:</span> <span class="nx">iterable</span> <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$accesses</span> <span class="k">as</span> <span class="nv">$access</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$resource</span> <span class="o">=</span> <span class="nv">$access</span><span class="o">-&gt;</span><span class="na">resource</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$resource</span><span class="o">-&gt;</span><span class="na">owner</span><span class="o">?-&gt;</span><span class="na">equals</span><span class="p">(</span><span class="nv">$actor</span><span class="o">-&gt;</span><span class="na">principal</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">continue</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="nv">$label</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">labelService</span><span class="o">-&gt;</span><span class="na">getLabel</span><span class="p">(</span><span class="nv">$resource</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">,</span> <span class="nv">$resource</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$label</span><span class="o">?-&gt;</span><span class="na">forbidsDownload</span><span class="p">())</span> <span class="p">{</span>
+                <span class="k">yield</span> <span class="nx">Restriction</span><span class="o">::</span><span class="na">forResource</span><span class="p">(</span><span class="nv">$resource</span><span class="p">,</span> <span class="p">[</span><span class="nx">CorePermission</span><span class="o">::</span><span class="na">DOWNLOAD</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Register it in the <code class="docutils literal notranslate"><span class="pre">register</span></code> method of your <code class="docutils literal notranslate"><span class="pre">Application</span></code> class:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerResourceRestrictionProvider</span><span class="p">(</span><span class="nx">LabelRestrictionProvider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Things to know:</p>
+<ul class="simple">
+<li><p>The provider is called for resources of every type. Return nothing for
+resources you have no rules for.</p></li>
+<li><p>A restriction is a list of permission IDs. Restricting a core permission
+also restricts every permission that is a kind of it. Unknown IDs are
+ignored.</p></li>
+<li><p>To allow only some core permissions, restrict the others.
+<code class="docutils literal notranslate"><span class="pre">CorePermission::cases()</span></code> gives you all of them.</p></li>
+<li><p>Load your data for the whole batch at once where possible, a listing can
+contain hundreds of resources.</p></li>
+<li><p>Whether the owner of a resource, administrators or system actors are exempt
+is up to you.</p></li>
+<li><p>Results are remembered while the process runs. Call
+<code class="docutils literal notranslate"><span class="pre">IPermissionManager::clearCache()</span></code> whenever your restrictions change, for
+example when a label is assigned or a role is changed, so that later checks
+in the same process see the change.</p></li>
+</ul>
+<section id="restricting-one-recipient">
+<h3>Restricting one recipient<a class="headerlink" href="#restricting-one-recipient" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Restriction::forResource</span></code> restricts permissions however the actor has
+access. <code class="docutils literal notranslate"><span class="pre">Restriction::forRecipient</span></code> restricts only the access the actor has
+through one recipient, which the owning app passed as an access entry:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">NCU\Resource\Permission\AccessEntry</span><span class="p">;</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$accesses</span> <span class="k">as</span> <span class="nv">$access</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$access</span><span class="o">-&gt;</span><span class="na">entries</span> <span class="k">as</span> <span class="nv">$entry</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$entry</span><span class="o">-&gt;</span><span class="na">recipientKind</span> <span class="o">!==</span> <span class="nx">AccessEntry</span><span class="o">::</span><span class="na">RECIPIENT_TEAM</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isVisitor</span><span class="p">(</span><span class="nv">$actor</span><span class="p">,</span> <span class="nv">$entry</span><span class="o">-&gt;</span><span class="na">recipientId</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">yield</span> <span class="nx">Restriction</span><span class="o">::</span><span class="na">forRecipient</span><span class="p">(</span>
+                <span class="nv">$access</span><span class="o">-&gt;</span><span class="na">resource</span><span class="p">,</span>
+                <span class="nv">$entry</span><span class="o">-&gt;</span><span class="na">recipientKind</span><span class="p">,</span>
+                <span class="nv">$entry</span><span class="o">-&gt;</span><span class="na">recipientId</span><span class="p">,</span>
+                <span class="p">[</span>
+                    <span class="nx">CorePermission</span><span class="o">::</span><span class="na">Update</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">,</span>
+                    <span class="nx">CorePermission</span><span class="o">::</span><span class="na">Create</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">,</span>
+                    <span class="nx">CorePermission</span><span class="o">::</span><span class="na">Delete</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">,</span>
+                    <span class="nx">CorePermission</span><span class="o">::</span><span class="na">Share</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">,</span>
+                <span class="p">],</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the same resource is also shared with the user directly, that entry is not
+restricted and the user keeps the permissions it grants.</p>
+</section>
+<section id="listing-permissions">
+<h3>Listing permissions<a class="headerlink" href="#listing-permissions" title="Link to this heading"></a></h3>
+<p>To let users configure restrictions, for example in an editor for labels or
+roles, read the registered permissions and resource types from the manager:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">permissionManager</span><span class="o">-&gt;</span><span class="na">getResourceTypes</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$resourceType</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$resourceType</span><span class="o">-&gt;</span><span class="na">getPermissionIds</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$permissionId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$permission</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">permissionManager</span><span class="o">-&gt;</span><span class="na">getPermission</span><span class="p">(</span><span class="nv">$permissionId</span><span class="p">);</span>
+        <span class="c1">// $permission-&gt;getDisplayName(), $permission-&gt;getHint(), $permission-&gt;getKindOf()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Store the permission IDs, never class names.</p>
+</section>
+</section>
+<section id="how-results-are-combined">
+<h2>How results are combined<a class="headerlink" href="#how-results-are-combined" title="Link to this heading"></a></h2>
+<p>For every resource the server</p>
+<ol class="arabic simple">
+<li><p>takes the permissions that apply to the resource type,</p></li>
+<li><p>without access entries starts from all of them; with access entries takes,
+for each entry, the granted permissions without those restricted for the
+recipient of the entry, and merges the entries,</p></li>
+<li><p>removes the permissions restricted for the resource as a whole.</p></li>
+</ol>
+<p>A permission restricted by one restricting app is restricted, no matter what
+other restricting apps say.</p>
+<p>In the following example a resource is shared with the actor directly and
+with a team the actor is a member of. One restricting app restricts what the
+actor can do through the team, another one restricts sharing the resource.</p>
+<pre  class="mermaid">
+        flowchart TD
+    type[&quot;Permissions of the resource type&lt;br&gt;read, update, delete, share&quot;]
+    type --&gt; user
+    type --&gt; team
+
+    subgraph entries [Access entries]
+        user[&quot;Recipient: user&lt;br&gt;grants read, update, share&quot;]
+        team[&quot;Recipient: team&lt;br&gt;grants read, update, delete&quot;]
+        user -- &quot;no restriction for this recipient&quot; --&gt; userLeft[&quot;read, update, share&quot;]
+        team -- &quot;restricted for this recipient:&lt;br&gt;update, delete, share&quot; --&gt; teamLeft[&quot;read&quot;]
+    end
+
+    userLeft --&gt; merged[&quot;Merged&lt;br&gt;read, update, share&quot;]
+    teamLeft --&gt; merged
+    merged -- &quot;restricted for the resource:&lt;br&gt;share&quot; --&gt; result[&quot;Result&lt;br&gt;read, update&quot;]
+    </pre><p>If a restricting app is disabled, its restrictions no longer apply. If a
+restriction provider throws an exception during a check or cannot be loaded,
+every permission on all resources of that check is restricted and the error
+is logged.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="publicpage.html" class="btn btn-neutral float-left" title="Public Pages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="talk.html" class="btn btn-neutral float-right" title="Talk Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Nov 21, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-dev">
+      ☁️ 36
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-dev" class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            35 (latest)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/developer_manual"
+             
+          >
+            34 (stable)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/33/developer_manual"
+             
+          >
+            33 (stable)
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

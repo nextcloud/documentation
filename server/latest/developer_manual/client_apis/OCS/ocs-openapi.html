@@ -234,7 +234,14 @@ For details take a look at <a class="reference internal" href="../../basics/cont
 </pre></div>
 </div>
 </div>
-</details></section>
+</details><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use a custom base controller instead of extending <code class="docutils literal notranslate"><span class="pre">OCSController</span></code> directly, the name of that
+base class must also end with <code class="docutils literal notranslate"><span class="pre">OCSController</span></code> (for example <code class="docutils literal notranslate"><span class="pre">MyBaseOCSController</span></code>).
+<code class="docutils literal notranslate"><span class="pre">openapi-extractor</span></code> only checks the name of the immediate parent class, not the full inheritance
+chain, so a base class with a different name is not recognized as OCS and produces a confusing warning.</p>
+</div>
+</section>
 <section id="carefully-handle-empty-values-in-json-responses">
 <h4>CAREFULLY handle empty values in JSON Responses<a class="headerlink" href="#carefully-handle-empty-values-in-json-responses" title="Link to this heading"></a></h4>
 <p>When defining API responses, it’s important to make explicit whether an empty value should be <code class="docutils literal notranslate"><span class="pre">null</span></code>, an empty object (<code class="docutils literal notranslate"><span class="pre">{}</span></code>), or an empty array (<code class="docutils literal notranslate"><span class="pre">[]</span></code>) in the resulting JSON. The PHP type you return determines this, and using the wrong one can easily lead to confusing or inconsistent results for your API consumers.</p>
@@ -998,7 +1005,7 @@ Additionally you should run psalm to check for any problems.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Nov 09, 2026.
+      <span class="lastupdated">Last updated on Nov 21, 2026.
       </span></p>
   </div>
 
