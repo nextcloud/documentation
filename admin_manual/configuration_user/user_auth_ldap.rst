@@ -1,6 +1,6 @@
-=============================
-User authentication with LDAP
-=============================
+=====================================
+LDAP and Active Directory integration
+=====================================
 
 Nextcloud ships with an LDAP application to allow LDAP users (including Active
 Directory) to appear in your Nextcloud user listings. These users will
