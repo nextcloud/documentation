@@ -1,6 +1,6 @@
-==========================
-Instruction set for groups
-==========================
+=========
+Group API
+=========
 
 Search/get groups
 -----------------
