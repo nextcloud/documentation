@@ -175,7 +175,7 @@ Setting storage quotas
 ----------------------
 
 Click the gear icon on the lower left pane to set a default storage quota. This is
-automatically applied to new accouns. You may assign a different quota to any account
+automatically applied to new accounts. You may assign a different quota to any account
 by selecting from the **Quota** dropdown, selecting either a preset value or
 entering a custom value. When you create custom quotas, use the standard
 abbreviations for your storage values, such as ``500 MB``, ``5 GB``, ``5 TB``, and so on.
