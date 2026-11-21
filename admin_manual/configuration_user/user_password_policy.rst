@@ -13,7 +13,7 @@ Customizable password policies include:
 * Requiring uppercase and lowercase characters
 * Requiring numeric characters
 * Requiring special characters (such as ``!`` or ``:``)
-* Checking passwords against the breached-password list operated by HaveIBeenPwned.com (HIBP) 
+* Checking passwords against the breached-password list operated by HaveIBeenPwned.com (HIBP)
 
 .. note:: For the breached-password check, Nextcloud hashes the password locally,
           then sends only the first five characters of the hash to the HIBP API. If the API is
