@@ -1,0 +1,535 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caddy configuration &mdash; Nextcloud 36 Administration Manual</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=850d043c" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/installation/caddy.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hardening and security guidance" href="harden_server.html" />
+    <link rel="prev" title="NGINX configuration" href="nginx.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation and server configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="php_configuration.html">Preparing PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Install from the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automated installation with <code class="docutils literal notranslate"><span class="pre">autoconfig.php</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">NGINX configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Caddy configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nextcloud-in-the-webroot-of-caddy">Nextcloud in the webroot of Caddy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tips-and-tricks">Tips and tricks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#suppressing-log-messages">Suppressing log messages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 24.04 LTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_centos.html">Example installation on CentOS 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_openbsd.html">Example installation on OpenBSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database setup and configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management_api.html">Apps management API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../automation_overview/index.html">Automation in Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/budibase_workflows.html">Budibase Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/collabora_online.html">Collabora Online</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 36 Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Installation and server configuration</a></li>
+      <li class="breadcrumb-item active">Caddy configuration</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/installation/caddy.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="caddy-configuration">
+<span id="caddy-config"></span><h1>Caddy configuration<a class="headerlink" href="#caddy-configuration" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please note that webservers other than Apache 2.x are not officially supported.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This page covers example Caddy configuration to run a Nextcloud server.
+These configuration examples were originally provided by
+<a class="reference external" href="https://github.com/ntninja">&#64;ntninja</a> based on the <a class="reference internal" href="nginx.html"><span class="doc">NGINX configuration</span></a> sample and
+are exclusively community-maintained. (Thank you contributors!)</p>
+</div>
+<ul class="simple">
+<li><p>This guide assumes you are using Caddy 2.6 or later and the presented sample
+configuration will not work on older versions without modification.</p></li>
+<li><p>Caddy takes care of TLS certificate configuration and HTTP-to-HTTPS redirects
+automatically, so that is not covered here.</p></li>
+<li><p>The example configuration makes use of the <a class="reference external" href="https://caddyserver.com/docs/caddyfile/directives/route">route</a>
+directive which disables all directive reordering usually done by Caddy. This
+means that anything within that block should be read strictly top-to-bottom
+unlike what you may be used to from NGINX or regular (non-route) Caddy
+configurations.</p></li>
+<li><p>Be careful about line breaks if you copy the examples, as long lines may be
+broken for page formatting.</p></li>
+<li><p>Some environments might need a <code class="docutils literal notranslate"><span class="pre">cgi.fix_pathinfo</span></code> set to <code class="docutils literal notranslate"><span class="pre">1</span></code> in their
+<code class="docutils literal notranslate"><span class="pre">php.ini</span></code>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using <strong>FrankenPHP</strong> (an application server built on top of Caddy),
+you can use the <code class="docutils literal notranslate"><span class="pre">php_server</span></code> directive instead of the <code class="docutils literal notranslate"><span class="pre">php_fastcgi</span></code>-based
+approach described on this page. FrankenPHP handles the try-files logic and PHP
+routing internally, which greatly simplifies the configuration. See the
+<a class="reference external" href="https://frankenphp.dev/docs/">FrankenPHP documentation</a> and a community
+example at <a class="reference external" href="https://gitlab.com/greyxor/nextcloud-docker">https://gitlab.com/greyxor/nextcloud-docker</a> for reference.</p>
+</div>
+<section id="nextcloud-in-the-webroot-of-caddy">
+<h2>Nextcloud in the webroot of Caddy<a class="headerlink" href="#nextcloud-in-the-webroot-of-caddy" title="Link to this heading"></a></h2>
+<p>The following configuration should be used when Nextcloud is placed in the
+webroot of your Caddy installation. In this example it is
+<code class="docutils literal notranslate"><span class="pre">/var/www/nextcloud</span></code> and it is accessed via <code class="docutils literal notranslate"><span class="pre">http(s)://cloud.example.com/</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cloud.example.com  # Public server hostname
+
+request_body {
+	max_size 10G
+}
+
+# Enable compression but do not remove ETag headers
+encode {
+	zstd
+	gzip 4
+
+	minimum_length 256
+
+	# The trailing `*` also matches values with parameters,
+	# e.g. `application/json; charset=utf-8`
+	match {
+		header Content-Type application/atom+xml*
+		header Content-Type application/javascript*
+		header Content-Type application/json*
+		header Content-Type application/ld+json*
+		header Content-Type application/manifest+json*
+		header Content-Type application/rss+xml*
+		header Content-Type application/vnd.geo+json*
+		header Content-Type application/vnd.ms-fontobject*
+		header Content-Type application/wasm*
+		header Content-Type application/x-font-ttf*
+		header Content-Type application/x-web-app-manifest+json*
+		header Content-Type application/xhtml+xml*
+		header Content-Type application/xml*
+		header Content-Type font/opentype*
+		header Content-Type image/bmp*
+		header Content-Type image/svg+xml*
+		header Content-Type image/x-icon*
+		header Content-Type text/cache-manifest*
+		header Content-Type text/css*
+		header Content-Type text/javascript*
+		header Content-Type text/plain*
+		header Content-Type text/vcard*
+		header Content-Type text/vnd.rim.location.xloc*
+		header Content-Type text/vtt*
+		header Content-Type text/x-component*
+		header Content-Type text/x-cross-domain-policy*
+	}
+}
+
+# Add security-related headers
+header {
+	# HSTS settings
+	# WARNING: Only add the preload option once you read about
+	# the consequences in https://hstspreload.org/. This option
+	# will add the domain to a hardcoded list that is shipped
+	# in all major browsers and getting removed from this list
+	# could take several months.
+	#Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+	Referrer-Policy no-referrer
+	X-Content-Type-Options nosniff
+	X-Frame-Options SAMEORIGIN
+	X-Permitted-Cross-Domain-Policies none
+	X-Robots-Tag "noindex, nofollow"
+	# Remove X-Powered-By header (already removed by default in newer Caddy)
+	-X-Powered-By
+}
+
+# Path to the root of your installation
+root * /var/www/nextcloud
+
+route {
+	# Rule borrowed from `.htaccess` to handle Microsoft DAV clients
+	@msftdavclient {
+		header User-Agent DavClnt*
+		path /
+	}
+	redir @msftdavclient /remote.php/webdav/ temporary
+
+	route /robots.txt {
+		skip_log
+		file_server
+	}
+
+	# Add exception for `/.well-known` so that clients can still access it
+	# despite the existence of the `error @internal 404` rule which would
+	# otherwise handle requests for `/.well-known` below
+	route /.well-known/* {
+		redir /.well-known/carddav /remote.php/dav/ permanent
+		redir /.well-known/caldav /remote.php/dav/ permanent
+
+		@well-known-static path \
+			/.well-known/acme-challenge /.well-known/acme-challenge/* \
+			/.well-known/pki-validation /.well-known/pki-validation/*
+		route @well-known-static {
+			try_files {path} {path}/ =404
+			file_server
+		}
+
+		redir * /index.php{path} permanent
+	}
+
+	# Block access to internal/sensitive paths
+	@internal path \
+		/build /build/* \
+		/tests /tests/* \
+		/config /config/* \
+		/lib /lib/* \
+		/3rdparty /3rdparty/* \
+		/templates /templates/* \
+		/data /data/* \
+		\
+		/.* \
+		/autotest* \
+		/occ* \
+		/issue* \
+		/indie* \
+		/db_* \
+		/console*
+	error @internal 404
+
+	# Only if requested file exists on disk, otherwise /index.php will handle it
+	@assets {
+		path *.css *.js *.mjs *.svg *.gif *.ico *.jpg *.jpeg *.png *.webp *.wasm *.tflite *.map *.ogg *.flac *.mp4 *.webm
+		file {path}
+	}
+	route @assets {
+		header Cache-Control "public, max-age=15778463"  # Cache-Control policy borrowed from the NGINX sample
+		skip_log                                          # Optional: Don't log access to assets
+		file_server {
+			precompressed gzip
+		}
+	}
+
+	@fonts {
+		path *.otf *.woff *.woff2
+		file {path}
+	}
+	route @fonts {
+		header Cache-Control "public, max-age=604800"
+		skip_log
+		file_server
+	}
+
+	# Rule borrowed from `.htaccess`
+	redir /remote/* /remote.php{path} permanent
+
+	# Serve found static files, falling through to PHP handler if not found
+	try_files {path} {path}/
+	@notphpordir not path /*.php /*.php/* / /*/
+	file_server @notphpordir {
+		pass_thru
+	}
+
+	# Required for legacy support
+	#
+	# Rewrites all other requests to be prepended with "/index.php" unless they already
+	# match a known PHP entry point.
+	@unknownphppath not path \
+		/index.php /index.php/* \
+		/remote.php /remote.php/* \
+		/public.php /public.php/* \
+		/cron.php /cron.php/* \
+		/core/ajax/update.php /core/ajax/update.php/* \
+		/status.php /status.php/* \
+		/ocs/v1.php /ocs/v1.php/* \
+		/ocs/v2.php /ocs/v2.php/* \
+		/updater/*.php /updater/*.php/* \
+		/ocm-provider/*.php /ocm-provider/*.php/* \
+		/ocs-provider/*.php /ocs-provider/*.php/*
+	rewrite @unknownphppath /index.php{path}
+
+	# Let everything else be handled by the PHP-FPM component
+	# Adjust the address to match your PHP-FPM socket or TCP address
+	# (e.g. unix//var/run/php/php-fpm.sock or 127.0.0.1:9000)
+	php_fastcgi 127.0.0.1:9000 {
+		env modHeadersAvailable true         # Avoid sending the security headers twice
+		env front_controller_active true     # Enable pretty urls
+	}
+}
+</pre></div>
+</div>
+</section>
+<section id="tips-and-tricks">
+<h2>Tips and tricks<a class="headerlink" href="#tips-and-tricks" title="Link to this heading"></a></h2>
+<section id="suppressing-log-messages">
+<h3>Suppressing log messages<a class="headerlink" href="#suppressing-log-messages" title="Link to this heading"></a></h3>
+<p>Nextcloud’s setup checks request <code class="docutils literal notranslate"><span class="pre">/data/htaccesstest.txt</span></code> to make sure the
+data directory cannot be reached from the web. The sample configuration answers
+these requests with a 404. To keep them out of your access log, add this line at
+the top of the <code class="docutils literal notranslate"><span class="pre">route</span></code> block:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>route {
+  skip_log /data/htaccesstest.txt
+
+  # …
+}
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nginx.html" class="btn btn-neutral float-left" title="NGINX configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="harden_server.html" class="btn btn-neutral float-right" title="Hardening and security guidance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
+      ☁️ 36
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            35 (latest)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/admin_manual"
+             
+          >
+            34 (stable)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33 (stable)
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

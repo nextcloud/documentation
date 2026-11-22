@@ -125,7 +125,7 @@
 <p class="caption" role="heading"><span class="caption-text">Files</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="configuration_files/index.html">File sharing and management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul>
@@ -153,7 +153,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="office/collabora_online.html">Collabora Online</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
 <ul>
@@ -931,7 +933,8 @@ admin settings page.</p>
   <span class="o">--</span><span class="n">config</span> <span class="n">bucket</span><span class="o">=</span><span class="n">my</span><span class="o">-</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">photos</span> \
   <span class="o">--</span><span class="n">config</span> <span class="n">region</span><span class="o">=</span><span class="n">eu</span><span class="o">-</span><span class="n">central</span><span class="o">-</span><span class="mi">1</span> \
   <span class="o">--</span><span class="n">config</span> <span class="n">key</span><span class="o">=</span><span class="n">AKIAIOSFODNN7EXAMPLE</span> \
-  <span class="o">--</span><span class="n">config</span> <span class="n">secret</span><span class="o">=</span><span class="n">wJalrXUtnFEMI</span><span class="o">/</span><span class="n">K7MDENG</span><span class="o">/</span><span class="n">bPxRfiCYEXAMPLEKEY</span>
+  <span class="o">--</span><span class="n">config</span> <span class="n">secret</span><span class="o">=</span><span class="n">wJalrXUtnFEMI</span><span class="o">/</span><span class="n">K7MDENG</span><span class="o">/</span><span class="n">bPxRfiCYEXAMPLEKEY</span> \
+  <span class="o">--</span><span class="n">applicable</span><span class="o">-</span><span class="n">group</span> <span class="n">engineering</span>
 </pre></div>
 </div>
 <p>Arguments:</p>
@@ -944,6 +947,9 @@ admin settings page.</p>
 </ul>
 <p>Use <code class="docutils literal notranslate"><span class="pre">files_external:backends</span></code> to list all available storage and
 authentication backends.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--applicable-group</span></code> and <code class="docutils literal notranslate"><span class="pre">--applicable-user</span></code> (both can be repeated) to
+limit the mount to specific groups or users. A mount with no users or groups
+assigned is available to all users.</p>
 <p>For a personal mount, specify the user with <code class="docutils literal notranslate"><span class="pre">--user</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">create</span> \
   <span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">s3</span> <span class="n">amazons3</span> <span class="n">builtin</span><span class="p">::</span><span class="n">builtin</span> \

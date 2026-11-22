@@ -83,12 +83,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../tech_details/index.html">Technical details</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Frequently Asked Questions</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="DockerContainerRegistry.html">Docker Container Registry</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Docker Socket Proxy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#nextcloud-appapi-dsp">Nextcloud AppAPI DSP</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#nextcloud-aio">Nextcloud AIO</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#other-implementations">Other implementations</a></li>
-</ul>
-</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Docker Socket Proxy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GpuSupport.html">GPU support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Scaling.html">Scaling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="BehindCompanyProxy.html">Corporate Proxy - Permanent Settings for PHP CLI</a></li>
@@ -134,52 +129,13 @@
              
   <section id="docker-socket-proxy">
 <h1>Docker Socket Proxy<a class="headerlink" href="#docker-socket-proxy" title="Link to this heading"></a></h1>
-<p>The recommended way to setup the AppAPI Deploy daemon
-is to use our <a class="reference external" href="https://github.com/nextcloud/docker-socket-proxy">Docker Socket Proxy implementation</a>.</p>
-<section id="nextcloud-appapi-dsp">
-<h2>Nextcloud AppAPI DSP<a class="headerlink" href="#nextcloud-appapi-dsp" title="Link to this heading"></a></h2>
-<p>Nextcloud AppAPI DSP (Docker Socket Proxy) is a simple Docker container that provides a secure way to access the Docker Engine API and ExApps.
-It is secured with haproxy Basic authentication.
-There are two parts of reverse proxy configuration:</p>
-<ul class="simple">
-<li><p>HaProxy config for <a class="reference external" href="https://github.com/nextcloud/docker-socket-proxy/blob/main/haproxy.cfg.template">Docker Engine API</a></p></li>
-<li><p>HaProxy config for <a class="reference external" href="https://github.com/nextcloud/docker-socket-proxy/blob/main/haproxy_ex_apps.cfg.template">ExApps</a></p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For remote Docker Socket Proxy setup, it should expose the ports on the host.</p>
-</div>
-</section>
-<section id="nextcloud-aio">
-<span id="faq-nextcloud-aio-docker-socket-proxy"></span><h2>Nextcloud AIO<a class="headerlink" href="#nextcloud-aio" title="Link to this heading"></a></h2>
-<p>Nextcloud AIO implements its own <a class="reference external" href="https://github.com/nextcloud/all-in-one/tree/main/Containers/docker-socket-proxy">Docker Socket Proxy container</a>;
-you just need to tick the checkbox in the AIO configuration interface to enable it.
-AppAPI automatically creates the default Deploy daemon configuration for Nextcloud AIO.</p>
-<p>See <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/exapps_management/DeployConfigurations.html#nextcloud-in-docker-aio-all-in-one">Nextcloud in Docker AIO (all-in-one)</a> for more details.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Nextcloud AIO is not limited to its default Deploy daemon.
-You can setup any other Deploy daemon (local or remote) for use in AppAPI.</p>
-</div>
-</section>
-<section id="other-implementations">
-<h2>Other implementations<a class="headerlink" href="#other-implementations" title="Link to this heading"></a></h2>
-<p>Our implementation is inspired by <a class="reference external" href="https://github.com/Tecnativa/docker-socket-proxy">Tecnativa Docker Socket Proxy</a>.
-By default, it restricts access to the required by AppAPI Docker Engine APIs.
-In this case, you will have to enable these APIs via the environment variables:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">IMAGES=1</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CONTAINER=1</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">POST=1</span></code></p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For local Deploy daemon setup, other implementations of Docker Socket Proxy may be enough.
-But for remote Deploy daemon setup, we recommend using our DSP,
-as <a class="reference external" href="https://github.com/nextcloud/docker-socket-proxy/blob/main/haproxy.cfg.template">we allow</a> only the Docker Engine APIs we actually use in AppAPI,
-and it is additionally secured with haproxy authentication.</p>
-</div>
-</section>
+<p>AppAPI no longer supports Docker Socket Proxy (DSP) deploy daemons.
+Docker deploy daemons use <a class="reference external" href="https://github.com/nextcloud/HaRP">HaRP</a>,
+see <a class="reference internal" href="../development_overview/ExAppHarpIntegration.html"><span class="doc">Adapting ExApps to HaRP</span></a>.</p>
+<p>ExApps already installed on a DSP daemon keep running, but AppAPI no longer manages them.
+To move them to HaRP, see
+<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/exapps_management/AppAPIAndExternalApps.html#moving-exapps-from-docker-socket-proxy-to-harp">Moving ExApps from Docker Socket Proxy to HaRP</a>
+in the administration guide.</p>
 </section>
 
 
@@ -194,7 +150,7 @@ and it is additionally secured with haproxy authentication.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Nov 09, 2026.
+      <span class="lastupdated">Last updated on Nov 22, 2026.
       </span></p>
   </div>
 

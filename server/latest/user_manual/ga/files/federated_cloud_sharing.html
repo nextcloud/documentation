@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ag baint úsáide as scaireanna cónaidhme &mdash; Nextcloud 36 User Manual</title>
+  <title>Using federated shares &mdash; Nextcloud 36 User Manual</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -82,8 +82,8 @@
 <li class="toctree-l3"><a class="reference internal" href="sharing.html">Comhroinnt comhad</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sharing.html#federated-shares">Scaireanna cónaidhme</a></li>
 <li class="toctree-l3"><a class="reference internal" href="file_drop.html">Uaslódálacha gan ainm a dhéanamh</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Ag baint úsáide as scaireanna cónaidhme</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federation-share">Comhroinn chónaidhme nua a chruthú</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using federated shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-share">Creating a new federated share</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Comhroinnt néil chónasctha nua a chruthú trí ríomhphost</a></li>
 </ul>
 </li>
@@ -97,6 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Caint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Comhchoistí</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Cliant Deisce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office_desktop_editors.html">Nextcloud Office Desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ag socrú do shainroghanna</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Rochtain uilíoch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Ag baint úsáide as fíordheimhniú dhá-fhachtóir</a></li>
@@ -119,7 +120,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Comhaid &amp; sioncronú</a></li>
           <li class="breadcrumb-item"><a href="collaboration.html">Comhroinnt &amp; comhoibriú</a></li>
-      <li class="breadcrumb-item active">Ag baint úsáide as scaireanna cónaidhme</li>
+      <li class="breadcrumb-item active">Using federated shares</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/federated_cloud_sharing.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -129,12 +130,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-federation-shares">
-<h1>Ag baint úsáide as scaireanna cónaidhme<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
-<p>Ligeann Comhroinnt Cónaidhm duit scaireanna comhaid a shuiteáil ó fhreastalaithe iargúlta Nextcloud, rud a chruthaíonn do scamall Nextclouds féin. Is féidir leat naisc dhíreacha scaireanna a chruthú le húsáideoirí ar fhreastalaithe Nextcloud eile.</p>
-<section id="creating-a-new-federation-share">
-<h2>Comhroinn chónaidhme nua a chruthú<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
-<p>Cumasaítear comhroinnt chónaidhm ar shuiteálacha nua nó uasghrádaithe Nextcloud de réir réamhshocraithe. Lean na céimeanna seo chun sciar nua a chruthú le freastalaithe eile Nextcloud nó ownCloud 9+:</p>
+  <section id="using-federated-shares">
+<h1>Using federated shares<a class="headerlink" href="#using-federated-shares" title="Link to this heading"></a></h1>
+<p>Federated sharing allows you to mount file shares from remote Nextcloud servers, in effect
+creating your own cloud of Nextclouds. You can create direct share links with
+users on other Nextcloud servers.</p>
+<section id="creating-a-new-federated-share">
+<h2>Creating a new federated share<a class="headerlink" href="#creating-a-new-federated-share" title="Link to this heading"></a></h2>
+<p>Federated sharing is enabled on new or upgraded Nextcloud installations
+by default. Follow these steps to create a new share with other Nextcloud or ownCloud 9+ servers:</p>
 <ol class="arabic">
 <li><p>Téigh go dtí do leathanach <code class="docutils literal notranslate"><span class="pre">Comhaid</span></code> agus cliceáil ar an deilbhín <strong>Share</strong> ar an gcomhad nó ar an eolaire is mian leat a roinnt. Sa bharra taoibh cuir isteach ainm úsáideora agus URL an chianúsáideora san fhoirm seo: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;oc-server-url&gt;</span></code>. Deimhníonn an fhoirm go huathoibríoch an seoladh a scríobhann tú agus lipéadaítear é mar “iargúlta”. Cliceáil ar an lipéad.</p>
 <figure class="align-default">

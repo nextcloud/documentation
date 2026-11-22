@@ -81,12 +81,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Setting up dev environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install-appapi">Install AppAPI</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#deploy-daemons-types">Deploy daemons types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker-socket-proxy">Docker Socket Proxy</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#in-place-of-a-conclusion">In Place of a Conclusion</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#docker-remote-api">Docker remote API</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker-by-socket">Docker by socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#harp">HaRP</a></li>
 </ul>
 </li>
 </ul>
@@ -174,41 +169,17 @@ in which case uninstall the release version of AppAPI and perform the following 
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">manual_install</span></code>: This type of Deploy daemon is running manually in the host machine.
 This is useful for ExApp development as you can run your ExApp directly on the host.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docker_install</span></code>: This type of Deploy daemon is running in a Docker container.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker_install</span></code>: This type of Deploy daemon deploys ExApps as Docker containers through HaRP.</p></li>
 </ol>
 <p>You can register (create) these daemons in the AppAPI admin settings.
 For the equivalent <code class="docutils literal notranslate"><span class="pre">occ</span></code> command or an explanation of the Deploy daemon parameters,
 see <a class="reference internal" href="tech_details/Deployment.html#occ-daemon-config-registration"><span class="std std-ref">DaemonConfig registration</span></a>.</p>
 </section>
-<section id="docker-socket-proxy">
-<h3>Docker Socket Proxy<a class="headerlink" href="#docker-socket-proxy" title="Link to this heading"></a></h3>
-<p>For development and testing locally,
-the simplest way is to use the <a class="reference external" href="https://github.com/nextcloud/docker-socket-proxy?tab=readme-ov-file#httplocal">Nextcloud AppAPI DSP HTTP</a>.</p>
-</section>
-</section>
-<section id="in-place-of-a-conclusion">
-<h2>In Place of a Conclusion<a class="headerlink" href="#in-place-of-a-conclusion" title="Link to this heading"></a></h2>
-<p>There are several make commands available to ease frequent development actions.</p>
-<p>To see the complete list, execute <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">help</span></code>.</p>
-<section id="docker-remote-api">
-<h3>Docker remote API<a class="headerlink" href="#docker-remote-api" title="Link to this heading"></a></h3>
-<p>The Docker Engine remote API can be easily configured via <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">dock2port</span></code> command.
-The command will create a docker container to provide remote Docker Engine API.</p>
-<p>Afterward, register DaemonConfigs in Nextcloud using <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">dock-port</span></code> command.</p>
-</section>
-<section id="docker-by-socket">
-<h3>Docker by socket<a class="headerlink" href="#docker-by-socket" title="Link to this heading"></a></h3>
-<p>For Docker via socket, use the command <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">dock-sock</span></code>.
-This registers DaemonConfigs in Nextcloud for the default socket connection (<code class="docutils literal notranslate"><span class="pre">/var/run/docker.sock</span></code>).</p>
-<p>Make sure that socket has enough permissions for Nextcloud and webserver user to access it
-and actually forwarded to the container:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
-<span class="n">volumes</span><span class="p">:</span>
-    <span class="o">...</span>
-    <span class="o">-</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">docker</span><span class="o">.</span><span class="n">sock</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">docker</span><span class="o">.</span><span class="n">sock</span>
-    <span class="o">...</span>
-</pre></div>
-</div>
+<section id="harp">
+<h3>HaRP<a class="headerlink" href="#harp" title="Link to this heading"></a></h3>
+<p>For development and testing in Docker, register a <code class="docutils literal notranslate"><span class="pre">docker-install</span></code> deploy daemon with
+<a class="reference external" href="https://github.com/nextcloud/HaRP">HaRP</a>, see
+<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/exapps_management/AppAPIAndExternalApps.html#setup-deploy-daemon">Setup deploy daemon</a>.</p>
 </section>
 </section>
 </section>
@@ -225,7 +196,7 @@ and actually forwarded to the container:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Nov 09, 2026.
+      <span class="lastupdated">Last updated on Nov 22, 2026.
       </span></p>
   </div>
 

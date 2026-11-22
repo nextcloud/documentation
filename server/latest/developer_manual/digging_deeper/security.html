@@ -93,6 +93,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#rate-limiting">Rate Limiting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#remote-host-validation">Remote Host Validation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#trusted-domain">Trusted domain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cryptography-helpers">Cryptography helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deserialization">Deserialization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csv-and-spreadsheet-export">CSV and spreadsheet export</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
@@ -221,21 +224,125 @@
 <section id="trusted-domain">
 <h2>Trusted domain<a class="headerlink" href="#trusted-domain" title="Link to this heading"></a></h2>
 <p>In some cases it might be required that an app checks that a user given link is one of the current instance.
-This is possible with the <code class="docutils literal notranslate"><span class="pre">OCP\Security\ITrustedDomainHelper</span></code>:</p>
+This is possible with the <code class="docutils literal notranslate"><span class="pre">OCP\Security\ITrustedDomainHelper</span></code>. Inject it into your class instead of using the private <code class="docutils literal notranslate"><span class="pre">\OC::$server</span></code> API:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
 <span class="k">use</span> <span class="nx">OCP\Security\ITrustedDomainHelper</span><span class="p">;</span>
 
-<span class="nv">$helper</span> <span class="o">=</span> <span class="nx">\OC</span><span class="o">::</span><span class="nv">$server</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">ITrustedDomainHelper</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="k">class</span> <span class="nc">MyLinkChecker</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">ITrustedDomainHelper</span> <span class="nv">$trustedDomainHelper</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
 
-<span class="c1">// Compare a full URL example given</span>
-<span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://localhost/nextcloud/index.php/apps/files/'</span><span class="p">;</span>
-<span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">isTrustedUrl</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">isInstanceLink</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$url</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trustedDomainHelper</span><span class="o">-&gt;</span><span class="na">isTrustedUrl</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+    <span class="p">}</span>
 
-<span class="c1">// Compare a domain and port</span>
-<span class="nv">$domain</span> <span class="o">=</span> <span class="s1">'example.tld:8443'</span><span class="p">;</span>
-<span class="nv">$helper</span><span class="o">-&gt;</span><span class="na">isTrustedDomain</span><span class="p">(</span><span class="nv">$domain</span><span class="p">);</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">isInstanceDomain</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$domain</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+        <span class="c1">// Compare a domain and optional port, e.g. example.tld:8443</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trustedDomainHelper</span><span class="o">-&gt;</span><span class="na">isTrustedDomain</span><span class="p">(</span><span class="nv">$domain</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="cryptography-helpers">
+<h2>Cryptography helpers<a class="headerlink" href="#cryptography-helpers" title="Link to this heading"></a></h2>
+<p>Nextcloud provides public cryptography helpers that apps should <a class="reference internal" href="../basics/dependency_injection.html#dependency-injection"><span class="std std-ref">inject</span></a> rather than calling PHP’s low-level crypto or hashing functions directly.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ICrypto</span></code> encrypts and decrypts strings with AES-CBC and an HMAC (Encrypt-Then-MAC). When no password is passed, the instance <code class="docutils literal notranslate"><span class="pre">secret</span></code> from <code class="docutils literal notranslate"><span class="pre">config.php</span></code> is used:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Security\ICrypto</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MySecretStore</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">ICrypto</span> <span class="nv">$crypto</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">store</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$plaintext</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">crypto</span><span class="o">-&gt;</span><span class="na">encrypt</span><span class="p">(</span><span class="nv">$plaintext</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">load</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$ciphertext</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">crypto</span><span class="o">-&gt;</span><span class="na">decrypt</span><span class="p">(</span><span class="nv">$ciphertext</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ISecureRandom</span></code> generates cryptographically secure random strings (tokens, passwords, nonces):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Security\ISecureRandom</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyTokenFactory</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">ISecureRandom</span> <span class="nv">$secureRandom</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createToken</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">secureRandom</span><span class="o">-&gt;</span><span class="na">generate</span><span class="p">(</span>
+            <span class="mi">32</span><span class="p">,</span>
+            <span class="nx">ISecureRandom</span><span class="o">::</span><span class="na">CHAR_ALPHANUMERIC</span><span class="p">,</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">IHasher</span></code> hashes and verifies passwords (or similar secrets) with a versioned format that supports future algorithm upgrades:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Security\IHasher</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyPasswordStore</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IHasher</span> <span class="nv">$hasher</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">hash</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$password</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasher</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">(</span><span class="nv">$password</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">verify</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$password</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$hash</span><span class="p">,</span> <span class="o">?</span><span class="nx">string</span> <span class="o">&amp;</span><span class="nv">$newHash</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasher</span><span class="o">-&gt;</span><span class="na">verify</span><span class="p">(</span><span class="nv">$password</span><span class="p">,</span> <span class="nv">$hash</span><span class="p">,</span> <span class="nv">$newHash</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="deserialization">
+<h2>Deserialization<a class="headerlink" href="#deserialization" title="Link to this heading"></a></h2>
+<p>Never call <code class="docutils literal notranslate"><span class="pre">unserialize()</span></code> on data that can be influenced by a user (request bodies, file contents, database values written from user input, etc.). PHP object injection via <code class="docutils literal notranslate"><span class="pre">unserialize()</span></code> can lead to remote code execution.</p>
+<p>Prefer JSON for structured data:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="c1">// Safe: decode into arrays / scalars only</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$userProvidedJson</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="nx">JSON_THROW_ON_ERROR</span><span class="p">);</span>
+
+<span class="c1">// Unsafe — do not do this with user-influenced input:</span>
+<span class="c1">// $data = unserialize($userProvidedPayload);</span>
+</pre></div>
+</div>
+</section>
+<section id="csv-and-spreadsheet-export">
+<h2>CSV and spreadsheet export<a class="headerlink" href="#csv-and-spreadsheet-export" title="Link to this heading"></a></h2>
+<p>When exporting user-influenced values to CSV (or similar spreadsheet formats), cells that start with <code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, or <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> can be interpreted as formulas by Excel, LibreOffice Calc, and similar tools (formula / CSV injection).</p>
+<p>Neutralise those cells before writing them — for example by prefixing a single quote, which spreadsheets treat as a text marker:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">neutralizeCsvCell</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$value</span> <span class="o">!==</span> <span class="s1">''</span> <span class="o">&amp;&amp;</span> <span class="nb">str_contains</span><span class="p">(</span><span class="s1">'=+-@'</span><span class="p">,</span> <span class="nv">$value</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"'"</span> <span class="o">.</span> <span class="nv">$value</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nv">$value</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Then write neutralizeCsvCell($cell) for every exported field.</span>
 </pre></div>
 </div>
 </section>
@@ -253,7 +360,7 @@ This is possible with the <code class="docutils literal notranslate"><span class
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Nov 09, 2026.
+      <span class="lastupdated">Last updated on Nov 22, 2026.
       </span></p>
   </div>
 

@@ -97,6 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office_desktop_editors.html">Nextcloud Office Desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Uniwersalny dostęp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Korzystanie z uwierzytelniania dwuskładnikowego</a></li>
@@ -131,11 +132,13 @@
              
   <section id="version-control">
 <h1>Kontrola wersji<a class="headerlink" href="#version-control" title="Link to this heading"></a></h1>
-<p>Nextcloud supports a simple version control system for files. Versioning creates
-backups of files which are accessible via the Versions tab on the Details
-sidebar. This tab contains the history of the file where you can roll back a
-file to any previous version. A new version is saved only if at least two minutes
-have passed since the last version was created. Versions are stored in <code class="docutils literal notranslate"><span class="pre">data/[user]/files_versions</span></code>.</p>
+<p>Nextcloud supports a simple version control system for files. Whenever a file
+is changed on the server or uploaded again by a client, Nextcloud keeps the
+previous content as a version so you can restore it later. Versions appear in
+the <strong>Versions</strong> tab on the Details sidebar, where you can restore or download
+any earlier copy. Desktop and mobile clients do not manage the version list
+themselves; they upload a new file and the server records the version.
+Versions are stored under <code class="docutils literal notranslate"><span class="pre">data/[user]/files_versions</span></code>.</p>
 <figure class="align-default">
 <img alt="File version history in the Details sidebar" src="../../_images/files_versioning.png" />
 </figure>
