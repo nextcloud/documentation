@@ -24,6 +24,33 @@ Update info.xml to add Nextcloud 36 to the support range:
 
 To allow installation on older versions too, just keep the previous min-version.
 
+Support for PHP 8.6 added
+-------------------------
+
+In this release support for PHP 8.6 was added. Follow the steps below to make your app compatible.
+
+1. If ``appinfo/info.xml`` has a dependency specification for PHP, increase the ``max-version`` to 8.6.
+
+.. code-block:: xml
+
+  <dependencies>
+    <php min-version="8.3" max-version="8.6" />
+    <nextcloud min-version="34" max-version="36" />
+  </dependencies>
+
+
+2. If your app has a ``composer.json`` and the file contains the PHP restrictions from ``info.xml``, adjust it as well.
+
+.. code-block:: json
+
+  {
+    "require": {
+      "php": ">=8.3 <=8.6"
+    }
+  }
+
+3. If you have :ref:`continuous integration <app-ci>` set up, add PHP 8.6 from the matrices of tests and linters.
+
 The Viewer is a library, not an app
 -----------------------------------
 
