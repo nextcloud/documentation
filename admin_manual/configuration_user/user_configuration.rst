@@ -41,26 +41,38 @@ Show user backend, Send email to new accounts,** and **Show email address**.
 Accounts have the following properties:
 
 *Account name*
-  The account's unique identifier in Nextcloud. It cannot be changed so treat it
-  as persistent. The account name is used as the standard login name (the value a
-  user enters to authenticate), but an account's primary email address can also be
-  used to login to the account. Sometimes referred to as the UID or "User ID". Use
-  the account name when a command or API asks for the user ID.
+  The account’s unique identifier within this Nextcloud instance, also called the
+  user ID or UID. Nextcloud uses it to associate data and settings with the account.
+  It is not meant to change after the account is created. Use it when a command or
+  API asks for the user ID.
+
+  For an account in Nextcloud's local database, the account name or primary
+  email address can be used to sign in. With an external backend, the accepted
+  login name depends on the backend and its configuration and may differ from
+  the Nextcloud user ID. See :doc:`user_auth_ldap` for an example.
 
 *Display name*
-  The user's display name that appears on file shares, the Nextcloud Web interface,
-  and emails. Usually their full name. Admins and users may change display names at
-  any time. If a display name is not set, it defaults to the account name.
+  The name shown in the web interface, on shares, and in emails. It need not be
+  unique. If no display name is set, Nextcloud shows the account name instead.
+  Whether you can edit it depends on the user backend.
 
 *Password*
   The admin sets the new account's initial password. Both the user and the admin can
   change the account's password at any time.
 
 *Email*
-  You can set the primary email address for a user. This address is also used when
-  you first create an account to send the user an email asking them to create a
-  password if none is provided. This address is also be used for password reset
-  requests.
+  The email address configured for the account on the Accounts page.
+  Nextcloud can send a welcome email to this address when enabled.
+  Changing this address does not change the account's user ID.
+
+  For accounts in Nextcloud's local database, this address can also be used
+  to sign in. Other email addresses on the user's profile are not used for
+  local sign-in. For accounts managed by an external backend, whether users
+  can sign in with an email address depends on the backend's configuration.
+
+  Email addresses need not be unique across accounts. If multiple accounts
+  share an address, use the account name (user ID) to sign in or, when
+  Nextcloud handles password resets, to request a reset for a specific account.
 
 *Groups*
   You may create groups and assign group memberships to accounts. By default, new
@@ -87,6 +99,9 @@ Creating a new account
 ----------------------
 
 To create a account for a user:
+
+.. todo:: The opt-in core app setting newUser.generateUserID, off by default,
+          disables the account name field.
 
 * Enter an **Account name** to set the user ID for the new account.
 * Enter an initial **Password**, or provide an email address to let the user
@@ -167,6 +182,9 @@ when you create new accounts.
 You may also adjust group membership by editing an account and adjusting the contents
 of the "Member of the following groups" field. To add new groups, click the plus sign
 in the left pane (adjacent to the **Groups** section under Accounts).
+
+The group display name is the label you see in Nextcloud. Use the group ID (GID) 
+when a command or API asks for it.
 
 New group members immediately have access to resources that belong to their new
 groups.
