@@ -75,6 +75,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Release notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Critical changes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#info-xml-requirements">info.xml requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#support-for-php-8-6-added">Support for PHP 8.6 added</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-viewer-is-a-library-not-an-app">The Viewer is a library, not an app</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#registering-a-handler">Registering a handler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#opening-the-viewer">Opening the viewer</a></li>
@@ -143,6 +144,32 @@
 </pre></div>
 </div>
 <p>To allow installation on older versions too, just keep the previous min-version.</p>
+</section>
+<section id="support-for-php-8-6-added">
+<h2>Support for PHP 8.6 added<a class="headerlink" href="#support-for-php-8-6-added" title="Link to this heading"></a></h2>
+<p>In this release support for PHP 8.6 was added. Follow the steps below to make your app compatible.</p>
+<ol class="arabic simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> has a dependency specification for PHP, increase the <code class="docutils literal notranslate"><span class="pre">max-version</span></code> to 8.6.</p></li>
+</ol>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">  </span><span class="nt">&lt;php</span><span class="w"> </span><span class="na">min-version=</span><span class="s">"8.3"</span><span class="w"> </span><span class="na">max-version=</span><span class="s">"8.6"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">"34"</span><span class="w"> </span><span class="na">max-version=</span><span class="s">"36"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>If your app has a <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> and the file contains the PHP restrictions from <code class="docutils literal notranslate"><span class="pre">info.xml</span></code>, adjust it as well.</p></li>
+</ol>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"require"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"php"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=8.3 &lt;=8.6"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>If you have <a class="reference internal" href="../digging_deeper/continuous_integration.html#app-ci"><span class="std std-ref">continuous integration</span></a> set up, add PHP 8.6 from the matrices of tests and linters.</p></li>
+</ol>
 </section>
 <section id="the-viewer-is-a-library-not-an-app">
 <h2>The Viewer is a library, not an app<a class="headerlink" href="#the-viewer-is-a-library-not-an-app" title="Link to this heading"></a></h2>
@@ -420,7 +447,7 @@ fired for files that already existed.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Nov 09, 2026.
+      <span class="lastupdated">Last updated on Nov 23, 2026.
       </span></p>
   </div>
 
