@@ -183,7 +183,7 @@ You may also adjust group membership by editing an account and adjusting the con
 of the "Member of the following groups" field. To add new groups, click the plus sign
 in the left pane (adjacent to the **Groups** section under Accounts).
 
-The group display name is the label you see in Nextcloud. Use the group ID (GID) 
+The group display name is the label you see in Nextcloud. Use the group ID (GID)
 when a command or API asks for it.
 
 New group members immediately have access to resources that belong to their new
