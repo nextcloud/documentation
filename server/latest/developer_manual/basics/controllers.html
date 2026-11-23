@@ -964,6 +964,7 @@ This section gives you a quick overview over the options.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">#[NoTwoFactorRequired]</span></code>: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">#[NoCSRFRequired]</span></code>: Don’t check the CSRF token (use this wisely since you might create a security hole; to understand what it does see <a class="reference internal" href="../prologue/security.html#csrf-introduction"><span class="std std-ref">CSRF in the security section</span></a>)</p></li>
 </ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">#[PasswordConfirmationRequired]</span></code> attribute adds a check instead: it requires a recent password confirmation (or an in-request confirmation when used in strict mode).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The attributes are only available in Nextcloud 27 or later. In older versions annotations with the same names exist:</p>
@@ -972,6 +973,7 @@ This section gives you a quick overview over the options.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">&#64;PublicPage`</span></code> instead of <code class="docutils literal notranslate"><span class="pre">#[PublicPage]</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&#64;NoTwoFactorRequired`</span></code> instead of <code class="docutils literal notranslate"><span class="pre">#[NoTwoFactorRequired]</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&#64;NoCSRFRequired`</span></code> instead of <code class="docutils literal notranslate"><span class="pre">#[NoCSRFRequired]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;PasswordConfirmationRequired</span></code> instead of <code class="docutils literal notranslate"><span class="pre">#[PasswordConfirmationRequired]</span></code></p></li>
 </ul>
 </div>
 <p>In the following some examples of configurations are given.</p>
@@ -988,7 +990,7 @@ Additionally, as the user might not have a CSRF checker cookie set yet, the CSRF
 <span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\AppFramework\Http\TemplateResponse</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\NoCSRFRequired</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\PublicPage</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\NoAdminRequired</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
 
@@ -1211,9 +1213,10 @@ However if an app relies on third-party media or other features which are forbid
     <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
         <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">'myapp'</span><span class="p">,</span> <span class="s1">'main'</span><span class="p">);</span>
         <span class="nv">$csp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ContentSecurityPolicy</span><span class="p">();</span>
-        <span class="nv">$csp</span><span class="o">-&gt;</span><span class="na">addAllowedImageDomain</span><span class="p">(</span><span class="s1">'*'</span><span class="p">);</span>
+        <span class="nv">$csp</span><span class="o">-&gt;</span><span class="na">addAllowedImageDomain</span><span class="p">(</span><span class="s1">'*'</span><span class="p">)</span>
             <span class="o">-&gt;</span><span class="na">addAllowedMediaDomain</span><span class="p">(</span><span class="s1">'*'</span><span class="p">);</span>
         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentSecurityPolicy</span><span class="p">(</span><span class="nv">$csp</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -1242,7 +1245,7 @@ Until NC 30, classical controller methods did not respect the header.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Nov 09, 2026.
+      <span class="lastupdated">Last updated on Nov 22, 2026.
       </span></p>
   </div>
 

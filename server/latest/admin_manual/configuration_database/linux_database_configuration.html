@@ -123,7 +123,7 @@
 <p class="caption" role="heading"><span class="caption-text">Files</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul>
@@ -151,7 +151,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/collabora_online.html">Collabora Online</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
 <ul>
@@ -251,75 +253,59 @@ for detailed information.</p>
 <p>Verify the <strong>transaction_isolation</strong> and <strong>binlog_format</strong>:</p>
 </li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">mysqld</span><span class="p">]</span>
-<span class="o">...</span>
-<span class="n">transaction_isolation</span> <span class="o">=</span> <span class="n">READ</span><span class="o">-</span><span class="n">COMMITTED</span>
-<span class="n">binlog_format</span> <span class="o">=</span> <span class="n">ROW</span>
-<span class="o">...</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[mysqld]</span>
+<span class="na">...</span>
+<span class="na">transaction_isolation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">READ-COMMITTED</span>
+<span class="na">binlog_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ROW</span>
+<span class="na">...</span>
 </pre></div>
 </div>
 <p>Your <code class="file docutils literal notranslate"><span class="pre">/etc/mysql/my.cnf</span></code> could look like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[server]
-skip_name_resolve = 1
-innodb_buffer_pool_size = 128M
-innodb_buffer_pool_instances = 1
-innodb_flush_log_at_trx_commit = 2
-innodb_log_buffer_size = 32M
-innodb_max_dirty_pages_pct = 90
-query_cache_type = 1
-query_cache_limit = 2M
-query_cache_min_res_unit = 2k
-query_cache_size = 64M
-tmp_table_size= 64M
-max_heap_table_size= 64M
-slow_query_log = 1
-slow_query_log_file = /var/log/mysql/slow.log
-long_query_time = 1
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[server]</span>
+<span class="na">skip_name_resolve</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+<span class="na">innodb_buffer_pool_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128M</span>
+<span class="c1"># innodb_buffer_pool_instances = 1  # MySQL only; removed in MariaDB 10.6.</span>
+<span class="na">innodb_flush_log_at_trx_commit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span>
+<span class="na">innodb_log_buffer_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">32M</span>
+<span class="na">innodb_max_dirty_pages_pct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">90</span>
+<span class="na">tmp_table_size</span><span class="o">=</span><span class="w"> </span><span class="s">64M</span>
+<span class="na">max_heap_table_size</span><span class="o">=</span><span class="w"> </span><span class="s">64M</span>
+<span class="na">slow_query_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+<span class="na">slow_query_log_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/log/mysql/slow.log</span>
+<span class="na">long_query_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
 
-[client-server]
-!includedir /etc/mysql/conf.d/
-!includedir /etc/mysql/mariadb.conf.d/
+<span class="k">[client-server]</span>
+<span class="na">!includedir /etc/mysql/conf.d/</span>
+<span class="na">!includedir /etc/mysql/mariadb.conf.d/</span>
 
-[client]
-default-character-set = utf8mb4
+<span class="k">[client]</span>
+<span class="na">default-character-set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">utf8mb4</span>
 
-[mysqld]
-character_set_server = utf8mb4
-collation_server = utf8mb4_bin
-transaction_isolation = READ-COMMITTED
-binlog_format = ROW
-innodb_large_prefix=on
-innodb_file_format=barracuda
-innodb_file_per_table=1
+<span class="k">[mysqld]</span>
+<span class="na">character_set_server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">utf8mb4</span>
+<span class="na">collation_server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">utf8mb4_bin</span>
+<span class="na">transaction_isolation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">READ-COMMITTED</span>
+<span class="na">binlog_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ROW</span>
+<span class="na">innodb_file_per_table</span><span class="o">=</span><span class="s">1</span>
 </pre></div>
 </div>
-<p>Please refer to the <a class="reference external" href="https://mariadb.com/kb/en/library/set-transaction/#read-committed">page in the MySQL manual</a>.</p>
+<p>Please refer to the <a class="reference external" href="https://mariadb.com/kb/en/library/set-transaction/#read-committed">page in the MariaDB manual</a>.</p>
 <ul class="simple">
 <li><p>That you have installed and enabled the pdo_mysql extension in PHP</p></li>
-<li><p>That the <strong>mysql.default_socket</strong> points to the correct socket (if the database runs on the same server as Nextcloud).</p></li>
+<li><p>That the <strong>pdo_mysql.default_socket</strong> points to the correct socket (if the database runs on the same server as Nextcloud).
+This is usually correct without any adjustments. But if PHP fails to find the socket, it can be defined in the PHP configuration in <code class="file docutils literal notranslate"><span class="pre">/etc/php/**/pdo_mysql.ini</span></code> like this:</p></li>
 </ul>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; configuration for PHP MySQL module</span>
+<span class="na">extension</span><span class="o">=</span><span class="s">pdo_mysql.so</span>
+
+<span class="na">pdo_mysql.default_socket</span><span class="o">=</span><span class="s">/run/mysqld/mysqld.sock</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.</p>
-</div>
-<p>The PHP configuration in <code class="file docutils literal notranslate"><span class="pre">/etc/php7/conf.d/mysql.ini</span></code> could look like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuration for PHP MySQL module</span>
-<span class="n">extension</span><span class="o">=</span><span class="n">pdo_mysql</span><span class="o">.</span><span class="n">so</span>
-
-<span class="p">[</span><span class="n">mysql</span><span class="p">]</span>
-<span class="n">mysql</span><span class="o">.</span><span class="n">allow_local_infile</span><span class="o">=</span><span class="n">On</span>
-<span class="n">mysql</span><span class="o">.</span><span class="n">allow_persistent</span><span class="o">=</span><span class="n">On</span>
-<span class="n">mysql</span><span class="o">.</span><span class="n">cache_size</span><span class="o">=</span><span class="mi">2000</span>
-<span class="n">mysql</span><span class="o">.</span><span class="n">max_persistent</span><span class="o">=-</span><span class="mi">1</span>
-<span class="n">mysql</span><span class="o">.</span><span class="n">max_links</span><span class="o">=-</span><span class="mi">1</span>
-<span class="n">mysql</span><span class="o">.</span><span class="n">default_port</span><span class="o">=</span>
-<span class="n">mysql</span><span class="o">.</span><span class="n">default_socket</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql</span><span class="o">.</span><span class="n">sock</span>  <span class="c1"># Debian squeeze: /var/run/mysqld/mysqld.sock</span>
-<span class="n">mysql</span><span class="o">.</span><span class="n">default_host</span><span class="o">=</span>
-<span class="n">mysql</span><span class="o">.</span><span class="n">default_user</span><span class="o">=</span>
-<span class="n">mysql</span><span class="o">.</span><span class="n">default_password</span><span class="o">=</span>
-<span class="n">mysql</span><span class="o">.</span><span class="n">connect_timeout</span><span class="o">=</span><span class="mi">60</span>
-<span class="n">mysql</span><span class="o">.</span><span class="n">trace_mode</span><span class="o">=</span><span class="n">Off</span>
-</pre></div>
+<p>MySQL and MariaDB share many configuration options, but some options are specific to one engine or version.
+Check your database server’s documentation before applying configuration changes. The include directories
+in the example above are specific to Debian-based MariaDB installations; adjust them for your installation.</p>
 </div>
 <p>Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by Nextcloud
@@ -333,9 +319,9 @@ when you login for the first time.</p>
 </pre></div>
 </div>
 <p>Then a <strong>mysql&gt;</strong> or <strong>MariaDB [root]&gt;</strong> prompt will appear. Now enter the following lines and confirm them with the enter key:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">USER</span> <span class="s1">'username'</span><span class="o">@</span><span class="s1">'localhost'</span> <span class="n">IDENTIFIED</span> <span class="n">BY</span> <span class="s1">'password'</span><span class="p">;</span>
-<span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">IF</span> <span class="n">NOT</span> <span class="n">EXISTS</span> <span class="n">nextcloud</span> <span class="n">CHARACTER</span> <span class="n">SET</span> <span class="n">utf8mb4</span> <span class="n">COLLATE</span> <span class="n">utf8mb4_bin</span><span class="p">;</span>
-<span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">PRIVILEGES</span> <span class="n">on</span> <span class="n">nextcloud</span><span class="o">.*</span> <span class="n">to</span> <span class="s1">'username'</span><span class="o">@</span><span class="s1">'localhost'</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">'username'</span><span class="o">@</span><span class="s1">'localhost'</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">'password'</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">nextcloud</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_bin</span><span class="p">;</span>
+<span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">nextcloud</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="s1">'username'</span><span class="o">@</span><span class="s1">'localhost'</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>You can quit the prompt by entering:</p>
@@ -347,14 +333,14 @@ the database is running, a valid username and password to access it, and the
 name of the database. The <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code> as created by the
 <a class="reference internal" href="../installation/installation_wizard.html"><span class="doc">Installation wizard</span></a> would therefore contain entries like
 this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-  "dbtype"        =&gt; "mysql",
-  "dbname"        =&gt; "nextcloud",
-  "dbuser"        =&gt; "username",
-  "dbpassword"    =&gt; "password",
-  "dbhost"        =&gt; "localhost",
-  "dbtableprefix" =&gt; "oc_",
+  <span class="s2">"dbtype"</span>        <span class="o">=&gt;</span> <span class="s2">"mysql"</span><span class="p">,</span>
+  <span class="s2">"dbname"</span>        <span class="o">=&gt;</span> <span class="s2">"nextcloud"</span><span class="p">,</span>
+  <span class="s2">"dbuser"</span>        <span class="o">=&gt;</span> <span class="s2">"username"</span><span class="p">,</span>
+  <span class="s2">"dbpassword"</span>    <span class="o">=&gt;</span> <span class="s2">"password"</span><span class="p">,</span>
+  <span class="s2">"dbhost"</span>        <span class="o">=&gt;</span> <span class="s2">"localhost"</span><span class="p">,</span>
+  <span class="s2">"dbtableprefix"</span> <span class="o">=&gt;</span> <span class="s2">"oc_"</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>In case of UTF8MB4 you will also find:</p>
@@ -367,12 +353,12 @@ this:</p>
 <p>Enabling SSL is only necessary if your database does not reside on the same server as your Nextcloud instance.
 If you do not connect over localhost and need to allow remote connections then you should enable SSL.
 This just covers the SSL database configuration on the Nextcloud server. First you need to configure your database server accordingly.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'dbdriveroptions'</span> <span class="o">=&gt;</span> <span class="p">[</span>
-  \<span class="n">PDO</span><span class="p">::</span><span class="n">MYSQL_ATTR_SSL_KEY</span> <span class="o">=&gt;</span> <span class="s1">'/../ssl-key.pem'</span><span class="p">,</span>
-  \<span class="n">PDO</span><span class="p">::</span><span class="n">MYSQL_ATTR_SSL_CERT</span> <span class="o">=&gt;</span> <span class="s1">'/../ssl-cert.pem'</span><span class="p">,</span>
-  \<span class="n">PDO</span><span class="p">::</span><span class="n">MYSQL_ATTR_SSL_CA</span> <span class="o">=&gt;</span> <span class="s1">'/../ca-cert.pem'</span><span class="p">,</span>
-  \<span class="n">PDO</span><span class="p">::</span><span class="n">MYSQL_ATTR_SSL_VERIFY_SERVER_CERT</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-<span class="p">],</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">'dbdriveroptions' =&gt; [</span>
+<span class="x">  \PDO::MYSQL_ATTR_SSL_KEY =&gt; '/../ssl-key.pem',</span>
+<span class="x">  \PDO::MYSQL_ATTR_SSL_CERT =&gt; '/../ssl-cert.pem',</span>
+<span class="x">  \PDO::MYSQL_ATTR_SSL_CA =&gt; '/../ca-cert.pem',</span>
+<span class="x">  \PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT =&gt; true,</span>
+<span class="x">],</span>
 </pre></div>
 </div>
 <p>Adjust the paths to the pem files for your environment.</p>
@@ -380,9 +366,11 @@ This just covers the SSL database configuration on the Nextcloud server. First y
 <p class="admonition-title">Tip</p>
 <p>The encrypted connection can also be set up during the installation, so that
 no unencrypted connection is used at any point. See
-<a class="reference internal" href="../installation/automatic_configuration.html#autoconfig-database-encryption-label"><span class="std std-ref">Encrypted database connection</span></a> when installing with an
-autoconfig file, or <a class="reference internal" href="../installation/command_line_installation.html#command-line-installation-ssl-label"><span class="std std-ref">Encrypted database connection</span></a> when
-installing with <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">maintenance:install</span></code>.</p>
+<a class="reference internal" href="../installation/installation_wizard.html#installation-wizard-database-encryption-label"><span class="std std-ref">Encrypted database connection</span></a> when installing with the
+Installation Wizard, <a class="reference internal" href="../installation/automatic_configuration.html#autoconfig-database-encryption-label"><span class="std std-ref">Encrypted database connection</span></a> when
+installing with an autoconfig file, or
+<a class="reference internal" href="../installation/command_line_installation.html#command-line-installation-ssl-label"><span class="std std-ref">Encrypted database connection</span></a> when installing with
+<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">maintenance:install</span></code>.</p>
 </div>
 </section>
 <section id="postgresql-database">
@@ -392,19 +380,19 @@ Nextcloud uses this database and thus only one user accesses the database.
 For further services and users, we recommend to create a separate
 database or PostgreSQL instance.</p>
 <p>If you decide to use a PostgreSQL database make sure that you have installed
-and enabled the PostgreSQL extension in PHP. The PHP configuration in <code class="file docutils literal notranslate"><span class="pre">/etc/php7/conf.d/pgsql.ini</span></code> could look
+and enabled the PostgreSQL extension in PHP. The PHP configuration in <code class="file docutils literal notranslate"><span class="pre">/etc/php/**/pgsql.ini</span></code> could look
 like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuration for PHP PostgreSQL module</span>
-<span class="n">extension</span><span class="o">=</span><span class="n">pdo_pgsql</span><span class="o">.</span><span class="n">so</span>
-<span class="n">extension</span><span class="o">=</span><span class="n">pgsql</span><span class="o">.</span><span class="n">so</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; configuration for PHP PostgreSQL module</span>
+<span class="na">extension</span><span class="o">=</span><span class="s">pdo_pgsql.so</span>
+<span class="na">extension</span><span class="o">=</span><span class="s">pgsql.so</span>
 
-<span class="p">[</span><span class="n">PostgreSQL</span><span class="p">]</span>
-<span class="n">pgsql</span><span class="o">.</span><span class="n">allow_persistent</span> <span class="o">=</span> <span class="n">On</span>
-<span class="n">pgsql</span><span class="o">.</span><span class="n">auto_reset_persistent</span> <span class="o">=</span> <span class="n">Off</span>
-<span class="n">pgsql</span><span class="o">.</span><span class="n">max_persistent</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">pgsql</span><span class="o">.</span><span class="n">max_links</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">pgsql</span><span class="o">.</span><span class="n">ignore_notice</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">pgsql</span><span class="o">.</span><span class="n">log_notice</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">[PostgreSQL]</span>
+<span class="na">pgsql.allow_persistent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">On</span>
+<span class="na">pgsql.auto_reset_persistent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Off</span>
+<span class="na">pgsql.max_persistent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-1</span>
+<span class="na">pgsql.max_links</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-1</span>
+<span class="na">pgsql.ignore_notice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0</span>
+<span class="na">pgsql.log_notice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0</span>
 </pre></div>
 </div>
 <p>The default configuration for PostgreSQL (at least in Ubuntu 14.04) is to use the peer authentication method. Check <code class="file docutils literal notranslate"><span class="pre">/etc/postgresql/9.3/main/pg_hba.conf</span></code> to find out which authentication method is used in your setup.
@@ -413,9 +401,9 @@ To start the postgres command line mode use:</p>
 </pre></div>
 </div>
 <p>Then a <strong>template1=#</strong> prompt will appear. Now enter the following lines and confirm them with the enter key:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">USER</span> <span class="n">username</span> <span class="n">CREATEDB</span><span class="p">;</span>
-<span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">nextcloud</span> <span class="n">OWNER</span> <span class="n">username</span> <span class="n">TEMPLATE</span> <span class="n">template0</span> <span class="n">ENCODING</span> <span class="s1">'UTF8'</span><span class="p">;</span>
-<span class="n">GRANT</span> <span class="n">CREATE</span> <span class="n">ON</span> <span class="n">SCHEMA</span> <span class="n">public</span> <span class="n">TO</span> <span class="n">username</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="k">CREATEDB</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">nextcloud</span><span class="w"> </span><span class="k">OWNER</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="k">TEMPLATE</span><span class="w"> </span><span class="n">template0</span><span class="w"> </span><span class="k">ENCODING</span><span class="w"> </span><span class="s1">'UTF8'</span><span class="p">;</span>
+<span class="k">GRANT</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">username</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>You can quit the prompt by entering:</p>
@@ -427,14 +415,14 @@ which the database is running as the hostname, the system username the PHP proce
 and an empty password to access it, and the name of the database. The <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code> as
 created by the <a class="reference internal" href="../installation/installation_wizard.html"><span class="doc">Installation wizard</span></a> would therefore contain entries like
 this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-  "dbtype"        =&gt; "pgsql",
-  "dbname"        =&gt; "nextcloud",
-  "dbuser"        =&gt; "username",
-  "dbpassword"    =&gt; "",
-  "dbhost"        =&gt; "/var/run/postgresql",
-  "dbtableprefix" =&gt; "oc_",
+  <span class="s2">"dbtype"</span>        <span class="o">=&gt;</span> <span class="s2">"pgsql"</span><span class="p">,</span>
+  <span class="s2">"dbname"</span>        <span class="o">=&gt;</span> <span class="s2">"nextcloud"</span><span class="p">,</span>
+  <span class="s2">"dbuser"</span>        <span class="o">=&gt;</span> <span class="s2">"username"</span><span class="p">,</span>
+  <span class="s2">"dbpassword"</span>    <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="s2">"dbhost"</span>        <span class="o">=&gt;</span> <span class="s2">"/var/run/postgresql"</span><span class="p">,</span>
+  <span class="s2">"dbtableprefix"</span> <span class="o">=&gt;</span> <span class="s2">"oc_"</span><span class="p">,</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -450,11 +438,11 @@ Nextcloud when you login for the first time.</p>
 </pre></div>
 </div>
 <p>Then a <strong>postgres=#</strong> prompt will appear. Now enter the following lines and confirm them with the enter key:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">USER</span> <span class="n">username</span> <span class="n">WITH</span> <span class="n">PASSWORD</span> <span class="s1">'password'</span> <span class="n">CREATEDB</span><span class="p">;</span>
-<span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">nextcloud</span> <span class="n">TEMPLATE</span> <span class="n">template0</span> <span class="n">ENCODING</span> <span class="s1">'UTF8'</span><span class="p">;</span>
-<span class="n">ALTER</span> <span class="n">DATABASE</span> <span class="n">nextcloud</span> <span class="n">OWNER</span> <span class="n">TO</span> <span class="n">username</span><span class="p">;</span>
-<span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">PRIVILEGES</span> <span class="n">ON</span> <span class="n">DATABASE</span> <span class="n">nextcloud</span> <span class="n">TO</span> <span class="n">username</span><span class="p">;</span>
-<span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">PRIVILEGES</span> <span class="n">ON</span> <span class="n">SCHEMA</span> <span class="n">public</span> <span class="n">TO</span> <span class="n">username</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">'password'</span><span class="w"> </span><span class="k">CREATEDB</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">nextcloud</span><span class="w"> </span><span class="k">TEMPLATE</span><span class="w"> </span><span class="n">template0</span><span class="w"> </span><span class="k">ENCODING</span><span class="w"> </span><span class="s1">'UTF8'</span><span class="p">;</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">nextcloud</span><span class="w"> </span><span class="k">OWNER</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">username</span><span class="p">;</span>
+<span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">nextcloud</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">username</span><span class="p">;</span>
+<span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">username</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>You can quit the prompt by entering:</p>
@@ -466,14 +454,14 @@ which the database is running, a valid username and password to access it, and
 the name of the database. The <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code> as created by the
 <a class="reference internal" href="../installation/installation_wizard.html"><span class="doc">Installation wizard</span></a> would therefore contain entries like
 this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-  "dbtype"        =&gt; "pgsql",
-  "dbname"        =&gt; "nextcloud",
-  "dbuser"        =&gt; "username",
-  "dbpassword"    =&gt; "password",
-  "dbhost"        =&gt; "localhost",
-  "dbtableprefix" =&gt; "oc_",
+  <span class="s2">"dbtype"</span>        <span class="o">=&gt;</span> <span class="s2">"pgsql"</span><span class="p">,</span>
+  <span class="s2">"dbname"</span>        <span class="o">=&gt;</span> <span class="s2">"nextcloud"</span><span class="p">,</span>
+  <span class="s2">"dbuser"</span>        <span class="o">=&gt;</span> <span class="s2">"username"</span><span class="p">,</span>
+  <span class="s2">"dbpassword"</span>    <span class="o">=&gt;</span> <span class="s2">"password"</span><span class="p">,</span>
+  <span class="s2">"dbhost"</span>        <span class="o">=&gt;</span> <span class="s2">"localhost"</span><span class="p">,</span>
+  <span class="s2">"dbtableprefix"</span> <span class="o">=&gt;</span> <span class="s2">"oc_"</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
@@ -482,12 +470,12 @@ this:</p>
 <p>As with MySQL, enabling SSL is only necessary if your database does not reside on the same server as your
 Nextcloud instance. First configure your database server accordingly, then add the <code class="docutils literal notranslate"><span class="pre">pgsql_ssl</span></code>
 configuration to your <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'pgsql_ssl'</span> <span class="o">=&gt;</span> <span class="p">[</span>
-  <span class="s1">'mode'</span> <span class="o">=&gt;</span> <span class="s1">'verify-full'</span><span class="p">,</span>
-  <span class="s1">'rootcert'</span> <span class="o">=&gt;</span> <span class="s1">'/../ca-cert.pem'</span><span class="p">,</span>
-  <span class="s1">'cert'</span> <span class="o">=&gt;</span> <span class="s1">'/../ssl-cert.pem'</span><span class="p">,</span>
-  <span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'/../ssl-key.pem'</span><span class="p">,</span>
-<span class="p">],</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">'pgsql_ssl' =&gt; [</span>
+<span class="x">  'mode' =&gt; 'verify-full',</span>
+<span class="x">  'rootcert' =&gt; '/../ca-cert.pem',</span>
+<span class="x">  'cert' =&gt; '/../ssl-cert.pem',</span>
+<span class="x">  'key' =&gt; '/../ssl-key.pem',</span>
+<span class="x">],</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">mode</span></code> corresponds to the <code class="docutils literal notranslate"><span class="pre">sslmode</span></code> connection parameter of PostgreSQL, see the
@@ -498,9 +486,11 @@ issued for the hostname used to connect. Adjust the paths to the pem files for y
 <p class="admonition-title">Tip</p>
 <p>The encrypted connection can also be set up during the installation, so that
 no unencrypted connection is used at any point. See
-<a class="reference internal" href="../installation/automatic_configuration.html#autoconfig-database-encryption-label"><span class="std std-ref">Encrypted database connection</span></a> when installing with an
-autoconfig file, or <a class="reference internal" href="../installation/command_line_installation.html#command-line-installation-ssl-label"><span class="std std-ref">Encrypted database connection</span></a> when
-installing with <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">maintenance:install</span></code>.</p>
+<a class="reference internal" href="../installation/installation_wizard.html#installation-wizard-database-encryption-label"><span class="std std-ref">Encrypted database connection</span></a> when installing with the
+Installation Wizard, <a class="reference internal" href="../installation/automatic_configuration.html#autoconfig-database-encryption-label"><span class="std std-ref">Encrypted database connection</span></a> when
+installing with an autoconfig file, or
+<a class="reference internal" href="../installation/command_line_installation.html#command-line-installation-ssl-label"><span class="std std-ref">Encrypted database connection</span></a> when installing with
+<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">maintenance:install</span></code>.</p>
 </div>
 </section>
 </section>

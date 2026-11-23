@@ -352,7 +352,7 @@ version, without executing them:</p>
 </section>
 <section id="adding-indices">
 <h2>Adding indices<a class="headerlink" href="#adding-indices" title="Link to this heading"></a></h2>
-<p>Adding indices to existing tables can take long time, especially on large tables. Therefore it is recommended to not add the indices in the migration itself, but to indicate the index requirement to the server by adding a listener for the <code class="docutils literal notranslate"><span class="pre">AddMissingIndicesEvent</span></code>. This way the migration can be executed in a separate step and do not block the upgrade process. For new installations the index should still be added to the migration that creates the table.</p>
+<p>Adding an index to an existing table can take a long time on large tables, and the migration runs during the upgrade while the instance is in maintenance mode. To keep the index off the upgrade path, do not add it in the migration. Register it with a listener for the <code class="docutils literal notranslate"><span class="pre">AddMissingIndicesEvent</span></code> instead, so it is created separately through <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">db:add-missing-indices</span></code>.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AddMissingIndicesListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">AddMissingIndicesEvent</span><span class="p">)</span> <span class="p">{</span>
@@ -362,6 +362,11 @@ version, without executing them:</p>
       <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">addMissingIndex</span><span class="p">(</span><span class="s1">'my_table'</span><span class="p">,</span> <span class="s1">'my_index'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'column_a'</span><span class="p">,</span> <span class="s1">'column_b'</span><span class="p">]);</span>
    <span class="p">}</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+<p>New installations still need the index from the start. Add it to the migration that creates the table, or, if the index needs a column from a later migration, to the migration that adds that column. This edits an already released migration, so add a comment that the index was added later. Existing installations have already run that migration and get the index from the <code class="docutils literal notranslate"><span class="pre">AddMissingIndicesEvent</span></code> instead.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// my_index was added later and may not exist until optional indices are created</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">([</span><span class="s1">'column_a'</span><span class="p">,</span> <span class="s1">'column_b'</span><span class="p">],</span> <span class="s1">'my_index'</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -402,7 +407,7 @@ version, without executing them:</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Nov 09, 2026.
+      <span class="lastupdated">Last updated on Nov 22, 2026.
       </span></p>
   </div>
 

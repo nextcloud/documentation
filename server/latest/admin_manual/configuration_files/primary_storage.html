@@ -130,7 +130,7 @@
 <li class="toctree-l2"><a class="reference internal" href="windows_compatible_filenames.html">Windows compatible filenames</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul>
@@ -158,7 +158,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/collabora_online.html">Collabora Online</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
 <ul>
@@ -257,6 +259,14 @@ make all existing files on the instance inaccessible.</p>
     <span class="p">],</span>
 <span class="p">],</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You are NOT supposed to disable file locking and this is now considered potentially
+dangerous. Locking is handled separately from the underlying storage, in the database by
+default or in Redis if configured (recommended for performance, see
+<a class="reference internal" href="files_locking_transactional.html"><span class="doc">Transactional file locking</span></a>). If you have disabled file locking already it is highly
+encouraged for you to re-enable it.</p>
 </div>
 <section id="openstack-swift">
 <h3>OpenStack Swift<a class="headerlink" href="#openstack-swift" title="Link to this heading"></a></h3>

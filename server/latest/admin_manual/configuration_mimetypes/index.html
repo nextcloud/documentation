@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mimetypes management &mdash; Nextcloud 36 Administration Manual</title>
+  <title>Customizing MIME Types, Extensions, and Icons &mdash; Nextcloud 36 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -95,10 +95,12 @@
 <p class="caption" role="heading"><span class="caption-text">Files</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Mimetypes management</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#mimetype-aliases">Mimetype aliases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mimetype-mapping">Mimetype mapping</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Customizing MIME Types, Extensions, and Icons</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mime-type-mapping">MIME type mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mime-type-aliases">MIME type aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mime-type-names">MIME type names</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#icon-retrieval">Icon retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-amr-audio-audio-amr">Example: AMR audio (<code class="docutils literal notranslate"><span class="pre">audio/amr</span></code>)</a></li>
 </ul>
 </li>
 </ul>
@@ -128,7 +130,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/collabora_online.html">Collabora Online</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
 <ul>
@@ -169,7 +173,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Mimetypes management</li>
+      <li class="breadcrumb-item active">Customizing MIME Types, Extensions, and Icons</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_mimetypes/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -179,67 +183,185 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="mimetypes-management">
-<h1>Mimetypes management<a class="headerlink" href="#mimetypes-management" title="Link to this heading"></a></h1>
-<section id="mimetype-aliases">
-<h2>Mimetype aliases<a class="headerlink" href="#mimetype-aliases" title="Link to this heading"></a></h2>
-<p>Nextcloud allows you to create aliases for mimetypes, so that you can display
-custom icons for files. For example, you might want a nice audio icon for audio
-files instead of the default file icon.</p>
-<p>By default Nextcloud is distributed with
-<code class="docutils literal notranslate"><span class="pre">nextcloud/resources/config/mimetypealiases.dist.json</span></code>.
-Do not modify this file, as it will be replaced when Nextcloud is updated.
-Instead, create your own <code class="docutils literal notranslate"><span class="pre">nextcloud/config/mimetypealiases.json</span></code>
-file with your custom aliases. Use the same syntax as in
-<code class="docutils literal notranslate"><span class="pre">nextcloud/resources/config/mimetypealiases.dist.json</span></code>.</p>
-<p>Once you have made changes to your <code class="docutils literal notranslate"><span class="pre">mimetypealiases.json</span></code>, use the <code class="docutils literal notranslate"><span class="pre">occ</span></code>
-command to propagate the changes through the system. This example is for
-Ubuntu Linux:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -E -u www-data php occ maintenance:mimetype:update-js
-
-# you may also need to update the mimetype for existing files, see nextcloud/server#30566
-$ sudo -E -u www-data php occ maintenance:mimetype:update-db --repair-filecache
+  <section id="customizing-mime-types-extensions-and-icons">
+<h1>Customizing MIME Types, Extensions, and Icons<a class="headerlink" href="#customizing-mime-types-extensions-and-icons" title="Link to this heading"></a></h1>
+<p>MIME types help Nextcloud know how to handle and present files. Nextcloud comes
+with definitions for many common and less common file types. You can customize
+MIME types, file extensions, and icon associations to suit the file types used
+in your organization.</p>
+<p>For example, you can associate a file extension with a MIME type, choose an
+icon category for a MIME type, or provide a descriptive human-readable label.</p>
+<p>In Nextcloud:</p>
+<ul class="simple">
+<li><p>a MIME type <em>mapping</em> associates a file extension with a MIME type identifier.</p></li>
+<li><p>a MIME type <em>alias</em> associates a MIME type with an icon category or another alias.</p></li>
+<li><p>a MIME type <em>name</em> associates a MIME type with a human-readable display name
+(such as “PDF document”, rather than the MIME type identifier <code class="docutils literal notranslate"><span class="pre">application/pdf</span></code>).</p></li>
+</ul>
+<p>Mappings affect MIME type detection. Aliases and names affect presentation and
+some user interface behavior; they do not change the file’s detected MIME type.</p>
+<p>The default baseline definitions are in <code class="docutils literal notranslate"><span class="pre">resources/config/</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mimetypemapping.dist.json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mimetypealiases.dist.json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mimetypenames.dist.json</span></code></p></li>
+</ul>
+<p>Do not edit the <code class="docutils literal notranslate"><span class="pre">resources/config/*.dist.json</span></code> files: they are overwritten
+when Nextcloud is updated. Instead, create corresponding custom JSON files in
+<code class="docutils literal notranslate"><span class="pre">config/</span></code>. Custom entries override matching defaults; other defaults remain
+in effect.</p>
+<p>After changing a custom definition, run the <code class="docutils literal notranslate"><span class="pre">occ</span></code> command shown in the
+corresponding section. The examples below are for Ubuntu Linux. Run them from
+the Nextcloud installation directory as the HTTP user; see
+<a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a> for more information.</p>
+<section id="mime-type-mapping">
+<h2>MIME type mapping<a class="headerlink" href="#mime-type-mapping" title="Link to this heading"></a></h2>
+<p>Mappings associate file extensions with MIME types.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A mapping identifies the file type; it does not itself add support for
+opening a given file type.</p>
+</div>
+<p>Create <code class="docutils literal notranslate"><span class="pre">config/mimetypemapping.json</span></code> as a JSON object. The keys are
+lowercase extensions without a leading dot, and each value is an array whose
+first element is the MIME type. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">"amr"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"audio/amr"</span><span class="p">],</span>
+  <span class="s2">"adoc"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"text/asciidoc"</span><span class="p">,</span> <span class="s2">"text/plain"</span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a> to learn more about <code class="docutils literal notranslate"><span class="pre">occ</span></code>.</p>
-<p>Some common mimetypes that may be useful in creating aliases are:</p>
+<p>The first value is the file’s MIME type. An optional second value specifies a
+safer alternative for contexts where Nextcloud uses a secure MIME type,
+including WebDAV file responses, to reduce the risk of active content being
+executed by a browser. For example, the default mapping
+<code class="docutils literal notranslate"><span class="pre">&quot;html&quot;:</span> <span class="pre">[&quot;text/html&quot;,</span> <span class="pre">&quot;text/plain&quot;]</span></code> identifies an HTML file as
+<code class="docutils literal notranslate"><span class="pre">text/html</span></code> but can serve it as plain text. This does not sanitize or change
+the file.</p>
+<p>If the second value is omitted, the first is used as the secure type. For formats
+that can contain active content, consider an appropriate alternative such as
+<code class="docutils literal notranslate"><span class="pre">text/plain</span></code> for text or <code class="docutils literal notranslate"><span class="pre">application/octet-stream</span></code> for binary data. Retain shipped
+alternatives unless you understand the consequences. Mappings that share a MIME
+type should use consistent alternatives. See the shipped
+<code class="docutils literal notranslate"><span class="pre">mimetypemapping.dist.json</span></code> for examples.</p>
+<p>Filename-based detection uses the final extension, ignoring its case. When
+using combined filename and content detection, Nextcloud attempts content
+detection if the filename yields <code class="docutils literal notranslate"><span class="pre">application/octet-stream</span></code>.</p>
+<p>After changing mappings, update the mimetype database and file cache:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mimetype</span><span class="p">:</span><span class="n">update</span><span class="o">-</span><span class="n">db</span> <span class="o">--</span><span class="n">repair</span><span class="o">-</span><span class="n">filecache</span>
+</pre></div>
+</div>
+<p>Without <code class="docutils literal notranslate"><span class="pre">--repair-filecache</span></code>, the command updates cached files only for
+mimetypes newly added to the database. With the option, it processes all
+configured mappings and updates matching cached files, not just files affected
+by the changed mapping.</p>
+</section>
+<section id="mime-type-aliases">
+<h2>MIME type aliases<a class="headerlink" href="#mime-type-aliases" title="Link to this heading"></a></h2>
+<p>Aliases let multiple MIME types use the same icon category. They may also
+affect the Files app’s type filter. An alias does not change the file’s MIME type.</p>
+<p>Create <code class="docutils literal notranslate"><span class="pre">config/mimetypealiases.json</span></code> as a JSON object. For example, to use
+the image icon instead of the default whiteboard icon for Excalidraw files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">"application/vnd.excalidraw+json"</span><span class="p">:</span> <span class="s2">"image"</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The values are icon categories or other aliases; they are not necessarily
+standard MIME types. Aliases can reference other aliases, provided they do
+not form a circular dependency. See
+<code class="docutils literal notranslate"><span class="pre">resources/config/mimetypealiases.dist.json</span></code> for the defaults.</p>
+<p>After changing aliases, regenerate the client-side mimetype list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mimetype</span><span class="p">:</span><span class="n">update</span><span class="o">-</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>Aliases select from available icons; they do not create new icons.</p>
+<p>Some available icon categories are:</p>
 <dl class="simple">
-<dt>image</dt><dd><p>Generic image</p>
+<dt><code class="docutils literal notranslate"><span class="pre">file</span></code></dt><dd><p>Generic file</p>
 </dd>
-<dt>image/vector</dt><dd><p>Vector image</p>
+<dt><code class="docutils literal notranslate"><span class="pre">image</span></code>, <code class="docutils literal notranslate"><span class="pre">audio</span></code>, <code class="docutils literal notranslate"><span class="pre">video</span></code></dt><dd><p>Images, audio, and video</p>
 </dd>
-<dt>audio</dt><dd><p>Generic audio file</p>
+<dt><code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">text/code</span></code></dt><dd><p>Text and source code</p>
 </dd>
-<dt>x-office/document</dt><dd><p>Word processed document</p>
+<dt><code class="docutils literal notranslate"><span class="pre">text/calendar</span></code>, <code class="docutils literal notranslate"><span class="pre">text/vcard</span></code></dt><dd><p>Calendar and contact files</p>
 </dd>
-<dt>x-office/spreadsheet</dt><dd><p>Spreadsheet</p>
+<dt><code class="docutils literal notranslate"><span class="pre">x-office/document</span></code>, <code class="docutils literal notranslate"><span class="pre">x-office/spreadsheet</span></code></dt><dd><p>Documents and spreadsheets</p>
 </dd>
-<dt>x-office/presentation</dt><dd><p>Presentation</p>
+<dt><code class="docutils literal notranslate"><span class="pre">x-office/presentation</span></code>, <code class="docutils literal notranslate"><span class="pre">x-office/drawing</span></code></dt><dd><p>Presentations and drawings</p>
 </dd>
-<dt>text</dt><dd><p>Generic text document</p>
+<dt><code class="docutils literal notranslate"><span class="pre">x-office/form</span></code>, <code class="docutils literal notranslate"><span class="pre">x-office/form-template</span></code></dt><dd><p>Forms and form templates</p>
 </dd>
-<dt>text/code</dt><dd><p>Source code</p>
+<dt><code class="docutils literal notranslate"><span class="pre">font</span></code>, <code class="docutils literal notranslate"><span class="pre">link</span></code>, <code class="docutils literal notranslate"><span class="pre">location</span></code>, <code class="docutils literal notranslate"><span class="pre">mindmap</span></code>, <code class="docutils literal notranslate"><span class="pre">whiteboard</span></code></dt><dd><p>Fonts, links, location data, mind maps, and whiteboards</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">package/x-generic</span></code></dt><dd><p>Archives and packages</p>
 </dd>
 </dl>
+<p>This list is not exhaustive. See <code class="docutils literal notranslate"><span class="pre">core/img/filetypes/</span></code> for the
+icons shipped with your installation. Icon filenames replace slashes with
+hyphens; for example, <code class="docutils literal notranslate"><span class="pre">x-office/drawing</span></code> uses <code class="docutils literal notranslate"><span class="pre">x-office-drawing.svg</span></code>.
+Aliases are resolved before looking up an icon.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Custom file-type icons can be supplied through a legacy custom theme, however,
+this approach is deprecated. The Theming app’s branding settings do not
+currently provide an interface for adding them.</p>
+</div>
 </section>
-<section id="mimetype-mapping">
-<h2>Mimetype mapping<a class="headerlink" href="#mimetype-mapping" title="Link to this heading"></a></h2>
-<p>Nextcloud allows administrators to specify the mapping of a file extension to a
-mimetype. For example files ending in <code class="docutils literal notranslate"><span class="pre">mp3</span></code> map to <code class="docutils literal notranslate"><span class="pre">audio/mpeg</span></code>. Which
-then in turn allows Nextcloud to show the audio icon.</p>
-<p>By default Nextcloud comes with <code class="docutils literal notranslate"><span class="pre">mimetypemapping.dist.json</span></code>. This is a
-simple json array.
-Administrators should not update this file as it will get replaced on upgrades
-of Nextcloud. Instead the file <code class="docutils literal notranslate"><span class="pre">mimetypemapping.json</span></code> should be created and
-modified, this file has precedence over the shipped file.</p>
+<section id="mime-type-names">
+<h2>MIME type names<a class="headerlink" href="#mime-type-names" title="Link to this heading"></a></h2>
+<p>To customize human-readable file type names, create <code class="docutils literal notranslate"><span class="pre">config/mimetypenames.json</span></code>
+as a JSON object mapping mimetypes to names. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">"application/x-example"</span><span class="p">:</span> <span class="s2">"Example document"</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See <code class="docutils literal notranslate"><span class="pre">resources/config/mimetypenames.dist.json</span></code> for the defaults. After changing
+names, regenerate the client-side mimetype list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mimetype</span><span class="p">:</span><span class="n">update</span><span class="o">-</span><span class="n">js</span>
+</pre></div>
+</div>
 </section>
 <section id="icon-retrieval">
 <h2>Icon retrieval<a class="headerlink" href="#icon-retrieval" title="Link to this heading"></a></h2>
-<p>When an icon is retrieved for a mimetype, if the full mimetype cannot be found,
-the search will fallback to looking for the part before the slash. Given a file
-with the mimetype ‘image/my-custom-image’, if no icon exists for the full
-mimetype, the icon for ‘image’ will be used instead. This allows specialised
-mimetypes to fallback to generic icons when the relevant icons are unavailable.</p>
+<p>For icon lookup, Nextcloud first resolves any aliases, then looks for an icon
+for the resulting value. If no specific icon exists, it will use a more general
+one. For example, <code class="docutils literal notranslate"><span class="pre">image/my-custom-image</span></code> can fall back to the <code class="docutils literal notranslate"><span class="pre">image</span></code>
+icon. If no matching icon is available, the generic <code class="docutils literal notranslate"><span class="pre">file</span></code> icon is used.</p>
+</section>
+<section id="example-amr-audio-audio-amr">
+<h2>Example: AMR audio (<code class="docutils literal notranslate"><span class="pre">audio/amr</span></code>)<a class="headerlink" href="#example-amr-audio-audio-amr" title="Link to this heading"></a></h2>
+<p>For example, <em>AMR audio</em> is an audio compression codec used for speech
+recordings. It uses a dedicated file format (<code class="docutils literal notranslate"><span class="pre">.amr</span></code>). At the time of this
+writing, the default mappings do not include <code class="docutils literal notranslate"><span class="pre">.amr</span></code>, so you would need to
+add it.</p>
+<p>Place the following in <code class="docutils literal notranslate"><span class="pre">config/mimetypemapping.json</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">"amr"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"audio/amr"</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">config/mimetypemapping.json</span></code> file already exists, an app or
+another administrator may have added a custom MIME type mapping. If so,
+add the <code class="docutils literal notranslate"><span class="pre">&quot;amr&quot;</span></code> entry to its existing JSON object (the part between
+the <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code>) instead of replacing the entire contents of the file.</p>
+</div>
+<p>This maps <code class="docutils literal notranslate"><span class="pre">.amr</span></code> files to the RFC-registered <code class="docutils literal notranslate"><span class="pre">audio/AMR</span></code> media type. No alias
+is needed for the generic audio icon to be utilized for this newly added MIME type:
+icon lookup falls back from <code class="docutils literal notranslate"><span class="pre">audio/amr</span></code> to the broader <code class="docutils literal notranslate"><span class="pre">audio</span></code> icon when no
+more specific icon or alias applies.</p>
+<p>Update the mimetype database and existing file cache entries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mimetype</span><span class="p">:</span><span class="n">update</span><span class="o">-</span><span class="n">db</span> <span class="o">--</span><span class="n">repair</span><span class="o">-</span><span class="n">filecache</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The mapping identifies the file type; it does not itself add playback
+support.</p>
+</div>
 </section>
 </section>
 

@@ -96,6 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automated installation with <code class="docutils literal notranslate"><span class="pre">autoconfig.php</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nginx.html">NGINX configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caddy.html">Caddy configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 24.04 LTS</a></li>
@@ -115,7 +116,7 @@
 <p class="caption" role="heading"><span class="caption-text">Files</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul>
@@ -143,7 +144,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/collabora_online.html">Collabora Online</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
 <ul>
@@ -323,8 +326,9 @@ server against a CA certificate:</p>
 <p>Nextcloud writes the resulting configuration to <code class="docutils literal notranslate"><span class="pre">dbdriveroptions</span></code>
 (MySQL/MariaDB) or <code class="docutils literal notranslate"><span class="pre">pgsql_ssl</span></code> (PostgreSQL) in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>, see
 <a class="reference internal" href="../configuration_server/config_sample_php_parameters.html"><span class="doc">Configuration Parameters</span></a>. The same
-connection can be configured for the Installation Wizard, see
-<a class="reference internal" href="automatic_configuration.html#autoconfig-database-encryption-label"><span class="std std-ref">Encrypted database connection</span></a>.</p>
+connection can be configured in the Installation Wizard, see
+<a class="reference internal" href="installation_wizard.html#installation-wizard-database-encryption-label"><span class="std std-ref">Encrypted database connection</span></a>, or prefilled with an
+autoconfig file, see <a class="reference internal" href="automatic_configuration.html#autoconfig-database-encryption-label"><span class="std std-ref">Encrypted database connection</span></a>.</p>
 <p>See <a class="reference internal" href="../occ_system.html#command-line-installation-label"><span class="std std-ref">Command line installation</span></a> for more information.</p>
 </section>
 </section>

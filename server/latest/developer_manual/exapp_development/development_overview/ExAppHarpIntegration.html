@@ -504,8 +504,7 @@ window.runMermaid = runMermaid;</script>
 <p>HaRP is a reverse proxy system designed to simplify the deployment workflow
 for Nextcloud 32’s AppAPI.</p>
 <p>It enables direct communication between clients and ExApps, bypassing
-the Nextcloud instance to improve performance and reduce the complexity
-traditionally associated with <cite>DockerSocketProxy</cite> setups.</p>
+the Nextcloud instance to improve performance.</p>
 <p>HaRP provides an <a class="reference external" href="https://github.com/fatedier/frp">FRP-based</a>
 transport for ExApps and recommends copying
 <a class="reference external" href="https://github.com/nextcloud/HaRP/blob/main/exapps_dev/start.sh">start.sh</a>
@@ -513,11 +512,7 @@ into your ExApp image and using it as the container entrypoint.
 The script installs or starts the FRP client and executes your app process.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>We strongly recommend starting support for HaRP in ExApps from the start
-of Nextcloud 32, as the old <a class="reference external" href="https://github.com/nextcloud/docker-socket-proxy">DSP</a>
-way will be deprecated and marked for removal in Nextcloud 35.</p>
-<p>Adding HaRP support is fully compatible with the existing DSP system,
-so you won’t need to maintain two separate release types of your ExApp.</p>
+<p>AppAPI deploys ExApps to Docker only through HaRP, so your ExApp needs HaRP support.</p>
 </div>
 </section>
 <section id="key-integration-considerations">
@@ -763,7 +758,7 @@ compatibility.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Nov 09, 2026.
+      <span class="lastupdated">Last updated on Nov 22, 2026.
       </span></p>
   </div>
 

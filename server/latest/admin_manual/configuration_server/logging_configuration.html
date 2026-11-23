@@ -148,7 +148,7 @@
 <p class="caption" role="heading"><span class="caption-text">Files</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul>
@@ -176,7 +176,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/collabora_online.html">Collabora Online</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
 <ul>
@@ -268,11 +270,15 @@ date/time is written in the format <code class="docutils literal notranslate"><s
 date format in the example below, the date/time format will be written in the format
 <code class="docutils literal notranslate"><span class="pre">January</span> <span class="pre">10,</span> <span class="pre">2013</span> <span class="pre">15:20:25</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">"log_type"</span> <span class="o">=&gt;</span> <span class="s2">"file"</span><span class="p">,</span>
-<span class="s2">"logfile"</span> <span class="o">=&gt;</span> <span class="s2">"nextcloud.log"</span><span class="p">,</span>
+<span class="s2">"logfile"</span> <span class="o">=&gt;</span> <span class="s2">"/var/log/nextcloud/nextcloud.log"</span><span class="p">,</span>
 <span class="s2">"loglevel"</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
 <span class="s2">"logdateformat"</span> <span class="o">=&gt;</span> <span class="s2">"F d, Y H:i:s"</span><span class="p">,</span>
 </pre></div>
 </div>
+<p>The <strong>logfile</strong> parameter is optional. If it is omitted, the log is written to <strong>nextcloud.log</strong> in the
+<strong>datadirectory</strong>. When setting it, use an absolute path: a relative path such as <code class="docutils literal notranslate"><span class="pre">&quot;nextcloud.log&quot;</span></code> is resolved
+against the working directory of the PHP process (usually the Nextcloud installation directory), and a log file
+placed there makes the updater’s check for expected files fail.</p>
 <section id="additional-file-based-logging-parameters">
 <h4>Additional file-based logging parameters<a class="headerlink" href="#additional-file-based-logging-parameters" title="Link to this heading"></a></h4>
 <p>The following optional parameters can also be set in <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>:</p>

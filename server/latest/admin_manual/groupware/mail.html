@@ -95,7 +95,7 @@
 <p class="caption" role="heading"><span class="caption-text">Files</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Apps</span></p>
 <ul>
@@ -138,6 +138,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#account-delegation">Account delegation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#snooze-and-scheduled-sending">Snooze and scheduled sending</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#xoauth2-authentication-with-microsoft-azure-ad">XOAUTH2 Authentication with Microsoft Azure AD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generic-openid-connect-xoauth2-integration">Generic OpenID Connect (XOAUTH2) integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mailbox-share">Mailbox Share</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#user-interface-preference-defaults">User Interface Preference Defaults</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#llm-processing">LLM Processing</a></li>
@@ -154,7 +155,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Office</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/collabora_online.html">Collabora Online</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
 <ul>
@@ -375,6 +378,58 @@ Currently IMAP defaults to 5 seconds and SMTP defaults to 20 seconds. They can b
 <figure class="align-default">
 <img alt="../_images/10.png" src="../_images/10.png" />
 </figure>
+</section>
+<section id="generic-openid-connect-xoauth2-integration">
+<h2>Generic OpenID Connect (XOAUTH2) integration<a class="headerlink" href="#generic-openid-connect-xoauth2-integration" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 6.0.</span></p>
+</div>
+<p>In addition to the built-in Google and Microsoft integrations, the Mail app can authenticate
+individual mail accounts over XOAUTH2 against any OpenID Connect provider, for example
+Keycloak, Authentik or Stalwart. An administrator registers one or more providers, each
+matched to accounts by the user’s email domain.</p>
+<p><strong>Step 1: Register an OAuth client with your identity provider</strong></p>
+<p>Create a confidential (web) OAuth client with your identity provider and authorize the
+redirect URL shown in the provider form, <code class="docutils literal notranslate"><span class="pre">https://&lt;your-nextcloud&gt;/index.php/apps/mail/integration/oidc-auth</span></code>.
+Grant it the scopes needed to issue mail and refresh tokens (<code class="docutils literal notranslate"><span class="pre">openid</span> <span class="pre">email</span> <span class="pre">offline_access</span></code>
+by default), and make sure the access tokens it issues are accepted by your IMAP/SMTP server
+for XOAUTH2. Mail uses the full email address as the IMAP and SMTP username, so the server
+must map the token to that login (for example via Dovecot’s <code class="docutils literal notranslate"><span class="pre">username_attribute</span></code>).</p>
+<p><strong>Step 2: Configure the provider in Nextcloud</strong></p>
+<p>Open the groupware admin settings and find <em>OpenID Connect integration</em>. Click <em>Add OIDC
+provider</em> and fill in:</p>
+<ul class="simple">
+<li><p><strong>Display name</strong> – a free-text label.</p></li>
+<li><p><strong>Email domain</strong> – accounts whose address is in this domain use this provider.</p></li>
+<li><p><strong>IMAP</strong> and <strong>SMTP</strong> – host, port and encryption for the mail servers. The two may differ.</p></li>
+<li><p><strong>Discovery endpoint</strong> – the provider’s <code class="docutils literal notranslate"><span class="pre">.well-known/openid-configuration</span></code> URL.
+Providers that don’t publish one can instead have their authorization, token and
+(optional) introspection endpoints entered manually.</p></li>
+<li><p><strong>Client ID</strong> / <strong>Client secret</strong> – the credentials of the OAuth client from step 1. The
+secret is stored encrypted.</p></li>
+<li><p><strong>Scopes</strong> – defaults to <code class="docutils literal notranslate"><span class="pre">openid</span> <span class="pre">email</span> <span class="pre">offline_access</span></code>. Without <code class="docutils literal notranslate"><span class="pre">offline_access</span></code> no
+refresh token is issued, and users have to reconnect every time the access token expires.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Matching is by email domain, case-insensitive but otherwise exact. There can only
+be one provider per domain.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The IMAP and SMTP settings are copied into an account when it is created, so
+later changes to a provider do not affect existing accounts. Deleting a provider or changing
+its email domain stops token refresh for accounts that are already connected.</p>
+</div>
+<p><strong>Step 3: Users add their account</strong></p>
+<p>When a user adds a mail account whose address is in a configured domain, Mail pre-fills the
+mail servers and opens a consent popup at the identity provider instead of asking for a
+password. No password is stored for the account.</p>
+<p>Refresh tokens keep the account syncing in the background. If a refresh is rejected, Mail asks
+the identity provider via token introspection (RFC 7662) whether the token is still active.
+Only when the provider confirms it is inactive is the account flagged, and the user is asked to
+reconnect through the same consent popup the next time they open Mail. Without an introspection
+endpoint, a failed refresh is always treated as a temporary error.</p>
 </section>
 <section id="mailbox-share">
 <h2>Mailbox Share<a class="headerlink" href="#mailbox-share" title="Link to this heading"></a></h2>
