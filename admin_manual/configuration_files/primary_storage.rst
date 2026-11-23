@@ -368,17 +368,12 @@ a multi-instance configuration.
 S3 SSE-C encryption support
 ---------------------------
 
-.. deprecated:: 34
-   SSE-C support is deprecated. Use :ref:`s3-sse-kms` instead, which provides
-   centralized key management via AWS KMS and does not require managing encryption
-   keys on the Nextcloud server.
-
 .. warning::
-   Amazon S3 disabled SSE-C by default for all new buckets in April 2026. Existing
-   buckets that already hold SSE-C encrypted objects retain support, but new buckets
-   require explicit opt-in via the AWS ``PutBucketEncryption`` API. See the
+   Amazon S3 disabled SSE-C by default for new buckets and selected existing buckets in
+   April 2026. Review the
    `AWS announcement <https://aws.amazon.com/blogs/storage/advanced-notice-amazon-s3-to-disable-the-use-of-sse-c-encryption-by-default-for-all-new-buckets-and-select-existing-buckets-in-april-2026/>`_
-   for details. For new deployments, use SSE-KMS instead.
+   to determine whether your bucket is affected and how to enable SSE-C. For new
+   deployments, use :ref:`SSE-KMS <s3-sse-kms>` instead.
 
 Nextcloud supports server-side encryption with customer-provided keys, also known as
 `SSE-C <https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html>`_,
@@ -436,8 +431,11 @@ Two parameters control SSE-KMS:
 * :code:`sse_kms_key_id` — (optional) the ARN of a specific KMS key to use; omit to use the
   bucket's default KMS key
 
-.. note:: If both :code:`sse_c_key` and :code:`sse_kms_enabled` are set, SSE-C takes
-   precedence. This allows gradual migration from SSE-C to SSE-KMS.
+.. warning::
+   If both :code:`sse_c_key` and :code:`sse_kms_enabled` are set, SSE-C takes
+   precedence. Nextcloud does not migrate or re-encrypt existing objects when you
+   enable SSE-KMS. Do not remove :code:`sse_c_key` while existing objects still require
+   SSE-C.
 
 The following example shows how to configure the S3 object store with SSE-KMS using a
 specific KMS key:
