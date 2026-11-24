@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User provisioning API &mdash; Nextcloud 36 Administration Manual</title>
+  <title>User and group provisioning API &mdash; Nextcloud 36 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -30,8 +30,8 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Instruction set for users" href="instruction_set_for_users.html" />
-    <link rel="prev" title="The LDAP configuration API" href="user_auth_ldap_api.html" />
+    <link rel="next" title="User API" href="instruction_set_for_users.html" />
+    <link rel="prev" title="Configuring an external password reset link" href="reset_user_password.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -107,22 +107,17 @@
 <p class="caption" role="heading"><span class="caption-text">Users</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">User management</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="user_configuration.html">User management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a user password</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User password policy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap.html">User authentication with LDAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">User provisioning API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="instruction_set_for_users.html">Instruction set for users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="instruction_set_for_groups.html">Instruction set for groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#accounts-and-profiles">Accounts and profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#authentication-and-passwords">Authentication and passwords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#sso-directory-and-identity-integrations">SSO, directory, and identity integrations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#provisioning">Provisioning</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">User and group provisioning API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="instruction_set_for_users.html">User API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="instruction_set_for_groups.html">Group API</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_oidc.html">User authentication with OpenID Connect</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
@@ -185,7 +180,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">User management</a></li>
-      <li class="breadcrumb-item active">User provisioning API</li>
+      <li class="breadcrumb-item active">User and group provisioning API</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_user/user_provisioning_api.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -195,8 +190,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="user-provisioning-api">
-<h1>User provisioning API<a class="headerlink" href="#user-provisioning-api" title="Link to this heading"></a></h1>
+  <section id="user-and-group-provisioning-api">
+<h1>User and group provisioning API<a class="headerlink" href="#user-and-group-provisioning-api" title="Link to this heading"></a></h1>
 <p>The Provisioning API application enables a set of APIs that external systems can use to create,
 edit, delete and query user attributes, query, set and remove groups, set quota
 and query total storage used in Nextcloud. Group admin users can also query
@@ -208,8 +203,8 @@ listed above. The Provisioning API app is enabled by default.</p>
 <p>All POST requests require the <code class="docutils literal notranslate"><span class="pre">Content-Type:</span> <span class="pre">application/x-www-form-urlencoded</span></code> header. (Note: Some libraries like cURL set this header automatically, others require setting the header explicitly.)</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="instruction_set_for_users.html">Instruction set for users</a></li>
-<li class="toctree-l1"><a class="reference internal" href="instruction_set_for_groups.html">Instruction set for groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instruction_set_for_users.html">User API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instruction_set_for_groups.html">Group API</a></li>
 </ul>
 </div>
 </section>
@@ -218,8 +213,8 @@ listed above. The Provisioning API app is enabled by default.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="user_auth_ldap_api.html" class="btn btn-neutral float-left" title="The LDAP configuration API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="instruction_set_for_users.html" class="btn btn-neutral float-right" title="Instruction set for users" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="reset_user_password.html" class="btn btn-neutral float-left" title="Configuring an external password reset link" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="instruction_set_for_users.html" class="btn btn-neutral float-right" title="User API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

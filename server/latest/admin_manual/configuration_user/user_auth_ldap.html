@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User authentication with LDAP &mdash; Nextcloud 36 Administration Manual</title>
+  <title>LDAP and Active Directory integration &mdash; Nextcloud 36 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="LDAP user cleanup" href="user_auth_ldap_cleanup.html" />
-    <link rel="prev" title="Two-factor authentication" href="two_factor-auth.html" />
+    <link rel="prev" title="Resetting a lost admin password" href="reset_admin_password.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -107,61 +107,28 @@
 <p class="caption" role="heading"><span class="caption-text">Users</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">User management</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="user_configuration.html">User management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a user password</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User password policy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">User authentication with LDAP</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#server-tab">Server tab</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#users-tab">Users tab</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#login-attributes-tab">Login attributes tab</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#groups-tab">Groups tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#accounts-and-profiles">Accounts and profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#authentication-and-passwords">Authentication and passwords</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#sso-directory-and-identity-integrations">SSO, directory, and identity integrations</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">LDAP and Active Directory integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-settings">Advanced settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#expert-settings">Expert settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-the-configuration">Testing the configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-configuration-options-via-occ">Additional configuration options via occ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-avatar-integration">Nextcloud avatar integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting-tips-and-tricks">Troubleshooting, tips and tricks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-ldap-internals">Nextcloud LDAP internals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#note">Note</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#advanced-settings">Advanced settings</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#connection-settings">Connection settings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#directory-settings">Directory settings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#special-attributes">Special attributes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#user-profile-attributes">User Profile attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_auth_oidc.html">OpenID Connect integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reset_user_password.html">Configuring an external password reset link</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#expert-settings">Expert settings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#testing-the-configuration">Testing the configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#additional-configuration-options-via-occ">Additional configuration options via occ</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#background-sync-interval">Background sync interval</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#administrative-group-mapping">Administrative Group mapping</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#nextcloud-avatar-integration">Nextcloud avatar integration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#use-a-specific-attribute-or-turn-off-loading-of-images">Use a specific attribute or turn off loading of images</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-tips-and-tricks">Troubleshooting, tips and tricks</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#logging">Logging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ssl-certificate-verification-ldaps-tls">SSL certificate verification (LDAPS, TLS)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#microsoft-active-directory">Microsoft Active Directory</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#memberof-read-memberof-permissions">memberOf / read memberof permissions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#user-listing-and-login-per-nested-groups">User listing and login per nested groups</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#duplicating-server-configurations">Duplicating server configurations</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#nextcloud-ldap-internals">Nextcloud LDAP internals</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#user-and-group-mapping">User and group mapping</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#caching">Caching</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#handling-with-backup-server">Handling with backup server</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#note">Note</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_oidc.html">User authentication with OpenID Connect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#provisioning">Provisioning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
@@ -224,7 +191,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">User management</a></li>
-      <li class="breadcrumb-item active">User authentication with LDAP</li>
+      <li class="breadcrumb-item active">LDAP and Active Directory integration</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_user/user_auth_ldap.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -234,8 +201,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="user-authentication-with-ldap">
-<h1>User authentication with LDAP<a class="headerlink" href="#user-authentication-with-ldap" title="Link to this heading"></a></h1>
+  <section id="ldap-and-active-directory-integration">
+<h1>LDAP and Active Directory integration<a class="headerlink" href="#ldap-and-active-directory-integration" title="Link to this heading"></a></h1>
 <p>Nextcloud ships with an LDAP application to allow LDAP users (including Active
 Directory) to appear in your Nextcloud user listings. These users will
 authenticate to Nextcloud with their LDAP credentials, so you don’t have to
@@ -1172,7 +1139,7 @@ technical accounts.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="two_factor-auth.html" class="btn btn-neutral float-left" title="Two-factor authentication" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="reset_admin_password.html" class="btn btn-neutral float-left" title="Resetting a lost admin password" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="user_auth_ldap_cleanup.html" class="btn btn-neutral float-right" title="LDAP user cleanup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

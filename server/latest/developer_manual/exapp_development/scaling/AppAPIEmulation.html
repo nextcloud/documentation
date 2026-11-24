@@ -1,0 +1,566 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emulating AppAPI &mdash; Nextcloud 36 Developer Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=850d043c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/exapp_development/scaling/AppAPIEmulation.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Development overview" href="../development_overview/index.html" />
+    <link rel="prev" title="Autoscaling with KEDA" href="KEDASetup.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ExApp development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DevSetup.html">Setting up dev environment</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Scaling ExApps</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="KubernetesSetup.html">Setting up Kubernetes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="KEDASetup.html">Autoscaling with KEDA</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Emulating AppAPI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#environment-variables">0. Environment variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-if-exapp-is-present-k8s-deployment-exists">1. Check if ExApp is present (k8s deployment exists)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-exapp-pvc-deployment-with-replicas-0">2. Create ExApp (PVC + Deployment with replicas=0)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-exapp-scale-replicas-to-1">3. Start ExApp (scale replicas to 1)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wait-for-exapp-to-become-ready">4. Wait for ExApp to become Ready</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#expose-register-in-harp">5. Expose + register in HaRP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extract-exposed-host-port-for-follow-up-tests-requires-jq">6. Extract exposed host/port for follow-up tests (requires <code class="docutils literal notranslate"><span class="pre">jq</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-heartbeat-via-harp-routing-appapi-style-direct-routing-headers">7. Check <code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code> via HaRP routing (AppAPI-style direct routing headers)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stop-and-remove-api-based-cleanup">8. Stop and remove (API-based cleanup)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#useful-kubectl-commands-debug-manual-cleanup">Useful <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> commands (debug / manual cleanup)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../development_overview/index.html">Development overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tech_details/index.html">Technical details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/index.html">Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud 36 Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">ExApp development</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Scaling ExApps</a></li>
+      <li class="breadcrumb-item active">Emulating AppAPI</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/exapp_development/scaling/AppAPIEmulation.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="emulating-appapi">
+<h1>Emulating AppAPI<a class="headerlink" href="#emulating-appapi" title="Link to this heading"></a></h1>
+<p>This section documents the <code class="docutils literal notranslate"><span class="pre">curl</span></code> commands used to emulate AppAPI when
+testing HaRP’s Kubernetes backend.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>HaRP is reachable at: <code class="docutils literal notranslate"><span class="pre">http://nextcloud.local/exapps</span></code></p></li>
+<li><p>HaRP was started with the same shared key as used below
+(<code class="docutils literal notranslate"><span class="pre">HP_SHARED_KEY</span></code>)</p></li>
+<li><p>HaRP has Kubernetes backend enabled (<code class="docutils literal notranslate"><span class="pre">HP_K8S_ENABLED=true</span></code>) and can
+access the k8s API</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kubectl</span></code> is configured to point to the same cluster HaRP uses</p></li>
+<li><p>Optional: <code class="docutils literal notranslate"><span class="pre">jq</span></code> for parsing JSON responses</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="environment-variables">
+<h2>0. Environment variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># .env</span>
+<span class="nv">EXAPPS_URL</span><span class="o">=</span><span class="s2">"http://nextcloud.local/exapps"</span>
+<span class="nv">APPAPI_URL</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">EXAPPS_URL</span><span class="si">}</span><span class="s2">/app_api"</span>
+<span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">"some_very_secure_password"</span>
+
+<span class="c1"># Optional: Nextcloud base (only used by ExApp container env in this guide)</span>
+<span class="nv">NEXTCLOUD_URL</span><span class="o">=</span><span class="s2">"http://nextcloud.local"</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>.env
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All AppAPI-emulation calls go to <code class="docutils literal notranslate"><span class="pre">$APPAPI_URL/...</span></code> and require the header <code class="docutils literal notranslate"><span class="pre">harp-shared-key</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>HaRP also has an internal HTTP control API on <code class="docutils literal notranslate"><span class="pre">127.0.0.1:8200</span></code>
+that handles ExApp lifecycle operations (create, start, stop, remove, expose).
+You could <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span></code> into the HaRP container and <code class="docutils literal notranslate"><span class="pre">curl</span></code> it directly for low-level debugging,
+but this bypasses HAProxy’s shared-key authentication and is not reachable from outside the container.</p>
+</div>
+</section>
+<section id="check-if-exapp-is-present-k8s-deployment-exists">
+<h2>1. Check if ExApp is present (k8s deployment exists)<a class="headerlink" href="#check-if-exapp-is-present-k8s-deployment-exists" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sS<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: </span><span class="nv">$HP_SHARED_KEY</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">    "name": "test-deploy",</span>
+<span class="s1">    "instance_id": ""</span>
+<span class="s1">  }'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="nv">$APPAPI_URL</span><span class="s2">/k8s/exapp/exists"</span>
+</pre></div>
+</div>
+<p>Expected output:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">"exists"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">"exists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="create-exapp-pvc-deployment-with-replicas-0">
+<h2>2. Create ExApp (PVC + Deployment with replicas=0)<a class="headerlink" href="#create-exapp-pvc-deployment-with-replicas-0" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sS<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: </span><span class="nv">$HP_SHARED_KEY</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">    "name": "test-deploy",</span>
+<span class="s1">    "instance_id": "",</span>
+<span class="s1">    "image": "ghcr.io/nextcloud/test-deploy:latest",</span>
+<span class="s1">    "environment_variables": [</span>
+<span class="s1">      "APP_ID=test-deploy",</span>
+<span class="s1">      "APP_DISPLAY_NAME=Test Deploy",</span>
+<span class="s1">      "APP_VERSION=1.2.1",</span>
+<span class="s1">      "APP_HOST=0.0.0.0",</span>
+<span class="s1">      "APP_PORT=23000",</span>
+<span class="s1">      "NEXTCLOUD_URL='</span><span class="s2">"</span><span class="nv">$NEXTCLOUD_URL</span><span class="s2">"</span><span class="s1">'",</span>
+<span class="s1">      "APP_SECRET=some-dev-secret",</span>
+<span class="s1">      "APP_PERSISTENT_STORAGE=/nc_app_test-deploy_data"</span>
+<span class="s1">    ],</span>
+<span class="s1">    "resource_limits": { "cpu": "500m", "memory": "512Mi" }</span>
+<span class="s1">  }'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="nv">$APPAPI_URL</span><span class="s2">/k8s/exapp/create"</span>
+</pre></div>
+</div>
+<p>Expected output (example):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"nc-app-test-deploy"</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="start-exapp-scale-replicas-to-1">
+<h2>3. Start ExApp (scale replicas to 1)<a class="headerlink" href="#start-exapp-scale-replicas-to-1" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sS<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: </span><span class="nv">$HP_SHARED_KEY</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">    "name": "test-deploy",</span>
+<span class="s1">    "instance_id": ""</span>
+<span class="s1">  }'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="nv">$APPAPI_URL</span><span class="s2">/k8s/exapp/start"</span>
+</pre></div>
+</div>
+<p>Expected: HTTP 204.</p>
+</section>
+<section id="wait-for-exapp-to-become-ready">
+<h2>4. Wait for ExApp to become Ready<a class="headerlink" href="#wait-for-exapp-to-become-ready" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sS<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: </span><span class="nv">$HP_SHARED_KEY</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">    "name": "test-deploy",</span>
+<span class="s1">    "instance_id": ""</span>
+<span class="s1">  }'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="nv">$APPAPI_URL</span><span class="s2">/k8s/exapp/wait_for_start"</span>
+</pre></div>
+</div>
+<p>Expected output (example):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"started"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"running"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"health"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ready"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="expose-register-in-harp">
+<h2>5. Expose + register in HaRP<a class="headerlink" href="#expose-register-in-harp" title="Link to this heading"></a></h2>
+<section id="nodeport-default-behavior">
+<h3>5.1 NodePort (default behavior)<a class="headerlink" href="#nodeport-default-behavior" title="Link to this heading"></a></h3>
+<p><strong>Minimal (uses defaults, may auto-pick a node address):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">EXPOSE_JSON</span><span class="o">=</span><span class="k">$(</span>
+<span class="w">  </span>curl<span class="w"> </span>-sS<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: </span><span class="nv">$HP_SHARED_KEY</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "name": "test-deploy",</span>
+<span class="s1">      "instance_id": "",</span>
+<span class="s1">      "port": 23000,</span>
+<span class="s1">      "expose_type": "nodeport"</span>
+<span class="s1">    }'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"</span><span class="nv">$APPAPI_URL</span><span class="s2">/k8s/exapp/expose"</span>
+<span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$EXPOSE_JSON</span><span class="s2">"</span>
+</pre></div>
+</div>
+<p><strong>Recommended (provide a stable host reachable by HaRP):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example: edge node IP / VIP / L4 LB that forwards NodePort range</span>
+<span class="nv">UPSTREAM_HOST</span><span class="o">=</span><span class="s2">"172.18.0.2"</span>
+
+<span class="nv">EXPOSE_JSON</span><span class="o">=</span><span class="k">$(</span>
+<span class="w">  </span>curl<span class="w"> </span>-sS<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: </span><span class="nv">$HP_SHARED_KEY</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "name": "test-deploy",</span>
+<span class="s1">      "instance_id": "",</span>
+<span class="s1">      "port": 23000,</span>
+<span class="s1">      "expose_type": "nodeport",</span>
+<span class="s1">      "upstream_host": "'</span><span class="s2">"</span><span class="nv">$UPSTREAM_HOST</span><span class="s2">"</span><span class="s1">'"</span>
+<span class="s1">    }'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"</span><span class="nv">$APPAPI_URL</span><span class="s2">/k8s/exapp/expose"</span>
+<span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$EXPOSE_JSON</span><span class="s2">"</span>
+</pre></div>
+</div>
+</section>
+<section id="clusterip-only-if-harp-can-reach-clusterip-resolve-service-dns">
+<h3>5.2 ClusterIP (only if HaRP can reach ClusterIP + resolve service DNS)<a class="headerlink" href="#clusterip-only-if-harp-can-reach-clusterip-resolve-service-dns" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">EXPOSE_JSON</span><span class="o">=</span><span class="k">$(</span>
+<span class="w">  </span>curl<span class="w"> </span>-sS<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: </span><span class="nv">$HP_SHARED_KEY</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "name": "test-deploy",</span>
+<span class="s1">      "instance_id": "",</span>
+<span class="s1">      "port": 23000,</span>
+<span class="s1">      "expose_type": "clusterip"</span>
+<span class="s1">    }'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"</span><span class="nv">$APPAPI_URL</span><span class="s2">/k8s/exapp/expose"</span>
+<span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$EXPOSE_JSON</span><span class="s2">"</span>
+</pre></div>
+</div>
+</section>
+<section id="manual-harp-does-not-create-or-inspect-any-service">
+<h3>5.3 Manual (HaRP does not create or inspect any Service)<a class="headerlink" href="#manual-harp-does-not-create-or-inspect-any-service" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">EXPOSE_JSON</span><span class="o">=</span><span class="k">$(</span>
+<span class="w">  </span>curl<span class="w"> </span>-sS<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: </span><span class="nv">$HP_SHARED_KEY</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "name": "test-deploy",</span>
+<span class="s1">      "instance_id": "",</span>
+<span class="s1">      "port": 23000,</span>
+<span class="s1">      "expose_type": "manual",</span>
+<span class="s1">      "upstream_host": "exapp-test-deploy.internal",</span>
+<span class="s1">      "upstream_port": 23000</span>
+<span class="s1">    }'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"</span><span class="nv">$APPAPI_URL</span><span class="s2">/k8s/exapp/expose"</span>
+<span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$EXPOSE_JSON</span><span class="s2">"</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="extract-exposed-host-port-for-follow-up-tests-requires-jq">
+<h2>6. Extract exposed host/port for follow-up tests (requires <code class="docutils literal notranslate"><span class="pre">jq</span></code>)<a class="headerlink" href="#extract-exposed-host-port-for-follow-up-tests-requires-jq" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">EXAPP_HOST</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$EXPOSE_JSON</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.host'</span><span class="k">)</span>
+<span class="nv">EXAPP_PORT</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$EXPOSE_JSON</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.port'</span><span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"ExApp upstream endpoint: </span><span class="si">${</span><span class="nv">EXAPP_HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">EXAPP_PORT</span><span class="si">}</span><span class="s2">"</span>
+</pre></div>
+</div>
+</section>
+<section id="check-heartbeat-via-harp-routing-appapi-style-direct-routing-headers">
+<h2>7. Check <code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code> via HaRP routing (AppAPI-style direct routing headers)<a class="headerlink" href="#check-heartbeat-via-harp-routing-appapi-style-direct-routing-headers" title="Link to this heading"></a></h2>
+<p>This checks HaRP’s ability to route to the ExApp given an explicit
+upstream host/port and AppAPI-style authorization header.</p>
+<section id="build-authorization-app-api-value">
+<h3>7.1 Build <code class="docutils literal notranslate"><span class="pre">authorization-app-api</span></code> value<a class="headerlink" href="#build-authorization-app-api-value" title="Link to this heading"></a></h3>
+<p>HaRP typically expects this value to be the <strong>base64-encoded value of</strong>
+<code class="docutils literal notranslate"><span class="pre">user_id:APP_SECRET</span></code> (similar to HTTP Basic without the <code class="docutils literal notranslate"><span class="pre">Basic</span></code>
+prefix). For an “anonymous” style request, use <code class="docutils literal notranslate"><span class="pre">:APP_SECRET</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option A: anonymous-style</span>
+<span class="nv">AUTH_APP_API</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span><span class="w"> </span><span class="s1">'%s'</span><span class="w"> </span><span class="s1">':some-dev-secret'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s1">'\n'</span><span class="k">)</span>
+
+<span class="c1"># Option B: user-scoped style (example user "admin")</span>
+<span class="c1"># AUTH_APP_API=$(printf '%s' 'admin:some-dev-secret' | base64 | tr -d '\n')</span>
+</pre></div>
+</div>
+</section>
+<section id="call-heartbeat">
+<h3>7.2 Call heartbeat<a class="headerlink" href="#call-heartbeat" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sS<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"http://nextcloud.local/exapps/test-deploy/heartbeat"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: </span><span class="nv">$HP_SHARED_KEY</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"ex-app-version: 1.2.1"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"ex-app-id: test-deploy"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"ex-app-host: </span><span class="nv">$EXAPP_HOST</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"ex-app-port: </span><span class="nv">$EXAPP_PORT</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"authorization-app-api: </span><span class="nv">$AUTH_APP_API</span><span class="s2">"</span>
+</pre></div>
+</div>
+<p>If this fails with auth-related errors, verify:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_SECRET</span></code> in the ExApp matches what you used here,</p></li>
+<li><p>your HaProxy config expectations for <code class="docutils literal notranslate"><span class="pre">authorization-app-api</span></code> (raw
+vs base64).</p></li>
+</ul>
+</section>
+</section>
+<section id="stop-and-remove-api-based-cleanup">
+<h2>8. Stop and remove (API-based cleanup)<a class="headerlink" href="#stop-and-remove-api-based-cleanup" title="Link to this heading"></a></h2>
+<section id="stop-exapp-scale-replicas-to-0">
+<h3>Stop ExApp (scale replicas to 0)<a class="headerlink" href="#stop-exapp-scale-replicas-to-0" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sS<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: </span><span class="nv">$HP_SHARED_KEY</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">    "name": "test-deploy",</span>
+<span class="s1">    "instance_id": ""</span>
+<span class="s1">  }'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="nv">$APPAPI_URL</span><span class="s2">/k8s/exapp/stop"</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-exapp-deployment-optional-pvc-service-may-be-removed-depending-on-harp-version">
+<h3>Remove ExApp (Deployment + optional PVC; Service may be removed depending on HaRP version)<a class="headerlink" href="#remove-exapp-deployment-optional-pvc-service-may-be-removed-depending-on-harp-version" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-sS<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"harp-shared-key: </span><span class="nv">$HP_SHARED_KEY</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">    "name": "test-deploy",</span>
+<span class="s1">    "instance_id": "",</span>
+<span class="s1">    "remove_data": true</span>
+<span class="s1">  }'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="nv">$APPAPI_URL</span><span class="s2">/k8s/exapp/remove"</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="useful-kubectl-commands-debug-manual-cleanup">
+<h2>Useful <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> commands (debug / manual cleanup)<a class="headerlink" href="#useful-kubectl-commands-debug-manual-cleanup" title="Link to this heading"></a></h2>
+<section id="check-resources">
+<h3>Check resources<a class="headerlink" href="#check-resources" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>deploy,svc,pvc<span class="w"> </span>-n<span class="w"> </span>nextcloud-exapps<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'test-deploy|NAME'</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>nextcloud-exapps<span class="w"> </span>-o<span class="w"> </span>wide
+</pre></div>
+</div>
+</section>
+<section id="delete-service-if-it-was-exposed-and-needs-manual-cleanup">
+<h3>Delete Service (if it was exposed and needs manual cleanup)<a class="headerlink" href="#delete-service-if-it-was-exposed-and-needs-manual-cleanup" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>delete<span class="w"> </span>svc<span class="w"> </span>nc-app-test-deploy<span class="w"> </span>-n<span class="w"> </span>nextcloud-exapps
+</pre></div>
+</div>
+</section>
+<section id="delete-deployment">
+<h3>Delete Deployment<a class="headerlink" href="#delete-deployment" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>delete<span class="w"> </span>deployment<span class="w"> </span>nc-app-test-deploy<span class="w"> </span>-n<span class="w"> </span>nextcloud-exapps
+</pre></div>
+</div>
+</section>
+<section id="delete-pvc-data">
+<h3>Delete PVC (data)<a class="headerlink" href="#delete-pvc-data" title="Link to this heading"></a></h3>
+<p>PVC name is derived from <code class="docutils literal notranslate"><span class="pre">nc_app_test-deploy_data</span></code> and sanitized for
+k8s, typically: <code class="docutils literal notranslate"><span class="pre">nc-app-test-deploy-data</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>delete<span class="w"> </span>pvc<span class="w"> </span>nc-app-test-deploy-data<span class="w"> </span>-n<span class="w"> </span>nextcloud-exapps
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="KEDASetup.html" class="btn btn-neutral float-left" title="Autoscaling with KEDA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../development_overview/index.html" class="btn btn-neutral float-right" title="Development overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Nov 24, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-dev">
+      ☁️ 36
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-dev" class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            35 (latest)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/developer_manual"
+             
+          >
+            34 (stable)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/33/developer_manual"
+             
+          >
+            33 (stable)
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
