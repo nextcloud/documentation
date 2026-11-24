@@ -40,3 +40,13 @@ are covered here:
     retention
     versioning
     notifications
+
+Classification
+--------------
+
+The following app does not provide a Flow operation itself, but assigns tags that Flow operations can act on:
+
+.. toctree::
+    :maxdepth: 2
+
+    confidential_files
