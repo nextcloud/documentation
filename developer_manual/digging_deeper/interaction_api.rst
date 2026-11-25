@@ -67,15 +67,15 @@ An interaction consists of four parts:
      - Who becomes aware of the resources, for example a user, a group or
        everyone with a link.
 
-Only the user is required. An emitting app passes ``null`` or an empty list
-for the parts it does not know, and a restricting app ignores the parts it has
-no rules for.
+Only the user ID is required, while the other parameters can be omitted by passing ``null``
+or an empty list, and a restricting app ignores the parts it has no rules for. However, passing only
+the user ID will results in no event being emitted and may result in an exception in future versions.
 
 An interaction is allowed if no listener forbids it. A listener cannot allow
 what another listener forbids.
 
 If the owner of a resource and the user performing the interaction differ, for
-example when a share is reshared, the event is emitted once for each of them.
+example when a share is reshared, the event must be emitted once for each of them.
 
 For restricting apps
 --------------------
@@ -84,6 +84,8 @@ Implement an ``\OCP\EventDispatcher\IEventListener`` for the
 ``RestrictInteractionEvent``. Check the parts you have rules for with
 ``instanceof`` and return for everything else. To forbid the interaction,
 throw an ``\OCP\Interaction\InteractionRestrictedException``.
+
+**Example: restricting the share action when sharing an item by link**
 
 .. code-block:: php
 
