@@ -28,7 +28,7 @@ Every time a file is created or its content changes, the app checks it against a
    expressions, or regular expressions. Matching is case-insensitive.
 
 A file receives at most one classification label. If labels from different rule types match, the label that is
-higher in the list wins. Use the arrows next to each label to change the order.
+higher in the list wins.
 
 The app also removes any of its own tags that no longer apply. If a document is edited and no longer matches a
 label, its classification tag is removed. If it now matches a different label, the tag is replaced. Tags that are
@@ -58,10 +58,10 @@ Supported file types
      - Microsoft OOXML formats as above, and OpenDocument formats (text, spreadsheet, presentation, graphics, and
        their templates)
 
-Content rules do not read spreadsheets and presentations, and they do not perform OCR. Scanned PDFs without a text
-layer are only classified through metadata or policy rules, if at all.
+Content rules only read the text layer of PDF files and do not perform OCR, so scanned PDFs without a text layer cannot
+be classified.
 
-Files in end-to-end encrypted folders cannot be read by the server and are therefore never classified.
+Files in end-to-end encrypted folders cannot be read by the server and cannot therefore be classified.
 
 Configuration
 -------------
