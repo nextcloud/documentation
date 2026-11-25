@@ -116,6 +116,33 @@ The following repair steps are available:
 * ``post-migration`` This repair step will be executed just after the database is migrated during an update of the app.  This repair step will also be executed when running the ``occ maintenance:repair`` command
 * ``live-migration`` This repair step will be scheduled to be run in the background (e.g. using cron), therefore it is unpredictable when it will run. If the job isn't required right after the update of the app and the job would take a long time this is the best choice.
 
+Cleaning up on uninstall
+------------------------
+
+The app guidelines require apps to clean up after themselves on uninstall
+(see :ref:`app-store-publishing`). Nextcloud does **not** remove your app's
+config, preferences, jobs, appdata, or tables automatically — register an
+``uninstall`` repair step and remove what you own. Typical checklist:
+
+* App config values (``IAppConfig`` / ``oc_appconfig`` rows for your app id)
+* User preferences for your app (``IConfig`` / ``oc_preferences``)
+* Background jobs your app registered (``IJobList``)
+* Appdata files (``IAppData`` / your folder under ``appdata_*``)
+* Database tables created by your migrations, **if** you want a full wipe
+  (optional — many apps leave tables so a temporary disable does not destroy data)
+
+.. note::
+   The ``uninstall`` repair step also runs when the app is **disabled**, not only
+   when it is removed. Prefer reversible cleanup there, or offer an explicit
+   ``occ`` command for destructive steps such as dropping tables.
+
+.. note::
+   **Downgrades:** Nextcloud does not roll back migrations. Once a newer app
+   version has applied a migration, installing an older version leaves the
+   database at the newer schema; data written for the new version may be
+   incompatible. Keep migrations forward-compatible where possible. Admins who
+   must downgrade should restore from a backup taken before the upgrade.
+
 Expensive repair steps
 ----------------------
 
