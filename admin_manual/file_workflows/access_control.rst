@@ -114,7 +114,18 @@ option.
 
   .. note:: see `mimetypealiases.dist.json <https://github.com/nextcloud/server/blob/master/resources/config/mimetypealiases.dist.json>`_ for a full list of possible MIME types.
 
-* **File name:** The name of the file (``is`` and ``is not`` are case-insensitive)
+* **File name:** The **base name** of the file only (not the folder path).
+  ``is`` / ``is not`` compare case-insensitively against that base name.
+
+  For pattern matching, choose the ``matches`` / ``does not match`` operators
+  and enter a **PHP regular expression including delimiters**, for example
+  ``/^dummy-.+$/i``. The expression is applied with ``preg_match`` to the file
+  base name, so it cannot match folder names. Escape delimiter characters
+  inside the pattern (or pick a delimiter that does not appear in it): in
+  ``/my/folder/.+`` the second ``/`` ends the expression and ``folder/.+`` is
+  read as modifiers. Invalid regular expressions like this one are rejected
+  when saving the flow.
+
 * **File size:** The size of the file (*Only available on upload*)
 
 * **Request remote address:** An IP range (either v4 or v6) for the accessing user
