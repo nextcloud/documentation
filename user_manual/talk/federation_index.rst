@@ -33,6 +33,7 @@ Upon clicking it, more information will be provided about the inviting party, an
 
 By accepting the invite, the conversation will appear in the list as any other one.
 
+.. TODO: update screenshot to show the last message time next to each conversation
 .. image:: images/federation-conversations-list.png
    :alt: Talk conversation list showing a federated conversation from another server
    :width: 400px
