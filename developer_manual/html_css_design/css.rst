@@ -54,10 +54,6 @@ The primary color is the main accent color that can be configured by the adminis
 +----------------------------------------------+------------------+-------------------------------------------------------------------------------------------+
 | ``--color-primary-element-light-hover``      | ``#dbe4ea``      | Variant of ``--color-primary-element-light`` for hover effects                            |
 +----------------------------------------------+------------------+-------------------------------------------------------------------------------------------+
-| ``--primary-invert-if-bright``               | ``invert(100%)`` | Filter to invert icons placed on primary color backgrounds if the primary color is bright |
-+----------------------------------------------+------------------+-------------------------------------------------------------------------------------------+
-| ``--primary-invert-if-dark``                 | ``invert(100%)`` | Filter to invert icons placed on primary color backgrounds if the primary color is dark   |
-+----------------------------------------------+------------------+-------------------------------------------------------------------------------------------+
 
 Background variables
 --------------------
@@ -70,8 +66,6 @@ Background variables
 | ``--color-background-plain-text``            | ``#ffffff``           | Text color to be used directly on the background (e.g. header menu)                 |
 +----------------------------------------------+-----------------------+-------------------------------------------------------------------------------------+
 | ``--image-background``                       | ``url('clouds.jpg')`` | Background image used on the ``body`` element (optional)                            |
-+----------------------------------------------+-----------------------+-------------------------------------------------------------------------------------+
-| ``--background-image-invert-if-bright``      | ``invert(100%)``      | Filter to invert (bright) icons placed directly on the body background (app menu)   |
 +----------------------------------------------+-----------------------+-------------------------------------------------------------------------------------+
 
 General color variables
@@ -117,10 +111,6 @@ General color variables
 | ``--color-box-shadow-rgb``                   | ``77,77,77``                                   | Color for box shadow effects in RGB notation                                                              |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 | ``--color-box-shadow``                       | ``rgba(var(--color-box-shadow-rgb), 0.5)``     | Color for box shadow effects                                                                              |
-+----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--background-invert-if-dark``              | ``invert(100%)``                               | Filter to invert (dark) icons (e.g. set if the color theme is dark)                                       |
-+----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--background-invert-if-bright``            | ``invert(100%)``                               | Filter to invert (bright) icons (e.g. set if the color theme is bright)                                   |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 
 State colors variables
@@ -232,6 +222,32 @@ Element structure variables
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 | ``--sidebar-max-width``                      | ``500px``                                      | Maximum width of the app sidebar on wide screens                                                          |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+
+.. _csscolorscheme:
+
+Light and dark themes
+=====================
+
+From Nextcloud 36, each color theme sets the native
+`color-scheme <https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme>`_
+property to ``light`` or ``dark``. Native form controls and scrollbars follow the theme the user picked,
+not the one of their operating system.
+
+The color variables above already change with the theme. If you need a color of your own for each theme,
+use ``light-dark()``:
+
+.. code-block:: css
+
+    .my-element {
+        border-color: light-dark(#d0d0d0, #3b3b3b);
+    }
+
+To check the theme in JavaScript, use ``isDarkTheme`` (``@nextcloud/vue/functions/isDarkTheme``) or the reactive
+``useIsDarkTheme`` (``@nextcloud/vue/composables/useIsDarkTheme``). Do not check ``prefers-color-scheme``
+or the ``data-theme-*`` attributes: the first ignores the theme the user picked, the second ignores the system theme.
+
+Icons should be inline SVGs filled with ``currentColor``, for example Material design icons with ``NcIconSvgWrapper``.
+They follow the text color in every theme without any filter.
 
 ..  _cssclasses:
 
