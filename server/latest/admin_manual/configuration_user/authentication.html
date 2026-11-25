@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Authentication &mdash; Nextcloud 36 Administration Manual</title>
+  <title>App password management &mdash; Nextcloud 36 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Two-factor authentication" href="two_factor-auth.html" />
-    <link rel="prev" title="User password policy" href="user_password_policy.html" />
+    <link rel="prev" title="Password policy" href="user_password_policy.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -107,24 +107,20 @@
 <p class="caption" role="heading"><span class="caption-text">Users</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">User management</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="user_configuration.html">User management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a user password</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User password policy</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Authentication</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#app-passwords">App passwords</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#automated-clean-up">Automated clean-up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#accounts-and-profiles">Accounts and profiles</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#authentication-and-passwords">Authentication and passwords</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="user_password_policy.html">Password policy</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">App password management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#remote-wipe">Remote wipe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automated-cleanup">Automated cleanup</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap.html">User authentication with LDAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_oidc.html">User authentication with OpenID Connect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#sso-directory-and-identity-integrations">SSO, directory, and identity integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#provisioning">Provisioning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
@@ -187,7 +183,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">User management</a></li>
-      <li class="breadcrumb-item active">Authentication</li>
+      <li class="breadcrumb-item active">App password management</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_user/authentication.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -197,18 +193,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="authentication">
-<span id="id1"></span><h1>Authentication<a class="headerlink" href="#authentication" title="Link to this heading"></a></h1>
-<section id="app-passwords">
-<h2>App passwords<a class="headerlink" href="#app-passwords" title="Link to this heading"></a></h2>
+  <section id="app-password-management">
+<span id="authentication"></span><h1>App password management<a class="headerlink" href="#app-password-management" title="Link to this heading"></a></h1>
 <p>App passwords allow users to authenticate multiple client applications against their Nextcloud account without giving the application the login password. App passwords are mandatory for accounts with <a class="reference internal" href="two_factor-auth.html#two-factor-auth"><span class="std std-ref">two-factor authentication</span></a> enabled.</p>
+<section id="remote-wipe">
+<h2>Remote wipe<a class="headerlink" href="#remote-wipe" title="Link to this heading"></a></h2>
 <p>Some clients support <em>remote wipe</em>, which makes the connected application delete its local data.</p>
-<section id="automated-clean-up">
-<span id="authentication-app-password-clean-up"></span><h3>Automated clean-up<a class="headerlink" href="#automated-clean-up" title="Link to this heading"></a></h3>
+</section>
+<section id="automated-cleanup">
+<span id="authentication-app-password-clean-up"></span><h2>Automated cleanup<a class="headerlink" href="#automated-cleanup" title="Link to this heading"></a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 30.</span></p>
 </div>
-<p>Nextcloud will delete unused passwords. Passwords set for <em>remote wipe</em> are deleted after 60 days of no usage. App passwords of client applications are deleted after 365 days of no usage.</p>
+<p>Nextcloud will delete unused app passwords. Passwords set for <em>remote wipe</em> are deleted after 60 days of no usage. App passwords of client applications are deleted after 365 days of no usage.</p>
+<section id="configuring-retention-periods">
+<h3>Configuring retention periods<a class="headerlink" href="#configuring-retention-periods" title="Link to this heading"></a></h3>
 <p>The time spans can be overwritten with configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">token_auth_wipe_token_retention</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="nb">int</span> <span class="o">--</span><span class="n">value</span> <span class="mi">2592000</span> <span class="c1"># 60*60*24*30 - 30 days</span>
 <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">token_auth_token_retention</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="nb">int</span> <span class="o">--</span><span class="n">value</span> <span class="mi">63072000</span>     <span class="c1"># 60*60*24*365*2 - 2 years</span>
@@ -223,7 +222,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="user_password_policy.html" class="btn btn-neutral float-left" title="User password policy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user_password_policy.html" class="btn btn-neutral float-left" title="Password policy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="two_factor-auth.html" class="btn btn-neutral float-right" title="Two-factor authentication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

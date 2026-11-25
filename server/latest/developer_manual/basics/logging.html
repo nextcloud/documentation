@@ -92,6 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#message-interpolation">Message interpolation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#context-array">Context array</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#logging-exceptions">Logging exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keeping-secrets-out-of-stack-traces">Keeping secrets out of stack traces</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#custom-log-file">Custom log file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#structured-data-logging">Structured data logging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#listening-to-log-events">Listening to log events</a></li>
@@ -308,6 +309,39 @@ chain of previous exceptions.</p>
 <p>You can combine message interpolation with exception logging – Nextcloud
 handles both.</p>
 </section>
+<section id="keeping-secrets-out-of-stack-traces">
+<h2>Keeping secrets out of stack traces<a class="headerlink" href="#keeping-secrets-out-of-stack-traces" title="Link to this heading"></a></h2>
+<p>Exception stack traces can include method arguments. Mark parameters that
+accept secrets (passwords, tokens, credentials, and similar) with PHP’s
+standard <a class="reference external" href="https://www.php.net/manual/en/class.sensitiveparameter.php">#[SensitiveParameter]</a>
+attribute so their values do not end up in the log:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Service</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthService</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">login</span><span class="p">(</span>
+        <span class="nx">string</span> <span class="nv">$user</span><span class="p">,</span>
+        <span class="p">#[</span><span class="nd">\SensitiveParameter</span><span class="p">]</span>
+        <span class="nx">string</span> <span class="nv">$password</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Since Nextcloud 36 the logger replaces these values in stack traces with the
+same placeholder it uses for other sensitive data, and also removes them where
+they are passed on to other calls further down the trace.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 36: </span><code class="docutils literal notranslate"><span class="pre">IRegistrationContext::registerSensitiveMethods()</span></code> is deprecated in favor
+of the <code class="docutils literal notranslate"><span class="pre">#[\SensitiveParameter]</span></code> attribute.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This only covers <strong>stack traces</strong>. Never put passwords, tokens, or personal
+data into a log message (or its context array) yourself.</p>
+</div>
+</section>
 <section id="custom-log-file">
 <h2>Custom log file<a class="headerlink" href="#custom-log-file" title="Link to this heading"></a></h2>
 <p>If your app needs to write to a <strong>separate log file</strong> (for example, to keep
@@ -477,7 +511,7 @@ once it was released.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Nov 09, 2026.
+      <span class="lastupdated">Last updated on Nov 24, 2026.
       </span></p>
   </div>
 

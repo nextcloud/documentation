@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User management &mdash; Nextcloud 36 Administration Manual</title>
+  <title>Managing user accounts and groups &mdash; Nextcloud 36 Administration Manual</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -30,7 +30,7 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Resetting a lost admin password" href="reset_admin_password.html" />
+    <link rel="next" title="Profiles" href="profile_configuration.html" />
     <link rel="prev" title="User management" href="index.html" />
    
   <meta name="robots" content="noindex, follow" />
@@ -107,29 +107,25 @@
 <p class="caption" role="heading"><span class="caption-text">Users</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">User management</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">User management</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-user">Creating a new user</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#reset-a-user-s-password">Reset a user’s password</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#renaming-a-user">Renaming a user</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#granting-administrator-privileges-to-a-user">Granting administrator privileges to a user</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#managing-groups">Managing groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setting-storage-quotas">Setting storage quotas</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#disable-and-enable-users">Disable and enable users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#deleting-users">Deleting users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#disabling-the-your-email-address-was-changed-email">Disabling the “Your email address […] was changed” email</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#accounts-and-profiles">Accounts and profiles</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Managing user accounts and groups</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-new-account">Creating a new account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resetting-a-user-s-password">Resetting a user’s password</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#renaming-a-user">Renaming a user</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#granting-administrator-privileges-to-an-account">Granting administrator privileges to an account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#managing-groups">Managing groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-storage-quotas">Setting storage quotas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disabled-accounts">Disabled accounts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deleting-accounts">Deleting accounts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disabling-the-your-email-address-was-changed-email">Disabling the “Your email address […] was changed” email</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a user password</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User password policy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap.html">User authentication with LDAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_oidc.html">User authentication with OpenID Connect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="profile_configuration.html">Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#authentication-and-passwords">Authentication and passwords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#sso-directory-and-identity-integrations">SSO, directory, and identity integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#provisioning">Provisioning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
@@ -192,7 +188,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">User management</a></li>
-      <li class="breadcrumb-item active">User management</li>
+      <li class="breadcrumb-item active">Managing user accounts and groups</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_user/user_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -202,159 +198,196 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="user-management">
-<h1>User management<a class="headerlink" href="#user-management" title="Link to this heading"></a></h1>
-<p>On the User management page of your Nextcloud Web UI you can:</p>
+  <section id="managing-user-accounts-and-groups">
+<h1>Managing user accounts and groups<a class="headerlink" href="#managing-user-accounts-and-groups" title="Link to this heading"></a></h1>
+<p>On the Accounts management page of your Nextcloud Web UI you can:</p>
 <ul class="simple">
-<li><p>Create new users</p></li>
-<li><p>View all of your users in a single scrolling window</p></li>
-<li><p>Filter users by group</p></li>
-<li><p>See what groups they belong to</p></li>
-<li><p>Edit their full names and passwords</p></li>
-<li><p>See their data storage locations</p></li>
-<li><p>View and set quotas</p></li>
-<li><p>Create and edit their email addresses</p></li>
-<li><p>Send an automatic email notification to new users</p></li>
-<li><p>Disable and enable users</p></li>
-<li><p>Delete them with a single click</p></li>
+<li><p>Create new user accounts</p></li>
+<li><p>View all accounts and filter accounts by group memberships</p></li>
+<li><p>Change passwords</p></li>
+<li><p>Add and edit account display names</p></li>
+<li><p>View and set account quotas</p></li>
+<li><p>Add and edit account email addresses</p></li>
+<li><p>Send welcome emails to new accounts</p></li>
+<li><p>See what groups accounts belong to and modify memberships</p></li>
+<li><p>Delegate administration of specific groups</p></li>
+<li><p>Disable and re-enable accounts</p></li>
+<li><p>Delete accounts</p></li>
+<li><p>See account data storage locations</p></li>
+<li><p>Specify an account holder’s organizational manager (used by the address book and org chart generator)</p></li>
+<li><p>Wipe data from and disconnect an account’s associated devices</p></li>
 </ul>
-<p>The default view displays basic information about your users.</p>
+<p>The default view displays basic information about your configured accounts.</p>
 <figure class="align-default">
 <img alt="../_images/user-config.png" src="../_images/user-config.png" />
 </figure>
-<p>The group filters on the left sidebar let you quickly filter users by their
+<p>The group filters on the left sidebar let you quickly filter accounts by their
 group memberships and create new groups.</p>
 <figure class="align-default">
 <img alt="../_images/user-config-groups.png" src="../_images/user-config-groups.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>User counts for certain groups, such as “All accounts,” may not be
+<p>Account counts for certain groups, such as “All accounts,” may not be
 visible when using certain backends such as LDAP/AD/SAML.</p>
 </div>
 <p>Click the gear icon on the lower left sidebar to set a default storage quota,
 and to display additional fields: <strong>Show storage location, Show last log in,
-Show user backend, Send email to new users,</strong> and <strong>Show email address</strong>.</p>
+Show user backend, Send email to new accounts,</strong> and <strong>Show email address</strong>.</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/user-config-settings.png"><img alt="../_images/user-config-settings.png" src="../_images/user-config-settings.png" style="width: 444.0px; height: 622.5px;" />
 </a>
 </figure>
-<p>User accounts have the following properties:</p>
-<dl class="simple">
-<dt><em>Login Name (Username)</em></dt><dd><p>The unique ID of a Nextcloud user, which cannot be changed.</p>
+<p>Accounts have the following properties:</p>
+<dl>
+<dt><em>Account name</em></dt><dd><p>The account’s unique identifier within this Nextcloud instance, also called the
+user ID or UID. Nextcloud uses it to associate data and settings with the account.
+It is not meant to change after the account is created. Use it when a command or
+API asks for the user ID.</p>
+<p>For an account in Nextcloud’s local database, the account name or primary
+email address can be used to sign in. With an external backend, the accepted
+login name depends on the backend and its configuration and may differ from
+the Nextcloud user ID. See <a class="reference internal" href="user_auth_ldap.html"><span class="doc">LDAP and Active Directory integration</span></a> for an example.</p>
 </dd>
-<dt><em>Full Name</em></dt><dd><p>The user’s display name that appears on file shares, the Nextcloud Web
-interface, and emails. Admins and users may change the Full Name at any time. If
-the Full Name is not set, it defaults to the login name.</p>
+<dt><em>Display name</em></dt><dd><p>The name shown in the web interface, on shares, and in emails. It need not be
+unique. If no display name is set, Nextcloud shows the account name instead.
+Whether you can edit it depends on the user backend.</p>
 </dd>
-<dt><em>Password</em></dt><dd><p>The admin sets the new user’s initial password. Both the user and the admin can
-change the user’s password at any time.</p>
+<dt><em>Password</em></dt><dd><p>The admin sets the new account’s initial password. Both the user and the admin can
+change the account’s password at any time.</p>
 </dd>
-<dt><em>Email address</em></dt><dd><p>You can set an email address for a user.
-This address can be used when you first set up an account
-so the user receives an email asking them to create a password if none is provided.
-This address can also be used for password reset requests.</p>
+<dt><em>Email</em></dt><dd><p>The email address configured for the account on the Accounts page.
+Nextcloud can send a welcome email to this address when enabled.
+Changing this address does not change the account’s user ID.</p>
+<p>For accounts in Nextcloud’s local database, this address can also be used
+to sign in. Other email addresses on the user’s profile are not used for
+local sign-in. For accounts managed by an external backend, whether users
+can sign in with an email address depends on the backend’s configuration.</p>
+<p>Email addresses need not be unique across accounts. If multiple accounts
+share an address, use the account name (user ID) to sign in or, when
+Nextcloud handles password resets, to request a reset for a specific account.</p>
 </dd>
-<dt><em>Groups</em></dt><dd><p>You may create groups and assign group memberships to users. By default, new
-users are not assigned to any groups.</p>
+<dt><em>Groups</em></dt><dd><p>You may create groups and assign group memberships to accounts. By default, new
+accounts are not assigned to any groups.</p>
 </dd>
 <dt><em>Group Admin</em></dt><dd><p>Group admins are granted administrative privileges for specific groups and
-can create and remove users from their groups. This means they can modify the
-username, password, email, quota, etc., of members of the group. Group admins
-are not allowed to add existing users to their groups.</p>
+can create and remove users from their groups. They can modify properties such
+as display name, password, email, and quota, subject to backend restrictions.
+Group admins are not allowed to add existing accounts to their groups.</p>
 </dd>
-<dt><em>Quota</em></dt><dd><p>The maximum disk space assigned to each user. Any user who exceeds the quota
-cannot upload or sync data. You have the option to include external
-storage in user quotas.</p>
+<dt><em>Quota</em></dt><dd><p>The maximum file-based storage space assigned to each account. Any account that
+exceeds the quota cannot upload or sync further data. External storage consumption
+can optionally be included in account quotas.</p>
 </dd>
-<dt><em>Manager</em></dt><dd><p>Every user can have one organizational manager. The manager property goes into
+<dt><em>Manager</em></dt><dd><p>Every account can have one organizational manager. The manager property goes into
 the system address book card of the user and is used for the Contacts app’s
 organization chart, for example. Setting a manager does <strong>not</strong> change any
 authorization level of the user or their manager.</p>
 </dd>
 </dl>
-<section id="creating-a-new-user">
-<h2>Creating a new user<a class="headerlink" href="#creating-a-new-user" title="Link to this heading"></a></h2>
-<p>To create a user account:</p>
+<section id="creating-a-new-account">
+<h2>Creating a new account<a class="headerlink" href="#creating-a-new-account" title="Link to this heading"></a></h2>
+<p>To create a account for a user:</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>The opt-in core app setting newUser.generateUserID, off by default,
+disables the account name field.</p>
+</div>
 <ul class="simple">
-<li><p>Enter the new user’s <strong>Login Name</strong> and their initial <strong>Password</strong></p></li>
-<li><p>Optionally, assign <strong>Groups</strong> memberships</p></li>
-<li><p>Click the <strong>Create</strong> button</p></li>
+<li><p>Enter an <strong>Account name</strong> to set the user ID for the new account.</p></li>
+<li><p>Enter an initial <strong>Password</strong>, or provide an email address to let the user
+set one.</p></li>
+<li><p>Optionally, enter a <strong>Display name</strong> and assign group memberships.</p></li>
+<li><p>Click the <strong>Add new account</strong> button</p></li>
 </ul>
 <figure class="align-default">
 <img alt="../_images/user-config-new-user.png" src="../_images/user-config-new-user.png" />
 </figure>
-<p>Login names may contain letters (a-z, A-Z), numbers (0-9), dashes (-),
-underscores (_), periods (.), spaces ( ), and at signs (&#64;). After creating the user, you
-may fill in their <strong>Full Name</strong> if it is different from the login name, or
-leave it for the user to complete.</p>
-<p>If you have checked <strong>Send email to new user</strong> in the control panel on the
-lower left sidebar, you may also enter the new user’s email address, and
-Nextcloud will automatically send them a notification with their new login
-information. You may edit this email using the email template editor on your
-Admin page (see <a class="reference internal" href="../configuration_server/email_configuration.html"><span class="doc">Email</span></a>).</p>
-<p>If you check the <strong>Send email to new user</strong> checkbox, you can leave the <strong>Password</strong>
-field empty. The user will receive an activation email to set their own password.</p>
+<p>Account names you enter may contain letters (<code class="docutils literal notranslate"><span class="pre">a-z</span></code>, <code class="docutils literal notranslate"><span class="pre">A-Z</span></code>), numbers
+(<code class="docutils literal notranslate"><span class="pre">0-9</span></code>), dashes (<code class="docutils literal notranslate"><span class="pre">-</span></code>), underscores (<code class="docutils literal notranslate"><span class="pre">_</span></code>), periods (<code class="docutils literal notranslate"><span class="pre">.</span></code>), spaces, at
+signs (<code class="docutils literal notranslate"><span class="pre">&#64;</span></code>), and apostrophes (<code class="docutils literal notranslate"><span class="pre">'</span></code>).</p>
+<p>If <strong>Send email to new account</strong> is toggled on in the <em>Account management
+settings</em> (the lower left sidebar), you may also enter the new account’s primary
+email address, and Nextcloud will automatically send them a notification with
+their new login information.</p>
+<p>When utilizing the <strong>Send email to new account</strong> functionality, you can leave
+the <strong>Password</strong> field empty. The user will receive an activation link in the
+new account email to use to set their own password.</p>
 </section>
-<section id="reset-a-user-s-password">
-<h2>Reset a user’s password<a class="headerlink" href="#reset-a-user-s-password" title="Link to this heading"></a></h2>
-<p>You cannot recover a user’s password, but you can set a new one:</p>
+<section id="resetting-a-user-s-password">
+<span id="reset-user-password"></span><h2>Resetting a user’s password<a class="headerlink" href="#resetting-a-user-s-password" title="Link to this heading"></a></h2>
+<p>You cannot recover a user’s account password, but you can set a new one:</p>
 <ul class="simple">
-<li><p>Hover your cursor over the user’s <strong>Password</strong> field</p></li>
-<li><p>Click on the <strong>pencil icon</strong></p></li>
-<li><p>Enter the user’s new password in the password field, and remember to provide
-the user with their password</p></li>
+<li><p>Hover your cursor over the account’s row in the account list</p></li>
+<li><p>Click on the account’s Edit icon (the <strong>pencil</strong> icon)</p></li>
+<li><p>Enter the account’s new password in the <strong>Password</strong> field, and then provide
+the user with their account’s new password.</p></li>
 </ul>
-<p>If you have encryption enabled, there are special considerations for user
-password resets. Please see
+<p>If passwords resets from Nextcloud are disabled or not supported by the in-use
+user backend, see <a class="reference internal" href="reset_user_password.html"><span class="doc">Configuring an external password reset link</span></a> for configuring an external reset
+link.</p>
+<p>If you have server-side encryption enabled, there are special considerations for
+user password resets. Please see
 <a class="reference internal" href="../configuration_files/encryption_configuration.html"><span class="doc">Server-side Encryption</span></a>.</p>
 </section>
 <section id="renaming-a-user">
 <h2>Renaming a user<a class="headerlink" href="#renaming-a-user" title="Link to this heading"></a></h2>
-<p>Each Nextcloud user has two names: a unique <strong>Login Name</strong> used for
-authentication, and a <strong>Full Name</strong>, which is their display name. You can edit
-the display name of a user, but you cannot change the login name of any user.</p>
-<p>To set or change a user’s display name:</p>
+<p>You can change an account’s <strong>Display name</strong> if the user backend permits it.
+This does not change the Nextcloud Account name (user ID) or the login name(s)
+the backend accepts.</p>
+<p>To set or change an account’s display name:</p>
 <ul class="simple">
-<li><p>Hover your cursor over the user’s <strong>Full Name</strong> field</p></li>
-<li><p>Click on the <strong>pencil icon</strong></p></li>
-<li><p>Enter the user’s new display name</p></li>
+<li><p>Hover your cursor over the account’s row in the account list</p></li>
+<li><p>Click on the account’s Edit icon (the <strong>pencil</strong> icon)</p></li>
+<li><p>Enter the account’s new display name in the <strong>Display name</strong> field.</p></li>
 </ul>
 </section>
-<section id="granting-administrator-privileges-to-a-user">
-<h2>Granting administrator privileges to a user<a class="headerlink" href="#granting-administrator-privileges-to-a-user" title="Link to this heading"></a></h2>
+<section id="granting-administrator-privileges-to-an-account">
+<h2>Granting administrator privileges to an account<a class="headerlink" href="#granting-administrator-privileges-to-an-account" title="Link to this heading"></a></h2>
 <p>Nextcloud has two types of administrators: <strong>Super Administrators</strong> and <strong>Group
 Administrators</strong>. Group administrators have the rights to create, edit, and
-delete users in their assigned groups. Group administrators cannot access
-system settings or add or modify users in groups for which they are not <strong>Group
-Administrators</strong>. Use the dropdown menus in the <strong>Group Admin</strong> column to
-assign group admin privileges.</p>
+delete accounts in their assigned groups. Group administrators cannot access
+system settings or add or modify accounts in groups for which they are not <strong>Group
+Administrators</strong>. Use the dropdown menus in the <strong>Admin of the following groups</strong>
+field to assign group admin privileges.</p>
 <figure class="align-default">
 <img alt="../_images/user-config-group-admin.png" src="../_images/user-config-group-admin.png" />
 </figure>
 <p><strong>Super Administrators</strong> have full rights on your Nextcloud server and can
 access and modify all settings. To assign the <strong>Super Administrators</strong> role to
-a user, simply add them to the <code class="docutils literal notranslate"><span class="pre">admin</span></code> group.</p>
+an account, add them to the built-in <code class="docutils literal notranslate"><span class="pre">admin</span></code> group.</p>
 </section>
 <section id="managing-groups">
 <h2>Managing groups<a class="headerlink" href="#managing-groups" title="Link to this heading"></a></h2>
-<p>You can assign new users to groups when you create them and create new groups
-when you create new users. You may also use the <strong>Add Group</strong> button at the top
-of the left pane to create new groups. New group members will immediately
-have access to file shares that belong to their new groups.</p>
+<p>You can assign new accounts to groups when you create them and create new groups
+when you create new accounts.</p>
+<p>You may also adjust group membership by editing an account and adjusting the contents
+of the “Member of the following groups” field. To add new groups, click the plus sign
+in the left pane (adjacent to the <strong>Groups</strong> section under Accounts).</p>
+<p>The group display name is the label you see in Nextcloud. Use the group ID (GID)
+when a command or API asks for it.</p>
+<p>New group members immediately have access to resources that belong to their new
+groups.</p>
 </section>
 <section id="setting-storage-quotas">
 <h2>Setting storage quotas<a class="headerlink" href="#setting-storage-quotas" title="Link to this heading"></a></h2>
 <p>Click the gear icon on the lower left pane to set a default storage quota. This is
-automatically applied to new users. You may assign a different quota to any user
+automatically applied to new accounts. You may assign a different quota to any account
 by selecting from the <strong>Quota</strong> dropdown, selecting either a preset value or
 entering a custom value. When you create custom quotas, use the standard
-abbreviations for your storage values, such as 500 MB, 5 GB, 5 TB, and so on.</p>
-<p>You now have a configurable option in <code class="docutils literal notranslate"><span class="pre">config.php</span></code> that controls whether
-external storage is counted against users’ quotas. This is still
-experimental and may not work as expected. The default is to not count
-external storage as part of user storage quotas. If you prefer to include it,
-then change the default <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+abbreviations for your storage values, such as <code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">MB</span></code>, <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">GB</span></code>, <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">TB</span></code>, and so on.</p>
+<p>Users can check their used and available space on their Personal pages. Only files that
+originate with a user count against their quota, and not files shared with them that
+originate from other accounts. For example, if you upload files to a different user’s
+share, those files count against your quota. If you re-share a file that another user
+shared with you, that file does not count against your quota, but the originating
+account’s.</p>
+<section id="external-storage">
+<h3>External Storage<a class="headerlink" href="#external-storage" title="Link to this heading"></a></h3>
+<p>External storage is not counted against users’ quotas by default, but inclusion can be
+toggled on. This is still experimental and may not work as expected. The default is to
+not count external storage as part of account storage quotas. If you prefer to include it,
+then change the default <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'quota_include_external_storage'</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
 </pre></div>
 </div>
@@ -363,57 +396,71 @@ then change the default <code class="docutils literal notranslate"><span class="
 <p>If an external storage is defined as root, the quota will not
 be calculable and will be <strong>ignored</strong>.</p>
 </div>
-<p>Metadata (such as thumbnails, temporary files, and encryption keys) takes up
-about 10% of disk space but is not counted against user quotas. Users can check
-their used and available space on their Personal pages. Only files that
-originate with users count against their quotas, and not files shared with them
-that originate from other users. For example, if you upload files to a
-different user’s share, those files count against your quota. If you re-share a
-file that another user shared with you, that file does not count against your
-quota, but the originating user’s.</p>
-<p>Encrypted files are a little larger than unencrypted files; the unencrypted size
-is calculated against the user’s quota.</p>
+</section>
+<section id="metadata">
+<h3>Metadata<a class="headerlink" href="#metadata" title="Link to this heading"></a></h3>
+<p>Metadata (such as thumbnails, temporary files, and encryption keys) is not counted
+against account quotas.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Encrypted files may be larger than unencrypted files; the unencrypted size
+is calculated against the account’s quota.</p>
+</div>
+</section>
+<section id="deleted-files">
+<h3>Deleted files<a class="headerlink" href="#deleted-files" title="Link to this heading"></a></h3>
 <p>Deleted files that are still in the trash bin do not count against quotas. The
 trash bin is set at 50% of quota. Deleted file aging is set at 30 days. When
 deleted files exceed 50% of quota, the oldest files are removed until the
 total is below 50%.</p>
+</section>
+<section id="file-versions">
+<h3>File versions<a class="headerlink" href="#file-versions" title="Link to this heading"></a></h3>
 <p>When version control is enabled, older file versions are not counted
 against quotas.</p>
+</section>
+<section id="shared-folders">
+<h3>Shared folders<a class="headerlink" href="#shared-folders" title="Link to this heading"></a></h3>
 <p>When a user creates a public share via URL and allows uploads, any uploaded
 files count against that user’s quota.</p>
 </section>
-<section id="disable-and-enable-users">
-<h2>Disable and enable users<a class="headerlink" href="#disable-and-enable-users" title="Link to this heading"></a></h2>
+</section>
+<section id="disabled-accounts">
+<h2>Disabled accounts<a class="headerlink" href="#disabled-accounts" title="Link to this heading"></a></h2>
 <figure class="align-default">
 <img alt="../_images/user-config-actions.png" src="../_images/user-config-actions.png" />
 </figure>
-<p>Sometimes you may want to disable a user without permanently deleting their
-settings and files. The user can be activated again at any time, without data loss.</p>
-<p>Hover your cursor over their name on the <strong>Users</strong> page until the “…” menu icon
-appears at the far right. After clicking on it, you will see the <strong>Disable</strong> option.</p>
-<p>The user will no longer be able to access their Nextcloud until you enable them again.
-Also, all external shares, via public link or email, will not be accessible.
-Internal shares will still be working, so other users on Nextcloud can continue working.</p>
-<p>If you wish for internal shares to be disabled as well when a user is disabled,
-activate the configuration option files_sharing:hide_disabled_user_shares:</p>
+<p>Sometimes you may want to disable an account without permanently deleting their
+settings and files. The account can be activated again at any time, without data loss.</p>
+<p>Hover your cursor over their account’s row on the Accounts page and click “…” menu
+icon at the far right. After clicking on it, you will see the <strong>Disable account</strong> option.</p>
+<p>The user will no longer be able to access their Nextcloud account until you re-enable
+it. Also, all external shares, via public link or email, will no longer be accessible.
+Internal shares, however, will continue to work.</p>
+<p>If you wish for internal shares to be disabled as well when an account is disabled,
+toggle the following configuration option:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_sharing</span> <span class="n">hide_disabled_user_shares</span> <span class="o">--</span><span class="n">value</span> <span class="n">yes</span>
 </pre></div>
 </div>
-<p>You will find all disabled users in the <strong>disabled</strong> section on the left pane.
-Enabling users is as easy as disabling them. Just click on the “…” menu, and
-select <strong>Enable</strong>.</p>
+<p>You will find all disabled accounts in the <strong>disabled</strong> section on the left pane.
+Enabling accounts is as easy as disabling them. Just click on the “…” menu, and
+select <strong>Enable account</strong>.</p>
 </section>
-<section id="deleting-users">
-<h2>Deleting users<a class="headerlink" href="#deleting-users" title="Link to this heading"></a></h2>
+<section id="deleting-accounts">
+<h2>Deleting accounts<a class="headerlink" href="#deleting-accounts" title="Link to this heading"></a></h2>
 <figure class="align-default">
 <img alt="../_images/user-config-actions.png" src="../_images/user-config-actions.png" />
 </figure>
-<p>Deleting a user is easy: hover your cursor over their name on the <strong>Users</strong> page
-until the “…” menu icon appears at the far right. After clicking on it, you will
-see the <strong>Delete</strong> option. Clicking on it deletes a user with all their data immediately.</p>
+<p>Deleting an account is easy: hover your cursor over the account’s row on the <strong>Accounts</strong>
+and click the “…” menu icon at the far right. After clicking on it, you will see the
+<strong>Delete account</strong> option. Clicking on it deletes the account and all their data
+immediately.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>You’ll see an undo button at the top of the page, which remains for a few seconds.
-When the undo button is gone, you cannot recover the deleted user.</p>
-<p>All of the files owned by the user are deleted as well, including all files they
+When the undo button is gone, you cannot recover the deleted account.</p>
+</div>
+<p>All of the files owned by the account are deleted as well, including all files they
 have shared. If you need to preserve the user’s files and shares, you must first
 download them from your Nextcloud Files page, which compresses them into a zip
 file, or use a sync client to copy them to your local computer. See
@@ -422,7 +469,7 @@ persistent file shares that survive user deletions.</p>
 </section>
 <section id="disabling-the-your-email-address-was-changed-email">
 <h2>Disabling the “Your email address […] was changed” email<a class="headerlink" href="#disabling-the-your-email-address-was-changed-email" title="Link to this heading"></a></h2>
-<p>If an email address of a user is changed by an admin, then it triggers an email
+<p>If an email address of an account is changed by an admin, then it triggers an email
 to the user that states “Your email address on [URL] was changed by an
 administrator.”. In some cases this should not be triggered, because it was a
 normal maintenance change. To disable this specific email the appconfig option
@@ -442,7 +489,7 @@ normal maintenance change. To disable this specific email the appconfig option
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="User management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="reset_admin_password.html" class="btn btn-neutral float-right" title="Resetting a lost admin password" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="profile_configuration.html" class="btn btn-neutral float-right" title="Profiles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

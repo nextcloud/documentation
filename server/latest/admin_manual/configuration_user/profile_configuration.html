@@ -30,8 +30,8 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="User authentication with OpenID Connect" href="user_auth_oidc.html" />
-    <link rel="prev" title="Instruction set for groups" href="instruction_set_for_groups.html" />
+    <link rel="next" title="Password policy" href="user_password_policy.html" />
+    <link rel="prev" title="Managing user accounts and groups" href="user_configuration.html" />
    
   <meta name="robots" content="noindex, follow" />
 
@@ -107,42 +107,21 @@
 <p class="caption" role="heading"><span class="caption-text">Users</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">User management</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="user_configuration.html">User management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a user password</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User password policy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap.html">User authentication with LDAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Profiles</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#set-the-profile-default-for-new-users">Set the profile default for new users</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#disable-profiles-globally">Disable profiles globally</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#accounts-and-profiles">Accounts and profiles</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="user_configuration.html">Managing user accounts and groups</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Profiles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#profile-field-visibility-settings">Profile field visibility settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#property-visibility-scopes">Property visibility scopes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scopes-and-existing-users">Scopes and existing users</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">See also</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#profile-field-visibility-settings">Profile field visibility settings</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#defaults">Defaults</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#property-visibility-scopes">Property visibility scopes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#scope-visibility-matrix">Scope visibility matrix</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#known-user-rule-for-private-scope">Known-user rule for <code class="docutils literal notranslate"><span class="pre">Private</span></code> scope</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#what-local-users-can-see">What local users can see</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#how-to-verify-scope-behavior">How to verify scope behavior</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#scope-defaults-and-precedence">Scope defaults and precedence</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#default-scope-values-reference">Default scope values (reference)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#override-default-scopes-in-config-php">Override default scopes in <code class="docutils literal notranslate"><span class="pre">config.php</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#faq-how-to-lock-profile-visibility-down">FAQ: How to lock profile visibility down</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#scopes-and-existing-users">Scopes and existing users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#see-also">See also</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="user_auth_oidc.html">User authentication with OpenID Connect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#authentication-and-passwords">Authentication and passwords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#sso-directory-and-identity-integrations">SSO, directory, and identity integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#provisioning">Provisioning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
@@ -684,8 +663,8 @@ The server enforces a minimum of <code class="docutils literal notranslate"><spa
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="instruction_set_for_groups.html" class="btn btn-neutral float-left" title="Instruction set for groups" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="user_auth_oidc.html" class="btn btn-neutral float-right" title="User authentication with OpenID Connect" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="user_configuration.html" class="btn btn-neutral float-left" title="Managing user accounts and groups" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user_password_policy.html" class="btn btn-neutral float-right" title="Password policy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
