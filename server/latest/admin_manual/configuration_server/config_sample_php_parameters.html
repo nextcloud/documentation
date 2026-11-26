@@ -296,6 +296,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#maintenance">Maintenance</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">maintenance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#maintenance-window-start">maintenance_window_start</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#excluded-jobs">excluded_jobs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ldap-log-file">ldap_log_file</a></li>
 </ul>
 </li>
@@ -346,6 +347,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#federated-cloud-sharing">Federated Cloud Sharing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#sharing-federation-allowselfsignedcertificates">sharing.federation.allowSelfSignedCertificates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-federation-request-timeout">sharing.federation.request_timeout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sharing-federation-ocm-apiversion">sharing.federation.ocm.apiVersion</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sharing-federation-ocm-removepublickey">sharing.federation.ocm.removePublicKey</a></li>
 </ul>
@@ -2801,6 +2803,19 @@ This is, e.g., used for activity expiration, suspicious login training, and upda
 <p>A value of 1, e.g., will only run these background jobs between 01:00am UTC and 05:00am UTC.</p>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">100</span></code> which disables the feature</p>
 </section>
+<section id="excluded-jobs">
+<h3>excluded_jobs<a class="headerlink" href="#excluded-jobs" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'excluded_jobs'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'OCA</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">BackgroundJob</span><span class="se">\\</span><span class="s1">DeleteOrphanedItems'</span><span class="p">,</span>
+    <span class="p">],</span>
+</pre></div>
+</div>
+<p>Background job classes that are never picked up by cron, webcron, AJAX
+or <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">background-job:worker</span></code>. The jobs stay registered and can still
+be run manually with <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">background-job:execute</span></code>.</p>
+<p>Use the fully qualified class names as listed by <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">background-job:list</span></code>.</p>
+<p>Defaults to an empty array</p>
+</section>
 <section id="ldap-log-file">
 <h3>ldap_log_file<a class="headerlink" href="#ldap-log-file" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'ldap_log_file'</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
@@ -3343,6 +3358,17 @@ by a command line argument.</p>
 </pre></div>
 </div>
 <p>Allow self-signed certificates for federated shares</p>
+</section>
+<section id="sharing-federation-request-timeout">
+<h3>sharing.federation.request_timeout<a class="headerlink" href="#sharing-federation-request-timeout" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'sharing.federation.request_timeout'</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>The timeout in seconds for requests made to remote servers when accessing
+federated shares, e.g. fetching the share info or checking whether the
+remote server is reachable. Increase it if the remote server is slow to
+answer, e.g. under heavy load.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">10</span></code> seconds.</p>
 </section>
 <section id="sharing-federation-ocm-apiversion">
 <h3>sharing.federation.ocm.apiVersion<a class="headerlink" href="#sharing-federation-ocm-apiversion" title="Link to this heading"></a></h3>

@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confidential files &mdash; Nextcloud 36 Administration Manual</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=850d043c" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/file_workflows/confidential_files.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Webhook Listeners" href="../webhook_listeners/index.html" />
+    <link rel="prev" title="Send a notification" href="notifications.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database setup and configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Customizing MIME Types, Extensions, and Icons</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management_api.html">Apps management API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Automation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../automation_overview/index.html">Automation in Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Flow</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#general-configuration">General configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#operations">Operations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#classification">Classification</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Confidential files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#supported-file-types">Supported file types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-block-access-to-classified-documents">Example: Block access to classified documents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/budibase_workflows.html">Budibase Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/euro-office/index.html">Nextcloud Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/collabora_online.html">Collabora Online</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Collectives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../collectives/index.html">Collectives</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 36 Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Flow</a></li>
+      <li class="breadcrumb-item active">Confidential files</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/file_workflows/confidential_files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="confidential-files">
+<h1>Confidential files<a class="headerlink" href="#confidential-files" title="Link to this heading"></a></h1>
+<p>The Confidential files app (<code class="docutils literal notranslate"><span class="pre">files_confidential</span></code>) classifies files automatically and marks them with a collaborative
+tag. You define a list of classification labels. Each label is linked to a tag and has rules that decide when a file
+gets that label: text in the document, TSCP/BAILS policy categories, or document metadata.</p>
+<p>The app only assigns tags. To restrict, retain, or otherwise act on classified files, combine the tags with other
+apps, for example <a class="reference internal" href="access_control.html"><span class="doc">Files access control</span></a> or <a class="reference internal" href="retention.html"><span class="doc">Retention of files</span></a>.</p>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Nextcloud 33 or later.</p></li>
+<li><p>The PHP extensions <code class="docutils literal notranslate"><span class="pre">dom</span></code>, <code class="docutils literal notranslate"><span class="pre">libxml</span></code>, and <code class="docutils literal notranslate"><span class="pre">zip</span></code>.</p></li>
+<li><p>To enforce access restrictions based on the assigned tags: the File Access Control app.</p></li>
+</ul>
+</section>
+<section id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading"></a></h2>
+<p>Every time a file is created or its content changes, the app checks it against all classification labels:</p>
+<ol class="arabic simple">
+<li><p><strong>TSCP/BAILS categories</strong>: a label matches if the document carries <em>all</em> category IDs configured for the label.</p></li>
+<li><p><strong>Metadata</strong>: a label matches if the document has <em>all</em> configured metadata keys with exactly the configured
+values.</p></li>
+<li><p><strong>Content</strong>: a label matches if the document text contains one of the label’s keywords, built-in search
+expressions, or regular expressions. Matching is case-insensitive.</p></li>
+</ol>
+<p>A file receives at most one classification label. If labels from different rule types match, the label that is
+higher in the list wins.</p>
+<p>The app also removes any of its own tags that no longer apply. If a document is edited and no longer matches a
+label, its classification tag is removed. If it now matches a different label, the tag is replaced. Tags that are
+not used by a classification label are never touched.</p>
+<p>Every change of classification is written to the audit log when the <code class="docutils literal notranslate"><span class="pre">admin_audit</span></code> app is enabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Files are only classified when they are written. Files that already exist when you enable the app or change the
+rules are not classified until their content changes.</p>
+</div>
+</section>
+<section id="supported-file-types">
+<h2>Supported file types<a class="headerlink" href="#supported-file-types" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Rule type</p></th>
+<th class="head"><p>File types</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content (keywords and expressions)</p></td>
+<td><p>Plain text, Markdown, CSV, HTML, PDF, ODT/OTT/OTH/ODM, DOCX/DOCM/DOTX/DOTM</p></td>
+</tr>
+<tr class="row-odd"><td><p>Metadata</p></td>
+<td><p>Microsoft Word, Excel, and PowerPoint (OOXML formats such as DOCX, XLSX, PPTX, and their macro and template
+variants)</p></td>
+</tr>
+<tr class="row-even"><td><p>TSCP/BAILS categories</p></td>
+<td><p>Microsoft OOXML formats as above, and OpenDocument formats (text, spreadsheet, presentation, graphics, and
+their templates)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Content rules only read the text layer of PDF files and do not perform OCR, so scanned PDFs without a text layer cannot
+be classified.</p>
+<p>Files in end-to-end encrypted folders cannot be read by the server and cannot therefore be classified.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Install and enable the Confidential files app as described in <a class="reference internal" href="../apps_management.html"><span class="doc">Apps management</span></a>, then open
+<span class="menuselection">Administration settings ‣ Confidential Files</span>.</p>
+<section id="classification-rules">
+<h3>Classification rules<a class="headerlink" href="#classification-rules" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Click the <strong>Add new label</strong> button.</p></li>
+<li><p>In the <strong>Select or create tag</strong> field, pick an existing tag or type a name to create a new one. Use restricted or
+invisible tags so that regular users cannot remove the classification.</p></li>
+<li><p>Add one or more rules:</p>
+<ul class="simple">
+<li><p><strong>… if document has TSCP policy category ID</strong>: one or more BAILS category IDs.</p></li>
+<li><p><strong>… or if document has all metadata values</strong>: pairs of <strong>Metadata key</strong> and <strong>Metadata value</strong>. For OOXML files
+these are the custom document properties stored in <code class="docutils literal notranslate"><span class="pre">docProps/custom.xml</span></code>.</p></li>
+<li><p><strong>… or if document contains</strong>: keywords, regular expressions, or built-in search expressions. The built-in
+expressions cover common personal data such as e-mail addresses, IBANs, credit card numbers, and several
+national ID and driver’s license formats.</p></li>
+</ul>
+</li>
+</ol>
+<p>Changes are saved automatically. You can only add a new label once every existing label has a tag.</p>
+</section>
+<section id="importing-a-business-authorization-framework-policy">
+<h3>Importing a Business Authorization Framework policy<a class="headerlink" href="#importing-a-business-authorization-framework-policy" title="Link to this heading"></a></h3>
+<p>Under <strong>Business Authorization Framework</strong>, click <strong>Upload policy</strong> to import a TSCP/BAILS policy in XML format.
+The app creates one label for each category in the policy. Each label matches the category ID, and the category name
+as a regular expression on the document content.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Importing a policy replaces all existing classification labels.</p>
+</div>
+<p>After the import, assign a tag to each label. Labels without a tag have no effect.</p>
+</section>
+</section>
+<section id="example-block-access-to-classified-documents">
+<h2>Example: Block access to classified documents<a class="headerlink" href="#example-block-access-to-classified-documents" title="Link to this heading"></a></h2>
+<p>This example blocks access to any document that contains the word <code class="docutils literal notranslate"><span class="pre">Confidential</span></code> for everyone outside the <code class="docutils literal notranslate"><span class="pre">Legal</span></code>
+group.</p>
+<ol class="arabic simple">
+<li><p>In <span class="menuselection">Administration settings ‣ Confidential Files</span>, add a label with the restricted tag
+<code class="docutils literal notranslate"><span class="pre">Confidential</span></code> and the keyword <code class="docutils literal notranslate"><span class="pre">Confidential</span></code>.</p></li>
+<li><p>In <span class="menuselection">Administration settings ‣ Flow</span>, add a File Access Control rule with these conditions:</p>
+<ul class="simple">
+<li><p><strong>File collaborative tag</strong> <em>is</em> <code class="docutils literal notranslate"><span class="pre">Confidential</span></code></p></li>
+<li><p><strong>User group membership</strong> <em>is not member of</em> <code class="docutils literal notranslate"><span class="pre">Legal</span></code></p></li>
+</ul>
+</li>
+<li><p>Upload a document containing the word <code class="docutils literal notranslate"><span class="pre">Confidential</span></code>. The file gets the <code class="docutils literal notranslate"><span class="pre">Confidential</span></code> tag, and users outside
+the <code class="docutils literal notranslate"><span class="pre">Legal</span></code> group can no longer open, download, or sync it.</p></li>
+</ol>
+<p>See <a class="reference internal" href="access_control.html"><span class="doc">Files access control</span></a> for details and common pitfalls, such as public links.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="notifications.html" class="btn btn-neutral float-left" title="Send a notification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../webhook_listeners/index.html" class="btn btn-neutral float-right" title="Webhook Listeners" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-admin">
+      ☁️ 36
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-admin" class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            35 (latest)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/admin_manual"
+             
+          >
+            34 (stable)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/33/admin_manual"
+             
+          >
+            33 (stable)
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
