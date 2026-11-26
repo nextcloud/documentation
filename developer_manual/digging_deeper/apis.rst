@@ -15,5 +15,6 @@ APIs & Integration
    notifications
    publicpage
    resource_permissions
+   interaction_api
    talk
    web_host_metadata
