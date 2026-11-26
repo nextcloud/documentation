@@ -1,6 +1,6 @@
-=======================================
-User authentication with OpenID Connect
-=======================================
+==========================
+OpenID Connect integration
+==========================
 
 Nextcloud users can authenticate via an external identity provider.
 Nextcloud can also be an identity provider itself.

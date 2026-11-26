@@ -1,14 +1,19 @@
-=========================
-Resetting a user password
-=========================
+===========================================
+Configuring an external password reset link
+===========================================
 
-The Nextcloud login screen displays a **Wrong password. Reset it?** message
-after a user enters an incorrect password, and then Nextcloud automatically
-resets their password. However, if you are using a read-only authentication
-backend such as LDAP or Active Directory, this will not work. In this case you
-may specify a custom URL in your ``config.php`` file to direct your user to a
-server that can handle an automatic reset::
+If your user backend does not support user-level password resets, such as
+when LDAP password changes from Nextcloud are disabled, you can specify a
+custom reset URL in ``config.php``::
 
  'lost_password_link' => 'https://example.org/link/to/password/reset',
 
+Users will be redirected to this URL when they select the password reset link
+in Nextcloud. To disable the password reset link entirely, set the URL to
+``'disabled'``.
 
+This setting applies to the login page's reset link for all users, not only
+users of the external backend.
+
+.. tip:: For an administrator-initiated password reset, see
+         :ref:`reset-user-password`.

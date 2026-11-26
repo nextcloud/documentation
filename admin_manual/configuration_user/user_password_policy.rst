@@ -1,20 +1,33 @@
-====================
-User password policy
-====================
+===============
+Password policy
+===============
 
-A password policy is a set of rules designed to enhance computer security by encouraging users to employ strong passwords and use them properly.
+Configure password policies in the security section of the administration
+settings. The account password policy also applies to share passwords by
+default. You can also configure a separate policy for share passwords.
 
-In the security-section of your administrator-settings you can configure
+Customizable password policies include:
 
-* a minimal length of a password. Default is 10 characters.
-* a password history
-* a password expiration period
-* a lockout policy
-* to forbid common passwords like 'password' or 'login'.
-* to enforce upper and lower case characters
-* to enforce numeric characters
-* to enforce special characters like ! or :
-* to check the password against the list of breached passwords from haveibeenpwnd.com (hashed check via haveibeenpwnd.com-API)
+* Minimum password length (default: 10 characters)
+* Blocking common passwords (such as ``password`` or ``login``)
+* Requiring uppercase and lowercase characters
+* Requiring numeric characters
+* Requiring special characters (such as ``!`` or ``:``)
+* Checking passwords against the breached-password list operated by HaveIBeenPwned.com (HIBP)
+
+.. note:: For the breached-password check, Nextcloud hashes the password locally,
+          then sends only the first five characters of the hash to the HIBP API. If the API is
+          unreachable, the check is skipped.
+
+Account password-specific policies include:
+
+* Password history size (to prevent reuse of previous passwords)
+* Maximum consecutive failed login attempts; reaching the limit disables the
+  account until an administrator re-enables it. Set to 0 for no limit.
+* Password expiration period (in days) for supported local accounts
+
+.. warning::
+   Password expiration is considered a security risk by several security agencies.
 
 .. figure:: ../images/user_password_policy_configuration_app.png
 

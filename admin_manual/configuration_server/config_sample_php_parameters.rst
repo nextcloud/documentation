@@ -2861,6 +2861,24 @@ A value of 1, e.g., will only run these background jobs between 01:00am UTC and 
 
 Defaults to ``100`` which disables the feature
 
+excluded_jobs
+^^^^^^^^^^^^^
+
+
+::
+
+    'excluded_jobs' => [
+            'OCA\\Files\\BackgroundJob\\DeleteOrphanedItems',
+        ],
+
+Background job classes that are never picked up by cron, webcron, AJAX
+or ``occ background-job:worker``. The jobs stay registered and can still
+be run manually with ``occ background-job:execute``.
+
+Use the fully qualified class names as listed by ``occ background-job:list``.
+
+Defaults to an empty array
+
 ldap_log_file
 ^^^^^^^^^^^^^
 
@@ -3537,6 +3555,21 @@ sharing.federation.allowSelfSignedCertificates
     'sharing.federation.allowSelfSignedCertificates' => false,
 
 Allow self-signed certificates for federated shares
+
+sharing.federation.request_timeout
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'sharing.federation.request_timeout' => 10,
+
+The timeout in seconds for requests made to remote servers when accessing
+federated shares, e.g. fetching the share info or checking whether the
+remote server is reachable. Increase it if the remote server is slow to
+answer, e.g. under heavy load.
+
+Defaults to ``10`` seconds.
 
 sharing.federation.ocm.apiVersion
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
