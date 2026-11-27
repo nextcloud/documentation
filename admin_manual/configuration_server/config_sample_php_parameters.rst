@@ -805,6 +805,24 @@ davstorage.request_timeout
 
 The timeout in seconds for requests to servers made by the DAV component (e.g., needed for federated shares).
 
+davstorage_allow_local_address
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+    'davstorage_allow_local_address' => false,
+
+Allow WebDAV based storages to connect to servers with local addresses
+(e.g., a NAS on the local network). This applies to WebDAV and Nextcloud
+external storages and to the file access of federated shares, without
+allowing local addresses globally as ``allow_local_remote_servers`` does.
+
+Users who can create personal external storages can then make the server
+send requests to hosts on the local network.
+
+Defaults to ``false``
+
 carddav_sync_request_timeout
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
