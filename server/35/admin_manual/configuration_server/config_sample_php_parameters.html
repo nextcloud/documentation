@@ -142,6 +142,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#remember-login-cookie-lifetime">remember_login_cookie_lifetime</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#session-lifetime">session_lifetime</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#davstorage-request-timeout">davstorage.request_timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#davstorage-allow-local-address">davstorage_allow_local_address</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#carddav-sync-request-timeout">carddav_sync_request_timeout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#carddav-sync-request-truncation">carddav_sync_request_truncation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#session-relaxed-expiry">session_relaxed_expiry</a></li>
@@ -1179,6 +1180,19 @@ value.</p>
 </pre></div>
 </div>
 <p>The timeout in seconds for requests to servers made by the DAV component (e.g., needed for federated shares).</p>
+</section>
+<section id="davstorage-allow-local-address">
+<h3>davstorage_allow_local_address<a class="headerlink" href="#davstorage-allow-local-address" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;davstorage_allow_local_address&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Allow WebDAV based storages to connect to servers with local addresses
+(e.g., a NAS on the local network). This applies to WebDAV and Nextcloud
+external storages and to the file access of federated shares, without
+allowing local addresses globally as <code class="docutils literal notranslate"><span class="pre">allow_local_remote_servers</span></code> does.</p>
+<p>Users who can create personal external storages can then make the server
+send requests to hosts on the local network.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code></p>
 </section>
 <section id="carddav-sync-request-timeout">
 <h3>carddav_sync_request_timeout<a class="headerlink" href="#carddav-sync-request-timeout" title="Link to this heading"></a></h3>

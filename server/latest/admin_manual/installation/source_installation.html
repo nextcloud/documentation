@@ -88,7 +88,15 @@
 <li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="php_configuration.html">Preparing PHP</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Installation on Linux</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#prerequisites-for-manual-installation">Prerequisites for manual installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alternative-installation-methods">Alternative Installation Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites-for-manual-installation">Prerequisites for manual installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#webdav">WebDAV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#php-extensions">PHP Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selinux">SELinux</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#apache-web-server-configuration">Apache Web server configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#additional-apache-configurations">Additional Apache configurations</a></li>
 </ul>
@@ -99,7 +107,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#setting-up-background-jobs">Setting up background jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#selinux-configuration-tips">SELinux configuration tips</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#php-fpm-configuration">PHP-FPM configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Overview</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#process-manager">Process manager</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#system-environment-variables">System environment variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#maximum-upload-size">Maximum upload size</a></li>
@@ -230,45 +238,225 @@
              
   <section id="installation-on-linux">
 <h1>Installation on Linux<a class="headerlink" href="#installation-on-linux" title="Link to this heading"></a></h1>
-<p>There are multiple ways of installing Nextcloud depending on your preferences, requirements and goals.</p>
-<p>If you prefer an automated installation, you have the option to:</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>This installation guide provides a general overview of required dependencies and their
+configuration for a typical manual (i.e. from scratch) installation on Linux. This is referred to
+as an “archive-based installation” (i.e. from a <code class="docutils literal notranslate"><span class="pre">.tar.bz2</span></code> or <code class="docutils literal notranslate"><span class="pre">.zip</span></code> archive). In addition,
+alternative installation methods are highlighted for the reader’s consideration.</p>
+</section>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>If you prefer the flexibility and control of installing from a source archive (tarball / zip file),
+you can setup a Nextcloud stack from scratch. Nextcloud utilizes a classic LAMP-style stack (i.e.
+Linux, Apache, MySQL/MariaDB, PHP) along with some variations (i.e. different database backends) and
+optional stack components (i.e. distributed in-memory databases and in-memory caching for added
+performance or scalability).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Optional Nextcloud stack components, such as the in-memory databases and in-memory caching
+provided by Redis are useful even in smaller deployments. For this reason they are recommended for
+all use cases. However, they are not required for initial installation, and  are easy to integrate
+afterwards when/if desired.</p>
+</div>
+<p>The Nextcloud <code class="docutils literal notranslate"><span class="pre">.tar.bz2</span></code> archive contains the source code for Nextcloud Server itself as well as
+the default apps and third-party libraries needed to run Nextcloud.</p>
+<p>This document provides a walk-through for installing Nextcloud on an Ubuntu instance (Server-edition /
+LTS), with Apache and MariaDB, using the downloadable Nextcloud Server <a class="reference external" href="https://nextcloud.com/install/">archive file</a>. This is the recommended method for installing Nextcloud from
+scratch.</p>
+<p>Additional example installation guides, based on this material, for specific *NIX OS distributions are
+also available:</p>
 <ul class="simple">
-<li><p>use the <a class="reference external" href="https://github.com/nextcloud/all-in-one#nextcloud-all-in-one">official Nextcloud installation method</a>. Nextcloud AIO provides easy deployment and maintenance with most features included in this one Nextcloud instance. It includes Office, a turnkey Backup solution, Imaginary (for previews of heic, heif, illustrator, pdf, svg, tiff and webp) and more.</p></li>
-<li><p>use the <a class="reference external" href="https://snapcraft.io/nextcloud">community Snap Package</a>. This includes a full production-ready stack, will maintain your HTTPS certificates for you, and will automatically update as needed to stay secure.</p></li>
-<li><p>use the <a class="reference external" href="https://github.com/nextcloud/vm/">community Nextcloud VM Appliance</a> (aka Nextcloud Virtual Machine or NcVM). This helps you create a personal or corporate Nextcloud Server faster and easier. It can be used install directly on a clean Ubuntu Server or downloaded as a fully functioning VM.</p></li>
-<li><p>use the <a class="reference external" href="https://nextcloudpi.com/">community NextcloudPi scripts</a> (based on Debian). It will setup everything for you and include scripts for automated installation of apps like: Collabora, OnlyOffice, Talk and so on.</p></li>
-<li><p>use the <a class="reference external" href="https://hub.docker.com/_/nextcloud/">community Nextcloud Docker image</a>. This image is designed to be used in a micro-service environment. There are two versions of the image you can choose from: the Apache one contains a full Nextcloud installation including an Apache web server. The second option is an FPM installation and runs a FastCGI process that serves your Nextcloud installation (you will need to supply your preferred web, database and other desired supplementary services).</p></li>
+<li><p><a class="reference internal" href="example_ubuntu.html"><span class="doc">Example installation on Ubuntu 24.04 LTS</span></a></p></li>
+<li><p><a class="reference internal" href="example_centos.html"><span class="doc">Example installation on CentOS 8</span></a>.</p></li>
+<li><p><a class="reference internal" href="example_openbsd.html"><span class="doc">Example installation on OpenBSD</span></a>.</p></li>
 </ul>
+</section>
+<section id="alternative-installation-methods">
+<h2>Alternative Installation Methods<a class="headerlink" href="#alternative-installation-methods" title="Link to this heading"></a></h2>
+<p>If you prefer or require an installation method that is more “packaged” or automated than a standard
+archive-based installation, there are alternative installation methods.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Please note that the community options are not officially supported by Nextcloud GmbH.</p>
+<p>Note that there is some variance between installation methods in terms of functionality and
+requirements. Consult each installation method’s official documentation for specifics.</p>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Nextcloud All-in-One (aka AIO)</dt><dd><ul>
+<li><p>An official installation method that is maintained by <a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a> (the
+company behind Nextcloud).</p></li>
+<li><p>A pre-designed and container-based full Nextcloud stack.</p></li>
+<li><p>Designed for ease of deployment and maintenance with most features included, for tens to hundreds of users.</p></li>
+<li><p>Includes Office, a turnkey Backup solution, Imaginary (for previews of heic, heif, illustrator,
+pdf, svg, tiff and webp) and much more (many components are optional). Full feature list available
+<a class="reference external" href="https://github.com/nextcloud/all-in-one?tab=readme-ov-file#nextcloud-all-in-one">here</a>.</p></li>
+<li><p>Free community support is provided <a class="reference external" href="https://github.com/nextcloud/all-in-one/discussions/new?category=questions">on GitHub</a>
+(on a best efforts basis).</p></li>
+<li><p>For larger installations (&gt;100 users) an AIO specific <a class="reference external" href="https://nextcloud.com/all-in-one/">Nextcloud Enterprise arrangement</a> is available (it includes a support SLA, security information and
+all the other benefits that come with <a class="reference external" href="https://nextcloud.com/all-in-one/">Nextcloud Enterprise</a>).</p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/all-in-one#nextcloud-all-in-one">Official Documentation</a> (<strong>Note</strong>: see
+Official Documentation for AIO specific installation and usage details. You can search through it by using
+the browser search via <code class="docutils literal notranslate"><span class="pre">[CTRL]+[F]</span></code>). Additional documentation <a class="reference external" href="https://github.com/nextcloud/all-in-one/discussions/categories/wiki">can be found here</a>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Nextcloud Community Snap</dt><dd><ul>
+<li><p>A community-driven installation method that is actively maintained by amazing Nextcloud community members
+(make sure to thank them - or find a way help them out - if you get the opportunity!).</p></li>
+<li><p>A full production-ready stack that will maintain your HTTPS certificates for you and will automatically
+update as needed to stay secure. Full feature list available
+<a class="reference external" href="https://github.com/nextcloud-snap/nextcloud-snap?tab=readme-ov-file#snappy-nextcloud">here</a>.</p></li>
+<li><p>Designed specifically for Ubuntu (<a class="reference external" href="https://github.com/nextcloud-snap/nextcloud-snap/wiki/Why-Ubuntu-is-the-only-supported-distro">non-Ubuntu distributions are not officially supported</a>).</p></li>
+<li><p>The stack is sealed: you can’t add system packages or PHP modules yourself, so features that need them
+(e.g. <a class="reference external" href="https://github.com/nextcloud-snap/nextcloud-snap/issues/60">SMB/CIFS external storage</a>) may not
+be available. Check the documentation for limitations before choosing it.</p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud-snap/nextcloud-snap/wiki">Official Wiki</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud-snap/nextcloud-snap">Official Documentation</a> (<strong>Note</strong>: see Official
+Documentation - and Wiki - for Snap specific installation and usage details).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Nextcloud Community VM Appliance (aka Nextcloud Virtual Machine or NcVM)</dt><dd><ul>
+<li><p>A community-driven installation method that is actively maintained by amazing Nextcloud community members
+(make sure to thank them - or find a way to help them out - if you get the opportunity!) and partner Hansson
+IT.</p></li>
+<li><p>Helps you create a personal or corporate Nextcloud Server faster and easier.</p></li>
+<li><p>Can be used to install directly on a clean Ubuntu Server (as an install script) or downloaded as a fully
+functioning VM. Full feature list available <a class="reference external" href="https://github.com/nextcloud/vm/?tab=readme-ov-file#server-installation-simplified-cloud">here</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/vm/">Official Documentation</a> (<strong>Note</strong>: see Official Documentation
+for VM specific installation and usage details).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>NextcloudPi (aka: NCP)</dt><dd><ul>
+<li><p>A community-driven installation method that is actively maintained by amazing Nextcloud community members
+(make sure to thank them - or find a way help them out - if you get the opportunity!).</p></li>
+<li><p>A ready to use image for Virtual Machines, Raspberry Pi, Odroid HC1, Rock64 and other boards. Also supports
+LXD and LXC containers and there is an install script for the latest supported Debian based system as well.</p></li>
+<li><p>It will setup everything for you and include scripts for automated installation of apps like: Collabora,
+OnlyOffice, Talk and so on. Full feature list available
+<a class="reference external" href="https://github.com/nextcloud/nextcloudpi?tab=readme-ov-file#features">here</a>.</p></li>
+<li><p>Also manages the underlying system for use in a home network: dynamic DNS, Let’s Encrypt certificates,
+backups, and so on. Well suited to a device on your local network, less so to a public server.</p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/nextcloudpi">Official Documentation</a> (<strong>Note</strong>: see Official Documentation
+for NCP specific installation and usage details).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Nextcloud Community Docker Image</dt><dd><ul>
+<li><p>A community-driven installation method that is actively maintained by amazing Nextcloud community members
+(make sure to thank them - or find a way help them out - if you get the opportunity!).</p></li>
+<li><p>Two editions of the image are provided for building different types of Nextcloud stacks: the Apache image
+contains a full Nextcloud installation including an Apache web server. The second option is an FPM
+installation and runs a FastCGI process that serves your Nextcloud installation. The standard images are
+Debian-based, but Alpine variants are offered as well.</p></li>
+<li><p>This image is designed for expert use and intended to be used in a micro-service environment where you can
+incorporate as a building block in your own Nextcloud stack (i.e. you will not need to install/update
+Nextcloud, but you will need to supply your preferred web, reverse proxy, HTTPS termination, database and
+other desired supplementary services).</p></li>
+<li><p>Full Nextcloud stacks, incorporating the image, are provided in the form of example Docker Compose files
+and Dockerfile variations. Full feature list available <a class="reference external" href="https://github.com/nextcloud/docker/">here</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/docker/">Official Documentation</a> (<strong>Note</strong>: see Official Documentation
+for Image specific installation and usage details).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Nextcloud Web Installer</dt><dd><ul>
+<li><p>The Web Installer is an easy way to install Nextcloud Server in a shared / managed web space (e.g. shared
+hosting) if you don’t have access to the command line and if your environment meets the requirements.</p></li>
+<li><p>Checks for essential PHP dependencies, downloads the Nextcloud archive file from the official server, and
+unpacks it with the right permissions then directs you to the Nextcloud Server Setup Wizard.</p></li>
+<li><p>Whether it works depends a lot on the hosting environment (PHP version and modules, memory and execution
+time limits, cron support). See <a class="reference external" href="https://help.nextcloud.com/t/how-to-get-help-on-shared-webhosting/178243">this community guide</a> for what to check first.</p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/web-installer/">Official Documentation</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>One Click Signup</dt><dd><ul>
+<li><p>An alternative to providing your own installation environment and installing and keeping a Nextcloud Server
+up-to-date yourself. Nothing is installed by you: the provider runs the instance.</p></li>
+<li><p>You are not in control of the setup: you have to trust the provider as you would any other cloud storage
+provider. Check its terms, data location and how you can export your data before relying on it.</p></li>
+<li><p>A good way to get the look and feel of Nextcloud and try it out.</p></li>
+<li><p>Hosting offered by independent Nextcloud providers from all over the world.</p></li>
+<li><p>Each has committed to providing you 2+ GB of storage on a 100% free single user account, with all the basic
+Nextcloud apps.</p></li>
+<li><p>Through One Click Signup, getting started is made as easy as possible. You can go with the suggested default provider
+(based on your location) or choose another.</p></li>
+<li><p>To sign-up click <em>Sign up with a provider</em> <a class="reference external" href="https://nextcloud.com/install/#one-click-signup">here</a>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Nextcloud Enterprise</dt><dd><ul>
+<li><p>An official Nextcloud GmbH maintained installation method.</p></li>
+<li><p>Optimized and tested for mission-critical deployment, Nextcloud helps your organization achieve digital
+sovereignty with full security compliance.</p></li>
+<li><p>For organizations from 50 to tens of millions of users in industries including education, government, legal
+and financial services and manufacturing. Customers include SIEMENS, all French universities covered under
+RENATER, the German Federal Government and more.</p></li>
+<li><p>Suited to integrating Nextcloud into existing infrastructure (user directories, storage and
+authentication backends), which needs more experience than a standalone setup.</p></li>
+<li><p>For details, see <a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The nuances of alternative packaging / installation methods mean that certain details may differ from an
+archive-based installation. This is true even though all alternative installation methods ultimately utilize
+an archive-based installation method underneath (one way or another). Example differences can include log
+locations, configuration paths, and procedures for <code class="docutils literal notranslate"><span class="pre">occ</span></code> command access, installing, and updating. Refer to
+each installation method’s own dedicated documentation for specific differences.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>For an enterprise-ready and scalable installation based on Helm Charts (also available for Podman), please <a class="reference external" href="https://nextcloud.com/enterprise/">contact Nextcloud GmbH</a>.</p>
 </div>
-<p>In case you prefer installing from the source tarball, you can setup Nextcloud
-from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
-This document provides a complete walk-through for installing Nextcloud on
-Ubuntu 24.04 LTS Server with Apache and MariaDB, using <a class="reference external" href="https://nextcloud.com/install/">the Nextcloud .tar
-archive</a>. This method is recommended to install Nextcloud.</p>
-<p>This installation guide is giving a general overview of required dependencies and their configuration. For a distribution specific setup guide have a look at the <a class="reference internal" href="example_ubuntu.html"><span class="doc">Example installation on Ubuntu 24.04 LTS</span></a> and <a class="reference internal" href="example_centos.html"><span class="doc">Example installation on CentOS 8</span></a>.</p>
-<div class="admonition note" id="prerequisites-label">
+<div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Admins of SELinux-enabled distributions such as CentOS, Fedora, and
-Red Hat Enterprise Linux may need to set new rules to enable installing
-Nextcloud. See <a class="reference internal" href="#selinux-tips-label"><span class="std std-ref">SELinux configuration tips</span></a> for a suggested configuration.</p>
+<p>Please note that the community options are not officially supported by Nextcloud GmbH and support is primarily peer-based via community channels.</p>
 </div>
+</section>
 <section id="prerequisites-for-manual-installation">
-<h2>Prerequisites for manual installation<a class="headerlink" href="#prerequisites-for-manual-installation" title="Link to this heading"></a></h2>
-<p>The Nextcloud .tar archive contains all of the required PHP modules.
-Your Linux distribution should have packages for all required modules.
-See <a class="reference internal" href="php_configuration.html"><span class="doc">Preparing PHP</span></a> for a list of required and suggested modules.</p>
-<p>You don’t need the WebDAV module for your Web server (i.e. Apache’s
+<span id="prerequisites-label"></span><h2>Prerequisites for manual installation<a class="headerlink" href="#prerequisites-for-manual-installation" title="Link to this heading"></a></h2>
+<section id="webdav">
+<h3>WebDAV<a class="headerlink" href="#webdav" title="Link to this heading"></a></h3>
+<p>You don’t need a WebDAV module for your Web server (i.e. Apache’s
 <code class="docutils literal notranslate"><span class="pre">mod_webdav</span></code>), as Nextcloud has a built-in WebDAV server of its own,
-SabreDAV.
-If <code class="docutils literal notranslate"><span class="pre">mod_webdav</span></code> is enabled you must disable it for Nextcloud. (See
+SabreDAV. If <code class="docutils literal notranslate"><span class="pre">mod_webdav</span></code> is enabled you must disable it. (See
 <a class="reference internal" href="#apache-configuration-label"><span class="std std-ref">Apache Web server configuration</span></a> for an example configuration.)</p>
+</section>
+<section id="php-extensions">
+<h3>PHP Extensions<a class="headerlink" href="#php-extensions" title="Link to this heading"></a></h3>
+<p>There are some PHP extensions that must be installed and enabled before
+attempting to install Nextcloud Server. Your Linux distribution, in most
+cases, will have packages for these required PHP extensions (or they
+will be enabled already by default). See <a class="reference internal" href="php_configuration.html"><span class="doc">Preparing PHP</span></a> for a
+list of required and suggested PHP extensions.</p>
+</section>
+<section id="selinux">
+<h3>SELinux<a class="headerlink" href="#selinux" title="Link to this heading"></a></h3>
+<p>SELinux-enabled distributions such as CentOS, Fedora, and Red Hat Enterprise
+Linux may need to set new rules to enable installing Nextcloud. See
+<a class="reference internal" href="#selinux-tips-label"><span class="std std-ref">SELinux configuration tips</span></a> for a suggested configuration.</p>
+</section>
 </section>
 <section id="apache-web-server-configuration">
 <span id="apache-configuration-label"></span><h2>Apache Web server configuration<a class="headerlink" href="#apache-web-server-configuration" title="Link to this heading"></a></h2>
@@ -505,8 +693,8 @@ SELinux-enabled distributions such as Fedora and CentOS.</p>
 </section>
 <section id="php-fpm-configuration">
 <span id="php-fpm-tips-label"></span><h2>PHP-FPM configuration<a class="headerlink" href="#php-fpm-configuration" title="Link to this heading"></a></h2>
-<section id="overview">
-<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h3>
+<section id="id1">
+<h3>Overview<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p><a class="reference external" href="https://www.php.net/manual/en/install.fpm.php">PHP-FPM</a> is a FastCGI based
 implementation of PHP containing features useful for busy web sites and large web
 applications. Using it with Nextcloud is an advanced topic and requires getting
