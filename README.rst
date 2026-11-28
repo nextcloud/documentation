@@ -95,10 +95,18 @@ Quick start
    ``uv`` picks the Python version from ``.python-version``, which also matches the
    ``stable<N>`` branches.
 
+The ``gh-pages`` and ``automated/deploy/*`` branches hold the built site, with rebuilt
+PDF and ePub files for every deploy, so a plain ``git clone`` downloads several GB. The
+clone below skips those branches.
+
 .. code-block:: bash
 
-   git clone https://github.com/nextcloud/documentation.git
+   git clone --single-branch https://github.com/nextcloud/documentation.git
    cd documentation
+   git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+   git config --add remote.origin.fetch '^refs/heads/gh-pages'
+   git config --add remote.origin.fetch '^refs/heads/automated/deploy/*'
+   git fetch origin
    uv venv && source .venv/bin/activate                  # recommended
    uv pip install -r requirements.txt
    make html                                              # all manuals
