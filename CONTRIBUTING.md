@@ -49,10 +49,18 @@ build lets you preview changes accurately before opening a PR.
 uv picks the Python version from `.python-version`, so the same steps work on
 the `stable<N>` branches.
 
+The `gh-pages` and `automated/deploy/*` branches hold the built site, with
+rebuilt PDF and ePub files for every deploy, so a plain `git clone` downloads
+several GB. Step 1 clones every branch except those.
+
 ```bash
 # 1. Clone the repository
-git clone https://github.com/nextcloud/documentation.git
+git clone --single-branch https://github.com/nextcloud/documentation.git
 cd documentation
+git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+git config --add remote.origin.fetch '^refs/heads/gh-pages'
+git config --add remote.origin.fetch '^refs/heads/automated/deploy/*'
+git fetch origin
 
 # 2. Create and activate a virtual environment
 uv venv && source .venv/bin/activate   # on Windows: .venv\Scripts\activate
