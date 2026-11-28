@@ -7,13 +7,13 @@ Introduction
 
 This installation guide provides a general overview of required dependencies and their 
 configuration for a typical manual (i.e. from scratch) installation on Linux. This is referred to 
-as an "Archive-based installation" (i.e. from a ``.tar.bz2`` or ``.zip`` archive). In addition, 
+as an "archive-based installation" (i.e. from a ``.tar.bz2`` or ``.zip`` archive). In addition, 
 alternative installation methods are highlighted for the reader's consideration.
 
 Overview
 --------
 
-If you prefer the flexibility and control of installing from a source Archive (tarball / zip file), 
+If you prefer the flexibility and control of installing from a source archive (tarball / zip file), 
 you can setup a Nextcloud stack from scratch. Nextcloud utilizes a classic LAMP-style stack (i.e. 
 Linux, Apache, MySQL/MariaDB, PHP) along with some variations (i.e. different database backends) and 
 optional stack components (i.e. distributed in-memory databases and in-memory caching for added 
@@ -21,14 +21,14 @@ performance or scalability).
 
 .. tip:: Optional Nextcloud stack components, such as the in-memory databases and in-memory caching 
    provided by Redis are useful even in smaller deployments. For this reason they are recommended for
-   all use cases. However, they are not required for initial installation, and  are easy to integrate 
-   afterward when/if desired.
+   all use cases. However, they are not required for initial installation, and  are easy to integrate
+   afterwards when/if desired.
 
 The Nextcloud ``.tar.bz2`` archive contains the source code for Nextcloud Server itself as well as 
 the default apps and third-party libraries needed to run Nextcloud. 
 
 This document provides a walk-through for installing Nextcloud on an Ubuntu instance (Server-edition /
-LTS), with Apache and MariaDB, using the downloadable Nextcloud Server `Archive file 
+LTS), with Apache and MariaDB, using the downloadable Nextcloud Server `archive file 
 <https://nextcloud.com/install/>`_. This is the recommended method for installing Nextcloud from 
 scratch.
 
@@ -43,28 +43,28 @@ Alternative Installation Methods
 --------------------------------
 
 If you prefer or require an installation method that is more "packaged" or automated than a standard
-Archive-based installation, there are alternative installation methods. 
+archive-based installation, there are alternative installation methods. 
 
-.. note:: Note that is some variance between installation methods in terms of functionality and 
+.. note:: Note that there is some variance between installation methods in terms of functionality and 
    requirements. Consult each installation method's official documentation for specifics.
 
 * Nextcloud All-in-One (aka AIO)
    - An official installation method that is maintained by `Nextcloud GmbH <https://nextcloud.com/>`_ (the 
-     legal entity that employs many of the most active Nextcloud developers and contributors).
+     company behind Nextcloud).
    - A pre-designed and container-based full Nextcloud stack.
-   - Designed for ease of deployment and maintenance with most features included.
+   - Designed for ease of deployment and maintenance with most features included, for tens to hundreds of users.
    - Includes Office, a turnkey Backup solution, Imaginary (for previews of heic, heif, illustrator, 
      pdf, svg, tiff and webp) and much more (many components are optional). Full feature list available
      `here <https://github.com/nextcloud/all-in-one?tab=readme-ov-file#nextcloud-all-in-one>`_.
-   - Up to 100 users are free (though without any direct service or support or guarantees). Free community 
-     support is provided via the `Nextcloud Community Help Forum <https://help.nextcloud.com/>`_ and a 
-     `dedicated GitHub Discussions area <https://github.com/nextcloud/all-in-one/discussions>`_ (on a best 
-     efforts basis).
-   - For slightly larger installations (>100 users) an AIO specific `Nextcloud Enterprise arrangement 
-     <https://nextcloud.com/all-in-one/>`_ is required (it includes a support SLA, security information and 
+   - Free community support is provided `on GitHub <https://github.com/nextcloud/all-in-one/issues/new/choose>`_
+     (on a best efforts basis).
+   - For larger installations (>100 users) an AIO specific `Nextcloud Enterprise arrangement 
+     <https://nextcloud.com/all-in-one/>`_ is available (it includes a support SLA, security information and 
      all the other benefits that come with `Nextcloud Enterprise <https://nextcloud.com/all-in-one/>`_).
-   - `Official Documentation <https://github.com/nextcloud/all-in-one>`_ (**Note**: see Official Documentation 
-     for AIO specific installation and usage details).
+   - `Official Documentation <https://github.com/nextcloud/all-in-one#nextcloud-all-in-one>`_ (**Note**: see
+     Official Documentation for AIO specific installation and usage details. You can search through it by using
+     the browser search via ``[CTRL]+[F]``). Additional documentation `can be found here
+     <https://github.com/nextcloud/all-in-one/discussions/categories/wiki>`_.
 * Nextcloud Community Snap
    - A community-driven installation method that is actively maintained by amazing Nextcloud community members 
      (make sure to thank them - or find a way help them out - if you get the opportunity!).
@@ -73,6 +73,9 @@ Archive-based installation, there are alternative installation methods.
      `here <https://github.com/nextcloud-snap/nextcloud-snap?tab=readme-ov-file#snappy-nextcloud>`_.
    - Designed specifically for Ubuntu (`non-Ubuntu distributions are not officially supported 
      <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Why-Ubuntu-is-the-only-supported-distro>`_).
+   - The stack is sealed: you can't add system packages or PHP modules yourself, so features that need them
+     (e.g. `SMB/CIFS external storage <https://github.com/nextcloud-snap/nextcloud-snap/issues/60>`_) may not
+     be available. Check the documentation for limitations before choosing it.
    - `Official Wiki <https://github.com/nextcloud-snap/nextcloud-snap/wiki>`_
    - `Official Documentation <https://github.com/nextcloud-snap/nextcloud-snap>`_ (**Note**: see Official 
      Documentation - and Wiki - for Snap specific installation and usage details).
@@ -81,7 +84,7 @@ Archive-based installation, there are alternative installation methods.
      (make sure to thank them - or find a way to help them out - if you get the opportunity!) and partner Hansson
      IT.
    - Helps you create a personal or corporate Nextcloud Server faster and easier. 
-   - Can be used install directly on a clean Ubuntu Server (as an install script) or downloaded as a fully 
+   - Can be used to install directly on a clean Ubuntu Server (as an install script) or downloaded as a fully 
      functioning VM. Full feature list available `here 
      <https://github.com/nextcloud/vm/?tab=readme-ov-file#server-installation-simplified-cloud>`_.
    - `Official Documentation <https://github.com/nextcloud/vm/>`_ (**Note**: see Official Documentation 
@@ -94,6 +97,8 @@ Archive-based installation, there are alternative installation methods.
    - It will setup everything for you and include scripts for automated installation of apps like: Collabora, 
      OnlyOffice, Talk and so on. Full feature list available 
      `here <https://github.com/nextcloud/nextcloudpi?tab=readme-ov-file#features>`_.
+   - Also manages the underlying system for use in a home network: dynamic DNS, Let's Encrypt certificates,
+     backups, and so on. Well suited to a device on your local network, less so to a public server.
    - `Official Documentation <https://github.com/nextcloud/nextcloudpi>`_ (**Note**: see Official Documentation 
      for NCP specific installation and usage details).
 * Nextcloud Community Docker Image
@@ -114,32 +119,40 @@ Archive-based installation, there are alternative installation methods.
 * Nextcloud Web Installer
    - The Web Installer is an easy way to install Nextcloud Server in a shared / managed web space (e.g. shared 
      hosting) if you don't have access to the command line and if your environment meets the requirements.
-   - Checks for essential PHP dependencies, downloads the Nextcloud Archive file from the official server, and 
+   - Checks for essential PHP dependencies, downloads the Nextcloud archive file from the official server, and 
      unpacks it with the right permissions then directs you to the Nextcloud Server Setup Wizard.
+   - Whether it works depends a lot on the hosting environment (PHP version and modules, memory and execution
+     time limits, cron support). See `this community guide
+     <https://help.nextcloud.com/t/how-to-get-help-on-shared-webhosting/178243>`_ for what to check first.
    - `Official Documentation <https://github.com/nextcloud/web-installer/>`_
 * One Click Signup
    - An alternative to providing your own installation environment and installing and keeping a Nextcloud Server 
-     up-to-date yourself.
+     up-to-date yourself. Nothing is installed by you: the provider runs the instance.
+   - You are not in control of the setup: you have to trust the provider as you would any other cloud storage
+     provider. Check its terms, data location and how you can export your data before relying on it.
+   - A good way to get the look and feel of Nextcloud and try it out.
    - Hosting offered by independent Nextcloud providers from all over the world.
    - Each has committed to providing you 2+ GB of storage on a 100% free single user account, with all the basic 
      Nextcloud apps. 
-   - Through Simple Signup, getting started is made as easy as possible. You can with the suggested default provider 
+   - Through One Click Signup, getting started is made as easy as possible. You can go with the suggested default provider 
      (based on your location) or choose another.
    - To sign-up click *Sign up with a provider* `here <https://nextcloud.com/install/#one-click-signup>`_.
 * Nextcloud Enterprise
    - An official Nextcloud GmbH maintained installation method.
-   - Optimized and tested for mission-critical deployment, Nextcloud helps your organizsation achieve digital 
+   - Optimized and tested for mission-critical deployment, Nextcloud helps your organization achieve digital 
      sovereignty with full security compliance.
    - For organizations from 50 to tens of millions of users in industries including education, government, legal
      and financial services and manufacturing. Customers include SIEMENS, all French universities covered under
      RENATER, the German Federal Government and more.
-   - For details, see `Nextcloud Enterprise` <https://nextcloud.com/enterprise/>`_
+   - Suited to integrating Nextcloud into existing infrastructure (user directories, storage and
+     authentication backends), which needs more experience than a standalone setup.
+   - For details, see `Nextcloud Enterprise <https://nextcloud.com/enterprise/>`_.
 
 .. tip:: The nuances of alternative packaging / installation methods mean that certain details may differ from an 
-   Archive-based installation. This is true even though all alternatives installation methods ultimately utilize
-   an Archive-based installation method underneath (one way or another). Example differences can include log 
+   archive-based installation. This is true even though all alternative installation methods ultimately utilize
+   an archive-based installation method underneath (one way or another). Example differences can include log 
    locations, configuration paths, and procedures for ``occ`` command access, installing, and updating. Refer to 
-   each installation methods own dedicated documentation for specific differences.
+   each installation method's own dedicated documentation for specific differences.
 
 .. tip:: For an enterprise-ready and scalable installation based on Helm Charts (also available for Podman), please `contact Nextcloud GmbH <https://nextcloud.com/enterprise/>`_.
 
