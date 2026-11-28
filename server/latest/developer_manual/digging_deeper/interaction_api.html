@@ -1,0 +1,910 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interaction API &mdash; Nextcloud 36 Developer Manual</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=850d043c" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/digging_deeper/interaction_api.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = "pre.mermaid {\n    /* Same as .mermaid-container > pre */\n    display: block;\n    width: 100%;\n}\n\npre.mermaid > svg {\n    /* Same as .mermaid-container > pre > svg */\n    height: 500px;\n    width: 100%;\n    max-width: 100% !important;\n}";
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = ".mermaid-container {\n    position: relative;\n    display: flex;\n    flex-direction: row;\n    width: 100%;\n}\n\n.mermaid-container > pre {\n    display: block;\n    width: 100%;\n}\n\n.mermaid-container > pre > svg {\n    height: 500px;\n    width: 100%;\n    max-width: 100% !important;\n}\n\n.mermaid-fullscreen-btn {\n    position: absolute;\n    width: 28px;\n    height: 28px;\n    background: rgba(255, 255, 255, 0.95);\n    border: 1px solid rgba(0, 0, 0, 0.3);\n    border-radius: 4px;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    transition: all 0.2s;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n    font-size: 14px;\n    line-height: 1;\n    padding: 0;\n    color: #333;\n}\n\n.mermaid-fullscreen-btn:hover {\n    opacity: 100% !important;\n    background: rgba(255, 255, 255, 1);\n    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n    transform: scale(1.1);\n}\n\n.mermaid-fullscreen-btn.dark-theme {\n    background: rgba(50, 50, 50, 0.95);\n    border: 1px solid rgba(255, 255, 255, 0.3);\n    color: #e0e0e0;\n}\n\n.mermaid-fullscreen-btn.dark-theme:hover {\n    background: rgba(60, 60, 60, 1);\n    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);\n}\n\n.mermaid-fullscreen-modal {\n    display: none;\n    position: fixed !important;\n    top: 0 !important;\n    left: 0 !important;\n    width: 95vw;\n    height: 100vh;\n    background: rgba(255, 255, 255, 0.98);\n    z-index: 9999;\n    padding: 20px;\n    overflow: auto;\n}\n\n.mermaid-fullscreen-modal.dark-theme {\n    background: rgba(0, 0, 0, 0.98);\n}\n\n.mermaid-fullscreen-modal.active {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.mermaid-container-fullscreen {\n    position: relative;\n    width: 95vw;\n    height: 90vh;\n    max-width: 95vw;\n    max-height: 90vh;\n    background: white;\n    border-radius: 8px;\n    padding: 20px;\n    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);\n    overflow: auto;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.mermaid-container-fullscreen.dark-theme {\n    background: #1a1a1a;\n    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);\n}\n\n.mermaid-container-fullscreen pre.mermaid {\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.mermaid-container-fullscreen .mermaid svg {\n    height: 100% !important;\n    width: 100% !important;\n    cursor: grab;\n}\n\n.mermaid-fullscreen-close {\n    position: fixed !important;\n    top: 20px !important;\n    right: 20px !important;\n    width: 40px;\n    height: 40px;\n    background: rgba(255, 255, 255, 0.95);\n    border: 1px solid rgba(0, 0, 0, 0.2);\n    border-radius: 50%;\n    cursor: pointer;\n    z-index: 10000;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);\n    transition: all 0.2s;\n    font-size: 24px;\n    line-height: 1;\n    color: #333;\n}\n\n.mermaid-fullscreen-close:hover {\n    background: white;\n    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);\n    transform: scale(1.1);\n}\n\n.mermaid-fullscreen-close.dark-theme {\n    background: rgba(50, 50, 50, 0.95);\n    border: 1px solid rgba(255, 255, 255, 0.2);\n    color: #e0e0e0;\n}\n\n.mermaid-fullscreen-close.dark-theme:hover {\n    background: rgba(60, 60, 60, 1);\n    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);\n}\n\n.mermaid-fullscreen-modal .mermaid-fullscreen-btn {\n    display: none !important;\n}";
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+let _lazyObserver = null;
+let _renderQueue = Promise.resolve();
+let closeModal = () => {};
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('active')) {
+        closeModal();
+    }
+});
+
+// Apply d3 zoom to each SVG. Idempotent: an SVG already wrapped is skipped,
+// so this is safe to call both for the initial batch and for diagrams that
+// render lazily once they become visible.
+const addZoomToSvgs = (svgs) => {
+    svgs.each(function() {
+        if (this.getAttribute('data-zoom-applied') === 'true') return;
+        var svg = d3.select(this);
+        svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+        var inner = svg.select("g");
+        var zoom = d3.zoom().on("zoom", function(event) {
+            inner.attr("transform", event.transform);
+        });
+        svg.call(zoom);
+        this.setAttribute('data-zoom-applied', 'true');
+    });
+};
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        // Disconnect any previous lazy rendering observer
+        if (_lazyObserver) {
+            _lazyObserver.disconnect();
+            _lazyObserver = null;
+        }
+
+        all_mermaids.forEach((el) => {
+            el.removeAttribute('data-mermaid-deferred');
+            el.removeAttribute('data-mermaid-render-failed');
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+
+        // Separate visible and hidden elements. Mermaid's layout engine measures
+        // text dimensions via the DOM, which fails for elements hidden by a parent
+        // (e.g., Reveal.js non-active slides, sphinx-design unopened tabs),
+        // producing broken SVGs. Render visible elements now, defer hidden ones.
+        const visible = [];
+        const hidden = [];
+        all_mermaids.forEach((el) => {
+            // offsetParent is null for display:none ancestors.
+            // getClientRects().length > 0 catches position:fixed elements
+            // (which also have null offsetParent but are still visible).
+            if (el.offsetParent !== null || el.getClientRects().length > 0) {
+                visible.push(el);
+            } else {
+                hidden.push(el);
+                el.setAttribute('data-mermaid-deferred', 'true');
+            }
+        });
+
+        if (visible.length > 0) {
+            try {
+                await mermaid.run({ nodes: visible });
+            } catch (e) {
+                console.error("Mermaid rendering failed:", e);
+            }
+        }
+
+        // Lazily render hidden elements when they become visible.
+        // Uses a promise chain (_renderQueue) to serialize rendering,
+        // since IntersectionObserver may report multiple entries at once
+        // and mermaid.run() is not safe to call concurrently.
+        if (hidden.length > 0) {
+            if (typeof IntersectionObserver === 'undefined') {
+                console.warn("IntersectionObserver not available; hidden mermaid diagrams will not render.");
+            } else {
+                _renderQueue = Promise.resolve();
+                _lazyObserver = new IntersectionObserver((entries) => {
+                    for (const entry of entries) {
+                        if (entry.isIntersecting && entry.target.getAttribute("data-processed") !== "true") {
+                            _lazyObserver.unobserve(entry.target);
+                            const el = entry.target;
+                            _renderQueue = _renderQueue.then(async () => {
+                                try {
+                                    await mermaid.run({ nodes: [el] });
+                                    el.removeAttribute('data-mermaid-deferred');
+                                    // Apply zoom to the now-rendered diagram, matching
+                                    // the decoration visible diagrams receive.
+                                    if (false) {
+                                        addZoomToSvgs(d3.selectAll("").select(function() {
+                                            return this.querySelector("svg");
+                                        }));
+                                    }
+                                } catch (e) {
+                                    console.error("Mermaid deferred rendering failed:", e);
+                                    el.removeAttribute('data-mermaid-deferred');
+                                    el.setAttribute('data-mermaid-render-failed', 'true');
+                                }
+                            });
+                        }
+                    }
+                });
+                hidden.forEach((el) => _lazyObserver.observe(el));
+            }
+        }
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    // Exclude deferred (hidden) and render-failed elements from completion checks
+    const mermaids_active = document.querySelectorAll(".mermaid:not([data-mermaid-deferred]):not([data-mermaid-render-failed])");
+    const mermaids_processed = document.querySelectorAll(".mermaid:not([data-mermaid-deferred]):not([data-mermaid-render-failed])[data-processed='true']");
+
+    if (false) {
+        const mermaids_to_add_zoom = 0 === -1 ? mermaids_active.length : 0;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("").select(function() {
+                return this.querySelector("svg");
+            });
+            // Wait until every active (visible) diagram has rendered. Deferred
+            // diagrams are excluded, so a fixed d3_node_count that counts a
+            // hidden diagram no longer loops forever waiting for its SVG.
+            if(mermaids_active.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            }
+            addZoomToSvgs(svgs);
+        }
+    } else if(mermaids_active.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if (!true) return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = "\u26f6";
+        fullscreenBtn.style.opacity = "50%";
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scrollX, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.display = 'block';
+
+                if (false) {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+
+
+const load = async () => {
+    initStyles();
+
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...{"startOnLoad": false},
+                ...{ darkMode: darkTheme, theme: darkTheme ? "dark" : "default" },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...{"startOnLoad": false},
+    ...{ darkMode: darkTheme, theme: darkTheme ? "dark" : "default" },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Talk Integration" href="talk.html" />
+    <link rel="prev" title="Resource permissions" href="resource_permissions.html" />
+   
+  <meta name="robots" content="noindex, follow" />
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <label for="rtd-search-input" class="sr-only">Search docs</label>
+    <div class="wy-form-search">
+      <span class="fa fa-search wy-form-search-icon" aria-hidden="true"></span>
+      <input id="rtd-search-input"
+             type="text"
+             name="q"
+             placeholder="Search docs"
+             aria-label="Search docs" />
+    </div>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ai.html">AI &amp; Machine Learning</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="apis.html">APIs &amp; Integration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actor.html">Actor API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource_permissions.html">Resource permissions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Interaction API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#concepts">Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-restricting-apps">For restricting apps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-emitting-apps">For emitting apps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#types">Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#built-in-restrictions">Built-in restrictions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#audit-log">Audit log</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="auth.html">Users &amp; Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="direct_editing.html">Direct editing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware_workflows.html">Groupware &amp; Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="discovery.html">Search &amp; Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devtools.html">Development Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internals.html">Server Internals</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 36 Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+          <li class="breadcrumb-item"><a href="apis.html">APIs &amp; Integration</a></li>
+      <li class="breadcrumb-item active">Interaction API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/interaction_api.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="interaction-api">
+<span id="id1"></span><h1>Interaction API<a class="headerlink" href="#interaction-api" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 34.0.2.</span></p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">\OCP\Interaction\RestrictInteractionEvent</span></code> lets any app forbid an action
+through which a user makes others aware of a resource, for example sharing a
+file by link.</p>
+<p>Two kinds of apps take part:</p>
+<ul class="simple">
+<li><p>An <strong>emitting app</strong> performs the interaction, for example the sharing
+backend. Before it does, it describes the interaction and asks whether it is
+allowed.</p></li>
+<li><p>A <strong>restricting app</strong> listens to the event and forbids interactions that
+break its rules, for example “confidential files must not be shared by link”.
+It never needs code specific to the emitting app.</p></li>
+</ul>
+<p>The server ships listeners in core, Files and Files sharing, see
+<a class="reference internal" href="#built-in-restrictions">Built-in restrictions</a>.</p>
+<pre  class="mermaid">
+        sequenceDiagram
+    participant E as Emitting app
+    participant S as Server
+    participant A as Restricting app A
+    participant B as Restricting app B
+
+    E-&gt;&gt;S: isInteractionRestricted()
+    activate S
+    S-&gt;&gt;A: handle(event)
+    A--&gt;&gt;S: returns
+    S-&gt;&gt;B: handle(event)
+    B--&gt;&gt;S: throws InteractionRestrictedException
+    S-&gt;&gt;S: write audit log entry
+    S--&gt;&gt;E: translated hint
+    deactivate S
+    E-&gt;&gt;E: refuse the interaction
+    </pre><section id="concepts">
+<h2>Concepts<a class="headerlink" href="#concepts" title="Link to this heading"></a></h2>
+<p>An interaction consists of four parts:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 35.0%" />
+<col style="width: 45.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Part</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>User</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code> user ID, optionally the <code class="docutils literal notranslate"><span class="pre">\OCP\IUser</span></code></p></td>
+<td><p>The user who performs the interaction.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Resources</p></td>
+<td><p>list of <code class="docutils literal notranslate"><span class="pre">\OCP\Interaction\InteractionResource</span></code></p></td>
+<td><p>What is exposed, for example a file or a folder.</p></td>
+</tr>
+<tr class="row-even"><td><p>Action</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\OCP\Interaction\InteractionAction</span></code> or <code class="docutils literal notranslate"><span class="pre">null</span></code></p></td>
+<td><p>What the user does, for example sharing with certain permissions.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Receivers</p></td>
+<td><p>list of <code class="docutils literal notranslate"><span class="pre">\OCP\Interaction\InteractionReceiver</span></code></p></td>
+<td><p>Who becomes aware of the resources, for example a user, a group or
+everyone with a link.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Only the user ID is required, while the other parameters can be omitted by passing <code class="docutils literal notranslate"><span class="pre">null</span></code>
+or an empty list, and a restricting app ignores the parts it has no rules for. However, passing only
+the user ID will results in no event being emitted and may result in an exception in future versions.</p>
+<p>An interaction is allowed if no listener forbids it. A listener cannot allow
+what another listener forbids.</p>
+<p>If the owner of a resource and the user performing the interaction differ, for
+example when a share is reshared, the event must be emitted once for each of them.</p>
+</section>
+<section id="for-restricting-apps">
+<h2>For restricting apps<a class="headerlink" href="#for-restricting-apps" title="Link to this heading"></a></h2>
+<p>Implement an <code class="docutils literal notranslate"><span class="pre">\OCP\EventDispatcher\IEventListener</span></code> for the
+<code class="docutils literal notranslate"><span class="pre">RestrictInteractionEvent</span></code>. Check the parts you have rules for with
+<code class="docutils literal notranslate"><span class="pre">instanceof</span></code> and return for everything else. To forbid the interaction,
+throw an <code class="docutils literal notranslate"><span class="pre">\OCP\Interaction\InteractionRestrictedException</span></code>.</p>
+<p><strong>Example: restricting the share action when sharing an item by link</strong></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Listener</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Service\MyAppService</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventListener</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Interaction\Actions\ShareAction</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Interaction\InteractionRestrictedException</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Interaction\Receivers\LinkReceiver</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Interaction\Resources\NodeResource</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Interaction\RestrictInteractionEvent</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @template-implements IEventListener&lt;RestrictInteractionEvent&gt;</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">RestrictInteractionListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">MyAppService</span> <span class="nv">$myAppService</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">IL10N</span> <span class="nv">$l10n</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">RestrictInteractionEvent</span> <span class="o">||</span> <span class="o">!</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">action</span> <span class="nx">instanceof</span> <span class="nx">ShareAction</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">receivers</span> <span class="k">as</span> <span class="nv">$receiver</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$receiver</span> <span class="nx">instanceof</span> <span class="nx">LinkReceiver</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">continue</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">resources</span> <span class="k">as</span> <span class="nv">$resource</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$resource</span> <span class="nx">instanceof</span> <span class="nx">NodeResource</span> <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myAppService</span><span class="o">-&gt;</span><span class="na">shareByLinkAllowed</span><span class="p">(</span><span class="nv">$resource</span><span class="o">-&gt;</span><span class="na">nodeId</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="k">throw</span> <span class="k">new</span> <span class="nx">InteractionRestrictedException</span><span class="p">(</span>
+                        <span class="s1">'This node cannot be shared by link.'</span><span class="p">,</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">'This file cannot be shared by link.'</span><span class="p">),</span>
+                    <span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The first argument of the exception is written to the log, the second one is
+shown to the user and must be translated.</p>
+<p>Register the listener in the <code class="docutils literal notranslate"><span class="pre">register</span></code> method of your <code class="docutils literal notranslate"><span class="pre">Application</span></code> class:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">RestrictInteractionEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">RestrictInteractionListener</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="things-to-watch-for">
+<h3>Things to watch for<a class="headerlink" href="#things-to-watch-for" title="Link to this heading"></a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To check the permissions of a user on a file or folder, use
+<code class="docutils literal notranslate"><span class="pre">NodeResource::getNodePermissions()</span></code>. It combines the permissions of every
+path through which the user can reach the node. <code class="docutils literal notranslate"><span class="pre">getNode()</span></code> only returns
+one of these paths.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ShareAction</span></code> carries the permissions of the share in one of two forms:
+<code class="docutils literal notranslate"><span class="pre">filesSharingPermissions</span></code> as a bitmask of <code class="docutils literal notranslate"><span class="pre">\OCP\Constants::PERMISSION_*</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">unifiedSharingPermissions</span></code> as a list of share permission type class
+names. If your rules depend on the permissions, handle both.</p></li>
+<li><p>Do not throw any other exception to forbid an interaction. Other exceptions
+are not handled by the server and the check is not written to the audit log.</p></li>
+<li><p>The first listener that throws ends the check, so the user only sees one
+reason even if several listeners would forbid the interaction.</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="for-emitting-apps">
+<h2>For emitting apps<a class="headerlink" href="#for-emitting-apps" title="Link to this heading"></a></h2>
+<p>Before the interaction happens, create the event with everything you know and
+call <code class="docutils literal notranslate"><span class="pre">isInteractionRestricted()</span></code>. It returns <code class="docutils literal notranslate"><span class="pre">false</span></code> if the interaction is
+allowed, or the translated reason if it is not.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\Constants</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Interaction\Actions\ShareAction</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Interaction\Receivers\UserReceiver</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Interaction\Resources\NodeResource</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Interaction\RestrictInteractionEvent</span><span class="p">;</span>
+
+<span class="nv">$event</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RestrictInteractionEvent</span><span class="p">(</span>
+    <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getUID</span><span class="p">(),</span>
+    <span class="nv">$user</span><span class="p">,</span>
+    <span class="p">[</span><span class="k">new</span> <span class="nx">NodeResource</span><span class="p">(</span><span class="nv">$node</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">(),</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getUID</span><span class="p">(),</span> <span class="nv">$node</span><span class="p">)],</span>
+    <span class="k">new</span> <span class="nx">ShareAction</span><span class="p">(</span><span class="nx">Constants</span><span class="o">::</span><span class="na">PERMISSION_READ</span><span class="p">),</span>
+    <span class="p">[</span><span class="k">new</span> <span class="nx">UserReceiver</span><span class="p">(</span><span class="nv">$recipientId</span><span class="p">)],</span>
+<span class="p">);</span>
+
+<span class="nv">$reason</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">isInteractionRestricted</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$reason</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Refuse the interaction and show $reason to the user</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="id2">
+<h3>Things to watch for<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>Always call <code class="docutils literal notranslate"><span class="pre">isInteractionRestricted()</span></code>. Do not dispatch the event
+yourself, otherwise exceptions are not handled and nothing is written to the
+audit log.</p></li>
+<li><p>Pass the objects you already have, such as the <code class="docutils literal notranslate"><span class="pre">\OCP\IUser</span></code>, the
+<code class="docutils literal notranslate"><span class="pre">\OCP\Files\Node</span></code> or the node permissions. Everything you leave out is
+loaded when a listener needs it.</p></li>
+<li><p>If the owner of a resource and the user performing the interaction differ,
+emit one event for each of them.</p></li>
+</ul>
+</div>
+</section>
+<section id="adding-resource-action-and-receiver-types">
+<h3>Adding resource, action and receiver types<a class="headerlink" href="#adding-resource-action-and-receiver-types" title="Link to this heading"></a></h3>
+<p>If your app exposes something the server does not know, implement
+<code class="docutils literal notranslate"><span class="pre">\OCP\Interaction\InteractionResource</span></code>, <code class="docutils literal notranslate"><span class="pre">\OCP\Interaction\InteractionAction</span></code>
+or <code class="docutils literal notranslate"><span class="pre">\OCP\Interaction\InteractionReceiver</span></code>. <code class="docutils literal notranslate"><span class="pre">getID()</span></code> returns an ID that
+identifies the resource or receiver in the audit log. A receiver without an ID
+returns <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+</section>
+</section>
+<section id="types">
+<h2>Types<a class="headerlink" href="#types" title="Link to this heading"></a></h2>
+<p>The server ships the following types. They are in the <code class="docutils literal notranslate"><span class="pre">\OCP\Interaction</span></code>
+namespace.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35.0%" />
+<col style="width: 65.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Actions\ShareAction</span></code></p></td>
+<td><p>Sharing a resource. Takes <code class="docutils literal notranslate"><span class="pre">filesSharingPermissions</span></code> or
+<code class="docutils literal notranslate"><span class="pre">unifiedSharingPermissions</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Resources\NodeResource</span></code></p></td>
+<td><p>A file or folder. Takes the node ID and the user ID, and optionally the
+<code class="docutils literal notranslate"><span class="pre">\OCP\Files\Node</span></code> and the node permissions.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Receivers\UserReceiver</span></code></p></td>
+<td><p>A user. <code class="docutils literal notranslate"><span class="pre">getUser()</span></code> returns the <code class="docutils literal notranslate"><span class="pre">\OCP\IUser</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Receivers\GroupReceiver</span></code></p></td>
+<td><p>A group. <code class="docutils literal notranslate"><span class="pre">getGroup()</span></code> returns the <code class="docutils literal notranslate"><span class="pre">\OCP\IGroup</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Receivers\LinkReceiver</span></code></p></td>
+<td><p>Everyone with a public link.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Receivers\EmailReceiver</span></code></p></td>
+<td><p>An email address.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Receivers\RemoteUserReceiver</span></code></p></td>
+<td><p>A federated user. <code class="docutils literal notranslate"><span class="pre">getCloudId()</span></code> returns the
+<code class="docutils literal notranslate"><span class="pre">\OCP\Federation\ICloudId</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Receivers\RemoteGroupReceiver</span></code></p></td>
+<td><p>A federated group. <code class="docutils literal notranslate"><span class="pre">getCloudId()</span></code> returns the
+<code class="docutils literal notranslate"><span class="pre">\OCP\Federation\ICloudId</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Receivers\CircleReceiver</span></code></p></td>
+<td><p>A team.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Receivers\RoomReceiver</span></code></p></td>
+<td><p>A Talk conversation.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Receivers\DeckReceiver</span></code></p></td>
+<td><p>A Deck card.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="built-in-restrictions">
+<h2>Built-in restrictions<a class="headerlink" href="#built-in-restrictions" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>App</p></th>
+<th class="head"><p>Forbids</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Core</p></td>
+<td><p>Sharing if sharing is disabled, for everyone or for the user; sharing
+with a disabled account; sharing outside the user’s groups if sharing is
+limited to group members; sharing with groups, by link or email, or with
+federated users or groups if the administrator disabled it.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Files</p></td>
+<td><p>Any interaction on a file or folder the user cannot read.</p></td>
+</tr>
+<tr class="row-even"><td><p>Files sharing</p></td>
+<td><p>Sharing a file or folder the user cannot share; sharing the home folder;
+sharing a file with create or delete permission; sharing with a user,
+group or other recipient without read permission; sharing a folder by
+link with write permissions if public upload is disabled; sharing with
+more <code class="docutils literal notranslate"><span class="pre">filesSharingPermissions</span></code> than the user has.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="audit-log">
+<h2>Audit log<a class="headerlink" href="#audit-log" title="Link to this heading"></a></h2>
+<p>Every check is written to the audit log, with the operation ID
+<code class="docutils literal notranslate"><span class="pre">users.interaction.allowed</span></code> or <code class="docutils literal notranslate"><span class="pre">users.interaction.restricted</span></code>. The entry
+contains the action, the user ID and the IDs of the resources and receivers. If
+the interaction is restricted, it also contains the log message of the
+exception.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="resource_permissions.html" class="btn btn-neutral float-left" title="Resource permissions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="talk.html" class="btn btn-neutral float-right" title="Talk Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Nov 28, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    
+    <button type="button"
+            class="rst-current-version"
+            data-toggle="rst-current-version"
+            aria-expanded="false"
+            aria-controls="rst-other-versions-dev">
+      ☁️ 36
+      <span class="fa fa-caret-down" aria-hidden="true"></span>
+    </button>
+    <div id="rst-other-versions-dev" class="rst-other-versions">
+      <dl class="nc-versions-list">
+        <dt>Versions</dt>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+          >
+            36 (upcoming)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            35 (latest)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/34/developer_manual"
+             
+          >
+            34 (stable)
+          </a>
+        </dd>
+        
+        <dd>
+          <a href="https://docs.nextcloud.com/server/33/developer_manual"
+             
+          >
+            33 (stable)
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <script>
+    /* Keep aria-expanded in sync with the RTD theme toggle class. */
+    (function () {
+      var btn = document.querySelector('.rst-current-version[aria-expanded]');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    }());
+  </script>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

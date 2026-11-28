@@ -115,6 +115,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#multibucket-object-store-with-per-bucket-configuration-overrides">Multibucket Object Store with per Bucket configuration overrides</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#multi-instance-object-store">Multi-instance Object Store</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#s3-sse-c-encryption-support">S3 SSE-C encryption support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#s3-sse-kms-encryption-support">S3 SSE-KMS encryption support</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="external_storage_configuration_gui.html">External Storage</a></li>
@@ -382,6 +383,8 @@ unconfigured):</p>
 <li><p><code class="code docutils literal notranslate"><span class="pre">use_path_style</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">false</span></code></p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">port</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">443</span></code></p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">sse_c_key</span></code> has no default</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sse_kms_enabled</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sse_kms_key_id</span></code> has no default (uses the bucket default KMS key when omitted)</p></li>
 </ul>
 <p>Optional parameters less commonly needing adjustment:</p>
 <ul class="simple">
@@ -533,31 +536,95 @@ so only newly created users will be mapped to the new default instance.</p>
 a multi-instance configuration.</p>
 </section>
 <section id="s3-sse-c-encryption-support">
-<h2>S3 SSE-C encryption support<a class="headerlink" href="#s3-sse-c-encryption-support" title="Link to this heading"></a></h2>
-<p>Nextcloud supports server side encryption, also known as <a class="reference external" href="http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html">SSE-C</a>, with compatible S3 bucket provider. The encryption and decryption happens on the S3 bucket side with a key provided by the Nextcloud server.</p>
-<p>The key can be specified with the <code class="code docutils literal notranslate"><span class="pre">sse_c_key</span></code> parameter which needs to be provided as a base64 encoded string with a maximum length of 32 bytes. A random key could be generated using the the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">rand</span> <span class="mi">32</span> <span class="o">|</span> <span class="n">base64</span>
+<span id="s3-sse-c"></span><h2>S3 SSE-C encryption support<a class="headerlink" href="#s3-sse-c-encryption-support" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Amazon S3 disabled SSE-C by default for new buckets and selected existing buckets in
+April 2026. Review the
+<a class="reference external" href="https://aws.amazon.com/blogs/storage/advanced-notice-amazon-s3-to-disable-the-use-of-sse-c-encryption-by-default-for-all-new-buckets-and-select-existing-buckets-in-april-2026/">AWS announcement</a>
+to determine whether your bucket is affected and how to enable SSE-C. For new
+deployments, use <a class="reference internal" href="#s3-sse-kms"><span class="std std-ref">SSE-KMS</span></a> instead.</p>
+</div>
+<p>Nextcloud supports server-side encryption with customer-provided keys, also known as
+<a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html">SSE-C</a>,
+with compatible S3 providers. The encryption and decryption happens on the S3 side using
+a key provided by the Nextcloud server.</p>
+<p>The key is specified with the <code class="code docutils literal notranslate"><span class="pre">sse_c_key</span></code> parameter as a base64-encoded string with
+a maximum length of 32 bytes. Generate a random key with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openssl<span class="w"> </span>rand<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64
 </pre></div>
 </div>
-<p>The following example shows how to configure the S3 object store with SSE-C encryption support in the objectstore section of the Nextcloud config.php file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'objectstore'</span> <span class="o">=&gt;</span> <span class="p">[</span>
-    <span class="n">array</span> <span class="p">(</span>
-        <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3'</span><span class="p">,</span>
-        <span class="s1">'arguments'</span> <span class="o">=&gt;</span>
-        <span class="n">array</span> <span class="p">(</span>
-            <span class="s1">'bucket'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud'</span><span class="p">,</span>
-            <span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud'</span><span class="p">,</span>
-            <span class="s1">'secret'</span> <span class="o">=&gt;</span> <span class="s1">'nextcloud'</span><span class="p">,</span>
-            <span class="s1">'hostname'</span> <span class="o">=&gt;</span> <span class="s1">'s3'</span><span class="p">,</span>
-            <span class="s1">'port'</span> <span class="o">=&gt;</span> <span class="s1">'443'</span><span class="p">,</span>
-            <span class="s1">'use_ssl'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s1">'use_path_style'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s1">'autocreate'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s1">'verify_bucket_exists'</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s1">'sse_c_key'</span> <span class="o">=&gt;</span> <span class="s1">'o9d3Q9tHcPMv6TIpH53MSXaUmY91YheZRwuIhwCFRSs='</span><span class="p">,</span>
-        <span class="p">),</span>
-    <span class="p">);</span>
-<span class="p">],</span>
+<p>The following example shows how to configure the S3 object store with SSE-C encryption
+support:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">'objectstore' =&gt; [</span>
+<span class="x">    'class' =&gt; 'OC\\Files\\ObjectStore\\S3',</span>
+<span class="x">    'arguments' =&gt; [</span>
+<span class="x">        'bucket' =&gt; 'nextcloud',</span>
+<span class="x">        'key' =&gt; 'ACCESS_KEY',</span>
+<span class="x">        'secret' =&gt; 'SECRET_KEY',</span>
+<span class="x">        'hostname' =&gt; 's3.example.com',</span>
+<span class="x">        'port' =&gt; 443,</span>
+<span class="x">        'use_ssl' =&gt; true,</span>
+<span class="x">        'use_path_style' =&gt; true,</span>
+<span class="x">        'autocreate' =&gt; true,</span>
+<span class="x">        'verify_bucket_exists' =&gt; true,</span>
+<span class="x">        'sse_c_key' =&gt; 'o9d3Q9tHcPMv6TIpH53MSXaUmY91YheZRwuIhwCFRSs=',</span>
+<span class="x">    ],</span>
+<span class="x">],</span>
+</pre></div>
+</div>
+</section>
+<section id="s3-sse-kms-encryption-support">
+<span id="s3-sse-kms"></span><h2>S3 SSE-KMS encryption support<a class="headerlink" href="#s3-sse-kms-encryption-support" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 34.</span></p>
+</div>
+<p>Nextcloud supports server-side encryption using
+<a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html">AWS Key Management Service (SSE-KMS)</a>.
+With SSE-KMS, AWS encrypts objects at rest using KMS-managed keys. This provides
+centralized key management, IAM-based access controls, CloudTrail audit logging, and
+automatic key rotation — without requiring the Nextcloud server to manage encryption keys
+directly.</p>
+<p>SSE-KMS is the recommended replacement for <a class="reference internal" href="#s3-sse-c"><span class="std std-ref">SSE-C</span></a> for new deployments.</p>
+<p>Two parameters control SSE-KMS:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">sse_kms_enabled</span></code> — set to <code class="code docutils literal notranslate"><span class="pre">true</span></code> to enable SSE-KMS (default: <code class="code docutils literal notranslate"><span class="pre">false</span></code>)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sse_kms_key_id</span></code> — (optional) the ARN of a specific KMS key to use; omit to use the
+bucket’s default KMS key</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If both <code class="code docutils literal notranslate"><span class="pre">sse_c_key</span></code> and <code class="code docutils literal notranslate"><span class="pre">sse_kms_enabled</span></code> are set, SSE-C takes
+precedence. Nextcloud does not migrate or re-encrypt existing objects when you
+enable SSE-KMS. Do not remove <code class="code docutils literal notranslate"><span class="pre">sse_c_key</span></code> while existing objects still require
+SSE-C.</p>
+</div>
+<p>The following example shows how to configure the S3 object store with SSE-KMS using a
+specific KMS key:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">'objectstore' =&gt; [</span>
+<span class="x">    'class' =&gt; 'OC\\Files\\ObjectStore\\S3',</span>
+<span class="x">    'arguments' =&gt; [</span>
+<span class="x">        'bucket' =&gt; 'my-nextcloud-store',</span>
+<span class="x">        'region' =&gt; 'us-east-1',</span>
+<span class="x">        'key' =&gt; 'ACCESS_KEY',</span>
+<span class="x">        'secret' =&gt; 'SECRET_KEY',</span>
+<span class="x">        'sse_kms_enabled' =&gt; true,</span>
+<span class="x">        'sse_kms_key_id' =&gt; 'arn:aws:kms:us-east-1:123456789012:key/mrk-abc123',</span>
+<span class="x">    ],</span>
+<span class="x">],</span>
+</pre></div>
+</div>
+<p>To use the bucket’s default KMS key instead, omit <code class="code docutils literal notranslate"><span class="pre">sse_kms_key_id</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">'objectstore' =&gt; [</span>
+<span class="x">    'class' =&gt; 'OC\\Files\\ObjectStore\\S3',</span>
+<span class="x">    'arguments' =&gt; [</span>
+<span class="x">        'bucket' =&gt; 'my-nextcloud-store',</span>
+<span class="x">        'region' =&gt; 'us-east-1',</span>
+<span class="x">        'key' =&gt; 'ACCESS_KEY',</span>
+<span class="x">        'secret' =&gt; 'SECRET_KEY',</span>
+<span class="x">        'sse_kms_enabled' =&gt; true,</span>
+<span class="x">    ],</span>
+<span class="x">],</span>
 </pre></div>
 </div>
 </section>

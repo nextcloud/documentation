@@ -100,6 +100,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#configuring-clamav-on-nextcloud">Configuring ClamAV on Nextcloud</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#confirm-everything-is-working">Confirm everything is working</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#encrypted-file-detection-limitations-with-clamav">Encrypted File Detection Limitations with ClamAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-scanning-works">How scanning works</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scan-limits">Scan limits</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#manage-the-background-scanner">Manage the background scanner</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#how-the-background-scanner-works">How the background scanner works</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-info-about-files-in-the-scan-queue">Get info about files in the scan queue</a></li>
@@ -108,7 +112,16 @@
 <li class="toctree-l4"><a class="reference internal" href="#mark-a-file-as-scanned-or-unscanned">Mark a file as scanned or unscanned</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#configuring-icap-on-nextcloud">Configuring ICAP on Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-icap-on-nextcloud">Configuring ICAP on Nextcloud</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#settings">Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#choosing-between-reqmod-and-respmod">Choosing between REQMOD and RESPMOD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-virus-response-header">The virus response header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#verifying-the-configuration">Verifying the configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-icap-responses-are-interpreted">How ICAP responses are interpreted</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transport-security">Transport security</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-sent-to-the-scanning-service">What is sent to the scanning service</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#disabling-background-scan-task">Disabling background scan task</a></li>
 </ul>
 </li>
@@ -391,6 +404,53 @@ You may configure additional alert options in <code class="docutils literal notr
 </ul>
 <p>For reliable detection and blocking of encrypted files, consult available antivirus backends documentation.</p>
 </section>
+<section id="how-scanning-works">
+<h2>How scanning works<a class="headerlink" href="#how-scanning-works" title="Link to this heading"></a></h2>
+<p>The following applies to all scanner modes, including ICAP:</p>
+<ul class="simple">
+<li><p>Uploads are scanned while they are being written. The app installs a storage
+wrapper that observes every write, so the data is streamed to the scanner as
+it arrives rather than after the file is complete.</p></li>
+<li><p>When the verdict is “infected”, the newly written file is deleted and the
+upload is refused with the message <em>Virus &lt;name&gt; is detected in the file.
+Upload cannot be completed.</em> The trash bin is paused while the file is
+deleted, so the infected file does not end up in the user’s trash. An entry
+is written to the log and to the user’s activity stream.</p></li>
+<li><p>Files that already existed, files that were accepted while the scanner was
+unavailable, and files whose scan is older than <code class="docutils literal notranslate"><span class="pre">av_rescan_days</span></code> (default
+<code class="docutils literal notranslate"><span class="pre">28</span></code>) are handled by the background scanner, which scans in batches on the
+cron schedule. For infected files found by the background scanner, the
+action is controlled by <code class="docutils literal notranslate"><span class="pre">av_infected_action</span></code>, which defaults to
+<code class="docutils literal notranslate"><span class="pre">only_log</span></code>. See <a class="reference internal" href="#manage-the-background-scanner">Manage the background scanner</a>.</p></li>
+<li><p>Some content is never sent to the scanner: end-to-end encrypted files and
+their metadata, and anything under a directory listed in
+<code class="docutils literal notranslate"><span class="pre">av_blocklisted_directories</span></code>.</p></li>
+</ul>
+<section id="scan-limits">
+<h3>Scan limits<a class="headerlink" href="#scan-limits" title="Link to this heading"></a></h3>
+<p>Three settings bound how much of a file is sent to the scanner, and all three
+change what the verdict is actually based on:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">av_scan_first_bytes</span></code></dt><dd><p>Default <code class="docutils literal notranslate"><span class="pre">-1</span></code>, meaning the whole file. With a positive value, only about
+the first that many bytes of a file are sent, so the scanner returns a
+verdict on a prefix of the file and malware later in the file is not seen.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">av_stream_max_length</span></code></dt><dd><p>Default <code class="docutils literal notranslate"><span class="pre">26214400</span></code> (25 MiB). A file larger than this is not sent in a
+single scan: the scan is finished and evaluated, and a new one is started
+for the following bytes. Each segment is scanned on its own, and a
+detection in any segment marks the file as infected. Detections that depend
+on seeing a whole object, such as a large archive, can be missed when the
+object spans a segment boundary, so raise this limit rather than lowering it
+if your scanner and the PHP <code class="docutils literal notranslate"><span class="pre">memory_limit</span></code> allow for it.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">av_max_file_size</span></code></dt><dd><p>Default <code class="docutils literal notranslate"><span class="pre">-1</span></code>, meaning no limit. With a positive value, files larger than
+this are excluded from background scanning entirely, and chunked WebDAV
+uploads larger than this are not scanned at all. They are stored unscanned;
+they are not partially scanned.</p>
+</dd>
+</dl>
+</section>
+</section>
 <section id="manage-the-background-scanner">
 <h2>Manage the background scanner<a class="headerlink" href="#manage-the-background-scanner" title="Link to this heading"></a></h2>
 <p>The background scanner does not require any manual intervention.
@@ -451,12 +511,286 @@ frequency is also bounded by how often Nextcloud’s background job mechanism
 </section>
 <section id="configuring-icap-on-nextcloud">
 <h2>Configuring ICAP on Nextcloud<a class="headerlink" href="#configuring-icap-on-nextcloud" title="Link to this heading"></a></h2>
-<p>Nextcloud offers the integration of antivirus protection based on the ICAP protocol.
-The settings are outlined here.
-Additional documentation is work in progress.</p>
+<p>Instead of talking to ClamAV directly, the Antivirus app for Files can hand
+files to an external scanning service using ICAP, the Internet Content
+Adaptation Protocol (<a class="reference external" href="https://www.rfc-editor.org/rfc/rfc3507">RFC 3507</a>).
+In this mode Nextcloud does not run a scanner itself: it opens a TCP
+connection to an ICAP server, streams the file to it and acts on the verdict
+that comes back.</p>
+<p>Use ICAP mode when:</p>
+<ul class="simple">
+<li><p>you already operate an enterprise scanning appliance or scanning service
+that speaks ICAP, possibly shared with your mail gateway or proxy. The
+administration settings ship presets for ClamAV / c-icap, Kaspersky and
+FortiSandbox;</p></li>
+<li><p>you want to run ClamAV behind <code class="docutils literal notranslate"><span class="pre">c-icap</span></code> on a separate host, so that
+scanning load and signature updates are kept away from the Nextcloud
+servers;</p></li>
+<li><p>your scanner should also enforce a file type or file extension policy, which
+ICAP mode understands in addition to malware verdicts (see
+<a class="reference internal" href="#how-icap-responses-are-interpreted">How ICAP responses are interpreted</a>).</p></li>
+</ul>
+<p>To enable it, select <code class="docutils literal notranslate"><span class="pre">ICAP</span></code> as the mode in the Antivirus Configuration panel
+on your Admin page, or set it with <code class="docutils literal notranslate"><span class="pre">occ</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_mode</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;icap&quot;</span>
+</pre></div>
+</div>
 <figure class="align-default">
 <img alt="../_images/antivirus-icap.png" src="../_images/antivirus-icap.png" />
 </figure>
+<section id="settings">
+<h3>Settings<a class="headerlink" href="#settings" title="Link to this heading"></a></h3>
+<p>The host and port are shared with the other network modes; all other settings
+below are specific to ICAP mode.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">av_mode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">executable</span></code></p></td>
+<td><p>Set to <code class="docutils literal notranslate"><span class="pre">icap</span></code> to enable ICAP mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">av_host</span></code></p></td>
+<td><p>(empty)</p></td>
+<td><p>Hostname or IP address of the ICAP server. Scanning fails if this is
+not set.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">av_port</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3310</span></code></p></td>
+<td><p>Port of the ICAP server. Note that this default is the ClamAV daemon
+port, not the ICAP default port of 1344, so it almost always has to be
+changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">av_icap_request_service</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">avscan</span></code></p></td>
+<td><p>The ICAP service to call, that is the path part of the request URI
+<code class="docutils literal notranslate"><span class="pre">icap://&lt;av_host&gt;/&lt;service&gt;</span></code>. <code class="docutils literal notranslate"><span class="pre">c-icap</span></code> with ClamAV uses <code class="docutils literal notranslate"><span class="pre">avscan</span></code>;
+other products use different names, for example <code class="docutils literal notranslate"><span class="pre">req</span></code> for Kaspersky
+and <code class="docutils literal notranslate"><span class="pre">respmod</span></code> for FortiSandbox.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">av_icap_mode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">reqmod</span></code></p></td>
+<td><p>Either <code class="docutils literal notranslate"><span class="pre">reqmod</span></code> or <code class="docutils literal notranslate"><span class="pre">respmod</span></code>. See
+<a class="reference internal" href="#choosing-between-reqmod-and-respmod">Choosing between REQMOD and RESPMOD</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">av_icap_response_header</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">X-Infection-Found</span></code></p></td>
+<td><p>The ICAP response header from which the threat name is read. This is
+vendor specific; see <a class="reference internal" href="#the-virus-response-header">The virus response header</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">av_icap_tls</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Whether to wrap the ICAP connection in TLS. See
+<a class="reference internal" href="#transport-security">Transport security</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">av_icap_chunk_size</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1048576</span></code></p></td>
+<td><p>Number of bytes buffered in memory before they are sent to the ICAP
+server.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">av_icap_connect_timeout</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+<td><p>Timeout in seconds for establishing the TCP or TLS connection to the
+ICAP server. The read timeout on an established connection is fixed at
+600 seconds.</p></td>
+</tr>
+</tbody>
+</table>
+<p>All of these can be set with <code class="docutils literal notranslate"><span class="pre">occ</span></code>, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_host</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;icap.example.com&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_port</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;1344&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_icap_request_service</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;avscan&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_icap_mode</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;reqmod&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_icap_response_header</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;X-Infection-Found&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_icap_tls</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_icap_chunk_size</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;1048576&quot;</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_icap_connect_timeout</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;5&quot;</span>
+</pre></div>
+</div>
+<p>The Antivirus Configuration panel exposes the host, port, service, virus
+response header and TLS switch, plus a preset selector that fills in service,
+header and mode for ClamAV / c-icap, Kaspersky and FortiSandbox. The ICAP mode
+select in the panel follows the preset and cannot be changed on its own, so to
+use a mode that differs from the preset, set <code class="docutils literal notranslate"><span class="pre">av_icap_mode</span></code> with <code class="docutils literal notranslate"><span class="pre">occ</span></code>.
+The chunk size and the connection timeout can only be set with <code class="docutils literal notranslate"><span class="pre">occ</span></code>.</p>
+<p>The settings shared with the other modes also apply in ICAP mode: the
+streaming limits <code class="docutils literal notranslate"><span class="pre">av_stream_max_length</span></code>, <code class="docutils literal notranslate"><span class="pre">av_max_file_size</span></code> and
+<code class="docutils literal notranslate"><span class="pre">av_scan_first_bytes</span></code> (see <a class="reference internal" href="#scan-limits">Scan limits</a>), and the
+handling options <code class="docutils literal notranslate"><span class="pre">av_block_unscannable</span></code>, <code class="docutils literal notranslate"><span class="pre">av_block_unreachable</span></code> and
+<code class="docutils literal notranslate"><span class="pre">av_infected_action</span></code> (see <a class="reference internal" href="#how-icap-responses-are-interpreted">How ICAP responses are interpreted</a>).</p>
+</section>
+<section id="choosing-between-reqmod-and-respmod">
+<h3>Choosing between REQMOD and RESPMOD<a class="headerlink" href="#choosing-between-reqmod-and-respmod" title="Link to this heading"></a></h3>
+<p>Use the mode your ICAP service supports. If the vendor has no preference, use
+<code class="docutils literal notranslate"><span class="pre">respmod</span></code>.</p>
+</section>
+<section id="the-virus-response-header">
+<h3>The virus response header<a class="headerlink" href="#the-virus-response-header" title="Link to this heading"></a></h3>
+<p>When the ICAP server reports an infection it names the threat in a response
+header, and the name of that header differs per vendor. <code class="docutils literal notranslate"><span class="pre">av_icap_response_header</span></code>
+must match exactly what your scanner sends: <code class="docutils literal notranslate"><span class="pre">c-icap</span></code> with ClamAV uses
+<code class="docutils literal notranslate"><span class="pre">X-Infection-Found</span></code>, Kaspersky uses <code class="docutils literal notranslate"><span class="pre">X-Virus-ID</span></code>, and other products use
+other names. The value of that header becomes the threat name that is logged
+and shown to the user.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A wrong <code class="docutils literal notranslate"><span class="pre">av_icap_response_header</span></code> can fail silently. Nextcloud
+still flags a file as infected when the scanner answers with an
+encapsulated <code class="docutils literal notranslate"><span class="pre">403</span></code> response, as older Kaspersky editions and McAfee do.
+Scanners that report an infection only through the response header, on a
+<code class="docutils literal notranslate"><span class="pre">204</span></code> or <code class="docutils literal notranslate"><span class="pre">200</span></code> response, are a different case: if the configured header
+is not the one they send, the file is treated as clean and accepted without
+any error being logged. Always verify the setting against a real detection
+instead of assuming that an error-free upload means scanning works.</p>
+</div>
+</section>
+<section id="verifying-the-configuration">
+<h3>Verifying the configuration<a class="headerlink" href="#verifying-the-configuration" title="Link to this heading"></a></h3>
+<p>Use the built-in test command, which scans harmless content and two variants
+of the EICAR test file through the configured backend:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">test</span>
+</pre></div>
+</div>
+<p>The command fails if the clean content is reported as infected, or if either
+EICAR sample is reported as clean, which is exactly the failure mode of a
+wrong virus response header. It reports files that could not be scanned or
+were not scanned separately, so a run that reports pending or unscannable
+results is not a confirmation that detection works.</p>
+<p>ICAP mode also supports debug output, which prints the generated ICAP request
+headers and the raw ICAP response. This is the quickest way to see which
+header a scanner actually returns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">test</span> <span class="o">--</span><span class="n">debug</span>
+</pre></div>
+</div>
+<p>Saving the settings in the Antivirus Configuration panel also runs a scan of
+dummy content and reports the result, so a saved configuration that cannot
+reach the ICAP server is reported immediately.</p>
+</section>
+<section id="how-icap-responses-are-interpreted">
+<h3>How ICAP responses are interpreted<a class="headerlink" href="#how-icap-responses-are-interpreted" title="Link to this heading"></a></h3>
+<p>ICAP mode distinguishes more outcomes than clean and infected:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 15.0%" />
+<col style="width: 45.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Scanner reports</p></th>
+<th class="head"><p>Result</p></th>
+<th class="head"><p>Handling</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>The file is clean</p></td>
+<td><p>Clean</p></td>
+<td><p>The file is accepted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>A virus was found</p></td>
+<td><p>Infected</p></td>
+<td><p>The upload is rejected and the file is deleted, see
+<a class="reference internal" href="#how-scanning-works">How scanning works</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>The file type or file extension is blocked</p></td>
+<td><p>Infected</p></td>
+<td><p>Treated exactly like a malware detection, so an ICAP scanner can also
+enforce a file type policy for Nextcloud uploads.</p></td>
+</tr>
+<tr class="row-odd"><td><p>The file cannot be scanned, for example a password-protected archive,
+an archive nested too deeply, or a file that cannot be decoded</p></td>
+<td><p>Unscannable</p></td>
+<td><p>Accepted or rejected according to <code class="docutils literal notranslate"><span class="pre">av_block_unscannable</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>The file was not checked</p></td>
+<td><p>Not checked</p></td>
+<td><p>Accepted or rejected according to <code class="docutils literal notranslate"><span class="pre">av_block_unreachable</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Any other response or error</p></td>
+<td><p>Error</p></td>
+<td><p>The scan fails with an error and the upload does not complete.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Two settings decide what happens to a file the scanner did not clear:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">av_block_unscannable</span></code></dt><dd><p>Default <code class="docutils literal notranslate"><span class="pre">false</span></code>. Files the scanner reported as unscannable, such as
+password-protected archives or archives nested more deeply than the scanner
+will unpack, are <strong>accepted</strong> with the default setting. Set it to <code class="docutils literal notranslate"><span class="pre">true</span></code>
+to reject them instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_block_unscannable</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">av_block_unreachable</span></code></dt><dd><p>Default <code class="docutils literal notranslate"><span class="pre">true</span></code>. With the default setting, a file is rejected when the ICAP
+server cannot be reached at all or the file couldn’t be scanned, and the user is told
+that the upload cannot be completed. Set it to <code class="docutils literal notranslate"><span class="pre">false</span></code> to accept uploads
+while the scanner is unavailable; such files are not marked as scanned, so
+the background scanner picks them up later.</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These two defaults mean that, out of the box, a file that could
+not be checked because it is unscannable is treated as safe and stored,
+while a file that could not be checked because the scanner was unreachable
+is refused. Decide deliberately which behaviour you want before relying on
+ICAP scanning as a control.</p>
+</div>
+</section>
+<section id="transport-security">
+<h3>Transport security<a class="headerlink" href="#transport-security" title="Link to this heading"></a></h3>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">av_icap_tls</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code> and the ICAP connection is a plain
+TCP connection. With TLS enabled:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_icap_tls</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+</pre></div>
+</div>
+<p>the connection is established as <code class="docutils literal notranslate"><span class="pre">tls://&lt;av_host&gt;:&lt;av_port&gt;</span></code> with peer and
+peer name verification enabled, validated against the CA bundle managed by
+Nextcloud. A scanner presenting a self-signed or private-CA certificate
+therefore needs that certificate imported into Nextcloud, in the same way as
+for external storage.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Unless <code class="docutils literal notranslate"><span class="pre">av_icap_tls</span></code> is enabled, the connection to the ICAP
+server is unencrypted: the contents of every scanned file, the file path and
+the uploader’s IP address are sent in plaintext. Only leave TLS off when the connection stays on a network you
+fully control, and never for a remote or cloud-hosted scanning service.</p>
+</div>
+</section>
+<section id="what-is-sent-to-the-scanning-service">
+<h3>What is sent to the scanning service<a class="headerlink" href="#what-is-sent-to-the-scanning-service" title="Link to this heading"></a></h3>
+<p>For a data protection assessment, this is what leaves the Nextcloud server on
+every ICAP scan:</p>
+<ul class="simple">
+<li><p><strong>The file contents</strong>, subject to the <a class="reference internal" href="#scan-limits">Scan limits</a>.</p></li>
+<li><p><strong>The file path.</strong> For a file in an account’s own storage it has the form
+<code class="docutils literal notranslate"><span class="pre">/&lt;account&gt;/files/&lt;path&gt;</span></code>, so the account’s user ID is part of it.</p></li>
+<li><p><strong>The uploader’s IP address</strong>, whenever the scan is triggered by a request.
+Background scans send none.</p></li>
+</ul>
+<p>No account name, display name, email address, group membership, share
+information, comment or tag is sent. Nothing is transmitted back into
+Nextcloud from the scanner except the verdict, and the threat name is stored
+and logged with the scan result.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If your ICAP server is operated by a third party or hosted
+outside your own infrastructure, then enabling ICAP mode means you are
+transferring file contents, file paths including account user IDs, and
+client IP addresses to that third party for every upload and every
+background scan. Cover this in your processing records and contracts
+before enabling it.</p>
+</div>
+</section>
 </section>
 <section id="disabling-background-scan-task">
 <h2>Disabling background scan task<a class="headerlink" href="#disabling-background-scan-task" title="Link to this heading"></a></h2>

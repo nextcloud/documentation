@@ -294,6 +294,10 @@ webroot of your nginx installation. In this example it is
 <span class="w">    </span><span class="kn">client_body_timeout</span><span class="w"> </span><span class="s">300s</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">fastcgi_buffers</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="s">4K</span><span class="p">;</span>
 
+<span class="w">    </span><span class="c1"># avoid 502 at root URL due to too large header response</span>
+<span class="w">    </span><span class="kn">fastcgi_buffer_size</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">fastcgi_busy_buffers_size</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+
 <span class="w">    </span><span class="c1"># Proxy and client response timeouts</span>
 <span class="w">    </span><span class="c1"># Uncomment an increase these if facing timeout errors during large file uploads</span>
 <span class="w">    </span><span class="c1">#keepalive_timeout 60s;</span>
@@ -598,6 +602,10 @@ The configuration differs from the “Nextcloud in webroot” configuration abov
 <span class="w">        </span><span class="kn">client_max_body_size</span><span class="w"> </span><span class="s">512M</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">client_body_timeout</span><span class="w"> </span><span class="s">300s</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">fastcgi_buffers</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="s">4K</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># avoid 502 at root URL due to too large header response</span>
+<span class="w">        </span><span class="kn">fastcgi_buffer_size</span><span class="w"> </span><span class="mi">8k</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">fastcgi_busy_buffers_size</span><span class="w"> </span><span class="mi">8k</span><span class="p">;</span>
 
 <span class="w">        </span><span class="c1"># Proxy and client response timeouts</span>
 <span class="w">        </span><span class="c1"># Uncomment an increase these if facing timeout errors during large file uploads</span>

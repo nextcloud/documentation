@@ -386,7 +386,15 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="installation/source_installation.html">Installation on Linux</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="installation/source_installation.html#prerequisites-for-manual-installation">Prerequisites for manual installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/source_installation.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/source_installation.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/source_installation.html#alternative-installation-methods">Alternative Installation Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/source_installation.html#prerequisites-for-manual-installation">Prerequisites for manual installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="installation/source_installation.html#webdav">WebDAV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation/source_installation.html#php-extensions">PHP Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation/source_installation.html#selinux">SELinux</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="installation/source_installation.html#apache-web-server-configuration">Apache Web server configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="installation/source_installation.html#additional-apache-configurations">Additional Apache configurations</a></li>
 </ul>
@@ -397,7 +405,7 @@
 <li class="toctree-l3"><a class="reference internal" href="installation/source_installation.html#setting-up-background-jobs">Setting up background jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/source_installation.html#selinux-configuration-tips">SELinux configuration tips</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/source_installation.html#php-fpm-configuration">PHP-FPM configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="installation/source_installation.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation/source_installation.html#id1">Overview</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation/source_installation.html#process-manager">Process manager</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation/source_installation.html#system-environment-variables">System environment variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation/source_installation.html#maximum-upload-size">Maximum upload size</a></li>
@@ -717,6 +725,7 @@
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#remember-login-cookie-lifetime">remember_login_cookie_lifetime</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#session-lifetime">session_lifetime</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#davstorage-request-timeout">davstorage.request_timeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#davstorage-allow-local-address">davstorage_allow_local_address</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#carddav-sync-request-timeout">carddav_sync_request_timeout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#carddav-sync-request-truncation">carddav_sync_request_truncation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/config_sample_php_parameters.html#session-relaxed-expiry">session_relaxed_expiry</a></li>
@@ -1060,6 +1069,10 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/antivirus_configuration.html#configuring-clamav-on-nextcloud">Configuring ClamAV on Nextcloud</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/antivirus_configuration.html#confirm-everything-is-working">Confirm everything is working</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/antivirus_configuration.html#encrypted-file-detection-limitations-with-clamav">Encrypted File Detection Limitations with ClamAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_server/antivirus_configuration.html#how-scanning-works">How scanning works</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#scan-limits">Scan limits</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/antivirus_configuration.html#manage-the-background-scanner">Manage the background scanner</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#how-the-background-scanner-works">How the background scanner works</a></li>
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#get-info-about-files-in-the-scan-queue">Get info about files in the scan queue</a></li>
@@ -1068,7 +1081,16 @@
 <li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#mark-a-file-as-scanned-or-unscanned">Mark a file as scanned or unscanned</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="configuration_server/antivirus_configuration.html#configuring-icap-on-nextcloud">Configuring ICAP on Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_server/antivirus_configuration.html#configuring-icap-on-nextcloud">Configuring ICAP on Nextcloud</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#settings">Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#choosing-between-reqmod-and-respmod">Choosing between REQMOD and RESPMOD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#the-virus-response-header">The virus response header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#verifying-the-configuration">Verifying the configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#how-icap-responses-are-interpreted">How ICAP responses are interpreted</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#transport-security">Transport security</a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration_server/antivirus_configuration.html#what-is-sent-to-the-scanning-service">What is sent to the scanning service</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_server/antivirus_configuration.html#disabling-background-scan-task">Disabling background scan task</a></li>
 </ul>
 </li>
@@ -1734,6 +1756,7 @@
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/primary_storage.html#multibucket-object-store-with-per-bucket-configuration-overrides">Multibucket Object Store with per Bucket configuration overrides</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/primary_storage.html#multi-instance-object-store">Multi-instance Object Store</a></li>
 <li class="toctree-l3"><a class="reference internal" href="configuration_files/primary_storage.html#s3-sse-c-encryption-support">S3 SSE-C encryption support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration_files/primary_storage.html#s3-sse-kms-encryption-support">S3 SSE-KMS encryption support</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_files/external_storage_configuration_gui.html">External Storage</a><ul>
