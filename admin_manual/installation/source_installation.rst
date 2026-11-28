@@ -56,7 +56,7 @@ archive-based installation, there are alternative installation methods.
    - Includes Office, a turnkey Backup solution, Imaginary (for previews of heic, heif, illustrator,
      pdf, svg, tiff and webp) and much more (many components are optional). Full feature list available
      `here <https://github.com/nextcloud/all-in-one?tab=readme-ov-file#nextcloud-all-in-one>`__.
-   - Free community support is provided `on GitHub <https://github.com/nextcloud/all-in-one/issues/new/choose>`__
+   - Free community support is provided `on GitHub <https://github.com/nextcloud/all-in-one/discussions/new?category=questions>`__
      (on a best efforts basis).
    - For larger installations (>100 users) an AIO specific `Nextcloud Enterprise arrangement
      <https://nextcloud.com/all-in-one/>`__ is available (it includes a support SLA, security information and
